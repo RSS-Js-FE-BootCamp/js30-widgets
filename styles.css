@@ -229,9 +229,9 @@ h3 {
 }
 
 .student-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
-  gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
 }
 
 .student-card {
