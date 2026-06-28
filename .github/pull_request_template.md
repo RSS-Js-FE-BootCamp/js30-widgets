@@ -11,10 +11,8 @@
 | Photofilter |  |
 | Whack-A-Mole |  |
 
-<!-- Add your link to deploy-preview, there is an example -->
-3. Deployment: https://deploy-preview-5--js-30-widget-gallery.netlify.app 
-4. Done 28.06.2026 / deadline 30.06.2026
-5. Score: 0 / 130
+3. Done 28.06.2026 / deadline 30.06.2026
+4. Score: 0 / 130
 
 ---
 
@@ -143,7 +141,6 @@
 
 - [ ] JavaScript code is readable, not minified or obfuscated (-10 if violated per widget)
 - [ ] No forbidden JS library/framework is used (jQuery, React, Vue, Angular, etc.) (-65, the whole widget is voided)
-- [ ] Browser-console self-evaluation is present and lists the items claimed (-5 if missing per widget)
 - [ ] Commit history reflects real development (not a single dump commit) (-10 if violated per widget)
 - [ ] PR is open against main of the shared repository, with working Netlify preview links for all widgets (-10 if violated; without preview a widget cannot be scored)
 
