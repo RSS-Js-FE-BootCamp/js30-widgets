@@ -15,6 +15,32 @@
 	font-size: 100px;
 	text-align: center;
 	line-height: 1;
+	margin-bottom: 30px;
+}
+
+.game__button_start {
+	font-family: var(--basic-font);
+	background-color: #fdfdfd;
+	width: fit-content;
+	margin: 0 auto;
+	font-size: 50px;
+	padding: 10px 30px;
+	border-radius: 12px;
+	transition: transform .2s ease, box-shadow .2s ease;
+	box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+	user-select: none;
+	margin-bottom: 40px;
+}
+
+.game__button_start:hover {
+	cursor: pointer;
+	transform: scale(1.1, 1.1);
+	box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+}
+
+.game__button_start:active {
+	transform: scale(.9, .9);
+	box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
 }
 
 .main__game {
@@ -53,13 +79,15 @@
   background-size: 60%;
   position: absolute;
   top: 100%;
-  width: 100%;
-  height: 100%;
+  width: 80%;
+	left: 50%;
+	transform: translateX(-50%);
+  height: 80%;
   transition: all 0.4s;
 }
 
 .hole.show-mole .mole {
-  top: 0;
+  top: 30%;
 }
 
 .game__score_wrapper {
