@@ -135,5 +135,28 @@
 .mute__icon {
 	position: absolute;
 	right: 30px;
-	top: 30px;
+	top: 0;
+	max-width: 50px;
+	max-height: 50px;
+}
+
+.mute__icon img {
+	width: 100%;
+}
+
+.mute__icon:hover {
+	cursor: pointer;
+}
+
+.mute__icon.muted::before {
+	content: '';
+	position: absolute;
+	display: block;
+	width: 100%;
+	top: 50%;
+	transform: translateX(-50%);
+	height: 5px;
+	border-radius: 2px;
+	background-color: black;
+	transform: rotate(45deg);
 }
