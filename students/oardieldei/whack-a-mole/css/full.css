@@ -58,7 +58,7 @@
   transition: all 0.4s;
 }
 
-.hole.up .mole {
+.hole.show-mole .mole {
   top: 0;
 }
 
