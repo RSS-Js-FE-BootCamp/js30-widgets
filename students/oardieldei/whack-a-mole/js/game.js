@@ -44,12 +44,16 @@ function clickOnMole(e) {
 	if (!e.isTrusted) return
 	currentScore++
 	scoreCounter.textContent = currentScore
-	this.classList.remove('show-mole')
+	e.target.closest('.hole').classList.add('killed')
+	e.target.closest('.hole').classList.remove('show-mole')
+	setTimeout(() => {
+		e.target.closest('.hole').classList.remove('killed')
+	}, 600);
 }
 
 export function addStartPlaying() {
 	buttonStart.addEventListener('click', () => {
 		if (!isGameGoing) turnOnGame()
 	})
-	moles.forEach(mole => mole.addEventListener('click', clickOnMole))
+	moles.forEach(mole => mole.addEventListener('click', (e) => {clickOnMole(e)}))
 }
