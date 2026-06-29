@@ -1,0 +1,56 @@
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("img/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.drum-kit {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.drum {
+    width: 100px;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0.4);
+    border: 4px solid black;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.drum .key {
+    font-size: 28px;
+}
+
+.drum .sound {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #ffc600;
+}
