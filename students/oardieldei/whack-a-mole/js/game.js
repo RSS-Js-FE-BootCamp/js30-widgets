@@ -1,3 +1,5 @@
+import { playSoundGameOver, playSoundMoleUp, playSoundHit } from "./audio.js"
+
 const holes = document.querySelectorAll('.hole')
 const moles = document.querySelectorAll('.mole')
 const scoreCounter = document.querySelector('.score__counter')
@@ -23,6 +25,7 @@ function showMole() {
 	const time = getRandomTime(200, 1000)
 	const currentHole = holes[getrandomHole(holes)]
 
+	playSoundMoleUp()
 	currentHole.classList.add('show-mole')
 	setTimeout(() => {
 		currentHole.classList.remove('show-mole')
@@ -37,6 +40,7 @@ function turnOnGame() {
 	showMole()
 	setTimeout(() => {
 		isGameGoing = false
+		playSoundGameOver()
 	}, 10000);
 }
 
@@ -44,6 +48,7 @@ function clickOnMole(e) {
 	if (!e.isTrusted) return
 	currentScore++
 	scoreCounter.textContent = currentScore
+	playSoundHit()
 	e.target.closest('.hole').classList.add('killed')
 	e.target.closest('.hole').classList.remove('show-mole')
 	setTimeout(() => {

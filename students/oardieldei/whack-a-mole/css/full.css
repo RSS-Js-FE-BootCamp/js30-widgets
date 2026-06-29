@@ -4,6 +4,7 @@
 
 .body {
 	background-color: #eed88f;
+	position: relative;
 }
 
 .main {
@@ -129,4 +130,10 @@
     transform: translate(var(--x), var(--y)) scale(0);
     opacity: 0;
   }
+}
+
+.mute__icon {
+	position: absolute;
+	right: 30px;
+	top: 30px;
 }
