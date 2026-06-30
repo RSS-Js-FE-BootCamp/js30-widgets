@@ -4,15 +4,49 @@ html {
   background-size: cover;
 }
 
-body,html {
+body{
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+
+.instruments {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.instrument {
+  font-size: 2.4rem;
+  padding: .6rem 1.4rem;
+  color: white;
+  background: rgba(0,0,0,0.4);
+  border: .2rem solid white;
+  border-radius: .5rem;
+  cursor: pointer;
+  text-shadow: 0 0 .5rem black;
+  transition: all .07s ease;
+}
+
+.instrument small {
+  opacity: .6;
+}
+
+.instrument.active {
+  border-color: #ffc600;
+  color: #ffc600;
+  box-shadow: 0 0 1rem #ffc600;
 }
 
 .keys {
+  flex: 1;
   display: flex;
-  min-height: 100vh;
   align-items: center;
   justify-content: center;
   user-select: none;
