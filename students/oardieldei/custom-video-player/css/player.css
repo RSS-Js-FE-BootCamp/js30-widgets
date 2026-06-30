@@ -1,0 +1,12 @@
+.player__control {
+	width: 28px;
+	height: 28px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: inherit;
+}
+
+.player__control svg {
+	fill: #fff;
+}
