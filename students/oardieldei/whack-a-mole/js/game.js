@@ -1,9 +1,10 @@
-import { playSoundGameOver, playSoundMoleUp, playSoundHit } from "./audio.js"
+import { playSoundGameOver, playSoundMoleUp, playSoundHit, playNextLevel } from "./audio.js"
 
 const holes = document.querySelectorAll('.hole')
 const moles = document.querySelectorAll('.mole')
 const scoreCounter = document.querySelector('.score__counter')
 const buttonStart = document.querySelector('.game__button_start')
+const levelUpElem = document.querySelector('.game__level_up')
 
 let actualHole
 let isGameGoing = false
@@ -94,11 +95,20 @@ function nextLevel() {
 	levelScore = 0
 
 	clearTimeout(moleTimer)
+	levelUpInfo()
 
 	document.querySelector('.show-mole')?.classList.remove('show-mole')
 
 	startRoundTimer()
 	showMole()
+}
+
+function levelUpInfo() {
+	playNextLevel()
+	levelUpElem.classList.remove('hidden_elem')
+	setTimeout(() => {
+		levelUpElem.classList.add('hidden_elem')
+	}, 1000);
 }
 
 export function addStartPlaying() {

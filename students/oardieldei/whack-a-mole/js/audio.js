@@ -26,6 +26,14 @@ export function playSoundMoleUp() {
   })
 }
 
+export function playNextLevel() {
+	if (isMuted) return
+	const sound = new Audio('./sounds/nextlevel.mp3')
+	sound.play().catch(error => {
+    console.warn("Звук не воспроизвелся. Возможно, пользователь еще не кликал по странице:", error);
+  })
+}
+
 function muteUnmute() {
 	isMuted = !isMuted
 	muteBtn.classList.toggle('muted')

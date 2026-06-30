@@ -56,6 +56,7 @@
 	display: flex;
   flex-wrap: wrap;
   margin: 0 auto 40px;
+	position: relative;
 }
 
 .hole {
@@ -95,6 +96,19 @@
 .hole.killed .mole {
   background: url('../img/kill.png') center center no-repeat;
 	background-size: contain;
+}
+
+.game__level_up {
+	position: absolute;
+	top: 100px;
+	right: 0;
+	transform: translateX(100%);
+	font-family: var(--basic-font);
+	font-size: 60px;
+}
+
+.game__level_up.hidden_elem {
+	display: none;
 }
 
 .game__score_wrapper {
