@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="./sound.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drum Kit</title>
+</head>
+<body>
+    <button id="play">Воспроизвести MP3</button>
+
+<script>
+document.getElementById('play').addEventListener('click', () => {
+  const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+  // Загружаем MP3-файл (замени путь на свой)
+  fetch('./bass-b.mp3')
+    .then(response => response.arrayBuffer())
+    .then(arrayBuffer => audioCtx.decodeAudioData(arrayBuffer))
+    .then(audioBuffer => {
+      const source = audioCtx.createBufferSource();
+      source.buffer = audioBuffer;
+      
+      // подключение к динамикам
+      source.connect(audioCtx.destination);
+      
+      // воспроизведение
+      source.start();
+    })
+    .catch(e => console.error('Ошибка загрузки или воспроизведения:', e));
+});
+</script>
+</body>
+</html>
