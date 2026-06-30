@@ -8,4 +8,6 @@ export function runApp() {
 	addExplosionToClicks()
 	addMuteBtnPower()
 	showLeaders()
+
+	console.log('Привет! В папке с проектом есть README.md, там вся информация для облегчения проверки.')
 }
