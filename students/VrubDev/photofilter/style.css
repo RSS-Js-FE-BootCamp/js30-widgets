@@ -1,0 +1,10 @@
+body {
+  text-align: center;
+  background-color: #2e303d;
+  color: #f2e9dc;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+img {
+  width: 600px;
+  height: 400px;
+}
