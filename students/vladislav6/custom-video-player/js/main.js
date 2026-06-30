@@ -1,5 +1,6 @@
 import './mandatory.js';
 import './catalog.js';
+import './slider.js';
 
 export const player = document.querySelector('.player');
 export const video = player.querySelector('.video');

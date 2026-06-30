@@ -44,6 +44,10 @@ body {
   border-radius: 100%;
 }
 
+.poster:hover,
+.active-poster,
+.left-arrow:hover,
+.right-arrow:hover,
 .card button:hover,
 .search:hover,
 .search-btn:hover {
@@ -230,7 +234,9 @@ input {
 .modal {
   background-color: #ffffff;
   padding: 20px 5px;
-  cursor: default;  
+  cursor: default;
+  overflow-y: auto;
+  max-height: 700px;
 }
 
 .modal h2 {
@@ -258,4 +264,67 @@ input {
 
 .tag {
   margin: 0 5px;
+}
+
+.posters,
+.slides {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.posters {
+  gap: 5px;
+}
+
+.slide {
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.left-arrow,
+.right-arrow,
+.right-arrow::after {
+  width: 46px;
+  height: 46px;
+  background: yellow url('/students/vladislav6/custom-video-player/assets/arrow.png') center / 18px no-repeat;
+  border-radius: 100%;
+  border: none;
+  flex-shrink: 0;
+  cursor: pointer;
+  position: relative;
+}
+
+.right-arrow::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(180deg);
+}
+
+.poster {
+  width: 100%;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: transform .4s ease;
+}
+
+.poster img {
+  width: 100%;
+  display: block;
+}
+
+.poster:hover,
+.active-poster {
+  position: relative;
+
+}
+
+.poster:hover::after,
+.active-poster::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('/students/vladislav6/custom-video-player/assets/favicon.png') center / 10% no-repeat;
 }

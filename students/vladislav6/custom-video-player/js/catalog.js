@@ -1,11 +1,21 @@
 import { video, togglePlayPause, volume, speed } from "./main.js";
 import { openModal } from "./modal.js";
+import { removeClass } from "./slider.js";
 
 export const search = document.querySelector('.search');
 const searchBtn = document.querySelector('.search-btn');
 const searchResult = document.createElement('div');
 searchResult.classList.add('search-result');
 let videoCards = {};
+
+export const playSelectVideo = (url) => {
+  video.src = url;
+  togglePlayPause();
+  volume.value = 1;
+  video.volume = 1;
+  speed.value = 1;
+  video.playbackRate = 1;
+};
 
 const noResult = () => searchResult.textContent = 'No result';
 
@@ -79,11 +89,9 @@ const watchVideo = (e) => {
   if (!isVideo && !isAbout) return;
 
   if (isVideo) {
-    const ulr = videoCards[e.target.dataset.id].videos.small.url;
-    video.src = ulr;
-    togglePlayPause();
-    volume.value = 1;
-    speed.value = 1;
+    playSelectVideo(videoCards[e.target.dataset.id].videos.small.url);
+    const allPosters = [...document.querySelectorAll('.poster')];
+    removeClass(allPosters, 'active-poster');
   }
 
   if (isAbout) {
