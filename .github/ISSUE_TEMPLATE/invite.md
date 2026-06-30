@@ -13,4 +13,4 @@ assignees: ''
 * **Username:** `@faratora`
 
 ### 📱 RS App Profile
-* **Application Link:** ([https://rs.school](https://app.rs.school/profile?githubId=faratora))
+* **Application Link:** (https://app.rs.school/profile?githubId=faratora)
