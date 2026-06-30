@@ -1,6 +1,7 @@
 import { video, togglePlayPause, volume, speed } from "./main.js";
+import { openModal } from "./modal.js";
 
-const search = document.querySelector('.search');
+export const search = document.querySelector('.search');
 const searchBtn = document.querySelector('.search-btn');
 const searchResult = document.createElement('div');
 searchResult.classList.add('search-result');
@@ -83,6 +84,10 @@ const watchVideo = (e) => {
     togglePlayPause();
     volume.value = 1;
     speed.value = 1;
+  }
+
+  if (isAbout) {
+    openModal(videoCards[e.target.dataset.id]);
   }
 }
 

@@ -33,6 +33,7 @@ body {
   gap: 5px;
 }
 
+.close-modal,
 .search-btn {
   background:
   url('../assets/search.png') center / 18px no-repeat,
@@ -199,4 +200,62 @@ input {
 
 .player:hover .control {
   transform: translateY(0%);
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  padding: 20px 10px;
+  cursor: pointer;
+}
+
+.overlay .container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+}
+
+.close-modal {
+  background: yellow;
+  color: #000;
+  font-weight: bold;
+  align-self: flex-end;
+}
+
+.modal {
+  background-color: #ffffff;
+  padding: 20px 5px;
+  cursor: default;  
+}
+
+.modal h2 {
+  text-align: center;
+  margin-bottom: 0;
+  text-transform: uppercase;
+}
+
+.modal span {
+  display: block;
+  text-align: center;
+  color: grey;
+  margin-bottom: 10px;
+}
+
+.modal img {
+  width: 100%;
+}
+
+.tags-block {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: start;
+}
+
+.tag {
+  margin: 0 5px;
 }
