@@ -1,3 +1,5 @@
+import './mandatory.js';
+
 export const player = document.querySelector('.player');
 export const video = player.querySelector('.video');
 export const controlBar = document.querySelector('.control-bar');
