@@ -4,13 +4,15 @@ html[data-theme='light']{
 	--card-border:#628abb;
 	--main-txt:#303a45;
 	--sound-txt:#3d5559;
+	--card-bg: transparent;
 }
 
 html[data-theme='dark']{
-	--bg: black;
+	--bg: rgb(8, 7, 7);
 	--card-border:#a3b3b5;
-	--main-txt:#40536b;
+	--main-txt:#657b96;
 	--sound-txt:#3e747d;
+	--card-bg: #fff;
 }
 
 html{
@@ -20,9 +22,17 @@ html{
 	box-sizing: border-box;
 }
 body {
+	position: relative;
 	background:	var(--bg);
   min-height: 100vh;
   margin: 0;
+}
+.theme{
+	color: var(--main-txt);
+	font-size: 2.3rem;
+	position: absolute;
+	top: 10px;
+	right: 10px;
 }
 .keys{
 	height: 100vh;
@@ -34,10 +44,14 @@ body {
 }
 .key{
 	color: var(--main-txt);
+	background: var(--card-bg);
+	user-select: none;
+	cursor: pointer;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
+	transition: all 0.07s;
 	width: 8rem;
 	height: 8rem;
 	margin: 1rem;
@@ -52,6 +66,11 @@ body {
 }
 kbd{
 	font-size: 3rem;
+}
+.playing{
+	transform:scale(1.1);
+	border-color:var(--card-border);
+	box-shadow: 0 0 10px var(--card-border);
 }
 
 @media (max-width:820px) {
