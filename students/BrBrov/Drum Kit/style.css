@@ -60,7 +60,7 @@ body {
   }
 
   &:active,
-  & .drum-kit__button_marked {
+  &.drum-kit__button_marked {
     border-color: #12c01b;
     box-shadow: 0 0 2px 4px #12c01b;
   }
