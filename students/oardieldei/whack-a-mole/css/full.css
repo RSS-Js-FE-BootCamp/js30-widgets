@@ -175,3 +175,22 @@
 	background-color: black;
 	transform: rotate(45deg);
 }
+
+.leaderboard {
+	position: absolute;
+	left: 0;
+	top: 40px;
+	padding: 20px;
+	font-family: var(--basic-font);
+	font-size: 40px;
+}
+
+.lb__title {
+	margin-bottom: 10px;
+}
+
+.lb__list {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}

@@ -1,4 +1,5 @@
 import { playSoundGameOver, playSoundMoleUp, playSoundHit, playNextLevel } from "./audio.js"
+import { addNewScore } from "./leaderboard.js";
 
 const holes = document.querySelectorAll('.hole')
 const moles = document.querySelectorAll('.mole')
@@ -87,6 +88,7 @@ function startRoundTimer() {
 		document.querySelector('.show-mole')?.classList.remove('show-mole')
 
 		playSoundGameOver()
+		addNewScore(currentScore, currentLevel)
 	}, 10000)
 }
 
