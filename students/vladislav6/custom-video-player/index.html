@@ -3,9 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="css/style.css">
   <title>Custom Video Player</title>
 </head>
 <body>
-  <h1>Custom Video Player</h1>
+  <div class="container">
+    <div class="player">
+      <video class="video" src="./assets/652333414.mp4" width="640" height="358"></video>
+      <div class="control">
+        <div class="progress">
+          <div class="progress-bar" style="width: 50%;">
+            <span class="slider"></span>
+          </div>
+        </div>
+        <div class="control-bar">
+          <button class="play-pause">►</button>
+          <input class="volume" type="range" min="0" max="1" step="0.05" value="1" title="1">
+          <input class="speed" type="range" min="0.5" max="2" step="0.1" value="1" title="1">
+          <div class="rewind">
+            <button class="move-back" data-skip="-10">« 10s</button>
+            <button class="move-forward" data-skip="25">25s »</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
