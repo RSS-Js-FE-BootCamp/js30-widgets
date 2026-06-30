@@ -13,7 +13,7 @@
 document.getElementById('play').addEventListener('click', () => {
   const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
-  // Загружаем MP3-файл (замени путь на свой)
+  // Загружаем MP3-файл
   fetch('./bass-b.mp3')
     .then(response => response.arrayBuffer())
     .then(arrayBuffer => audioCtx.decodeAudioData(arrayBuffer))
