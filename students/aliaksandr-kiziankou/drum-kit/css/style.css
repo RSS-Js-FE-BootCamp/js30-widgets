@@ -1,16 +1,52 @@
-body {
+html {
     background-image: url("../assets/img/background.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 100vh;
+    min-height: 100%;
+}
+/*
+* {
+    outline: solid 1px red;
+}
+*/
+.instrument {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+.key-row__asd {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(8px, 1.5vw, 20px);
+}
 
+.key {
+    width: clamp(25px, 6.5vw, 95px);
+    aspect-ratio: 1/1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.4);
+    border-radius: 8px;
+    border: 4px solid rgba(3, 7, 19, 0.824);
+}
 
+kbd {
+    font-size: clamp(15px, 3vw, 35px);
+    color: rgb(255, 196, 0);
+}
 
-
-
+span {
+    font-size: clamp(10px, 1.5vw, 17px);
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
 
 .credits {
     position: fixed;
