@@ -10,7 +10,7 @@ assignees: ''
 # 🚀 Request: Add contributor to the project
 
 ### 👤 GitHub Profile
-* **Username:** `@ваш_никнейм`
+* **Username:** `@faratora`
 
 ### 📱 RS App Profile
-* **Application Link:** [Ссылка на ваш профиль в RS App](https://rs.school)
+* **Application Link:** ([https://rs.school](https://app.rs.school/profile?githubId=faratora))
