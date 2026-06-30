@@ -1,4 +1,5 @@
-import { updateRanges } from "./input-range-bg.js";
+import { updateRanges } from "./input-range-bg.js"
+import { playPause, watchPlayPause, addFullscreenAction, setTimimg } from "./players-actions.js"
 
 const playerContainer = document.querySelector('.content__wrapper')
 const titleItem = document.querySelector('.full__title')
@@ -12,28 +13,21 @@ let isMuted = false
 export function createPlayer(videoIndex) {
 	titleItem.textContent = mediaData[videoIndex].title
 	playerContainer.innerHTML = ''
-	playerContainer.append(createPlayerElem(videoIndex))
 
-	updateRanges()
-}
-
-function createPlayerElem(videoIndex) {
 	const playerWrapper = document.createElement('div')
 	playerWrapper.classList.add('player')
 
-	playerWrapper.append(createPlayerViewer(videoIndex))
-	playerWrapper.append(createPlayerControls())
-
-	return playerWrapper
-}
-
-function createPlayerViewer(videoIndex) {
 	const videoViewer = document.createElement('video')
 	videoViewer.classList.add('player__video')
 	videoViewer.classList.add('viewer')
 	videoViewer.src = mediaData[videoIndex].videoUrl
 
-	return videoViewer
+	playerWrapper.append(videoViewer)
+	playerWrapper.append(createPlayerControls())
+
+	playerContainer.append(playerWrapper)
+
+	addActions(videoViewer)
 }
 
 function createPlayerControls() {
@@ -96,9 +90,7 @@ function createPlayPauseBtn() {
 	playerPlayPauseBtn.classList.add('toggle')
 	playerPlayPauseBtn.classList.add('player__control')
 	playerPlayPauseBtn.innerHTML = '<svg class="player-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 5L19 12L7 19Z"/></svg>'
-	playerPlayPauseBtn.addEventListener('click', () => {
-		togglePlayPause(playerPlayPauseBtn)
-	})
+
 
 	return playerPlayPauseBtn
 }
@@ -193,15 +185,6 @@ function createSpeedItem() {
 	speedWrapper.classList.add('speed__wrapper')
 	speedWrapper.classList.add('good-flex')
 
-	const speedIcon = document.createElement('div')
-	speedIcon.classList.add('player__control')
-	speedIcon.classList.add('speed__info')
-	speedIcon.textContent = '1x'
-	speedWrapper.append(speedIcon)
-	speedIcon.addEventListener('click', () => {
-		returnNormalSpeed(speedWrapper)
-	})
-
 	const speedInputRange = document.createElement('input')
 	speedInputRange.classList.add('speed__input')
 	speedInputRange.classList.add('controls__input')
@@ -212,6 +195,15 @@ function createSpeedItem() {
 	speedInputRange.step = '0.1'
 	speedInputRange.value = '1'
 	speedWrapper.append(speedInputRange)
+
+	const speedIcon = document.createElement('div')
+	speedIcon.classList.add('player__control')
+	speedIcon.classList.add('speed__info')
+	speedIcon.textContent = '1x'
+	speedWrapper.append(speedIcon)
+	speedIcon.addEventListener('click', () => {
+		returnNormalSpeed(speedWrapper)
+	})
 
 	return speedWrapper
 }
@@ -237,4 +229,13 @@ function toggleMuted(elem) {
 function returnNormalSpeed(elem) {
 	elem.children[0].value = '1'
 	elem.children[1].textContent = '1x'
+}
+
+function addActions(video) {
+	updateRanges()
+
+	video.addEventListener('click', () => playPause(video))
+	watchPlayPause(video)
+	addFullscreenAction(video)
+	setTimimg(video)
 }
