@@ -56,3 +56,25 @@ kbd {
   border-color: #ffc600;
   box-shadow: 0 0 1rem #ffc600;
 }
+
+.floating-note {
+  position: fixed;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ffc600;
+  pointer-events: none;
+  animation: floatUp 1s ease-out forwards;
+  text-shadow: 0 0 10px rgba(255, 198, 0, 0.5);
+  z-index: 1000;
+}
+
+@keyframes floatUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100px) scale(1.5);
+  }
+}
