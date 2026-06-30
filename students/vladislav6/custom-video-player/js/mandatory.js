@@ -1,5 +1,5 @@
 import { video, playPauseBtn, volume, togglePlayPause } from "./main.js";
-
+import { searchVideo } from "./catalog.js";
 let isTyping = false;
 const input = document.querySelector('input[type=text]');
 if (input) {
@@ -8,6 +8,10 @@ if (input) {
 }
 
 document.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && isTyping) {
+    searchVideo();
+  }
+
   if (isTyping) return;
 
   if (e.key === ' ') {

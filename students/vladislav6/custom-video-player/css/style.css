@@ -3,19 +3,21 @@
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  width: 100vw;
-  height: 100vh;
   padding: 0;
   margin: 0;
   background:
     #7A419B
     linear-gradient(135deg, #7c1599 0%,#921099 48%,#7e4ae8 100%) 
     no-repeat;
+  background-attachment: fixed;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 10px;
 }
 
 .container {
@@ -24,6 +26,86 @@ body {
   height: auto;
   padding: 5px 5px 6px 5px ;
   background-color: rgba(0, 0, 0, 0.2);
+}
+
+.search-form {
+  display: flex;
+  gap: 5px;
+}
+
+.search-btn {
+  background:
+  url('../assets/search.png') center / 18px no-repeat,
+  linear-gradient(to right, yellow 10%, #ffffff);
+  width: 46px;
+  height: 46px;
+  cursor: pointer;
+  border-radius: 100%;
+}
+
+.card button:hover,
+.search:hover,
+.search-btn:hover {
+  box-shadow: 1px 5px 5px #000;
+  transform: translateY(-2%);
+}
+
+.search {
+  padding: 20px 10px;
+  border: none;
+  font-size: 16px;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  letter-spacing: 0.06rem;
+  color: #333333;
+  outline-color: #333333;
+  cursor: text;
+  border-radius: 20px;
+  background: linear-gradient(to right, #ffffff 60%, yellow);
+  outline-color: yellow;
+}
+
+.search-result {
+  text-align: center;
+  color: #ffffff;
+  padding: 20px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.06rem;
+  display: flex;
+  overflow-x: auto;
+  gap: 5px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 5px;
+  flex-shrink: 0;
+  background-color: #ffffff;
+}
+
+.card-img {
+  max-width: 200px;
+  max-height: 105px;
+  overflow: hidden;
+}
+
+.card-img img {
+  width: 100%;
+}
+
+.card button {
+  background-color: yellow;
+  font-weight: bold;
+  font-size: 20px;
+  color: black;
+  border-radius: 9px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.card button:hover {
+  background-color: rgb(255, 255, 108);
 }
 
 .player {
@@ -60,6 +142,7 @@ video {
   display: flex;
   gap: 10px;
   padding: 7px;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .slider {

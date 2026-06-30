@@ -1,4 +1,5 @@
 import './mandatory.js';
+import './catalog.js';
 
 export const player = document.querySelector('.player');
 export const video = player.querySelector('.video');
@@ -21,6 +22,9 @@ export const togglePlayPause = () => {
 
 const progressBarTimeUpdate = () => {
   progressBar.style.width = `${(video.currentTime / video.duration) * 100}%`;
+  if (video.currentTime === video.duration) {
+    playPauseBtn.textContent = '►';
+  }
 };
 
 const scrubbing = (e) => {
