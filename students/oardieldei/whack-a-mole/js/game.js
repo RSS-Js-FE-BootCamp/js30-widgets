@@ -8,6 +8,10 @@ const buttonStart = document.querySelector('.game__button_start')
 let actualHole
 let isGameGoing = false
 let currentScore = 0
+let levelScore = 0
+let currentLevel = 1
+let gameTimer = null
+let moleTimer = null
 
 function getRandomTime(min, max) {
 	return Math.floor(Math.random() * (max - min + 1)) + min
@@ -22,43 +26,84 @@ function getrandomHole(holes) {
 }
 
 function showMole() {
-	const time = getRandomTime(200, 1000)
+	const minTime = 400 / currentLevel
+	const maxTime = 2000 / currentLevel
+
 	const currentHole = holes[getrandomHole(holes)]
 
 	playSoundMoleUp()
 	currentHole.classList.add('show-mole')
-	setTimeout(() => {
+	moleTimer = setTimeout(() => {
 		currentHole.classList.remove('show-mole')
-		if (isGameGoing) showMole()
-	}, time)
+
+		if (isGameGoing) {
+			showMole()
+		}
+	}, getRandomTime(minTime, maxTime))
 }
 
 function turnOnGame() {
+	currentLevel = 1
 	currentScore = 0
+	levelScore = 0
 	scoreCounter.textContent = currentScore
 	isGameGoing = true
+
 	showMole()
-	setTimeout(() => {
-		isGameGoing = false
-		playSoundGameOver()
-	}, 10000);
+	startRoundTimer()
 }
 
 function clickOnMole(e) {
+	const hole = e.target.closest('.hole')
+
 	if (!e.isTrusted) return
+	if (hole.classList.contains('killed')) return
+
+	levelScore++
 	currentScore++
 	scoreCounter.textContent = currentScore
+
 	playSoundHit()
-	e.target.closest('.hole').classList.add('killed')
-	e.target.closest('.hole').classList.remove('show-mole')
+
+	hole.classList.add('killed')
+	hole.classList.remove('show-mole')
 	setTimeout(() => {
-		e.target.closest('.hole').classList.remove('killed')
-	}, 600);
+		hole.classList.remove('killed')
+	}, 600)
+
+	if (levelScore >= 5) {
+		nextLevel()
+	}
+}
+
+function startRoundTimer() {
+	clearTimeout(gameTimer)
+
+	gameTimer = setTimeout(() => {
+		isGameGoing = false
+
+		clearTimeout(moleTimer)
+		document.querySelector('.show-mole')?.classList.remove('show-mole')
+
+		playSoundGameOver()
+	}, 10000)
+}
+
+function nextLevel() {
+	currentLevel++
+	levelScore = 0
+
+	clearTimeout(moleTimer)
+
+	document.querySelector('.show-mole')?.classList.remove('show-mole')
+
+	startRoundTimer()
+	showMole()
 }
 
 export function addStartPlaying() {
 	buttonStart.addEventListener('click', () => {
 		if (!isGameGoing) turnOnGame()
 	})
-	moles.forEach(mole => mole.addEventListener('click', (e) => {clickOnMole(e)}))
+	moles.forEach(mole => mole.addEventListener('click', (e) => { clickOnMole(e) }))
 }

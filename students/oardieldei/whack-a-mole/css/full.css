@@ -5,6 +5,7 @@
 .body {
 	background-color: #eed88f;
 	position: relative;
+	overflow: hidden;
 }
 
 .main {
