@@ -72,7 +72,9 @@
 
 ## Screenshot
 
-![Photo Filter Widget](./screenshot.png) *(optional)*
+![Photo Filter Widget]
+<img width="1295" height="930" alt="photofilter2" src="https://github.com/user-attachments/assets/8b024e72-804e-420b-9296-483fd46da924" />
+<img width="1311" height="939" alt="photofilter1" src="https://github.com/user-attachments/assets/c49ba510-3a3f-4270-8588-2b7576886751" />
 
 ## Notes
 
@@ -93,6 +95,12 @@
 
 ### Live Demo
 [Whack-A-Mole](https://deploy-preview-57--js-30-widget-gallery.netlify.app/students/DaryaDudkova98/Whack-A-Mole/)
+
+## Screenshot
+
+![Wack A Mole Widget]
+<img width="942" height="882" alt="wackAMole" src="https://github.com/user-attachments/assets/45d4e605-d933-4bd9-84f5-f082ac973b48" />
+
 
 ### What was implemented
 
