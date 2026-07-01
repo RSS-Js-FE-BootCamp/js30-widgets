@@ -52,8 +52,51 @@ function getCurrentTime(video) {
 }
 
 export function setTimimg(video) {
-	const timingItem = document.querySelector('.controls__duration')
 	video.addEventListener('timeupdate', () => {
-		timingItem.textContent = `${getCurrentTime(video)} / ${getDuration(video)}`
+		updateTiming(video)
+	})
+}
+
+export function updateTiming(video) {
+	const timingItem = document.querySelector('.controls__duration')
+	timingItem.textContent = `${getCurrentTime(video)} / ${getDuration(video)}`
+
+	const progressBar = document.querySelector('.progress__filled')
+	progressBar.style.width = (video.currentTime / video.duration) * 100 + '%'
+}
+
+export function progressbarAction(video) {
+	const progress = document.querySelector(".progress")
+
+	let isDragging = false
+
+	function scrub(e) {
+		const rect = progress.getBoundingClientRect();
+		const x = e.clientX - rect.left
+
+		let percent = x / rect.width
+		percent = Math.min(1, Math.max(0, percent))
+
+		video.currentTime = percent * video.duration
+	}
+
+	progress.addEventListener("pointerdown", (e) => {
+		isDragging = true
+		progress.setPointerCapture(e.pointerId)
+		scrub(e)
+	})
+
+	progress.addEventListener("pointermove", (e) => {
+		if (!isDragging) return
+		scrub(e)
+	})
+
+	progress.addEventListener("pointerup", (e) => {
+		isDragging = false
+		progress.releasePointerCapture(e.pointerId)
+	})
+
+	progress.addEventListener("pointercancel", () => {
+		isDragging = false
 	})
 }

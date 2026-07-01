@@ -93,6 +93,12 @@
 	background-color: #374151;
 	margin-bottom: 10px;
 	position: relative;
+	transition: .3s;
+	cursor: pointer;
+}
+
+.progress:hover {
+	height: 8px;
 }
 
 .progress__filled {

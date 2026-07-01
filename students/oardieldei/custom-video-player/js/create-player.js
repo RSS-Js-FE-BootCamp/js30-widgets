@@ -1,5 +1,5 @@
 import { updateRanges } from "./input-range-bg.js"
-import { playPause, watchPlayPause, addFullscreenAction, setTimimg } from "./players-actions.js"
+import { playPause, watchPlayPause, addFullscreenAction, setTimimg, updateTiming, progressbarAction } from "./players-actions.js"
 
 const playerContainer = document.querySelector('.content__wrapper')
 const titleItem = document.querySelector('.full__title')
@@ -7,7 +7,6 @@ const titleItem = document.querySelector('.full__title')
 const response = await fetch('./js/json/videos.json')
 const mediaData = await response.json()
 
-let isPlaying = false
 let isMuted = false
 
 export function createPlayer(videoIndex) {
@@ -208,15 +207,6 @@ function createSpeedItem() {
 	return speedWrapper
 }
 
-function togglePlayPause(elem) {
-	if (isPlaying) {
-		elem.innerHTML = '<svg class="player-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 5L19 12L7 19Z"/></svg>'
-	} else {
-		elem.innerHTML = '<svg class="player-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>'
-	}
-	isPlaying = !isPlaying
-}
-
 function toggleMuted(elem) {
 	if (isMuted) {
 		elem.innerHTML = '<svg class="player-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 9H8L14 4V20L8 15H4Z"/><path d="M17 8C18.5 9.2 19.3 10.5 19.3 12C19.3 13.5 18.5 14.8 17 16"/></svg>'
@@ -237,5 +227,9 @@ function addActions(video) {
 	video.addEventListener('click', () => playPause(video))
 	watchPlayPause(video)
 	addFullscreenAction(video)
+	video.addEventListener('canplay', () => {
+		updateTiming(video)
+	})
 	setTimimg(video)
+	progressbarAction(video)
 }
