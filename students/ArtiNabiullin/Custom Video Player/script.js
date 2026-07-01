@@ -44,8 +44,15 @@ const videos = [
 
 /* functions */
 function togglePlay() {
-  const method = video.paused ? "play" : "pause";
-  video[method]();
+  if (video.paused) {
+    video.play().catch((err) => {
+      if (err.name !== "AbortError") {
+        console.error(err);
+      }
+    });
+  } else {
+    video.pause();
+  }
 }
 
 function updateButton() {
@@ -275,6 +282,8 @@ progress.addEventListener("mouseup", () => (mousedown = false));
 /* download videos */
 
 function loadVideo(index) {
+  video.pause();
+
   currentVideoIndex = index;
 
   const currentVideo = videos[currentVideoIndex];
