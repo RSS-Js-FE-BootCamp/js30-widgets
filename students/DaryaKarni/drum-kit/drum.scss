@@ -1,0 +1,45 @@
+html{
+  background: url("./assets/background.jpg") bottom center;
+  background-size: cover;
+  font-size: 10px;
+}
+
+body,html {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.keys{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  .key{
+    text-align: center;
+    width: 10rem;
+    margin: 10px;
+    color: white;
+    background: rgba(0,0,0,0.4);
+    border: 0.4rem solid black;
+    border-radius: 0.5rem;
+    padding: 1rem 0.5rem;
+    text-shadow: 0 0 0.5rem black;
+    transition: all 0.07s ease;
+    kbd{
+      font-size: 4rem;
+      display: block;
+    }
+    span{
+      font-size: 1.2rem;
+      color: #ffc600;
+      text-transform: uppercase;
+      letter-spacing: 0.1rem;
+    }
+  }
+  .playing{
+    border-color: #ffc600;
+    box-shadow: 0 0 1rem #ffc600;
+    transform: scale(1.1);
+  }
+}
