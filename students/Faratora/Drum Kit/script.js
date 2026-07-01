@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const sequenceInput = document.getElementById('sequence-input');
     const playSequenceBtn = document.getElementById('play-sequence');
     const modeToggle = document.getElementById('mode-toggle');
+    const themeToggle = document.getElementById('theme-toggle');
     const drumView = document.getElementById('drum-view');
     const pianoView = document.getElementById('piano-view');
     const pianoKeys = document.querySelectorAll('.piano-key');
@@ -10,6 +11,26 @@ document.addEventListener('DOMContentLoaded', function () {
     let isPlayingSequence = false;
     let sequenceTimeouts = [];
     let currentMode = 'drums'; // 'drums' or 'piano'
+
+    // ── Theme toggle ──
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        themeToggle.textContent = '☀️';
+    }
+
+    themeToggle.addEventListener('click', () => {
+        const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+        if (isLight) {
+            document.documentElement.removeAttribute('data-theme');
+            themeToggle.textContent = '🌙 Dark';
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            themeToggle.textContent = '☀️ Light';
+            localStorage.setItem('theme', 'light');
+        }
+    });
 
     let audioCtx = null;
     

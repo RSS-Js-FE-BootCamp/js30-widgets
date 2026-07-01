@@ -1,4 +1,4 @@
- * {
+* {
      margin: 0;
      padding: 0;
      box-sizing: border-box;
@@ -6,7 +6,6 @@
 
 html {
   font-size: 10px;
-  background: url(./images/background.jpg) bottom center;
   background-size: cover;
 }
 
@@ -18,6 +17,83 @@ body, html {
   background-size: cover;
 }
 
+/* ── theme variables ── */
+html {
+  --bg-overlay: rgba(112, 111, 111, 0.5);
+  --bg-image: url(./images/background.jpg);
+  --text-color: #ffffff;
+  --input-bg: rgba(0, 0, 0, 0.6);
+  --input-border: rgba(255, 198, 0, 0.4);
+  --input-placeholder: rgba(255, 255, 255, 0.5);
+  --input-focus-shadow: rgba(255, 198, 0, 0.3);
+  --play-bg: rgba(255, 198, 0, 0.2);
+  --play-hover: rgba(255, 198, 0, 0.4);
+  --play-border: #ffc600;
+  --mode-bg: rgba(100, 200, 255, 0.3);
+  --mode-hover: rgba(100, 200, 255, 0.5);
+  --mode-border: #64c8ff;
+  --piano-bg: rgba(0, 0, 0, 0.6);
+  --key-bg: rgba(0, 0, 0, 0.4);
+  --key-border: black;
+  --sound-color: #ffc600;
+  --playing-border: #ffc600;
+  --playing-shadow: #ffc600;
+  --floating-note-color: #ffc600;
+  --floating-note-shadow: rgba(255, 198, 0, 0.5);
+  --piano-key-text: #333;
+  --piano-white-bg: linear-gradient(to bottom, #fff 0%, #eee 100%);
+  --piano-white-border: #ccc;
+  --piano-white-hover: linear-gradient(to bottom, #f8f8f8 0%, #e0e0e0 100%);
+  --piano-white-playing: linear-gradient(to bottom, #e0e0ff 0%, #c0c0ff 100%);
+  --piano-black-bg: linear-gradient(to bottom, #333 0%, #000 100%);
+  --piano-black-text: #999;
+  --piano-black-hover: linear-gradient(to bottom, #444 0%, #111 100%);
+  --piano-black-playing: linear-gradient(to bottom, #4444aa 0%, #222266 100%);
+  --key-text-shadow: 0 0 .5rem black;
+  --disabled-border: rgba(255, 255, 255, 0.1);
+  --sequence-disabled-opacity: 0.3;
+}
+
+html[data-theme="light"] {
+  --bg-overlay: rgba(245, 235, 220, 0.55);
+  --text-color: #222222;
+  --input-bg: rgba(255, 255, 255, 0.9);
+  --input-border: rgba(255, 150, 0, 0.5);
+  --input-placeholder: rgba(0, 0, 0, 0.4);
+  --input-focus-shadow: rgba(255, 150, 0, 0.3);
+  --play-bg: rgba(255, 150, 0, 0.15);
+  --play-hover: rgba(255, 150, 0, 0.35);
+  --play-border: #e69600;
+  --mode-bg: rgba(80, 160, 255, 0.2);
+  --mode-hover: rgba(80, 160, 255, 0.4);
+  --mode-border: #50a0ff;
+  --piano-bg: rgba(255, 255, 255, 0.85);
+  --key-bg: rgba(255, 255, 255, 0.7);
+  --key-border: #999;
+  --sound-color: #e69600;
+  --playing-border: #cc9900;
+  --playing-shadow: rgba(204, 153, 0, 0.5);
+  --floating-note-color: #cc9900;
+  --floating-note-shadow: rgba(204, 153, 0, 0.4);
+  --piano-key-text: #5a3e28;
+  --piano-white-bg: linear-gradient(to bottom, #fff 0%, #f5f5f5 100%);
+  --piano-white-border: #ddd;
+  --piano-white-hover: linear-gradient(to bottom, #fff 0%, #ebebeb 100%);
+  --piano-white-playing: linear-gradient(to bottom, #f0f0ff 0%, #e0e0f0 100%);
+  --piano-black-bg: linear-gradient(to bottom, #444 0%, #222 100%);
+  --piano-black-text: #ccc;
+  --piano-black-hover: linear-gradient(to bottom, #555 0%, #333 100%);
+  --piano-black-playing: linear-gradient(to bottom, #5555bb 0%, #333377 100%);
+  --key-text-shadow: none;
+  --disabled-border: rgba(0, 0, 0, 0.15);
+  
+}
+
+html {
+  background: var(--bg-image) bottom center;
+  background-size: cover;
+}
+
 body::before {
   content: '';
   position: fixed;
@@ -25,7 +101,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(112, 111, 111, 0.5);
+  background: var(--bg-overlay);
   z-index: 0;
   pointer-events: none;
 }
@@ -47,9 +123,9 @@ body::before {
   font-size: 1.4rem;
   font-family: 'Courier New', monospace;
   font-weight: bold;
-  color: #ffffff;
-  background: rgba(0, 0, 0, 0.6);
-  border: 2px solid rgba(255, 198, 0, 0.4);
+  color: var(--text-color);
+  background: var(--input-bg);
+  border: 2px solid var(--input-border);
   border-radius: 8px;
   outline: none;
   width: 310px;
@@ -60,23 +136,21 @@ body::before {
 }
 
 #sequence-input::placeholder {
-  color: rgba(255, 255, 255, 0.5);
-  opacity: 1;
+  color: var(--input-placeholder);
 }
 
 #sequence-input.piano-mode::placeholder {
-  content: 'Введите ноты (A-L, W-U)';
+  content: 'Enter sequence (e.g. ACDF)...';
 }
 
 #sequence-input:focus {
-  border-color: #ffc600;
-  box-shadow: 0 0 15px rgba(255, 198, 0, 0.3);
+  border-color: var(--play-border);
+  box-shadow: 0 0 15px var(--input-focus-shadow);
 }
 
 #sequence-input:disabled {
-  /* opacity: 0.4; */
   cursor: not-allowed;
-  border-color: rgba(255, 255, 255, 0.1);
+  border-color: var(--disabled-border);
 }
 
 .play-btn {
@@ -84,9 +158,9 @@ body::before {
   font-size: 1.4rem;
   font-family: 'Courier New', monospace;
   font-weight: bold;
-  color: white;
-  background: rgba(255, 198, 0, 0.2);
-  border: 2px solid #ffc600;
+  color: var(--text-color);
+  background: var(--play-bg);
+  border: 2px solid var(--play-border);
   border-radius: 50px;
   cursor: pointer;
   transition: background 0.2s, box-shadow 0.2s, opacity 0.2s;
@@ -94,7 +168,7 @@ body::before {
 }
 
 .play-btn:hover:not(:disabled) {
-  background: rgba(255, 198, 0, 0.4);
+  background: var(--play-hover);
   box-shadow: 0 0 20px rgba(255, 198, 0, 0.5);
 }
 
@@ -120,17 +194,48 @@ body::before {
   font-size: 1.4rem;
   font-family: 'Courier New', monospace;
   font-weight: bold;
-  color: white;
-  background: rgba(100, 200, 255, 0.3);
-  border: 2px solid #64c8ff;
+  color: var(--text-color);
+  background: var(--mode-bg);
+  border: 2px solid var(--mode-border);
   border-radius: 50px;
   cursor: pointer;
   transition: background 0.2s, box-shadow 0.2s;
+  backdrop-filter: blur(6px);
 }
 
 .mode-btn:hover {
-  background: rgba(100, 200, 255, 0.5);
+  background: var(--mode-hover);
   box-shadow: 0 0 15px rgba(100, 200, 255, 0.5);
+}
+
+/* ── theme toggle ── */
+.theme-btn {
+  padding: 10px 16px;
+  color: var(--text-color);
+  font-size: 1.6rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  backdrop-filter: blur(6px);
+  line-height: 1;
+}
+
+.theme-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: scale(1.05);
+}
+
+html[data-theme="light"] .theme-btn {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+html[data-theme="light"] .theme-btn:hover {
+  background: rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.4);
 }
 
 /* ── instrument views ── */
@@ -143,6 +248,7 @@ body::before {
   height: 100%;
   align-items: center;
   justify-content: center;
+  z-index: 10;
 }
 
 .instrument-view.active {
@@ -155,9 +261,10 @@ body::before {
   display: flex;
   gap: 4px;
   padding: 20px;
-  background: rgba(0, 0, 0, 0.6);
+  background: var(--piano-bg);
   border-radius: 12px;
   backdrop-filter: blur(10px);
+  z-index: 11;
 }
 
 .piano-key {
@@ -168,7 +275,7 @@ body::before {
   font-size: 1.4rem;
   font-family: 'Courier New', monospace;
   font-weight: bold;
-  color: #333;
+  color: #5a3e28;
   cursor: pointer;
   user-select: none;
   transition: background 0.07s ease, transform 0.07s ease;
@@ -178,18 +285,18 @@ body::before {
 .piano-key.white {
   width: 70px;
   height: 220px;
-  background: linear-gradient(to bottom, #fff 0%, #eee 100%);
-  border: 2px solid #ccc;
+  background: var(--piano-white-bg);
+  border: 2px solid var(--piano-white-border);
   border-top: none;
   z-index: 1;
 }
 
 .piano-key.white:hover {
-  background: linear-gradient(to bottom, #f8f8f8 0%, #e0e0e0 100%);
+  background: var(--piano-white-hover);
 }
 
 .piano-key.white.playing {
-  background: linear-gradient(to bottom, #e0e0ff 0%, #c0c0ff 100%);
+  background: var(--piano-white-playing);
   transform: scaleY(0.98);
   box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
 }
@@ -198,8 +305,8 @@ body::before {
   position: absolute;
   width: 45px;
   height: 140px;
-  background: linear-gradient(to bottom, #333 0%, #000 100%);
-  color: #999;
+  background: var(--piano-black-bg);
+  color: var(--piano-black-text);
   z-index: 2;
   border-radius: 0 0 4px 4px;
   border: 1px solid #000;
@@ -207,23 +314,23 @@ body::before {
 }
 
 .piano-key.black:hover {
-  background: linear-gradient(to bottom, #444 0%, #111 100%);
+  background: var(--piano-black-hover);
 }
 
 .piano-key.black.playing {
-  background: linear-gradient(to bottom, #4444aa 0%, #222266 100%);
+  background: var(--piano-black-playing);
   transform: scaleY(0.98);
   box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 /* ── sequence input disabled for piano ── */
 #sequence-input.piano-disabled {
-  opacity: 0.3;
+  opacity: var(--sequence-disabled-opacity);
   pointer-events: none;
 }
 
 #play-sequence.piano-disabled {
-  opacity: 0.3;
+  opacity: var(--sequence-disabled-opacity);
   pointer-events: none;
 }
 
@@ -235,12 +342,12 @@ body::before {
   align-items: center;
   justify-content: center;
   position: relative;
-  z-index: 10;
+  z-index: 11;
   padding-top: 100px;
 }
 
 .key {
-  border: .4rem solid black;
+  border: .4rem solid var(--key-border);
   border-radius: .5rem;
   margin: 1rem;
   font-size: 1.5rem;
@@ -248,10 +355,23 @@ body::before {
   transition: all .07s ease;
   width: 10rem;
   text-align: center;
-  color: white;
-  background: rgba(0,0,0,0.4);
-  text-shadow: 0 0 .5rem black;
+  color: var(--text-color);
+  background: var(--key-bg);
+  text-shadow: var(--key-text-shadow);
   
+}
+
+.sound {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+  color: var(--sound-color);
+}
+
+.playing {
+  transform: scale(1.1);
+  border-color: var(--playing-border);
+  box-shadow: 0 0 1rem var(--playing-shadow);
 }
 
 kbd {
@@ -263,7 +383,7 @@ kbd {
   font-size: 1.2rem;
   text-transform: uppercase;
   letter-spacing: .1rem;
-  color: #ffc600;
+  color: var(--sound-color);
 }
 
 .playing {
@@ -276,10 +396,10 @@ kbd {
   position: fixed;
   font-size: 2rem;
   font-weight: bold;
-  color: #ffc600;
+  color: var(--floating-note-color);
   pointer-events: none;
   animation: floatUp 1s ease-out forwards;
-  text-shadow: 0 0 10px rgba(255, 198, 0, 0.5);
+  text-shadow: 0 0 10px var(--floating-note-shadow);
   z-index: 1000;
 }
 
