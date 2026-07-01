@@ -1,5 +1,5 @@
 import { updateRanges } from "./input-range-bg.js"
-import { playPause, watchPlayPause, addFullscreenAction, setTimimg, updateTiming, progressbarAction } from "./players-actions.js"
+import { playPause, watchPlayPause, addFullscreenAction, setTimimg, updateTiming, progressbarAction, playAnotherVideo } from "./players-actions.js"
 
 const playerContainer = document.querySelector('.content__wrapper')
 const titleItem = document.querySelector('.full__title')
@@ -8,8 +8,10 @@ const response = await fetch('./js/json/videos.json')
 const mediaData = await response.json()
 
 let isMuted = false
+let currentVideoIndex = 0
 
 export function createPlayer(videoIndex) {
+	currentVideoIndex = videoIndex
 	titleItem.textContent = mediaData[videoIndex].title
 	playerContainer.innerHTML = ''
 
@@ -232,4 +234,5 @@ function addActions(video) {
 	})
 	setTimimg(video)
 	progressbarAction(video)
+	playAnotherVideo(currentVideoIndex)
 }

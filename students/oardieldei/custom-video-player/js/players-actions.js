@@ -1,3 +1,8 @@
+import { createPlayer } from "./create-player.js"
+
+const response = await fetch('./js/json/videos.json')
+const mediaData = await response.json()
+
 export function playPause(video) {
 	if (video.paused) {
 		video.play()
@@ -98,5 +103,23 @@ export function progressbarAction(video) {
 
 	progress.addEventListener("pointercancel", () => {
 		isDragging = false
+	})
+}
+
+export function playAnotherVideo(index) {
+	const btsWrapper = document.querySelector('.controls__change_track__wrapper')
+	btsWrapper.children[0].addEventListener('click', () => {
+		if (index === 0) {
+			createPlayer(mediaData.length - 1)
+		} else {
+			createPlayer(--index)
+		}
+	})
+	btsWrapper.children[1].addEventListener('click', () => {
+		if (index === mediaData.length - 1) {
+			createPlayer(0)
+		} else {
+			createPlayer(++index)
+		}
 	})
 }
