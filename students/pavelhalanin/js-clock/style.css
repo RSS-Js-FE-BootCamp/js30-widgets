@@ -1,0 +1,10 @@
+.datetime_table table {
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+.datetime_table table tr td {
+  border: 1px solid black;
+  text-align: center;
+  padding: 8px;
+}
