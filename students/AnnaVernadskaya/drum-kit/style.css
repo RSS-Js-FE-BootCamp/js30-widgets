@@ -19,6 +19,8 @@ body {
 .keys {
   display: flex;
   gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .key {
@@ -28,7 +30,7 @@ body {
   text-align: center;
   border: 0.4rem solid #000000;
   border-radius: 0.5rem;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.5);
   text-shadow: 0 0 0.5rem #000000;
   cursor: pointer;
   transition:
@@ -60,4 +62,10 @@ body {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
   border: 0;
+}
+
+.playing {
+  transform: scale(1.1);
+  border-color: #ffc600;
+  box-shadow: 0 0 1rem #ffc600;
 }
