@@ -1,4 +1,5 @@
 import { createPlayer } from "./create-player.js"
+import { updateRanges } from "./input-range-bg.js"
 
 const response = await fetch('./js/json/videos.json')
 const mediaData = await response.json()
@@ -33,8 +34,12 @@ export function watchPlayPause(video) {
 export function addFullscreenAction() {
 	const fulscreenButton = document.querySelector('.fulscreen__button')
 	const playerItem = document.querySelector('.player')
-	fulscreenButton.addEventListener('click', () => {
-		playerItem.requestFullscreen()
+	fulscreenButton.addEventListener('click', async () => {
+		if (!document.fullscreenElement) {
+			await playerItem.requestFullscreen()
+		} else {
+			await document.exitFullscreen()
+		}
 	})
 }
 
@@ -131,5 +136,25 @@ export function skipActions(video) {
 	})
 	skipWrapper.children[1].addEventListener('click', () => {
 		video.currentTime += 10
+	})
+}
+
+export function changeSpeed(video) {
+	const inputRange = document.querySelector('.speed__input')
+	const infoText = document.querySelector('.speed__info')
+
+	function updateSpeed(value) {
+		video.playbackRate = value
+		inputRange.value = value
+		infoText.textContent = value + 'x'
+	}
+
+	inputRange.addEventListener('input', () => {
+		updateSpeed(inputRange.value)
+	});
+
+	infoText.addEventListener('click', () => {
+		updateSpeed(1)
+		updateRanges()
 	})
 }

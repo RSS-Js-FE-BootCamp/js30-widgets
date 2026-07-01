@@ -1,5 +1,5 @@
 import { updateRanges } from "./input-range-bg.js"
-import { playPause, watchPlayPause, addFullscreenAction, setTimimg, updateTiming, progressbarAction, playAnotherVideo, skipActions } from "./players-actions.js"
+import { playPause, watchPlayPause, addFullscreenAction, setTimimg, updateTiming, progressbarAction, playAnotherVideo, skipActions, changeSpeed } from "./players-actions.js"
 
 const playerContainer = document.querySelector('.content__wrapper')
 const titleItem = document.querySelector('.full__title')
@@ -202,9 +202,6 @@ function createSpeedItem() {
 	speedIcon.classList.add('speed__info')
 	speedIcon.textContent = '1x'
 	speedWrapper.append(speedIcon)
-	speedIcon.addEventListener('click', () => {
-		returnNormalSpeed(speedWrapper)
-	})
 
 	return speedWrapper
 }
@@ -216,11 +213,6 @@ function toggleMuted(elem) {
 		elem.innerHTML = '<svg class="player-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 9H8L14 4V20L8 15H4Z"/><path d="M17 8L21 16"/><path d="M21 8L17 16"/></svg>'
 	}
 	isMuted = !isMuted
-}
-
-function returnNormalSpeed(elem) {
-	elem.children[0].value = '1'
-	elem.children[1].textContent = '1x'
 }
 
 function addActions(video) {
@@ -236,4 +228,5 @@ function addActions(video) {
 	progressbarAction(video)
 	playAnotherVideo(currentVideoIndex)
 	skipActions(video)
+	changeSpeed(video)
 }
