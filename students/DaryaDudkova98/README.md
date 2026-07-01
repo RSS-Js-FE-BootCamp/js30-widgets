@@ -25,7 +25,7 @@
 
 ## Links
 
-- [Live Demo - Photo Filter](https://deploy-preview-57--js-30-widget-gallery.netlify.app/students/DaryaDudkova98/Photofilter/)
+- [Live Demo - Photo Filter](https://deploy-preview-57--js-30-widget-gallery.netlify.app/students/daryadudkova98/photofilter/)
 - [Pull Request]()
 
 ### Controls
