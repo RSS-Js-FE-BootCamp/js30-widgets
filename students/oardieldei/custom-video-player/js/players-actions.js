@@ -151,10 +151,47 @@ export function changeSpeed(video) {
 
 	inputRange.addEventListener('input', () => {
 		updateSpeed(inputRange.value)
-	});
+	})
 
 	infoText.addEventListener('click', () => {
 		updateSpeed(1)
+		updateRanges()
+	})
+}
+
+export function changeVolume(video) {
+	const volumeBtn = document.querySelector('.volume__btn')
+	const volumeInput = document.querySelector('.volume__input')
+
+	if (localStorage.getItem('volume')) updateVolume(+localStorage.getItem('volume'))
+	updateRanges()
+
+	function updateVolume(value) {
+		video.volume = value
+		volumeInput.value = value
+		if (+value === 0) {
+			volumeBtn.innerHTML = '<svg class="player-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 9H8L14 4V20L8 15H4Z"/><path d="M17 8L21 16"/><path d="M21 8L17 16"/></svg>'
+		} else {
+			volumeBtn.innerHTML = '<svg class="player-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 9H8L14 4V20L8 15H4Z"/><path d="M17 8C18.5 9.2 19.3 10.5 19.3 12C19.3 13.5 18.5 14.8 17 16"/></svg>'
+		}
+		localStorage.setItem('volume', value)
+	}
+
+	volumeInput.addEventListener('input', () => {
+		updateVolume(volumeInput.value)
+	})
+
+	volumeBtn.addEventListener('click', () => {
+		if (+volumeInput.value === 0) {
+			if (localStorage.getItem('lastvolume')) {
+				updateVolume(+localStorage.getItem('lastvolume'))
+			} else {
+				updateVolume(1)
+			}
+		} else {
+			localStorage.setItem('lastvolume', volumeInput.value)
+			updateVolume(0)
+		}
 		updateRanges()
 	})
 }

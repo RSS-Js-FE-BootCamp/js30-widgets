@@ -1,5 +1,16 @@
 import { updateRanges } from "./input-range-bg.js"
-import { playPause, watchPlayPause, addFullscreenAction, setTimimg, updateTiming, progressbarAction, playAnotherVideo, skipActions, changeSpeed } from "./players-actions.js"
+import {
+	playPause,
+	watchPlayPause,
+	addFullscreenAction,
+	setTimimg,
+	updateTiming,
+	progressbarAction,
+	playAnotherVideo,
+	skipActions,
+	changeSpeed,
+	changeVolume
+} from "./players-actions.js"
 
 const playerContainer = document.querySelector('.content__wrapper')
 const titleItem = document.querySelector('.full__title')
@@ -106,9 +117,6 @@ function createVolumeItem() {
 	volumeIcon.classList.add('volume__btn')
 	volumeIcon.innerHTML = '<svg class="player-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 9H8L14 4V20L8 15H4Z"/><path d="M17 8C18.5 9.2 19.3 10.5 19.3 12C19.3 13.5 18.5 14.8 17 16"/></svg>'
 	volumeWrapper.append(volumeIcon)
-	volumeIcon.addEventListener('click', () => {
-		toggleMuted(volumeIcon)
-	})
 
 	const volumeInputRange = document.createElement('input')
 	volumeInputRange.classList.add('volume__input')
@@ -229,4 +237,5 @@ function addActions(video) {
 	playAnotherVideo(currentVideoIndex)
 	skipActions(video)
 	changeSpeed(video)
+	changeVolume(video)
 }
