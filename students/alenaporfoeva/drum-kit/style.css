@@ -54,3 +54,15 @@ body {
     text-transform: uppercase;
     color: #ffc600;
 }
+
+.drum:hover,
+.drum:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: #ffc600;
+    outline: none;
+    box-shadow: 0 0 10px #ffc600;
+}
+
+.drum:active {
+    transform: scale(0.95);
+}
