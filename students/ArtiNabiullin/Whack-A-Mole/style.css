@@ -80,7 +80,7 @@ button {
 
 .hole:after {
   display: block;
-  background: url(./dirt.svg) bottom center no-repeat;
+  background: url(./img/dirt.svg) bottom center no-repeat;
   background-size: contain;
   content: "";
   width: 100%;
@@ -91,7 +91,7 @@ button {
 }
 
 .mole {
-  background: url("./mole.svg") bottom center no-repeat;
+  background: url("./img/mole.svg") bottom center no-repeat;
   background-size: 60%;
   position: absolute;
   bottom: 0;
