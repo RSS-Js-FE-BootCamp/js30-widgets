@@ -52,14 +52,22 @@ buttonL.addEventListener("click", (event) => {
     new Audio("assets/sounds_tink.wav").play();
   });
 
+function animate(id) {
+    const btn = document.getElementById(id);
+    if (btn) {
+        btn.classList.add('playing');
+        setTimeout(() => btn.classList.remove('playing'), 100);
+    }
+}
+
 document.addEventListener('keydown', (event) => {
-    if (event.code === 'KeyA') new Audio("assets/sounds_clap.wav").play();
-    if (event.code === 'KeyS') new Audio("assets/sounds_hihat.wav").play();
-    if (event.code === 'KeyD') new Audio("assets/sounds_kick.wav").play();
-    if (event.code === 'KeyF') new Audio("assets/sounds_openhat.wav").play();
-    if (event.code === 'KeyG') new Audio("assets/sounds_boom.wav").play();
-    if (event.code === 'KeyH') new Audio("assets/sounds_ride.wav").play();
-    if (event.code === 'KeyJ') new Audio("assets/sounds_snare.wav").play();
-    if (event.code === 'KeyK') new Audio("assets/sounds_tom.wav").play();
-    if (event.code === 'KeyL') new Audio("assets/sounds_tink.wav").play();
+    if (event.code === 'KeyA') { new Audio("assets/sounds_clap.wav").play(); animate('KeyA'); }
+    if (event.code === 'KeyS') { new Audio("assets/sounds_hihat.wav").play(); animate('KeyS'); }
+    if (event.code === 'KeyD') { new Audio("assets/sounds_kick.wav").play(); animate('KeyD'); }
+    if (event.code === 'KeyF') { new Audio("assets/sounds_openhat.wav").play(); animate('KeyF'); }
+    if (event.code === 'KeyG') { new Audio("assets/sounds_boom.wav").play(); animate('KeyG'); }
+    if (event.code === 'KeyH') { new Audio("assets/sounds_ride.wav").play(); animate('KeyH'); }
+    if (event.code === 'KeyJ') { new Audio("assets/sounds_snare.wav").play(); animate('KeyJ'); }
+    if (event.code === 'KeyK') { new Audio("assets/sounds_tom.wav").play(); animate('KeyK'); }
+    if (event.code === 'KeyL') { new Audio("assets/sounds_tink.wav").play(); animate('KeyL'); }
 });
