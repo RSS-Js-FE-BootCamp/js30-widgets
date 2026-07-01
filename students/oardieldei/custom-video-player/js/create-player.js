@@ -11,6 +11,7 @@ import {
 	changeSpeed,
 	changeVolume
 } from "./players-actions.js"
+import { createHotKeys } from "./hotkeys.js"
 
 const playerContainer = document.querySelector('.content__wrapper')
 const titleItem = document.querySelector('.full__title')
@@ -238,4 +239,5 @@ function addActions(video) {
 	skipActions(video)
 	changeSpeed(video)
 	changeVolume(video)
+	createHotKeys(video)
 }
