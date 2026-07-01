@@ -105,10 +105,10 @@ h1 {
 .controls-container {
     display: flex;
     gap: 1rem;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
 }
 
-.sound-btn, .theme-btn {
+.sound-btn, .theme-btn, .alarm-btn, .alarm-time {
     background: rgba(0, 0, 0, 0.4);
     color: var(--cyan-glow);
     border: 2px solid var(--cyan-glow);
@@ -122,21 +122,25 @@ h1 {
     transition: all 0.3s ease;
 }
 
-.sound-btn:hover, .theme-btn:hover {
+.sound-btn:hover, .theme-btn:hover, .alarm-btn:hover, .alarm-time:hover {
     background: var(--cyan-glow);
     color: var(--clock-bg);
     box-shadow: 0 0 20px var(--cyan-glow);
 }
 
 body.light-theme .sound-btn,
-body.light-theme .theme-btn {
+body.light-theme .theme-btn,
+body.light-theme .alarm-btn,
+body.light-theme .alarm-time {
     background: rgba(255, 255, 255, 0.8);
     color: var(--cyan-glow);
     border: 2px solid var(--cyan-glow);
 }
 
 body.light-theme .sound-btn:hover,
-body.light-theme .theme-btn:hover {
+body.light-theme .theme-btn:hover,
+body.light-theme .alarm-btn:hover,
+body.light-theme .alarm-time:hover {
     background: var(--accent-blue);
     color: #ffffff;
 }
@@ -200,4 +204,43 @@ body.light-theme .theme-btn:hover {
     height: 12px;
     width: 3px;
     background-color: var(--cyan-glow);
+}
+
+.digital-clock {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--cyan-glow);
+    text-shadow: 0 0 10px var(--cyan-glow);
+    text-align: center;
+    margin-top: 0.2rem;
+}
+
+.world-time {
+    top:20px;
+    right: 20px;
+    position: absolute;
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--cyan-glow);
+    text-shadow: 0 0 8px var(--cyan-glow);
+    text-align: right;
+    margin: 0;
+    box-sizing: border-box;
+    padding-left: 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.alarm-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 0.5rem;
+}
+.alarm-time {
+    color: var(--cyan-glow);
+    border: 2px solid var(--cyan-glow);
+    border-radius: 5px;
+    padding: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
 }
