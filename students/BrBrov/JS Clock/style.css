@@ -1,0 +1,64 @@
+:root {
+  --body-bg: url('https://images.pexels.com/photos/920534/pexels-photo-920534.jpeg'),
+  /* --day-bg:'https://images.pexels.com/photos/4275892/pexels-photo-4275892.jpeg', */
+  --color-text: #000,
+  /* --day-text: #000 */
+}
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--body-bg) cover / center no-repeat;
+}
+
+.page {
+  display: flex;
+  width: 100%;
+  min-width: 320px;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.clock {
+  display: flex;
+  width: 80%;
+  min-width: 320px;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.clock__face {
+  width: calc(100vh - 400px);
+  aspect-ratio: 1;
+}
+
+.clock__data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.clock__time {
+  display: flex;
+  gap: 5px;
+}
+
+.clock__date {
+  display: flex;
+  gap: 5px;
+}
+
+.clock__time-hour,
+.clock__time-minute,
+.clock__time-second,
+.clock__time-dots,
+.clock__date-day,
+.clock__date-mounth,
+.clock__date-number,
+.clock__date-qoute,
+.clock__date-space {
+  font-size: 18px;
+  color: var(--color-text);
+}
