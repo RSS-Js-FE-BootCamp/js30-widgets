@@ -51,3 +51,15 @@ const buttonL = document.getElementById('KeyL');
 buttonL.addEventListener("click", (event) => {
     new Audio("assets/sounds_tink.wav").play();
   });
+
+document.addEventListener('keydown', (event) => {
+    if (event.code === 'KeyA') new Audio("assets/sounds_clap.wav").play();
+    if (event.code === 'KeyS') new Audio("assets/sounds_hihat.wav").play();
+    if (event.code === 'KeyD') new Audio("assets/sounds_kick.wav").play();
+    if (event.code === 'KeyF') new Audio("assets/sounds_openhat.wav").play();
+    if (event.code === 'KeyG') new Audio("assets/sounds_boom.wav").play();
+    if (event.code === 'KeyH') new Audio("assets/sounds_ride.wav").play();
+    if (event.code === 'KeyJ') new Audio("assets/sounds_snare.wav").play();
+    if (event.code === 'KeyK') new Audio("assets/sounds_tom.wav").play();
+    if (event.code === 'KeyL') new Audio("assets/sounds_tink.wav").play();
+});
