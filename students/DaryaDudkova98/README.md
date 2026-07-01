@@ -2,8 +2,7 @@
 
 **Pull Requests:**
 
-- [Photo Filter Widget](https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/[номер_PR_photo])
-- [Whack-A-Mole Widget](https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/[номер_PR_mole])
+- [Photo Filter & Whack-A-Mole Widgets](https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/57)
 
 ### Photo Filter (CSS Variables and JS)
 
@@ -26,7 +25,7 @@
 
 ## Links
 
-- [Live Demo - Photo Filter]()
+- [Live Demo - Photo Filter](https://deploy-preview-57--js-30-widget-gallery.netlify.app/students/DaryaDudkova98/Photofilter/)
 - [Pull Request]()
 
 ### Controls
@@ -93,7 +92,7 @@
 ## Whack-A-Mole Widget
 
 ### Live Demo
-[Whack-A-Mole]()
+[Whack-A-Mole](https://deploy-preview-57--js-30-widget-gallery.netlify.app/students/DaryaDudkova98/Whack-A-Mole/)
 
 ### What was implemented
 
