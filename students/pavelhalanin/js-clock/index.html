@@ -8,7 +8,15 @@
 </head>
 
 <body>
-    <div id="text-ru-date-and-time" class="datetime_table"></div>
+    <div class="clock__container">
+        <div class="clock__circle">
+            <div id="hours_line" class="clock__hours_line"></div>
+            <div id="minites_line" class="clock__minutes_line"></div>
+            <div id="seconds_line" class="clock__seconds_line"></div>
+            <div class="clock__center"></div>
+        </div>
+    </div>
+    <div id="text_datetime" class="datetime_table"></div>
     <script src="./script.js"></script>
     <script>
         (async function () {

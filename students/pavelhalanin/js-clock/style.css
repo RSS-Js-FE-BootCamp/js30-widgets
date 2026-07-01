@@ -1,3 +1,80 @@
+body {
+  background-color: #212529;
+  color: #dee2e6;
+}
+
+.clock__container {
+  padding: 16px 0;
+}
+
+.clock__circle {
+  width: min(50vw, 50vh);
+  height: min(50vw, 50vh);
+  border-radius: 50%;
+  border: 8px solid #06c;
+  margin: 0 auto;
+
+  position: relative;
+}
+
+.clock__center {
+  --width: 12px;
+
+  position: absolute;
+  top: calc(50% - var(--width) / 2);
+  left: calc(50% - var(--width) / 2);
+
+  width: var(--width);
+  height: var(--width);
+  background-color: #06c;
+  border-radius: 50%;
+}
+
+.clock__seconds_line {
+  --height: 2px;
+
+  position: absolute;
+  top: calc(50% - var(--height) / 2);
+  left: 0;
+
+  width: min(25vw, 25vh);
+  height: var(--height);
+  background-color: red;
+  border-radius: var(--height);
+
+  transform-origin: 100%;
+}
+
+.clock__minutes_line {
+  --height: 6px;
+
+  position: absolute;
+  top: calc(50% - var(--height) / 2);
+  right: 50%;
+
+  width: min(20vw, 20vh);
+  height: var(--height);
+  background-color: green;
+  border-radius: var(--height);
+
+  transform-origin: 100%;
+}
+
+.clock__hours_line {
+  --height: 8px;
+
+  position: absolute;
+  top: calc(50% - var(--height) / 2);
+  right: 50%;
+
+  width: min(10vw, 10vh);
+  height: var(--height);
+  background-color: orange;
+  border-radius: var(--height);
+
+  transform-origin: 100%;
+}
+
 .datetime_table table {
   border-collapse: collapse;
   margin: 0 auto;

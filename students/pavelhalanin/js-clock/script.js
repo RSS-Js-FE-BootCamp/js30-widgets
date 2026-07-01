@@ -19,9 +19,42 @@ class JSClockHelper {
     const MI = String(D.getMinutes()).padStart(2, "0");
     const SS = String(D.getSeconds()).padStart(2, "0");
 
-    const ID = "text-ru-date-and-time";
-    const DIV = document.getElementById(ID);
-    DIV.innerHTML = `
+    const SECONDS_LINE = document.getElementById("seconds_line");
+    if (!SECONDS_LINE) {
+      throw new Error(`Не найден узел: #seconds_line`);
+    }
+
+    const MINUTES_LINE = document.getElementById("minites_line");
+    if (!MINUTES_LINE) {
+      throw new Error(`Не найден узел: #minites_line`);
+    }
+
+    const HOURS_LINE = document.getElementById("hours_line");
+    if (!HOURS_LINE) {
+      throw new Error(`Не найден узел: #hours_line`);
+    }
+
+    let seconds_deg = (SS / 60) * 360;
+    const SECONDS_DEG = seconds_deg + 90;
+    SECONDS_LINE.style.transition = SS == "00" ? "" : "all 0.5s ease-in-out";
+    SECONDS_LINE.style.transform = `rotate(${SECONDS_DEG}deg)`;
+
+    let minutes_deg = (MI / 60) * 360;
+    const MINUTES_DEG = minutes_deg + 90;
+    MINUTES_LINE.style.transition = MI == "00" ? "" : "all 0.5s ease-in-out";
+    MINUTES_LINE.style.transform = `rotate(${MINUTES_DEG}deg)`;
+
+    let hours_deg = (HH / 60) * 360;
+    const HOURS_DEG = hours_deg + 90;
+    HOURS_LINE.style.transition = HH == "00" ? "" : "all 0.5s ease-in-out";
+    HOURS_LINE.style.transform = `rotate(${HOURS_DEG}deg)`;
+
+    const TEXT_DATETIME = document.getElementById("text_datetime");
+    if (!TEXT_DATETIME) {
+      throw new Error(`Не найден узел: #text_datetime`);
+    }
+
+    TEXT_DATETIME.innerHTML = `
       <table>
         <thead>
           <tr>
