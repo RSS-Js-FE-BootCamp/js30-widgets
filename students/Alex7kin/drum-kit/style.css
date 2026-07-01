@@ -25,7 +25,6 @@ body{
   align-items: center;
   gap: 1rem;
   padding: 2rem;
-  min-height: 10rem;
 }
 
 .instrument {
@@ -52,7 +51,8 @@ body{
 
 /* fixed width so swapping "Play Song" <-> "Stop" doesn't resize the button */
 #play-song {
-  min-width: 17rem; /* holds the wider "▶ Play Song" label so "Stop" doesn't shrink it */
+  min-width: 25rem;
+  min-height: 5rem; 
   text-align: center;
 }
 
@@ -139,7 +139,8 @@ body{
 
 /* Score HUD */
 .hud {
-  display: none;
+  display: flex;        /* always take a row so the pads never shift */
+  visibility: hidden;   /* invisible until the game starts, but space is reserved */
   justify-content: center;
   align-items: center;
   gap: 5rem;
@@ -150,7 +151,7 @@ body{
 }
 
 .hud.on {
-  display: flex;
+  visibility: visible;   /* just reveal it; the space was already there */
 }
 
 .hud .stat {

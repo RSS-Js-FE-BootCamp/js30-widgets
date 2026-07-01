@@ -28,15 +28,15 @@ const DRUMS = {
 // But we have 9 keys. So the last 2 keys reuse C and D and play them
 // higher. "rate: 2" means "play 2x faster" = a higher sound.
 const PIANO_NOTES = [
-  { file: 'c6', label: 'C' },
-  { file: 'd6', label: 'D' },
-  { file: 'e6', label: 'E' },
-  { file: 'f6', label: 'F' },
-  { file: 'g6', label: 'G' },
-  { file: 'a6', label: 'A' },
-  { file: 'b6', label: 'B' },
-  { file: 'c6', label: 'C↑', rate: 2 },
-  { file: 'd6', label: 'D↑', rate: 2 },
+  { file: 'c6', label: 'Do' },
+  { file: 'd6', label: 'Re' },
+  { file: 'e6', label: 'Mi' },
+  { file: 'f6', label: 'Fa' },
+  { file: 'g6', label: 'Sol' },
+  { file: 'a6', label: 'La' },
+  { file: 'b6', label: 'Si' },
+  { file: 'c6', label: 'Do↑', rate: 2 },
+  { file: 'd6', label: 'Re↑', rate: 2 },
 ];
 
 // Build the PIANO object: link each key code to one piano note.
@@ -281,7 +281,7 @@ function stopGame() {
   document.querySelectorAll('.note').forEach(el => el.remove()); // remove all notes
   keysEl.classList.remove('live');
   game = null;
-  playBtn.textContent = '▶ Play Song';
+  playBtn.textContent = '▶ Rhythm Game';
 }
 
 // The song ended: show the final score.
