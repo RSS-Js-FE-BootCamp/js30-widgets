@@ -4,6 +4,7 @@
 	background-color: #000;
 	position: relative;
 	overflow: hidden;
+	user-select: none;
 }
 
 .player:fullscreen {

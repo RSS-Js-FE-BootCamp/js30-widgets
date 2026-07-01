@@ -1,5 +1,5 @@
 import { updateRanges } from "./input-range-bg.js"
-import { playPause, watchPlayPause, addFullscreenAction, setTimimg, updateTiming, progressbarAction, playAnotherVideo } from "./players-actions.js"
+import { playPause, watchPlayPause, addFullscreenAction, setTimimg, updateTiming, progressbarAction, playAnotherVideo, skipActions } from "./players-actions.js"
 
 const playerContainer = document.querySelector('.content__wrapper')
 const titleItem = document.querySelector('.full__title')
@@ -235,4 +235,5 @@ function addActions(video) {
 	setTimimg(video)
 	progressbarAction(video)
 	playAnotherVideo(currentVideoIndex)
+	skipActions(video)
 }

@@ -123,3 +123,13 @@ export function playAnotherVideo(index) {
 		}
 	})
 }
+
+export function skipActions(video) {
+	const skipWrapper = document.querySelector('.controls__skip__wrapper')
+	skipWrapper.children[0].addEventListener('click', () => {
+		video.currentTime -= 10
+	})
+	skipWrapper.children[1].addEventListener('click', () => {
+		video.currentTime += 10
+	})
+}
