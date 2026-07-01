@@ -12,16 +12,13 @@
     <div class="switch-container">
         <span>Instruments</span>
         <div class="switches">
-            <div class="switch active" data-set="drums">
+            <div class="switch active" data-instrument="drums">
                 <span>Drums</span>
             </div>
-            <div class="switch" data-set="cowbell">
-                <span>Cowbell</span>
+            <div class="switch" data-instrument="sampler">
+                <span>Sampler</span>
             </div>
-            <div class="switch" data-set="bass">
-                <span>Bass</span>
-            </div>
-            <div class="switch" data-set="meme">
+            <div class="switch" data-instrument="meme">
                 <span>Meme</span>
             </div>
         </div>
@@ -30,52 +27,72 @@
         <div class="key-row-asd">
             <div class="key" data-key="65">
                 <kbd>A</kbd>
-                <span class="sound">Hat</span>
+                <span class="sound" data-drums="Hat" data-sampler="1" data-meme="BrA">Hat</span>
             </div>
             <div class="key" data-key="83">
                 <kbd>S</kbd>
-                <span class="sound">Snare</span>
+                <span class="sound" data-drums="Snare" data-sampler="2" data-meme="Do It">Snare</span>
             </div>
             <div class="key" data-key="68">
                 <kbd>D</kbd>
-                <span class="sound">Foley</span>
+                <span class="sound" data-drums="Foley" data-sampler="3" data-meme="Boink">Foley</span>
             </div>
             <div class="key" data-key="70">
                 <kbd>F</kbd>
-                <span class="sound">Crash</span>
+                <span class="sound" data-drums="Crash" data-sampler="4" data-meme="Duck">Crash</span>
             </div>
             <div class="key" data-key="71">
                 <kbd>G</kbd>
-                <span class="sound">Kick</span>
+                <span class="sound" data-drums="Kick" data-sampler="5" data-meme="Honk">Kick</span>
             </div>
             <div class="key" data-key="72">
                 <kbd>H</kbd>
-                <span class="sound">Tom1</span>
+                <span class="sound" data-drums="Tom1" data-sampler="6" data-meme="L&O">Tom1</span>
             </div>
             <div class="key" data-key="74">
                 <kbd>J</kbd>
-                <span class="sound">Tom2</span>
+                <span class="sound" data-drums="Tom2" data-sampler="7" data-meme="Alarm">Tom2</span>
             </div>
             <div class="key" data-key="75">
                 <kbd>K</kbd>
-                <span class="sound">Tom3</span>
+                <span class="sound" data-drums="Tom3" data-sampler="8" data-meme="Tiny">Tom3</span>
             </div>
             <div class="key" data-key="76">
                 <kbd>L</kbd>
-                <span class="sound">Tom4</span>
+                <span class="sound" data-drums="Tom4" data-sampler="9" data-meme="Tip-toe">Tom4</span>
             </div>
         </div>
     </div>
 
-    <audio data-key="65" src="assets/sounds/drums/init/hi-hat.mp3"></audio>
-    <audio data-key="83" src="assets/sounds/drums/init/snare.mp3"></audio>
-    <audio data-key="68" src="assets/sounds/drums/init/foley.mp3"></audio>
-    <audio data-key="70" src="assets/sounds/drums/init/crash.mp3"></audio>
-    <audio data-key="71" src="assets/sounds/drums/init/kick.mp3"></audio>
-    <audio data-key="72" src="assets/sounds/drums/init/tom1.mp3"></audio>
-    <audio data-key="74" src="assets/sounds/drums/init/tom2.mp3"></audio>
-    <audio data-key="75" src="assets/sounds/drums/init/tom3.mp3"></audio>
-    <audio data-key="76" src="assets/sounds/drums/init/tom4.mp3"></audio>
+    <audio data-key="65" data-instrument="drums" src="assets/sounds/drums/hi-hat.mp3"></audio>
+    <audio data-key="83" data-instrument="drums" src="assets/sounds/drums/snare.mp3"></audio>
+    <audio data-key="68" data-instrument="drums" src="assets/sounds/drums/foley.mp3"></audio>
+    <audio data-key="70" data-instrument="drums" src="assets/sounds/drums/crash.mp3"></audio>
+    <audio data-key="71" data-instrument="drums" src="assets/sounds/drums/kick.mp3"></audio>
+    <audio data-key="72" data-instrument="drums" src="assets/sounds/drums/tom1.mp3"></audio>
+    <audio data-key="74" data-instrument="drums" src="assets/sounds/drums/tom2.mp3"></audio>
+    <audio data-key="75" data-instrument="drums" src="assets/sounds/drums/tom3.mp3"></audio>
+    <audio data-key="76" data-instrument="drums" src="assets/sounds/drums/tom4.mp3"></audio>
+
+    <audio data-key="65" data-instrument="sampler" src="assets/sounds/sampler/1-sampler.mp3"></audio>
+    <audio data-key="83" data-instrument="sampler" src="assets/sounds/sampler/2-sampler.mp3"></audio>
+    <audio data-key="68" data-instrument="sampler" src="assets/sounds/sampler/3-sampler.mp3"></audio>
+    <audio data-key="70" data-instrument="sampler" src="assets/sounds/sampler/4-sampler.mp3"></audio>
+    <audio data-key="71" data-instrument="sampler" src="assets/sounds/sampler/5-sampler.mp3"></audio>
+    <audio data-key="72" data-instrument="sampler" src="assets/sounds/sampler/6-sampler.mp3"></audio>
+    <audio data-key="74" data-instrument="sampler" src="assets/sounds/sampler/7-sampler.mp3"></audio>
+    <audio data-key="75" data-instrument="sampler" src="assets/sounds/sampler/8-sampler.mp3"></audio>
+    <audio data-key="76" data-instrument="sampler" src="assets/sounds/sampler/9-sampler.mp3"></audio>
+
+    <audio data-key="65" data-instrument="meme" src="assets/sounds/meme/bra-meme.mp3"></audio>
+    <audio data-key="83" data-instrument="meme" src="assets/sounds/meme/doit-meme.mp3"></audio>
+    <audio data-key="68" data-instrument="meme" src="assets/sounds/meme/donk-meme.mp3"></audio>
+    <audio data-key="70" data-instrument="meme" src="assets/sounds/meme/duck-meme.mp3"></audio>
+    <audio data-key="71" data-instrument="meme" src="assets/sounds/meme/honk-meme.mp3"></audio>
+    <audio data-key="72" data-instrument="meme" src="assets/sounds/meme/law-meme.mp3"></audio>
+    <audio data-key="74" data-instrument="meme" src="assets/sounds/meme/alarm-meme.mp3"></audio>
+    <audio data-key="75" data-instrument="meme" src="assets/sounds/meme/tiny-meme.mp3"></audio>
+    <audio data-key="76" data-instrument="meme" src="assets/sounds/meme/tip-toe-meme.mp3"></audio>
     
     <a href="https://unsplash.com/photos/grayscale-photo-of-band-performing-on-stage-eiY4KJ62P5Q?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink" target="_blank" class="credits">Photo by Tim Toomey</a>
 

@@ -94,7 +94,7 @@ html {
 .animated {
     transform: scale(1.2);
     border-color: rgb(255, 173, 9);
-    box-shadow: 0 0 10px rgba(255, 173, 9, 0.795);
+    box-shadow: 0 0 20px rgba(255, 173, 9, 0.795);
 }
 
 kbd {
