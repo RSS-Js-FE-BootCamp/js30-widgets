@@ -5,11 +5,8 @@ html {
     background-size: cover;
     min-height: 100%;
 }
-/*
-* {
-    outline: solid 1px red;
-}
-*/
+
+/*---------------------Instrument Switcher---------------------*/
 
 .switch-container {
     display: flex;
@@ -19,6 +16,11 @@ html {
     gap: 15px;
     top: 50px;
     left: 100px;
+    border: 3px solid rgba(3, 7, 19, 0.947);
+    background: rgba(0, 0, 0, 0.192);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.452);
+    border-radius: 10px;
+    padding: 10px;
 }
 
 .switches {
@@ -27,7 +29,7 @@ html {
 }
 
 .switch {
-    width: clamp(25px, 5.5vw, 75px);
+    width: clamp(25px, 5.5vw, 80px);
     aspect-ratio: 1/0.75;
     display: flex;
     align-items: center;
@@ -46,7 +48,7 @@ html {
 }
 
 .switch span {
-    font-size: clamp(10px, 1.5vw, 17px);
+    font-size: clamp(7px, 1.5vw, 17px);
     font-family: Arial, Helvetica, sans-serif;
     color: rgb(255, 191, 0);
 }
@@ -61,6 +63,8 @@ html {
     box-shadow: 0 0 10px rgba(255, 115, 0, 0.795);
     background: rgba(0, 0, 0, 0.619);
 }
+
+/*--------------------------Keys--------------------------*/
 
 .instrument {
     width: 100vw;
@@ -107,6 +111,130 @@ kbd {
     font-family: Arial, Helvetica, sans-serif;
     color: white;
 }
+
+/*-----------------------Beat Switcher-----------------------*/
+
+.beat-container {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    align-items: center;
+    gap: 15px;
+    top: 50px;
+    right: 100px;
+    border: 3px solid rgba(3, 7, 19, 0.947);
+    background: rgba(0, 0, 0, 0.192);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.452);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.beats {
+    display: flex;
+    gap: clamp(8px, 1.5vw, 20px);
+}
+
+.beat {
+    width: clamp(35px, 5.5vw, 85px);
+    aspect-ratio: 1/0.75;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.299);
+    border-radius: 5px;
+    border: 3px solid rgba(3, 7, 19, 0.947);
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.beat-container span {
+    font-size: clamp(14px, 1.9vw, 22px);
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+.beat span {
+    font-size: clamp(7px, 1.5vw, 15px);
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(255, 191, 0);
+}
+
+.beat:hover {
+    background: rgba(0, 0, 0, 0.45);
+    box-shadow: 0 0 10px rgba(255, 115, 0, 0.452);
+}
+
+.beat.active {
+    border-color: rgb(255, 132, 0);
+    box-shadow: 0 0 10px rgba(255, 115, 0, 0.795);
+    background: rgba(0, 0, 0, 0.619);
+}
+
+/*-----------------------Cut Switcher-----------------------*/
+
+.cut-toggle-container {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    bottom: 50px;
+    left: 100px;
+    gap: 5px;
+    background: rgba(0, 0, 0, 0.45);
+    box-shadow: 0 0 35px rgba(0, 0, 0, 0.635);
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.cut-switch {
+  width: 62px;
+  height: 32px;
+  border: none;
+  border-radius: 999px;
+  background: #8e8e93;
+  padding: 2px;
+  cursor: pointer;
+
+  position: relative;
+
+  transition: background-color 0.25s ease;
+}
+
+.cut-switch-thumb {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: white;
+
+  position: absolute;
+  top: 2px;
+  left: 2px;
+
+  transition: transform 0.25s cubic-bezier(.4, 0, .2, 1);
+}
+
+.cut-switch.active {
+  background: #34c759;
+}
+
+.cut-switch.active .cut-switch-thumb {
+  transform: translateX(30px);
+}
+
+.cut-switch-heading {
+    font-size: clamp(12px, 1.9vw, 22px);
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+.cut-switch-text {
+    max-width: 270px;
+    width: 100%;
+    font-size: clamp(9px, 1.9vw, 16px);
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+
 
 .credits {
     position: fixed;

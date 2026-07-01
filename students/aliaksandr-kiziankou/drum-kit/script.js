@@ -39,9 +39,16 @@ function playSound(event) {
 
     if (!audio) return;
 
+    if (cutMode && lastPlayedAudio && lastPlayedAudio !== audio) {
+        lastPlayedAudio.pause();
+        lastPlayedAudio.currentTime = 0;
+    }
+
     audio.currentTime = 0;
     audio.play();
     key.classList.add('animated');
+
+    lastPlayedAudio = audio;
 };
 
 function switchInstrument() {
@@ -66,3 +73,51 @@ function removeAnimation(event) {
 };
 
 KEYS.forEach(key => key.addEventListener('transitionend', (removeAnimation)));
+
+
+/*--------------------Cut Switch--------------------*/
+
+const CUT_SWITCH = document.querySelector('.cut-switch');
+
+let cutMode = false;
+let lastPlayedAudio = null;
+
+CUT_SWITCH.addEventListener('click' , () => {
+    cutMode = CUT_SWITCH.classList.toggle('active');
+});
+
+
+/*--------------------Beat Switch--------------------*/
+
+
+const BEATS = document.querySelectorAll('.beat');
+
+let currentBeat = null;
+
+function playBack() {
+    const activeBeat = this.dataset.beats;
+    const audio = document.querySelector(`audio[data-beats='${activeBeat}']`);
+
+    if (!audio) return;
+
+    if (currentBeat === activeBeat) {
+        audio.pause();
+        audio.currentTime = 0;
+        this.classList.remove('active');
+        currentBeat = null;
+    } else {
+        if (currentBeat) {
+            const prevBeat = document.querySelector(`audio[data-beats='${currentBeat}']`);
+            prevBeat.pause();
+            prevBeat.currentTime = 0;
+        }
+
+        BEATS.forEach(beat => beat.classList.remove('active'));
+
+        audio.play();
+        this.classList.add('active');
+        currentBeat = activeBeat;
+    }
+}
+
+BEATS.forEach(beat => beat.addEventListener('click', playBack));
