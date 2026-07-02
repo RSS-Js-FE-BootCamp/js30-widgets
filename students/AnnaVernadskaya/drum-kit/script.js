@@ -10,10 +10,10 @@ const removeTransition = (event) => {
   event.target.classList.remove('playing');
 }
 
-//воспроизведение аудио при нажатии на клавишу
-const playSound = (event) => {
-  const audio = document.querySelector(`audio[data-key="${event.code}"]`);
-  const key = document.querySelector(`.key[data-key="${event.code}"]`);
+//воспроизведение аудио
+const playSound = (keyCode) => {
+  const audio = document.querySelector(`audio[data-key="${keyCode}"]`);
+  const key = document.querySelector(`.key[data-key="${keyCode}"]`);
 
   if (!audio || !key) {
     return;
@@ -25,12 +25,22 @@ const playSound = (event) => {
   audio.play();
 }
 
-//слушатель окончания анимации
+//воспроизведение аудио при нажатии на клавишу
+const handleKeydown = (event) => {
+  playSound(event.code);
+};
+
+//слушатель окончания анимации + мышка
 keys.forEach((key) => {
   key.addEventListener('transitionend', removeTransition);
+
+  //слушатель клика по кнопкам
+  key.addEventListener('click', () => {
+    playSound(key.dataset.key);
+  });
 });
 
-window.addEventListener('keydown', playSound);
+window.addEventListener('keydown', handleKeydown);
 
 
 // ПЕРЕКЛЮЧЕНИЕ ТЕМ
