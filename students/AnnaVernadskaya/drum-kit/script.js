@@ -8,7 +8,7 @@ const removeTransition = (event) => {
   }
 
   event.target.classList.remove('playing');
-}
+};
 
 //воспроизведение аудио
 const playSound = (keyCode) => {
@@ -23,7 +23,7 @@ const playSound = (keyCode) => {
 
   audio.currentTime = 0;
   audio.play();
-}
+};
 
 //воспроизведение аудио при нажатии на клавишу
 const handleKeydown = (event) => {
@@ -47,17 +47,27 @@ window.addEventListener('keydown', handleKeydown);
 const themeButtons = document.querySelectorAll('.theme-switcher__button');
 const body = document.body;
 
-themeButtons.forEach((button) => {
-  button.addEventListener('click', () => {
-    const selectedTheme = button.dataset.theme;
-
+const setTheme = (theme) => {
     body.classList.remove('theme-demo', 'theme-custom');
-    body.classList.add(`theme-${selectedTheme}`);
+    body.classList.add(`theme-${theme}`);
 
     themeButtons.forEach((button) => {
       button.classList.remove('theme-switcher__button--active');
-    });
 
-    button.classList.add('theme-switcher__button--active');
+    if (button.dataset.theme === theme) {
+      button.classList.add('theme-switcher__button--active');
+    }
+  });
+
+  localStorage.setItem('drum-kit-theme', theme);
+};
+
+const savedTheme = localStorage.getItem('drum-kit-theme') || 'demo';
+
+setTheme(savedTheme);
+
+themeButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    setTheme(button.dataset.theme);
   });
 });
