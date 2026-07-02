@@ -1,0 +1,260 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+html {
+    min-height: 100vh;
+    background: #018DED;
+    url("./background.jpg");
+    background-position: center 75%;
+    background-size: cover;
+    text-align: center;
+    font-size: 10px;
+
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+body.dark {
+    background: #1e1e2f;
+    color: #eee;
+}
+
+/* ===== КОНТЕЙНЕР ЧАСОВ ===== */
+.clock-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    background: inherit;
+    padding: 20px;
+    border-radius: 40px;
+}
+
+body.dark .clock-wrapper {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* ���������� ��������� */
+.clock-face {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: #fff;
+    border: 8px solid #2c3e50;
+    box-shadow: 0 0 0 6px #bdc3c7, inset 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+body.dark .clock-face {
+    background: #2d2d44;
+    border-color: #6c7a8a;
+    box-shadow: 0 0 0 6px #3d3d5c, inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* ===== СТРЕЛКИ ===== */
+.hand {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: bottom center;
+    transform: translateX(-50%) rotate(0deg);
+    border-radius: 6px;
+    background: #2c3e50;
+    transition: transform 0.05s cubic-bezier(0.4, 2.3, 0.3, 1);
+}
+
+body.dark .hand {
+    background: #d0d8e0;
+}
+
+.hour-hand {
+    width: 8px;
+    height: 70px;
+    margin-left: -4px;
+    background: #2c3e50;
+}
+
+.min-hand {
+    width: 6px;
+    height: 100px;
+    margin-left: -3px;
+    background: #34495e;
+}
+
+.second-hand {
+    width: 3px;
+    height: 120px;
+    margin-left: -1.5px;
+    background: #e74c3c;
+}
+
+body.dark .second-hand {
+    background: #ff6b6b;
+}
+
+.center-dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 18px;
+    height: 18px;
+    background: #2c3e50;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+body.dark .center-dot {
+    background: #d0d8e0;
+}
+
+/* ===== ЦИФРЫ НА ЦИФЕРБЛАТЕ ===== */
+.number {
+    position: absolute;
+    font-size: 18px;
+    font-weight: bold;
+    color: #2c3e50;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body.dark .number {
+    color: #d0d8e0;
+}
+
+.number-12 {
+    top: 8%;
+    left: 50%;
+}
+
+.number-1 {
+    top: 15%;
+    left: 75%;
+}
+
+.number-2 {
+    top: 34%;
+    left: 88%;
+}
+
+.number-3 {
+    top: 50%;
+    left: 94%;
+}
+
+.number-4 {
+    top: 66%;
+    left: 88%;
+}
+
+.number-5 {
+    top: 85%;
+    left: 75%;
+}
+
+.number-6 {
+    top: 92%;
+    left: 50%;
+}
+
+.number-7 {
+    top: 85%;
+    left: 25%;
+}
+
+.number-8 {
+    top: 66%;
+    left: 12%;
+}
+
+.number-9 {
+    top: 50%;
+    left: 6%;
+}
+
+.number-10 {
+    top: 34%;
+    left: 12%;
+}
+
+.number-11 {
+    top: 15%;
+    left: 25%;
+}
+
+/* ЦИФРОВОй БЛОК */
+.digital-block {
+    background: #fff;
+    padding: 25px 35px;
+    border-radius: 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    min-width: 220px;
+    text-align: center;
+    border-left: 6px solid #3498db;
+}
+
+body.dark .digital-block {
+    background: #2d2d44;
+    border-left-color: #5f9ea0;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.digital-block .time {
+    font-size: 2.6rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #1a1a2e;
+    font-variant-numeric: tabular-nums;
+}
+
+body.dark .digital-block .time {
+    color: #e0e0f0;
+}
+
+.digital-block .day {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #2c3e50;
+    margin-top: 6px;
+}
+
+body.dark .digital-block .day {
+    color: #b0b8c8;
+}
+
+.digital-block .date {
+    font-size: 1.2rem;
+    color: #34495e;
+    margin-top: 4px;
+}
+
+body.dark .digital-block .date {
+    color: #a0a8b8;
+}
+
+.digital-block .year {
+    font-size: 1.1rem;
+    color: #5d6d7e;
+    margin-top: 4px;
+    font-weight: 300;
+}
+
+body.dark .digital-block .year {
+    color: #8a9aae;
+}
