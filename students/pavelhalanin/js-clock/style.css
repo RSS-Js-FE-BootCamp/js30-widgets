@@ -156,7 +156,7 @@ body {
 }
 
 .seven_segment__container [data-segment] {
-  background-color: #141618;
+  background-color: #1b1f22;
 }
 
 /* 0 */
@@ -253,7 +253,7 @@ body {
 }
 
 .segment_dots__container [data-segment] {
-  background-color: #141618;
+  background-color: #1b1f22;
 }
 
 .segment_dots__container[data-is-on="true"] [data-segment] {
