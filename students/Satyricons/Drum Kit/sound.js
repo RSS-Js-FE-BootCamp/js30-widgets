@@ -1,18 +1,12 @@
-document.addEventListener('click', function (event) {
-    
-    AudioManager.play(event.target.id); 
-document.getElementById(event.target.id).addEventListener('transitionend', (event) => {
-    // event.propertyName содержит имя CSS-свойства, которое завершило анимацию
-    console.log(`Переход для свойства '${event.propertyName}' завершен!`);
-   document.getElementById(event.target.id).setAttribute('class','inactive')
-
+//Вешаем событие на клик
+document.addEventListener('click', function (event) {   
+    if(event.target.id==='') AudioManager.play(event.target.parentElement.id)
+    if(!(event.target.id==='select_clap')) AudioManager.play(event.target.id)
 });
 
-
-
-});
+//Вешаем событие на нажатие клавиши
 document.addEventListener('keydown', function (event) {
-    if (event.keyCode === 65) AudioManager.play('clap')
+    if (event.keyCode === 65) {AudioManager.play(document.getElementById('select_clap').value)}
     if (event.keyCode === 83) AudioManager.play('hat')
     if (event.keyCode === 68) AudioManager.play('kik')
     if (event.keyCode === 70) AudioManager.play('openhat')
@@ -20,12 +14,22 @@ document.addEventListener('keydown', function (event) {
     if (event.keyCode === 72) AudioManager.play('ride')
     if (event.keyCode === 74) AudioManager.play('snare')
     if (event.keyCode === 75) AudioManager.play('tom')
-    if (event.keyCode === 76) AudioManager.play('tink')               
+    if (event.keyCode === 76) AudioManager.play('tink')
+});
+
+//Обрабатываем конец анимации
+document.addEventListener('transitionend', (event) => {   
+      event.target.setAttribute('class', 'inactive'); 
+    });
+
+//Обрабатываем изменение select    
+    document.addEventListener('input', function(event) {
+    document.getElementById(event.target.parentElement.id).setAttribute('id', document.getElementById('select_clap').value)
 });
 
 
 // Создаем объект для управления звуком
-const AudioManager = (function() {
+const AudioManager = (function () {
     // Приватные свойства менеджера
     let audioContext = null;
     const audioBufferCache = {}; // Кэш для загруженных звуков
@@ -38,14 +42,14 @@ const AudioManager = (function() {
     }
 
     // Функция для загрузки и кэширования звука
-    async function loadSound(instrument) {        
+    async function loadSound(instrument) {
         // Если звук уже есть в кэше, возвращаем его
         if (audioBufferCache[instrument]) {
-            console.log(`[Кэш] Загружен ${instrument}`);
+            // console.log(`[Кэш] Загружен ${instrument}`);
             return audioBufferCache[instrument];
         }
 
-        console.log(`[Сеть] Загружается ${instrument}...`);
+        // console.log(`[Сеть] Загружается ${instrument}...`);
         const response = await fetch(`./sound/${instrument}.mp3`);
 
         if (!response.ok) {
@@ -57,7 +61,7 @@ const AudioManager = (function() {
 
         // Сохраняем в кэш для будущего использования
         audioBufferCache[instrument] = audioBuffer;
-        console.log(`[Кэш] Сохранен ${instrument}`);
+        // console.log(`[Кэш] Сохранен ${instrument}`);
         return audioBuffer;
     }
 
@@ -85,8 +89,8 @@ const AudioManager = (function() {
                 source.start(0);
 
                 //5. Меняем стиль
-                console.log('Надо изменить стиль:'+ instrument)
-                document.getElementById(instrument).setAttribute('class','active')
+                // console.log('Надо изменить стиль:' + instrument)
+                                document.getElementById(instrument).setAttribute('class', 'active')
             } catch (error) {
                 console.error('Ошибка в AudioManager:', error.message);
             }

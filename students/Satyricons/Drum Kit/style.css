@@ -30,11 +30,11 @@ body {
 .instruments button {
     border: .4rem solid black;
     border-radius: .5rem;
-    margin: 1rem;
+    margin: 0.5rem;
     font-size: 1.5rem;
     padding: 1rem 10px .5rem;
     transition: all .07s ease;
-    width: 8rem;
+    width: 9rem;
     text-align: center;
     color: white;
     background: rgba(0, 0, 0, 0.4);
@@ -59,3 +59,13 @@ body {
     transition: 1s;
     transform: scale(1.1);
 }
+
+
+select {
+    background-color: #2c2c2c; /* Зеленый цвет */
+    color: white; /* Чтобы текст был виден на темном фоне */
+    padding: 5px 10px; /* Внутренние отступы */
+    border-radius: 5px; /* Скругленные углы */
+    
+}
+
