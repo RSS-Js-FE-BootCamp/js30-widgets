@@ -1,13 +1,17 @@
 import './mandatory.js';
 import './upload.js';
+import './download.js';
 
 const filtersElement = document.querySelector('.filters');
 export const filterInputs = filtersElement.querySelectorAll('input');
-export const picture = document.querySelector('.picture-edit');
 const highlight = document.querySelector('.highlight');
 const showAside = document.querySelector('.aside-btn');
 const preview = document.querySelector('.preview');
 export const gallery = document.querySelector('.gallery');
+
+export const canvas = document.getElementById('canvas');
+export const ctx = canvas.getContext('2d');
+export const img = new Image();
 
 const showFilters = () => {
   filtersElement.classList.toggle('show');
@@ -23,7 +27,7 @@ const showFilters = () => {
   }
 };
 
-const filterState = function(...filters) {
+export const filterState = function(...filters) {
   return filters.reduce((state, filter) => {
     const name = filter.name;
     const value = filter.value;
@@ -32,7 +36,7 @@ const filterState = function(...filters) {
   }, {});
 };
 
-const setFiltersToPicture = (filters) => {
+export const setFiltersToPicture = (filters) => {
   const {
     spacing,
     blur,
@@ -57,9 +61,11 @@ const setFiltersToPicture = (filters) => {
     sepia(${sepia}%)
     `; 
   highlight.style.color = color;
-  picture.style.padding = `${spacing}px`;
-  picture.style.background = color;
-  picture.style.filter = filterTools;
+  ctx.filter = filterTools;
+  ctx.drawImage(img, 0, 0);
+  ctx.lineWidth = spacing;
+  ctx.strokeStyle = color;
+  ctx.strokeRect(0, 0, canvas.width, canvas.height);
 };
 
 const onPictureEdit = (e) => {
@@ -70,9 +76,8 @@ const onPictureEdit = (e) => {
 };
 
 const filters = filterState(...filterInputs);
-setFiltersToPicture(filters);
+img.onload = () => setFiltersToPicture(filters);
 
-filtersElement.addEventListener('change', onPictureEdit);
 filtersElement.addEventListener('input', onPictureEdit);
 showAside.addEventListener('click', showFilters);
 window.addEventListener('resize', () => {
