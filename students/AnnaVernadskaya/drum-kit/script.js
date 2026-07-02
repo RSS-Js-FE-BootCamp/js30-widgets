@@ -35,8 +35,11 @@ keys.forEach((key) => {
   key.addEventListener('transitionend', removeTransition);
 
   //слушатель клика по кнопкам
-  key.addEventListener('click', () => {
+  key.addEventListener('click', (event) => {
     playSound(key.dataset.key);
+
+    //нота при клике
+    createFloatingNote(event);
   });
 });
 
@@ -71,3 +74,21 @@ themeButtons.forEach((button) => {
     setTheme(button.dataset.theme);
   });
 });
+
+
+//символ ноты при клике
+const createFloatingNote = (event) => {
+  const note = document.createElement('span');
+  note.classList.add('floating-note');
+  note.textContent = '♪';
+
+  note.style.left = `${event.clientX}px`;
+  note.style.top = `${event.clientY}px`;
+
+  document.body.append(note);
+
+  note.addEventListener('animationend', () => {
+    note.remove();
+  });
+};
+

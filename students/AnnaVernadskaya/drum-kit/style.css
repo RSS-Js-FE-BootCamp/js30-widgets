@@ -157,3 +157,24 @@ body {
     0 0 1.6rem rgba(255, 61, 87, 0.95),
     inset 0 0 1.2rem rgba(255, 61, 87, 0.3);
 }
+
+/*нота при клике*/
+.floating-note {
+  position: fixed;
+  z-index: 20;
+
+  font-size: 2.8rem;
+  color: #ffc600;
+  text-shadow: 0 0 1rem #000000;
+
+  pointer-events: none;
+
+  animation: note-fly 0.9s ease-out forwards;
+}
+
+@keyframes note-fly {
+  to {
+    transform: translateY(-80px) rotate(18deg);
+    opacity: 0;
+  }
+}
