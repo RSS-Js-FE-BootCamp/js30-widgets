@@ -15,6 +15,8 @@ function playSound(event) {
 
     if (!audio) return;
 
+    checkSpam();
+
     if (cutMode && lastPlayedAudio && lastPlayedAudio !== audio) {
         lastPlayedAudio.pause();
         lastPlayedAudio.currentTime = 0;
@@ -116,3 +118,29 @@ function infoSwitcher() {
 }
 
 INFO_SWITCH.addEventListener('click', infoSwitcher);
+
+
+/*--------------------Spam Alert--------------------*/
+
+
+let pressCount = 0;
+let pressTimer = null;
+let alertShown = false;
+
+function checkSpam() {
+    pressCount ++;
+
+    if (pressCount === 1) {
+        pressTimer = setTimeout(() => {
+            pressCount = 0;
+            alertShown = false;
+        }, 1500);
+    }
+
+    if (pressCount > 9 && !alertShown) {
+        alert('Please STOP SPAMMING 🥁');
+        alertShown = true;
+        clearTimeout(pressTimer);
+        pressCount = 0;
+    }
+}

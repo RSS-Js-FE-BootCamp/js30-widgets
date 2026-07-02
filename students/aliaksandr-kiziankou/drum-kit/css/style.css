@@ -306,9 +306,9 @@ kbd {
     top: 190px;
     left: 130px;
     text-align: center;
-    background: rgba(40, 40, 40, 0.589);
+    background: rgba(40, 40, 40, 0.756);
     border-radius: 15px;
-    box-shadow: 0 0 35px rgba(36, 36, 36, 0.731);
+    box-shadow: 0 0 35px rgba(22, 22, 22, 0.879);
     padding: 5px;
 }
 
@@ -330,7 +330,7 @@ kbd {
     text-align: center;
     background: rgba(0, 0, 0, 0.347);
     border-radius: 15px;
-    box-shadow: 0 0 35px rgba(43, 43, 43, 0.845);
+    box-shadow: 0 0 35px rgba(16, 16, 16, 0.934);
     padding: 5px;
 }
 
