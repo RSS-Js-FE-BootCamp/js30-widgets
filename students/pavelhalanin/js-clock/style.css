@@ -8,8 +8,8 @@ body {
 }
 
 .clock__circle {
-  width: min(50vw, 50vh);
-  height: min(50vw, 50vh);
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   border: 8px solid #06c;
   margin: 0 auto;
@@ -35,9 +35,9 @@ body {
 
   position: absolute;
   top: calc(50% - var(--height) / 2);
-  left: 0;
+  right: 50%;
 
-  width: min(25vw, 25vh);
+  width: 50%;
   height: var(--height);
   background-color: red;
   border-radius: var(--height);
@@ -52,7 +52,7 @@ body {
   top: calc(50% - var(--height) / 2);
   right: 50%;
 
-  width: min(20vw, 20vh);
+  width: 40%;
   height: var(--height);
   background-color: green;
   border-radius: var(--height);
@@ -67,7 +67,7 @@ body {
   top: calc(50% - var(--height) / 2);
   right: 50%;
 
-  width: min(10vw, 10vh);
+  width: 25%;
   height: var(--height);
   background-color: orange;
   border-radius: var(--height);
