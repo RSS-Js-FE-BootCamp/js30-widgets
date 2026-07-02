@@ -6,6 +6,11 @@ if (crashAudio) {
     crashAudio.volume = 0.5;
 }
 
+const kickAudio = document.querySelector(`audio[data-key='72'][data-instrument='drums']`);
+if (kickAudio) {
+    kickAudio.volume = 0.7;
+}
+
 let currentInstrument = 'drums';
 
 function playSound(event) {
