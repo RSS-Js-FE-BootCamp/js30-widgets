@@ -19,6 +19,8 @@ class JSClockHelper {
     const MI = String(D.getMinutes()).padStart(2, "0");
     const SS = String(D.getSeconds()).padStart(2, "0");
 
+    this.updateSegmentDigits(HH, MI, SS);
+
     const SECONDS_LINE = document.getElementById("seconds_line");
     if (!SECONDS_LINE) {
       throw new Error(`Не найден узел: #seconds_line`);
@@ -82,6 +84,27 @@ class JSClockHelper {
         </tbody>
       </table>
     `;
+  }
+
+  static updateSegmentDigits(hours, minutes, seconds) {
+    const DIV = document.getElementById("digital_segment_time");
+    if (!DIV) {
+      throw new Error(`Не найден узел: #digital_segment_time`);
+    }
+
+    const ARRAY = DIV.querySelectorAll(".seven_segment__container");
+    if (ARRAY.length < 6) {
+      throw new Error(
+        `Не найден 6 узлов: #digital_segment_time .seven_segment__container`,
+      );
+    }
+
+    ARRAY[0].setAttribute("data-symbol", hours[0]);
+    ARRAY[1].setAttribute("data-symbol", hours[1]);
+    ARRAY[2].setAttribute("data-symbol", minutes[0]);
+    ARRAY[3].setAttribute("data-symbol", minutes[1]);
+    ARRAY[4].setAttribute("data-symbol", seconds[0]);
+    ARRAY[5].setAttribute("data-symbol", seconds[1]);
   }
 
   static getByMonth(monthIndex) {
