@@ -152,3 +152,74 @@ body.light .theme-toggle:hover {
     letter-spacing: 1.2px;
     pointer-events: none;
 }
+
+.kit-selector {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.kit-btn {
+    font-family: "Ultra", sans-serif;
+    font-size: 1.4rem;
+    padding: 1rem 2.5rem;
+    border: 0.2rem solid rgba(255, 255, 255, 0.3);
+    border-radius: 5rem;
+    background: rgba(255, 255, 255, 0.08);
+    color: #BCD0AE;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.1rem;
+}
+
+.kit-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #BCD0AE;
+    transform: scale(1.05);
+}
+
+.kit-btn.active {
+    border-color: #ffd700;
+    background: rgba(255, 215, 0, 0.2);
+    color: #ffd700;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+
+body.light .kit-btn {
+    background: rgba(255, 255, 255, 0.6);
+    border-color: rgba(0, 0, 0, 0.2);
+    color: #213D84;
+}
+
+body.light .kit-btn:hover {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: #213D84;
+}
+
+body.light .kit-btn.active {
+    border-color: #d4a017;
+    background: rgba(212, 160, 23, 0.2);
+    color: #d4a017;
+    box-shadow: 0 0 20px rgba(212, 160, 23, 0.3);
+}
+
+.particle {
+    position: fixed;
+    font-size: 3rem;
+    pointer-events: none;
+    z-index: 1000;
+    animation: floatUp 1s ease-out forwards;
+}
+
+@keyframes floatUp {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100px) scale(1.2);
+    }
+}
