@@ -22,7 +22,7 @@ class StylesRulesString {
     this._setBackGroundRules(rules.hour);
   }
 
-  _setAnalogClockRules(hour = 0, minute = 0, seconds = 0){
+  _setAnalogClockRules(hour, minute, seconds){
     this._stringRules += `
       --clock-analog-hour: ${hour};
       --clock-analog-minute: ${minute};
