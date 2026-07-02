@@ -115,10 +115,14 @@ kbd {
 /*-----------------------Beat Switcher-----------------------*/
 
 .beat-container {
+    max-width: 325px;
+    width: 100%;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     position: fixed;
     align-items: center;
+    justify-content: center;
     gap: 15px;
     top: 50px;
     right: 100px;
@@ -131,6 +135,10 @@ kbd {
 
 .beats {
     display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     gap: clamp(8px, 1.5vw, 20px);
 }
 
@@ -154,9 +162,10 @@ kbd {
 }
 
 .beat span {
-    font-size: clamp(7px, 1.5vw, 15px);
+    font-size: clamp(5px, 1vw, 15px);
     font-family: Arial, Helvetica, sans-serif;
     color: rgb(255, 191, 0);
+    text-align: center;
 }
 
 .beat:hover {
@@ -234,7 +243,106 @@ kbd {
     color: white;
 }
 
+/*-----------------------Cut Switcher-----------------------*/
 
+.info-switch-container {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    bottom: 50px;
+    right: 100px;
+    gap: 5px;
+    background: rgba(0, 0, 0, 0.45);
+    box-shadow: 0 0 35px rgba(0, 0, 0, 0.635);
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.info-switch {
+  width: 62px;
+  height: 32px;
+  border: none;
+  border-radius: 999px;
+  background: #8e8e93;
+  padding: 2px;
+  cursor: pointer;
+
+  position: relative;
+
+  transition: background-color 0.25s ease;
+}
+
+.info-switch-thumb {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: white;
+
+  position: absolute;
+  top: 2px;
+  left: 2px;
+
+  transition: transform 0.25s cubic-bezier(.4, 0, .2, 1);
+}
+
+.info-switch.active {
+  background: #34c759;
+}
+
+.info-switch.active .info-switch-thumb {
+  transform: translateX(30px);
+}
+
+.info-switch-heading {
+    font-size: clamp(12px, 1.9vw, 22px);
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+/*--------------------------Info--------------------------*/
+
+.instruments-info {
+    position: fixed;
+    top: 190px;
+    left: 130px;
+    text-align: center;
+    background: rgba(40, 40, 40, 0.589);
+    border-radius: 15px;
+    box-shadow: 0 0 35px rgba(36, 36, 36, 0.731);
+    padding: 5px;
+}
+
+.instruments-info span {
+    font-size: clamp(9px, 1.1vw, 15px);
+    color: rgb(255, 255, 255);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.pads-info {
+    position: fixed;
+    top: 15%;
+}
+
+.playback-info {
+    position: fixed;
+    top: 280px;
+    right: 75px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.347);
+    border-radius: 15px;
+    box-shadow: 0 0 35px rgba(43, 43, 43, 0.845);
+    padding: 5px;
+}
+
+.playback-info span {
+    font-size: clamp(9px, 1.1vw, 15px);
+    color: rgb(255, 255, 255);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.hidden {
+    display: none;
+}
 
 .credits {
     position: fixed;

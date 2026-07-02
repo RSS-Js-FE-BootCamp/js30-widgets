@@ -1,34 +1,10 @@
-/* Original Widget + Mandatory Additional Feature*/
-/*
-const KEYS = document.querySelectorAll('.key');
-const KEYS_FOR_MOUSE = document.querySelector('.instrument');
-
-function playSound(event) {
-    const key_code = event.keyCode || event.target.closest('.key')?.dataset.key;
-    const audio = document.querySelector(`audio[data-key = '${key_code}']`);
-    const key = document.querySelector(`.key[data-key = '${key_code}']`);
-
-    if (!audio) return;
-
-    audio.currentTime = 0;
-    audio.play();
-    key.classList.add('animated');
-};
-
-window.addEventListener('keydown', playSound);
-KEYS_FOR_MOUSE.addEventListener('click', playSound);
-
-function removeAnimation(event) {
-    if (event.propertyName !== 'transform') return;
-
-    this.classList.remove('animated');
-};
-
-KEYS.forEach(key => key.addEventListener('transitionend', (removeAnimation)));
-*/
-
 const KEYS = document.querySelectorAll('.key');
 const SWITCHERS = document.querySelectorAll('.switch');
+
+const crashAudio = document.querySelector(`audio[data-key='70'][data-instrument='drums']`);
+if (crashAudio) {
+    crashAudio.volume = 0.5;
+}
 
 let currentInstrument = 'drums';
 
@@ -79,11 +55,16 @@ KEYS.forEach(key => key.addEventListener('transitionend', (removeAnimation)));
 
 const CUT_SWITCH = document.querySelector('.cut-switch');
 
-let cutMode = false;
+let cutMode = localStorage.getItem('cutMode') === 'true';
 let lastPlayedAudio = null;
+
+if (cutMode) {
+    CUT_SWITCH.classList.add('active');
+}
 
 CUT_SWITCH.addEventListener('click' , () => {
     cutMode = CUT_SWITCH.classList.toggle('active');
+    localStorage.setItem('cutMode', cutMode);
 });
 
 
@@ -118,6 +99,20 @@ function playBack() {
         this.classList.add('active');
         currentBeat = activeBeat;
     }
-}
+};
 
 BEATS.forEach(beat => beat.addEventListener('click', playBack));
+
+
+/*--------------------Info Switch--------------------*/
+
+
+const INFO_SWITCH = document.querySelector('.info-switch');
+const INFO = document.querySelectorAll('.info');
+
+function infoSwitcher() {
+    INFO.forEach(info => info.classList.toggle('hidden'));
+    INFO_SWITCH.classList.toggle('active');
+}
+
+INFO_SWITCH.addEventListener('click', infoSwitcher);
