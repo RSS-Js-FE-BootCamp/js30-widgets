@@ -1,13 +1,26 @@
-:root {
-  --body-bg: url('https://images.pexels.com/photos/920534/pexels-photo-920534.jpeg'),
-  /* --day-bg:'https://images.pexels.com/photos/4275892/pexels-photo-4275892.jpeg', */
-  --color-text: #000,
-  /* --day-text: #000 */
-}
+/* :root {
+  --body-bg: url('https://images.pexels.com/photos/920534/pexels-photo-920534.jpeg');
+  --day-bg:'https://images.pexels.com/photos/4275892/pexels-photo-4275892.jpeg',
+  --color-text: #d8f89c;
+  --color-digit: #25e40c;
+  --color-clock-face: #031035;
+  --color-clock-border: #450769;
+  --color-hour-arrow: #cc0d0d;
+  --color-minute-arrow: #97be06;
+  --color-seconds-arrow: #1a8991;
+  --clock-analog-hour: 30;
+  --clock-analog-minute: 60;
+  --clock-analog-seconds: 90;
+  --clock-analog-bolt: #7a4407;
+} */
+
 body {
   margin: 0;
   padding: 0;
-  background: var(--body-bg) cover / center no-repeat;
+  background-image: var(--body-bg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .page {
@@ -29,8 +42,156 @@ body {
 }
 
 .clock__face {
+  position: relative;
+  z-index: 0;
   width: calc(100vh - 400px);
   aspect-ratio: 1;
+  border: 5px solid var(--color-clock-border);
+  border-radius: 50%;
+  background-color: var(--color-clock-face);
+}
+
+.clock__face-number {
+  position: absolute;
+  z-index: 1;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  border-radius: 50%;
+  font-size: 25px;
+  font-weight: 600;
+  color: var(--color-digit);
+  transform: rotate(calc(var(--number) * 30deg));
+}
+
+.clock__face-digit {
+  display: inline-block;
+  box-sizing: border-box;
+  transform: rotate(calc(var(--number) * -30deg));
+}
+
+.clock__face-number:nth-child(1) {
+  --number: 1;
+}
+
+.clock__face-number:nth-child(2) {
+  --number: 2;
+}
+
+.clock__face-number:nth-child(3) {
+  --number: 3;
+}
+
+.clock__face-number:nth-child(4) {
+  --number: 4;
+}
+
+.clock__face-number:nth-child(5) {
+  --number: 5;
+}
+
+.clock__face-number:nth-child(6) {
+  --number: 6;
+}
+
+.clock__face-number:nth-child(7) {
+  --number: 7;
+}
+
+.clock__face-number:nth-child(8) {
+  --number: 8;
+}
+
+.clock__face-number:nth-child(9) {
+  --number: 9;
+}
+
+.clock__face-number:nth-child(10) {
+  --number: 10;
+}
+
+.clock__face-number:nth-child(11) {
+  --number: 11;
+}
+
+.clock__face-number:nth-child(12) {
+  --number: 12;
+}
+
+.clock__face-arrow {
+  position: absolute;
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  justify-content: center;
+  align-items: flex-start;
+  transform: rotate(calc(var(--angle) * 1deg));
+}
+
+.clock__face-arrow:nth-child(13) {
+  --angle: var(--clock-analog-hour);
+}
+
+.clock__face-arrow:nth-child(14) {
+  --angle: var(--clock-analog-minute);
+}
+
+.clock__face-arrow:nth-child(15) {
+  --angle: var(--clock-analog-seconds);
+}
+
+.clock__face-hour,
+.clock__face-minute,
+.clock__face-second {
+  clip-path: polygon(
+    50% 0%,
+    100% 15%,
+    60% 20%,
+    60% 100%,
+    40% 100%,
+    40% 20%,
+    0% 15%);
+}
+
+.clock__face-hour {
+  width: 8%;
+  height: 40%;
+  margin-top: 10%;
+  background-color: var(--color-hour-arrow);
+}
+
+.clock__face-minute {
+  width: 7%;
+  height: 45%;
+  margin-top: 5%;
+  background-color: var(--color-minute-arrow);
+}
+
+.clock__face-second {
+  width: 6%;
+  height: 49%;
+  margin-top: 1%;
+  background-color: var(--color-seconds-arrow);
+}
+
+.clock__face-nut {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.clock__face-bolt {
+  width: 5%;
+  height: 5%;
+  border: solid 2px #25e40c;
+  border-radius: 50%;
+  background-color: var(--clock-analog-bolt);
 }
 
 .clock__data {
@@ -55,7 +216,7 @@ body {
 .clock__time-second,
 .clock__time-dots,
 .clock__date-day,
-.clock__date-mounth,
+.clock__date-month,
 .clock__date-number,
 .clock__date-qoute,
 .clock__date-space {
