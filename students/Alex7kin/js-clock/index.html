@@ -2,13 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>JS + CSS Clock</title>
-  <link rel="icon" href="https://fav.farm/🔥" />
+  <title>AUF Clock</title>
+  <link rel="icon" href="https://fav.farm/%E2%9C%8D%EF%B8%8F" />
   <link rel="stylesheet" href="style.css">
+  <script>
+    // Apply the saved theme right away, before the page is drawn,
+    // so you never see a "flash" of the wrong colors when you reload.
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  </script>
 </head>
 <body>
 
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark theme">🌙</button>
 
+  <div class="quote-bar">
+    <div class="quote" id="quote">
+      <span class="quote-text" id="quoteText">Loading a quote…</span>
+      <span class="quote-author" id="quoteAuthor"></span>
+    </div>
+  </div>
+
+  <div class="clock-column">
     <div class="clock">
       <div class="clock-face">
         <div class="hand hour-hand"></div>
@@ -16,9 +31,52 @@
         <div class="hand second-hand"></div>
       </div>
     </div>
+  </div>
 
+  <div class="digital">
+    <div class="rings">
 
-  
+      <div class="ring">
+        <svg class="ring-svg" viewBox="0 0 120 120">
+          <circle class="ring-track" cx="60" cy="60" r="52"></circle>
+          <circle class="ring-progress ring-hours" id="ringHours" cx="60" cy="60" r="52"></circle>
+        </svg>
+        <div class="ring-center">
+          <span class="ring-value" id="valHours">00</span>
+          <span class="ring-label">HRS</span>
+        </div>
+      </div>
+
+      <div class="ring">
+        <svg class="ring-svg" viewBox="0 0 120 120">
+          <circle class="ring-track" cx="60" cy="60" r="52"></circle>
+          <circle class="ring-progress ring-minutes" id="ringMinutes" cx="60" cy="60" r="52"></circle>
+        </svg>
+        <div class="ring-center">
+          <span class="ring-value" id="valMinutes">00</span>
+          <span class="ring-label">MIN</span>
+        </div>
+      </div>
+
+      <div class="ring">
+        <svg class="ring-svg" viewBox="0 0 120 120">
+          <circle class="ring-track" cx="60" cy="60" r="52"></circle>
+          <circle class="ring-progress ring-seconds" id="ringSeconds" cx="60" cy="60" r="52"></circle>
+        </svg>
+        <div class="ring-center">
+          <span class="ring-value" id="valSeconds">00</span>
+          <span class="ring-label">SEC</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="digital-weekday" id="weekday">Weekday</div>
+    <div class="digital-date" id="date">Day Month</div>
+    <div class="digital-year" id="year">Year</div>
+  </div>
+
+  <button class="music-btn" id="musicBtn">Don't click Me</button>
 
 <script src="script.js"></script>
 </body>
