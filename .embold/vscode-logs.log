@@ -1,0 +1,64 @@
+2026-06-30 15:22:00 info: Congratulations, your extension "Embold" is now active!
+2026-06-30 15:22:00 info: ************* init ****************
+2026-06-30 15:22:00 info: tempDirectory : c:\Users\Acer\.vscode\extensions\embold-vscode.embold-0.3.8\temp
+2026-06-30 15:22:07 info: Extraction complete for source: c:\Users\Acer\.vscode\extensions\embold-vscode.embold-0.3.8\resources\embold-scanner-archive.zip, destination: c:\Users\Acer\.vscode\extensions\embold-vscode.embold-0.3.8\temp
+2026-06-30 15:22:07 info: Extension installed on machine OS : win32
+2026-06-30 15:22:07 info: Loading issues from local database on startup (checkbox unchecked)
+2026-06-30 15:22:07 info: Using emboldDBDir: d:\Documents\Lesya\Rolling Scopes\summer_bootcamp_2026\js30-widgets\.embold
+2026-06-30 15:22:07 info: NO_PROXY set from VS Code http.noProxy: 
+2026-06-30 15:22:07 info: NODE_TLS_REJECT_UNAUTHORIZED not set (SSL verification enabled)
+2026-06-30 15:22:07 info: Using system certificates for SSL verification
+2026-06-30 15:22:09 info: [STARTUP] Processing 0 total issues from database
+2026-06-30 15:22:09 info: [STARTUP] Issues sorted by file path
+2026-06-30 15:22:09 info: [STARTUP] Complete - Processed: 0, Skipped: 0
+2026-06-30 15:22:09 info: Fetched the issues from DB
+2026-06-30 15:22:12 info: Embold extension version response:{"hasSupport":false,"version":"0.2.1","changeNotes":"<div> <p>Release Date: 30 Apr, 2025 <br><span>Bug fixes and improvements.</span></p> </div>"}
+2026-06-30 15:22:12 info: Current installed embold extension version : 0.3.8
+2026-06-30 15:22:12 info: Latest embold extension version on marketplace : 0.2.1
+2026-06-30 15:22:12 info: Current extension version: 0.3.8
+2026-06-30 15:22:12 info: Stored extension version: 0.3.8
+2026-06-30 15:22:12 info: No new installation or upgrade detected. Skipping plugin activation tracking.
+2026-06-30 15:22:14 info: Java version installed on machine : 
+java version "25.0.2" 2026-01-20 LTS
+Java(TM) SE Runtime Environment (build 25.0.2+10-LTS-69)
+Java HotSpot(TM) 64-Bit Server VM (build 25.0.2+10-LTS-69, mixed mode, sharing)
+
+2026-06-30 15:22:14 info: Java installed on machine.
+2026-06-30 15:27:52 info: Row(s) deleted
+2026-06-30 15:31:02 info: Row(s) deleted
+2026-06-30 15:34:10 info: Row(s) deleted
+2026-06-30 15:37:16 info: Row(s) deleted
+2026-06-30 15:40:26 info: Row(s) deleted
+2026-06-30 15:43:30 info: Row(s) deleted
+2026-06-30 15:45:32 info: Row(s) deleted
+2026-06-30 15:46:35 info: Row(s) deleted
+2026-06-30 16:06:29 info: Row(s) deleted
+2026-06-30 19:23:17 info: Row(s) deleted
+2026-06-30 19:23:17 info: Row(s) deleted
+2026-06-30 19:23:17 info: Row(s) deleted
+2026-06-30 19:23:17 info: Row(s) deleted
+2026-06-30 19:23:17 info: Row(s) deleted
+2026-06-30 19:26:27 info: Row(s) deleted
+2026-06-30 19:31:38 info: Row(s) deleted
+2026-06-30 19:32:40 info: Row(s) deleted
+2026-06-30 19:38:36 info: Row(s) deleted
+2026-06-30 19:38:40 info: Row(s) deleted
+2026-06-30 19:41:54 info: Row(s) deleted
+2026-06-30 19:45:17 info: Row(s) deleted
+2026-07-02 16:11:43 info: Row(s) deleted
+2026-07-02 16:11:43 info: Row(s) deleted
+2026-07-02 16:13:48 info: Row(s) deleted
+2026-07-02 16:14:06 info: Row(s) deleted
+2026-07-02 16:14:07 info: Row(s) deleted
+2026-07-02 16:19:10 info: Row(s) deleted
+2026-07-02 16:22:13 info: Row(s) deleted
+2026-07-02 16:28:29 info: Row(s) deleted
+2026-07-02 16:31:38 info: Row(s) deleted
+2026-07-02 16:51:59 info: Row(s) deleted
+2026-07-02 16:58:09 info: Row(s) deleted
+2026-07-02 17:05:39 info: Row(s) deleted
+2026-07-02 17:09:21 info: Row(s) deleted
+2026-07-02 17:18:04 info: Row(s) deleted
+2026-07-02 17:21:48 info: Row(s) deleted
+2026-07-02 17:21:48 info: Row(s) deleted
+2026-07-02 17:26:20 info: Row(s) deleted
