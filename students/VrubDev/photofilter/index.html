@@ -10,15 +10,47 @@
     <h1>Update Css Variables with <span class="text-highlight">Js</span></h1>
     <div class="controls">
       <label for="spacing">Spacing:</label>
-      <input type="range" name="spacing" id="" />
+      <input
+        type="range"
+        name="spacing"
+        id="spacing"
+        min="0"
+        max="100"
+        value="10"
+        data-sizing="px"
+      />
       <label for="blur">Blur:</label>
-      <input type="range" name="blur" id="" />
+      <input
+        type="range"
+        name="blur"
+        id="blur"
+        min="0"
+        max="10"
+        value="0"
+        data-sizing="px"
+      />
       <label for="brightness">Brightness:</label>
-      <input type="range" name="brightness" id="" />
+      <input
+        type="range"
+        name="brightness"
+        id="brightness"
+        min="0"
+        max="200"
+        value="100"
+        data-sizing="%"
+      />
       <label for="saturate">Saturate:</label>
-      <input type="range" name="saturate" id="" />
-      <label for="color">Base color:</label>
-      <input type="color" name="color" id="" />
+      <input
+        type="range"
+        name="saturate"
+        id="saturate"
+        min="0"
+        max="200"
+        value="100"
+        data-sizing="%"
+      />
+      <label for="base">Base color:</label>
+      <input type="color" name="base" id="base" value="#9fcfb2" />
     </div>
     <img src="./cat.jpg" alt="" />
   </body>

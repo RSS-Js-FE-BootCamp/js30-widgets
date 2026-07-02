@@ -1,10 +1,35 @@
+:root {
+  --base: #9fcfb2;
+  --spacing: 10px;
+  --blur: 0px;
+  --brightness: 100%;
+  --saturate: 100%;
+}
+
 body {
   text-align: center;
   background-color: #2e303d;
   color: #f2e9dc;
   font-family: "Helvetica Neue", Arial, sans-serif;
 }
+
+h1 {
+  font-size: 48px;
+}
+
+.text-highlight {
+  color: var(--base);
+}
+
+input[type="range"] {
+  accent-color: var(--base);
+}
+
 img {
   width: 600px;
   height: 400px;
+  padding: var(--spacing);
+  background: var(--base);
+  filter: blur(var(--blur)) brightness(var(--brightness))
+    saturate(var(--saturate));
 }
