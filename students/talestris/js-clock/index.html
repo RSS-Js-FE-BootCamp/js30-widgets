@@ -9,7 +9,7 @@
 
     <style>
         html {
-            background: url(./bg-pic.jpg);
+            background: url(./bg-pic.webp);
             background-size: cover;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             text-align: center;
@@ -26,9 +26,9 @@
 
         .clock {
             position: relative;
-            width: 32rem;
-            height: 32rem;
-            border: 1em solid white;
+            width: 35rem;
+            height: 35rem;
+            border: 1em solid rgb(51, 53, 37);
             border-radius: 50%;
             margin: 3.1em auto;
             padding: 2rem;
@@ -46,9 +46,29 @@
             transform: translateY(-0.188rem);
         }
 
+        .clock-numbers {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .number {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: calc(50% - 2.5rem);
+            left: calc(50% - 2.5rem);
+            width: 5rem;
+            height: 5rem;
+            font-size: 4rem;
+            font-weight: bold;
+            color: rgb(51, 53, 37);
+        }
+
         .hand {
-            width: 50%;
-            height: 0.5em;
             position: absolute;
             top: 50%;
             background: black;
@@ -57,35 +77,103 @@
             transition: all 0.05s;
             transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
         }
+
+        .hand__hours {
+            width: 30%;
+            left: 20%;
+            height: 0.6rem;
+        }
+
+        .hand__minutes {
+            width: 40%;
+            left: 10%;
+            height: 0.4rem;
+        }
+
+        .hand__seconds {
+            width: 45%;
+            left: 5%;
+            height: 0.2rem;
+        }
+
+        .digital-panel {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            font-family: inherit;
+            color: rgb(51, 53, 37);
+            font-size: 2rem;
+        }
     </style>
 </head>
 
 <body>
     <div class="clock">
         <div class="clock-face">
+            <div class="clock-numbers"></div>
             <div class="hand hand__hours"></div>
             <div class="hand hand__minutes"></div>
             <div class="hand hand__seconds"></div>
         </div>
     </div>
+    <div class="digital-panel">
+        <span class="digital-time">00:00:00</span>
+        <span class="digital-date">Weekday, 0 Day Month 2026 Year</span>
+    </div>
     <script>
+        const numbersContainer = document.querySelector('.clock-numbers');
+
+        for (let i = 1; i <= 12; i++) {
+            const numberDiv = document.createElement('div');
+            numberDiv.classList.add('number');
+            numberDiv.textContent = i;
+
+            const angle = i * 30;
+
+            numberDiv.style.transform = `rotate(${angle}deg) translateY(-15rem) rotate(-${angle}deg)`;
+
+            numbersContainer.appendChild(numberDiv);
+        }
+
         const secondsHand = document.querySelector('.hand__seconds');
         const minsHand = document.querySelector('.hand__minutes');
         const hoursHand = document.querySelector('.hand__hours');
+
+        let secondsCycles = 0;
+        let minutesCycles = 0;
+        let hoursCycles = 0;
+
+        let lastSeconds = 0;
+        let lastMinutes = 0;
+        let lastHours = 0;
 
         function setDate() {
             const now = new Date();
 
             const seconds = now.getSeconds();
-            const secondsDegrees = ((seconds / 60) * 360) + 90;
-            secondsHand.style.transform = `rotate(${secondsDegrees}deg)`;
-
             const mins = now.getMinutes();
-            const minsDegrees = ((mins / 60) * 360) + 90;
-            minsHand.style.transform = `rotate(${minsDegrees}deg)`;
-
             const hours = now.getHours();
+
+            if (seconds < lastSeconds) secondsCycles++;
+            lastSeconds = seconds;
+            const totalSeconds = seconds + (secondsCycles * 60);
+
+            if (mins < lastMinutes) minutesCycles++;
+            lastMinutes = mins;
+            const totalMinutes = mins + (minutesCycles * 60);
+
+            const hours12 = hours % 12;
+            if (hours12 < lastHours) hoursCycles++;
+            lastHours = hours12;
+            const totalHours = hours12 + (hoursCycles * 12);
+
+            const secondsDegrees = ((seconds / 60) * 360) + 90;
+            const minsDegrees = ((mins / 60) * 360) + 90;
             const hoursDegrees = ((hours / 12) * 360) + 90;
+
+            secondsHand.style.transform = `rotate(${secondsDegrees}deg)`;
+            minsHand.style.transform = `rotate(${minsDegrees}deg)`;
             hoursHand.style.transform = `rotate(${hoursDegrees}deg)`;
         }
 
