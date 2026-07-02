@@ -1,14 +1,50 @@
-body{
-    margin: 0;
-    padding: 0;
+html {
+     height: 100%;
 }
 
-.container_room{
-    background-image: url('./img/room.jpg');
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-image: url(./img/room.jpg);
+    background-size: cover; /* Масштабируем изображение */
+    background-position: center center; /* Центрируем изображение */
+    background-repeat: no-repeat; /* Запрещаем повторение */
+    background-attachment: fixed; /* Фиксируем фон при прокрутке */
+}
+
+.container_room {
     
     height: 100vh;
+
+    display: flex;
+    align-items: center;
 }
 
 .container_instrument_button {
+    display: flex;;
+    height: 100px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background: #00000093;
+}
 
+.instruments button {
+    border: .4rem solid black;
+    border-radius: .5rem;
+    margin: 1rem;
+    font-size: 1.5rem;
+    padding: 1rem 10px .5rem;
+    transition: all .07s ease;
+    width: 10rem;
+    text-align: center;
+    color: white;
+    background: rgba(0, 0, 0, 0.4);
+    text-shadow: 0 0 .5rem black;
+}
+
+.word{
+        display: block;
+    font-size: 4rem;
 }
