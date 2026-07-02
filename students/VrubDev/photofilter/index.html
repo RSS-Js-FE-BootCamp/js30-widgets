@@ -52,7 +52,56 @@
       <label for="base">Base color:</label>
       <input type="color" name="base" id="base" value="#9fcfb2" />
     </div>
-    <img src="./cat.jpg" alt="" />
+    <img class="main-img" src="./cat.jpg" alt="Cat" />
+    <div class="presets-gallery">
+      <button
+        class="preset-item"
+        data-spacing="15"
+        data-blur="0"
+        data-brightness="130"
+        data-saturate="150"
+        data-base="#ffe59e"
+      >
+        <img src="./cat.jpg" alt="Sunny preset" />
+        <span>Sunny</span>
+      </button>
+
+      <button
+        class="preset-item"
+        data-spacing="10"
+        data-blur="3"
+        data-brightness="90"
+        data-saturate="60"
+        data-base="#707c8a"
+      >
+        <img src="./cat.jpg" alt="Foggy preset" />
+        <span>Foggy</span>
+      </button>
+
+      <button
+        class="preset-item"
+        data-spacing="25"
+        data-blur="0"
+        data-brightness="110"
+        data-saturate="20"
+        data-base="#b0b7bd"
+      >
+        <img src="./cat.jpg" alt="Noir preset" />
+        <span>Noir</span>
+      </button>
+
+      <button
+        class="preset-item"
+        data-spacing="12"
+        data-blur="0"
+        data-brightness="105"
+        data-saturate="110"
+        data-base="#c7cd83"
+      >
+        <img src="./cat.jpg" alt="Mint preset" />
+        <span>Mint</span>
+      </button>
+    </div>
     <script src="./script.js"></script>
   </body>
 </html>
