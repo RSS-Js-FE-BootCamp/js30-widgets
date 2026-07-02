@@ -82,5 +82,6 @@ window.addEventListener('resize', () => {
     filtersElement.classList.remove('show');
     preview.removeAttribute('style');
     gallery.removeAttribute('style');
+    showAside.textContent = 'Show filters';
   }
 });

@@ -1,4 +1,4 @@
-import { filterInputs } from "./main.js";
+import { reset } from "./reset.js";
 
 const gallery = document.querySelector('.gallery');
 
@@ -15,15 +15,6 @@ const setNewValue = (input, value) => {
   reset();
   input.value = value;
   input.dispatchEvent(new Event('input', { bubbles: true }));
-};
-
-const reset = () => {
-  filterInputs.forEach((filter) => {
-    if (filter.type !== 'color') {
-      filter.value = filter.dataset.init;
-      filter.dispatchEvent(new Event('input', { bubbles: true }));
-    }
-  });
 };
 
 const selectView = (e) => {
