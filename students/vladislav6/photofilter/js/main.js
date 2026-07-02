@@ -1,12 +1,13 @@
 import './mandatory.js';
+import './upload.js';
 
 const filtersElement = document.querySelector('.filters');
 export const filterInputs = filtersElement.querySelectorAll('input');
-const picture = document.querySelector('.picture-edit');
+export const picture = document.querySelector('.picture-edit');
 const highlight = document.querySelector('.highlight');
 const showAside = document.querySelector('.aside-btn');
 const preview = document.querySelector('.preview');
-const gallery = document.querySelector('.gallery');
+export const gallery = document.querySelector('.gallery');
 
 const showFilters = () => {
   filtersElement.classList.toggle('show');

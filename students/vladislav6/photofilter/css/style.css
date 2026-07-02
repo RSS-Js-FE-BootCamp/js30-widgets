@@ -71,7 +71,7 @@ main {
   max-width: 400px;
 }
 
-.preview img {
+.preview canvas {
   width: 100%;
   height: auto;
   display: block;
