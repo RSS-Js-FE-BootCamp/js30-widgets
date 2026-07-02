@@ -1,45 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
 html {
-      background:#018DED ;
-      background-size:cover;
-      font-family:'helvetica neue';
-      text-align: center;
-      font-size: 10px;
-    }
+    background: #018DED;
+    background-size: cover;
+    font-family: Roboto, sans-serif;
+    text-align: center;
+    font-size: 10px;
+}
 
-    body {
-      margin: 0;
-      font-size: 2rem;
-      display:flex;
-      flex:1;
-      min-height: 100vh;
-      align-items: center;
-    }
+body {
+    margin: 0;
+    font-size: 2rem;
+    display: flex;
+    flex: 1;
+    min-height: 100vh;
+    align-items: center;
+}
 
-    .clock {
-      width: 30rem;
-      height: 30rem;
-      border:20px solid white;
-      border-radius:50%;
-      margin:50px auto;
-      position: relative;
-      padding:2rem;      
-    }
+/* ===== КОНТЕЙНЕР ЧАСОВ ===== */
+.clock {
+    width: 30rem;
+    height: 30rem;
+    border: 20px solid white;
+    border-radius: 50%;
+    margin: 50px auto;
+    position: relative;
+    padding: 2rem;
+}
 
-    .clock-face {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      transform: translateY(-3px); /* account for the height of the clock hands */
-    }
+.clock-face {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform: translateY(-3px);
+    /* account for the height of the clock hands */
+}
 
-    .hand {
-      width:50%;
-      height:6px;
-      background:black;
-      position: absolute;
-      top:50%;
-      transform-origin: 100%;
-      transform: rotate(90deg);
-      transition: all 0.05s;
-      transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
-    }
+/* ===== СТРЕЛКИ ===== */
+.hand {
+    width: 50%;
+    height: 6px;
+    background: black;
+    position: absolute;
+    top: 50%;
+    transform-origin: 100%;
+    transform: rotate(90deg);
+    transition: all 0.05s;
+    transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+}
+
+/* ===== ЦИФРЫ НА ЦИФЕРБЛАТЕ ===== */
+.number {
+    position: absolute;
+    font-size: 18px;
+    font-weight: bold;
+    color: #2c3e50;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.number-12 {
+    top: 8%;
+    left: 50%;
+}
+
+.number-1 {
+    top: 15%;
+    left: 75%;
+}
+
+.number-2 {
+    top: 34%;
+    left: 88%;
+}
+
+.number-3 {
+    top: 50%;
+    left: 94%;
+}
+
+.number-4 {
+    top: 66%;
+    left: 88%;
+}
+
+.number-5 {
+    top: 85%;
+    left: 75%;
+}
+
+.number-6 {
+    top: 92%;
+    left: 50%;
+}
+
+.number-7 {
+    top: 85%;
+    left: 25%;
+}
+
+.number-8 {
+    top: 66%;
+    left: 12%;
+}
+
+.number-9 {
+    top: 50%;
+    left: 6%;
+}
+
+.number-10 {
+    top: 34%;
+    left: 12%;
+}
+
+.number-11 {
+    top: 15%;
+    left: 25%;
+}
