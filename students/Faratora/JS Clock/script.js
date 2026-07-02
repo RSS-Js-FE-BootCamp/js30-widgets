@@ -43,3 +43,6 @@ const digitalYear = document.getElementById('digital-year');
     digitalYear.textContent = year;
   }
 
+  setInterval(setDate, 1000);
+  setDate();
+
