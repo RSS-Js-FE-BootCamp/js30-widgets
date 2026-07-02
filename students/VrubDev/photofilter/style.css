@@ -28,6 +28,7 @@ input[type="range"] {
 img {
   width: 600px;
   height: 400px;
+  margin-top: 30px;
   padding: var(--spacing);
   background: var(--base);
   filter: blur(var(--blur)) brightness(var(--brightness))
