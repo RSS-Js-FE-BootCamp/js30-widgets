@@ -1,4 +1,16 @@
-document.addEventListener('click', function (event) {AudioManager.play(event.target.id); });
+document.addEventListener('click', function (event) {
+    
+    AudioManager.play(event.target.id); 
+document.getElementById(event.target.id).addEventListener('transitionend', (event) => {
+    // event.propertyName содержит имя CSS-свойства, которое завершило анимацию
+    console.log(`Переход для свойства '${event.propertyName}' завершен!`);
+   document.getElementById(event.target.id).setAttribute('class','inactive')
+
+});
+
+
+
+});
 document.addEventListener('keydown', function (event) {
     if (event.keyCode === 65) AudioManager.play('clap')
     if (event.keyCode === 83) AudioManager.play('hat')
@@ -11,12 +23,12 @@ document.addEventListener('keydown', function (event) {
     if (event.keyCode === 76) AudioManager.play('tink')               
 });
 
+
 // Создаем объект для управления звуком
 const AudioManager = (function() {
     // Приватные свойства менеджера
     let audioContext = null;
     const audioBufferCache = {}; // Кэш для загруженных звуков
-
     // Инициализация контекста (создаётся только один раз)
     function getAudioContext() {
         if (!audioContext) {
@@ -26,7 +38,7 @@ const AudioManager = (function() {
     }
 
     // Функция для загрузки и кэширования звука
-    async function loadSound(instrument) {
+    async function loadSound(instrument) {        
         // Если звук уже есть в кэше, возвращаем его
         if (audioBufferCache[instrument]) {
             console.log(`[Кэш] Загружен ${instrument}`);
@@ -71,6 +83,10 @@ const AudioManager = (function() {
                 source.buffer = buffer;
                 source.connect(ctx.destination);
                 source.start(0);
+
+                //5. Меняем стиль
+                console.log('Надо изменить стиль:'+ instrument)
+                document.getElementById(instrument).setAttribute('class','active')
             } catch (error) {
                 console.error('Ошибка в AudioManager:', error.message);
             }
