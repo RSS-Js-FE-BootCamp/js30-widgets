@@ -62,6 +62,7 @@ html {
     flex-direction: column;
     justify-content: center;
     padding: 2rem;
+    position: relative; 
   }
   .digital-time {
     font-size: 4rem;
@@ -82,3 +83,40 @@ html {
     letter-spacing: 1px;
     font-weight: bold;
   }
+  .theme-click {
+    position: absolute;
+    top: 15px;     
+    right: 15px;   
+    width: 3.5rem;  
+    height: 3.5rem;
+    font-size: 1.8rem;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    border-radius: 50%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+  }
+  .theme-click:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #ffef62;
+    color: #ffef62;
+  }
+  .digital-clock.light-theme .theme-click {
+    border-color: rgba(0, 0, 0, 0.2);
+    color: #292828;
+  }
+  .digital-clock.light-theme .theme-click:hover {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: #292828;
+  }
+  .digital-clock.light-theme {
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  .digital-clock.light-theme .digital-time { color: #000000; }
+  .digital-clock.light-theme .digital-date { color: #555555; }
+  .digital-clock.light-theme .digital-day { color: #000000; }

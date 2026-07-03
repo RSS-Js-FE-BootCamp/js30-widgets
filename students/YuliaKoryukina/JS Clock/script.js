@@ -38,6 +38,10 @@ function setDate() {
     weekday: "long",
   });
 }
-
+const themeClick = document.querySelector(".theme-click");
+const digitalClockPanel = document.querySelector(".digital-clock");
+themeClick.addEventListener("click", function () {
+  digitalClockPanel.classList.toggle("light-theme");
+});
 setInterval(setDate, 1000);
 setDate();
