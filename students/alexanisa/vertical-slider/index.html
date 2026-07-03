@@ -10,6 +10,10 @@
 <body>
     <div class="slider">
         <h1 class="vertical-slider"></h1>
+        <div class="hint">
+            <span>&#8661;</span>
+            <p>Swipe or scroll</p>
+        </div>
         <div class="slider__left">
             <div class="slide-text active" data-bg="#2F435A" data-title-color="#E6C27A" data-text-color="#E9B1A3">
                 <h2>Road to Adventure</h2>
@@ -55,8 +59,19 @@
         </div>
     </div>
     <div class="controls">
-        <button class="btn-up">↑</button>
-        <button class="btn-down">↓</button>
+        <button class="btn-up">
+            <span class="icon-up">&#8593;</span>
+            <span class="icon-left">&#8592;</span>
+        </button>
+        <button class="btn-down">
+            <span class="icon-down">&#8595;</span>
+            <span class="icon-right">&#8594;</span>
+        </button>
+        <button class="btn-play">&#9654;</button>
+        <button class="btn-orient">
+            <span class="icon-vert">&#8661;</span>
+            <span class="icon-horiz">&#8660;</span>
+        </button>
     </div>
     <script src="./script.js"></script>
 </body>
