@@ -1,74 +1,37 @@
-# JS30 Widgets
+# JS30 Widgets - @AnnaVernadskaya
 
-Репозиторий для сдачи JS30-виджетов студентами RS School.
+Pull Request: 
 
-## Как работать с репозиторием
 
-1. Склонируйте репозиторий:
+## What was implemented
 
-   ```bash
-   git clone <repository-url>
-   cd js30-widgets
-   ```
+### Drum Kit
 
-2. Создайте новую ветку для своей работы:
+#### Stage 1 - Reproduction (20 points)
+- [x] The widget visually matches the original demo +10
+- [x] The core behaviour of the original widget works end-to-end +10
 
-   ```bash
-   git checkout -b github-login-widgets
-   ```
+#### Stage 2 - Mandatory additional feature (15 points)
+- [x] The mandatory additional feature described in the widget's task file is implemented and works correctly. Allow the app to play sounds both on keyboard keypress and on mouse click on the corresponding on-screen pad. +10
+- [x] The feature is integrated with the rest of the UI +5
 
-   Замените `github-login` на имя своего GitHub-аккаунта.
+#### Stage 3 - Optional improvements (up to 30 points)
+- [x] Added melody recording and playback +10
+- [x] Added floating musical notes animation +10
+- [x] Demo / custom theme toggle that persists across reloads. +10
 
-3. В папке `students` создайте папку с названием вашего GitHub-аккаунта:
 
-   ```text
-   students/
-     github-login/
-   ```
+### Vertical Slider
 
-4. Внутри своей папки создайте отдельные папки для виджетов. Все файлы каждого виджета храните внутри его папки.
+#### Stage 1 - Reproduction (20 points)
+- [x] The widget visually matches the original demo +10
+- [x] The core behaviour of the original widget works end-to-end +10
 
-   Пример:
+#### Stage 2 - Mandatory additional feature (15 points)
+- [x] The mandatory additional feature described in the widget's task file is implemented and works correctly. Make the slider infinite (looped). +10
+- [x] The feature is integrated with the rest of the UI +5
 
-   ```text
-   students/
-     github-login/
-       drum-kit/
-         index.html
-         style.css
-         script.js
-       js-clock/
-         index.html
-         style.css
-         script.js
-   ```
-
-5. Ведите разработку виджетов внутри этих папок.
-
-6. В корневом файле `index.html` добавьте свою карточку по аналогии с уже существующими карточками.
-
-   Пример:
-
-   ```html
-   <article class="student-card">
-     <h3 class="student-name">@github-login</h3>
-     <div class="widget-links" aria-label="@github-login widget links">
-       <a class="widget-link" href="./students/github-login/drum-kit/">Drum Kit</a>
-       <a class="widget-link" href="./students/github-login/js-clock/">JS Clock</a>
-     </div>
-   </article>
-   ```
-
-   Замените `github-login`, названия папок и названия виджетов на свои.
-
-7. Закоммитьте изменения и запушьте свою ветку:
-
-   ```bash
-   git add .
-   git commit -m "feat: github-login widgets"
-   git push origin github-login-widgets
-   ```
-
-8. Создайте pull request из своей ветки в `main`.
-
-9. Засабмитьте ссылку на pull request в RS App на cross-check.
+#### Stage 3 - Optional improvements (up to 30 points)
+- [x] Autoplay +10
+- [x] Keyboard navigation +10
+- [x] Mouse-wheel navigation +10
