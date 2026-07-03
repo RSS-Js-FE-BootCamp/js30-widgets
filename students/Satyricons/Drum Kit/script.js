@@ -2,13 +2,14 @@
 document.addEventListener('click', function (event) {
 
     if (event.target.id === 'bit') {
-        if (event.repeat) return // Просто игнорируем это событие
+console.log ()
+
         function bit(sound) {
 
-            console.log(document.getElementById('bit').value)
+
             AudioManager.play(sound)
         }
-        setInterval(bit, 1000, document.getElementById('select_clap').value);
+        setInterval(bit, 1000, event.target.parentElement.children[0].id);
         return
     }
 
@@ -18,11 +19,6 @@ document.addEventListener('click', function (event) {
     if (event.target.id === '') AudioManager.play(event.target.parentElement.id)
     if (!(event.target.id === 'select_sint' || event.target.id === 'select_clap' || event.target.id === 'select_hat' || event.target.id === 'select_kik' || event.target.id === 'select_openhat' || event.target.id === 'select_boom' || event.target.id === 'select_ride' || event.target.id === 'select_snare' || event.target.id === 'select_tom' || event.target.id === 'select_tink')) AudioManager.play(event.target.id)
 });
-
-
-
-
-
 
 //Вешаем событие на нажатие клавиши
 document.addEventListener('keydown', function (event) {
