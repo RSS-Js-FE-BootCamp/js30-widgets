@@ -41,7 +41,11 @@ function setDate() {
 const themeClick = document.querySelector(".theme-click");
 const digitalClockPanel = document.querySelector(".digital-clock");
 themeClick.addEventListener("click", function () {
-  digitalClockPanel.classList.toggle("light-theme");
+  if (digitalClockPanel.classList.contains("light-theme")) {
+    digitalClockPanel.classList.remove("light-theme"); 
+  } else {
+    digitalClockPanel.classList.add("light-theme"); 
+  }
 });
 setInterval(setDate, 1000);
 setDate();
