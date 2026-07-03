@@ -34,10 +34,11 @@ class StylesRulesString {
       day: 'https://images.pexels.com/photos/4275892/pexels-photo-4275892.jpeg',
       night: 'https://images.pexels.com/photos/920534/pexels-photo-920534.jpeg'
     };
-    if (hour > 20 || hour < 6) {
-      this._stringRules += (`--body-bg: url(${bgUrls.night});`);
+
+    if (hour > 6 && hour < 20 ) {
+      this._stringRules += ('\n' +`--body-bg: url(${bgUrls.day});`);
     } else {
-      this._stringRules += (`--body-bg: url(${bgUrls.day});`);
+      this._stringRules += ('\n' + `--body-bg: url(${bgUrls.night});`);
     }
   }
 
@@ -145,7 +146,7 @@ class Clock extends ClockData {
     const minuteAngle = timeData.minute * 6;
     const secondsAngle = timeData.seconds * 6;
 
-    const startStylesVariables = this.getRulesString(hourAngle, minuteAngle, secondsAngle);
+    const startStylesVariables = this.getRulesString(timeData.hour, timeData.minute, timeData.seconds);
 
     this.styles.replaceSync(startStylesVariables);
   }
