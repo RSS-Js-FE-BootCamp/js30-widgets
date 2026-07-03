@@ -14,6 +14,208 @@
     const themeBtn = document.getElementById('theme-btn');
     const citiesGrid = document.getElementById('cities-grid');
 
+    // === БУДИЛЬНИК ===
+    const alarmHoursInput = document.getElementById('alarm-hours');
+    const alarmMinutesInput = document.getElementById('alarm-minutes');
+    const setAlarmBtn = document.getElementById('set-alarm-btn');
+    const clearAlarmBtn = document.getElementById('clear-alarm-btn');
+    const snoozeBtn = document.getElementById('snooze-btn');
+    const alarmStatus = document.getElementById('alarm-status');
+
+let alarmTime = null;
+    let isAlarmRinging = false;
+    let alarmSound = null;
+
+    // === СОЗДАЕМ ЗВУК БУДИЛЬНИКА ===
+    function createAlarmSound() {
+      try {
+        // Создаем звук с помощью Web Audio API
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        
+        // Создаем осциллятор для звука
+        const oscillator = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        
+        // Настройки звука
+        oscillator.type = 'square';
+        oscillator.frequency.value = 800;
+        
+        // Модуляция для создания "звонка"
+        gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+        
+        // Начинаем и останавливаем звук
+        oscillator.start();
+        oscillator.stop(audioCtx.currentTime + 0.5);
+        
+        // Создаем более сложный звук с паттерном
+        const playAlarm = () => {
+          const ctx = new (window.AudioContext || window.webkitAudioContext)();
+          
+          function playBeep(frequency, duration, volume) {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.type = 'square';
+            osc.frequency.value = frequency;
+            gain.gain.setValueAtTime(volume, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + duration);
+            osc.start();
+            osc.stop(ctx.currentTime + duration);
+          }
+          
+          // Паттерн звонка: повторяющиеся звуки
+          const pattern = [
+            { freq: 800, duration: 0.2, volume: 0.3 },
+            { freq: 1000, duration: 0.2, volume: 0.3 },
+            { freq: 800, duration: 0.2, volume: 0.3 },
+            { freq: 1000, duration: 0.3, volume: 0.3 }
+          ];
+          
+          let time = 0;
+          pattern.forEach((p, index) => {
+            setTimeout(() => {
+              playBeep(p.freq, p.duration, p.volume);
+            }, time * 1000);
+            time += p.duration + 0.1;
+          });
+        };
+        
+        return playAlarm;
+      } catch (e) {
+        console.warn('Web Audio API не поддерживается');
+        return () => {
+          // Fallback: использование стандартного alert
+          console.log('🔔 БУДИЛЬНИК!');
+        };
+      }
+    }
+
+    // Функция для воспроизведения звука будильника
+    function ringAlarm() {
+      if (!isAlarmRinging) return;
+      
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        
+        function playBeep(freq, duration, volume) {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.type = 'square';
+          osc.frequency.value = freq;
+          gain.gain.setValueAtTime(volume, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+          osc.start();
+          osc.stop(audioCtx.currentTime + duration);
+        }
+        
+        // Воспроизводим звук
+        playBeep(800, 0.2, 0.3);
+        setTimeout(() => playBeep(1000, 0.2, 0.3), 200);
+        setTimeout(() => playBeep(800, 0.2, 0.3), 400);
+        setTimeout(() => playBeep(1000, 0.3, 0.3), 600);
+        
+      } catch (e) {
+        console.log('🔔 БУДИЛЬНИК!');
+      }
+      
+      // Продолжаем звонить, если будильник активен
+      if (isAlarmRinging) {
+        setTimeout(ringAlarm, 1500);
+      }
+    }
+
+    // === УПРАВЛЕНИЕ БУДИЛЬНИКОМ ===
+    function setAlarm() {
+      const hours = parseInt(alarmHoursInput.value);
+      const minutes = parseInt(alarmMinutesInput.value);
+      
+      if (isNaN(hours) || isNaN(minutes) || hours < 0 || hours > 23 || minutes < 0 || minutes > 59) {
+        alert('Пожалуйста, введите корректное время (часы: 0-23, минуты: 0-59)');
+        return;
+      }
+      
+      alarmTime = { hours, minutes };
+      isAlarmRinging = false;
+      
+      alarmStatus.textContent = `⏰ Будильник установлен на ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+      alarmStatus.className = 'alarm-status active';
+      
+      setAlarmBtn.disabled = true;
+      clearAlarmBtn.disabled = false;
+      snoozeBtn.disabled = true;
+      
+      console.log(`Будильник установлен на ${hours}:${minutes}`);
+    }
+
+    function clearAlarm() {
+      alarmTime = null;
+      isAlarmRinging = false;
+      
+      alarmStatus.textContent = '⏰ Будильник отключен';
+      alarmStatus.className = 'alarm-status';
+      
+      setAlarmBtn.disabled = false;
+      clearAlarmBtn.disabled = true;
+      snoozeBtn.disabled = true;
+      
+      console.log('Будильник отключен');
+    }
+
+    function snoozeAlarm() {
+      if (!alarmTime) return;
+      
+      // Добавляем 5 минут
+      let newMinutes = alarmTime.minutes + 5;
+      let newHours = alarmTime.hours;
+      
+      if (newMinutes >= 60) {
+        newMinutes -= 60;
+        newHours = (newHours + 1) % 24;
+      }
+      
+      alarmTime = { hours: newHours, minutes: newMinutes };
+      isAlarmRinging = false;
+      
+      alarmStatus.textContent = `⏰ Отложено на 5 минут (${String(newHours).padStart(2, '0')}:${String(newMinutes).padStart(2, '0')})`;
+      alarmStatus.className = 'alarm-status active';
+      
+      snoozeBtn.disabled = true;
+      
+      console.log(`Будильник отложен до ${newHours}:${newMinutes}`);
+    }
+
+    // === ПРОВЕРКА БУДИЛЬНИКА ===
+    function checkAlarm() {
+      if (!alarmTime || isAlarmRinging) return;
+      
+      const now = new Date();
+      const currentHours = now.getHours();
+      const currentMinutes = now.getMinutes();
+      
+      if (currentHours === alarmTime.hours && currentMinutes === alarmTime.minutes) {
+        // Будильник сработал!
+        isAlarmRinging = true;
+        alarmStatus.textContent = '🔔 БУДИЛЬНИК ЗВОНИТ! 🔔';
+        alarmStatus.className = 'alarm-status ringing';
+        
+        snoozeBtn.disabled = false;
+        clearAlarmBtn.disabled = false;
+        
+        // Запускаем звук
+        ringAlarm();
+        
+        console.log('🔔 Будильник сработал!');
+      }
+    }
+
+
     const cities = [
       { name: 'Москва', timezone: 'Europe/Moscow' },
       { name: 'Лондон', timezone: 'Europe/London' },
@@ -162,6 +364,7 @@
 
       // === Обновляем мировое время ===
       updateWorldTimes();
+      checkAlarm();
     }
 
     // === Смена темы ===
@@ -183,9 +386,29 @@
       }
     }
 
+setAlarmBtn.addEventListener('click', setAlarm);
+    clearAlarmBtn.addEventListener('click', clearAlarm);
+    snoozeBtn.addEventListener('click', snoozeAlarm);
+    themeBtn.addEventListener('click', toggleTheme);
+
+
     themeBtn.addEventListener('click', toggleTheme);
 
     createCityCards();
     updateMainClock();
     setInterval(updateMainClock, 1000);
     loadTheme();
+
+     alarmHoursInput.addEventListener('change', function() {
+      let val = parseInt(this.value);
+      if (isNaN(val) || val < 0) this.value = 0;
+      if (val > 23) this.value = 23;
+      if (this.value.length === 1) this.value = '0' + this.value;
+    });
+
+    alarmMinutesInput.addEventListener('change', function() {
+      let val = parseInt(this.value);
+      if (isNaN(val) || val < 0) this.value = 0;
+      if (val > 59) this.value = 59;
+      if (this.value.length === 1) this.value = '0' + this.value;
+    });

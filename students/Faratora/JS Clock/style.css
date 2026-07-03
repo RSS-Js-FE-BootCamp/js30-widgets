@@ -262,6 +262,203 @@
         color: #8a9aae;
     }
 
+/* ===== БУДИЛЬНИК ===== */
+    .alarm-section {
+      background: #fff;
+      padding: 25px;
+      border-radius: 30px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      margin-top: 20px;
+    }
+
+    body.dark .alarm-section {
+      background: #2d2d44;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+
+    .alarm-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #2c3e50;
+      text-align: center;
+    }
+
+    body.dark .alarm-title {
+      color: #d0d8e0;
+    }
+
+    .alarm-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .alarm-input-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #f8f9fa;
+      padding: 10px 15px;
+      border-radius: 16px;
+      border: 2px solid #e9ecef;
+    }
+
+    body.dark .alarm-input-group {
+      background: #3a3a55;
+      border-color: #4a4a6a;
+    }
+
+    .alarm-input-group label {
+      font-weight: 500;
+      color: #2c3e50;
+    }
+
+    body.dark .alarm-input-group label {
+      color: #d0d8e0;
+    }
+
+    .alarm-input-group input {
+      padding: 8px 12px;
+      border: 2px solid #ced4da;
+      border-radius: 10px;
+      font-size: 1rem;
+      width: 100px;
+      background: #fff;
+      color: #1a1a2e;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    body.dark .alarm-input-group input {
+      background: #2d2d44;
+      border-color: #5a5a7a;
+      color: #e0e0f0;
+    }
+
+    .alarm-input-group input:focus {
+      outline: none;
+      border-color: #3498db;
+    }
+
+    .btn {
+      padding: 10px 24px;
+      border: none;
+      border-radius: 16px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .btn-primary {
+      background: #3498db;
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #2980b9;
+    }
+
+    .btn-success {
+      background: #27ae60;
+      color: #fff;
+    }
+
+    .btn-success:hover {
+      background: #229954;
+    }
+
+    .btn-danger {
+      background: #e74c3c;
+      color: #fff;
+    }
+
+    .btn-danger:hover {
+      background: #c0392b;
+    }
+
+    .btn-warning {
+      background: #f39c12;
+      color: #fff;
+    }
+
+    .btn-warning:hover {
+      background: #d68910;
+    }
+
+    .btn-secondary {
+      background: #95a5a6;
+      color: #fff;
+    }
+
+    .btn-secondary:hover {
+      background: #7f8c8d;
+    }
+
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+
+    .alarm-status {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 1.1rem;
+      padding: 10px;
+      border-radius: 12px;
+      background: #f8f9fa;
+    }
+
+    body.dark .alarm-status {
+      background: #3a3a55;
+    }
+
+    .alarm-status.active {
+      background: #fdebd0;
+      color: #c0392b;
+      border: 2px solid #e74c3c;
+    }
+
+    body.dark .alarm-status.active {
+      background: #5a2a2a;
+      color: #ff6b6b;
+      border-color: #ff6b6b;
+    }
+
+    .alarm-status.ringing {
+      animation: pulse 0.5s ease-in-out infinite alternate;
+      background: #e74c3c;
+      color: #fff;
+      font-weight: 700;
+      border: 2px solid #c0392b;
+    }
+
+    body.dark .alarm-status.ringing {
+      background: #ff6b6b;
+      color: #1a1a2e;
+      border-color: #ff6b6b;
+    }
+
+    @keyframes pulse {
+      from { opacity: 0.6; transform: scale(0.98); }
+      to { opacity: 1; transform: scale(1.02); }
+    }
+
+
+
     /* ===== МИРОВОЕ ВРЕМЯ ===== */
     .world-time-section {
         padding: 25px;
@@ -271,6 +468,7 @@
     body.dark .world-time-section {
         background: #2d2d44;
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        margin-top: 20px;
     }
 
     .world-time-title {
