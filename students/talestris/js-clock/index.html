@@ -22,6 +22,9 @@
             font-size: 2em;
             align-items: center;
             min-height: 100vh;
+            flex-direction: column;
+            margin: 0;
+            justify-content: center;
         }
 
         .clock {
@@ -103,7 +106,48 @@
             gap: 1.5rem;
             font-family: inherit;
             color: rgb(51, 53, 37);
-            font-size: 2rem;
+            font-size: 3rem;
+            font-weight: 600;
+        }
+
+        .digital-time {
+            font-size: 5rem;
+            font-weight: bold;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .timezones-panel {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .timezone {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.1);
+            padding: 1rem 2rem;
+            border-radius: 0.8rem;
+            min-width: 10rem;
+            box-shadow: 0 0.4rem 0.6rem rgba(0, 0, 0, 0.1);
+        }
+
+        .city-name {
+            font-size: 1.4rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            color: rgb(51, 53, 37);
+            margin-bottom: 0.5rem;
+        }
+
+        .city-time {
+            font-size: 2.2rem;
+            font-weight: bold;
+            font-variant-numeric: tabular-nums;
+            color: rgb(51, 53, 37);
         }
     </style>
 </head>
@@ -121,8 +165,29 @@
         <span class="digital-time">00:00:00</span>
         <span class="digital-date">Weekday, 0 Day Month 2026 Year</span>
     </div>
+    <div class="timezones-panel">
+        <div class="timezone">
+            <span class="city-name">London</span>
+            <span class="city-time" id="london-time">00:00:00</span>
+        </div>
+        <div class="timezone">
+            <span class="city-name">Tokio</span>
+            <span class="city-time" id="tokio-time">00:00:00</span>
+        </div>
+        <div class="timezone">
+            <span class="city-name">New York</span>
+            <span class="city-time" id="new-york-time">00:00:00</span>
+        </div>
+    </div>
     <script>
         const numbersContainer = document.querySelector('.clock-numbers');
+
+        const digitalTimeContainer = document.querySelector('.digital-time');
+        const digitalDateContainer = document.querySelector('.digital-date');
+
+        const londonContainer = document.querySelector('#london-time');
+        const tokioContainer = document.querySelector('#tokio-time');
+        const newYorkContainer = document.querySelector('#new-york-time');
 
         for (let i = 1; i <= 12; i++) {
             const numberDiv = document.createElement('div');
@@ -168,13 +233,25 @@
             lastHours = hours12;
             const totalHours = hours12 + (hoursCycles * 12);
 
-            const secondsDegrees = ((seconds / 60) * 360) + 90;
-            const minsDegrees = ((mins / 60) * 360) + 90;
-            const hoursDegrees = ((hours / 12) * 360) + 90;
+            const secondsDegrees = ((totalSeconds / 60) * 360) + 90;
+            const minsDegrees = ((totalMinutes / 60) * 360) + (seconds * 0.1) + 90;
+            const hoursDegrees = ((totalHours / 12) * 360) + (mins * 0.5) + 90;
 
             secondsHand.style.transform = `rotate(${secondsDegrees}deg)`;
             minsHand.style.transform = `rotate(${minsDegrees}deg)`;
             hoursHand.style.transform = `rotate(${hoursDegrees}deg)`;
+
+            digitalTimeContainer.textContent = now.toLocaleTimeString('en-US', { hour12: false });
+            digitalDateContainer.textContent = now.toLocaleDateString('en-US', {
+                weekday: "long",
+                day: "numeric",
+                month: "long",
+                year: "numeric"
+            });
+
+            londonContainer.textContent = now.toLocaleTimeString('en-US', { timeZone: 'Europe/London', hour12: false });
+            tokioContainer.textContent = now.toLocaleTimeString('en-US', { timeZone: 'Asia/Tokyo', hour12: false });
+            newYorkContainer.textContent = now.toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour12: false });
         }
 
         setInterval(setDate, 1000);
