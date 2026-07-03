@@ -1,10 +1,28 @@
 //Вешаем событие на клик
 document.addEventListener('click', function (event) {
-    if (event.target.id === 'stop')  AudioManager.stopAll()
+
+    if (event.target.id === 'bit') {
+        if (event.repeat) return // Просто игнорируем это событие
+        function bit(sound) {
+
+            console.log(document.getElementById('bit').value)
+            AudioManager.play(sound)
+        }
+        setInterval(bit, 1000, document.getElementById('select_clap').value);
+        return
+    }
+
+    //Обработка кликов
+    if (event.target.id === 'stop') AudioManager.stopAll()
     //чтоб играло и по клику буквы или пиано
     if (event.target.id === '') AudioManager.play(event.target.parentElement.id)
     if (!(event.target.id === 'select_sint' || event.target.id === 'select_clap' || event.target.id === 'select_hat' || event.target.id === 'select_kik' || event.target.id === 'select_openhat' || event.target.id === 'select_boom' || event.target.id === 'select_ride' || event.target.id === 'select_snare' || event.target.id === 'select_tom' || event.target.id === 'select_tink')) AudioManager.play(event.target.id)
 });
+
+
+
+
+
 
 //Вешаем событие на нажатие клавиши
 document.addEventListener('keydown', function (event) {
@@ -117,8 +135,8 @@ const AudioManager = (function () {
                 };
 
                 // Управление классом 'active'
-                if (instrument !== 'stop' && instrument !== 'sint' && instrument !== 'sint2' && instrument !== 'sint3') { // Предположительно, 'sint' не имеет визуального элемента
-                    document.getElementById(instrument).setAttribute('class','active');
+                if (instrument !== 'bit' && instrument !== 'stop' && instrument !== 'sint' && instrument !== 'sint2' && instrument !== 'sint3') { // Предположительно, 'sint' не имеет визуального элемента
+                    document.getElementById(instrument).setAttribute('class', 'active');
                 }
 
             } catch (error) {
@@ -132,7 +150,7 @@ const AudioManager = (function () {
             stopInstrument(instrument);
 
             // Убираем визуальное отображение 'active'
-            if (instrument !== 'stop' && instrument !== 'sint' && instrument !== 'sint2' && instrument !== 'sint3') {
+            if (instrument !== 'bit' && instrument !== 'stop' && instrument !== 'sint' && instrument !== 'sint2' && instrument !== 'sint3') {
                 document.getElementById(instrument).classList.remove('active');
             }
         },
@@ -140,9 +158,12 @@ const AudioManager = (function () {
         // Дополнительный метод: Остановить абсолютно все звуки
         stopAll() {
             for (const instrument in activeSources) {
-                stopInstrument(instrument);                
-                    // document.getElementById(instrument).classList.remove('active');                
+                stopInstrument(instrument);
+                // document.getElementById(instrument).classList.remove('active');                
             }
         }
     };
 })();
+
+
+
