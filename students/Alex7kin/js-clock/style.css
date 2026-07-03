@@ -1,0 +1,297 @@
+/* ---------- Theme colors ----------
+   We list every color twice: once for dark, once for light.
+   Changing data-theme on the <html> tag swaps the whole set. */
+
+:root,
+[data-theme="dark"] {
+  --bg: radial-gradient(circle at 30% 15%, #1c2542, #0a0e1c 70%);
+  --text: #f4f6ff;
+  --muted: rgba(244, 246, 255, 0.7);
+  --card-bg: rgba(255, 255, 255, 0.06);
+  --card-border: rgba(255, 255, 255, 0.18);
+  --clock-border: #ffffff;
+  --hand: #ffffff;
+  --ring-track: rgba(255, 255, 255, 0.14);
+  --toggle-bg: rgba(255, 255, 255, 0.12);
+}
+
+[data-theme="light"] {
+  --bg: radial-gradient(circle at 30% 15%, #ffffff, #d9e1f2 70%);
+  --text: #1a2036;
+  --muted: rgba(26, 32, 54, 0.65);
+  --card-bg: rgba(255, 255, 255, 0.75);
+  --card-border: rgba(0, 0, 0, 0.08);
+  --clock-border: #2a3350;
+  --hand: #1a2036;
+  --ring-track: rgba(0, 0, 0, 0.1);
+  --toggle-bg: rgba(0, 0, 0, 0.06);
+}
+
+/* Ring colors are bright, so they read well on both themes. */
+:root {
+  --sec-color: #ff4d6d;   /* pink */
+  --min-color: #2ec4b6;   /* teal */
+  --hour-color: #4d9dff;  /* blue */
+}
+
+/* ---------- Page ---------- */
+
+html {
+  background: var(--bg);
+  background-attachment: fixed;
+  font-family: 'helvetica neue', Helvetica, Arial, sans-serif;
+  text-align: center;
+  font-size: 10px;
+  color: var(--text);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+body {
+  margin: 0;
+  font-size: 2rem;
+  display: flex;
+  flex: 1;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center; /* center the clock + panel as a group */
+  flex-wrap: wrap;         /* on a narrow screen, the panel drops below */
+  gap: 3rem;               /* space between the clock and the panel */
+  color: var(--text);
+  transition: color 0.3s ease;
+}
+
+/* ---------- Analog clock ---------- */
+
+/* Stacks the clock and the music button in a column, so the button
+   sits directly under the clock. */
+.clock-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.music-btn {
+  position: fixed;
+  bottom: 10%;
+  padding: 2.2rem 3.2rem;
+  font-family: inherit;
+  font-size: 2.5rem;
+  font-weight: bold;
+  line-height: 1.35;
+  text-align: center;
+  color: var(--text);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 1.4rem;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.15s ease;
+}
+
+.music-btn:hover {
+  transform: scale(1.04);
+}
+
+.music-btn:active {
+  transform: scale(0.98);
+}
+
+.clock {
+  width: 30rem;
+  height: 30rem;
+  border: 20px solid var(--clock-border);
+  border-radius: 50%;
+  margin: 50px 0; /* centering is handled by the body flexbox */
+  position: relative;
+  padding: 2rem;
+  background: var(--card-bg);
+  box-shadow:
+    0 0 0 4px rgba(0,0,0,0.1),
+    inset 0 0 0 3px #EFEFEF,
+    inset 0 0 10px black,
+    0 0 10px rgba(0,0,0,0.2);
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.clock-face {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: translateY(-3px); /* account for the height of the clock hands */
+}
+
+.hand {
+  width: 50%;
+  height: 6px;
+  background: var(--hand);
+  position: absolute;
+  top: 50%;
+  z-index: 1; 
+  transform-origin: 100%;
+  transform: rotate(90deg);
+  /* No CSS transition here: JavaScript moves the hands every frame, so they glide. */
+}
+
+/* Hour numbers 1..12 around the face. Each ".number" is an invisible
+   full-size box spun by JavaScript; the <span> inside is the visible digit. */
+.number {
+  position: absolute;
+  inset: 0;
+  text-align: center;
+  pointer-events: none;
+}
+
+.number span {
+  display: inline-block;
+  margin-top: 0.8rem; /* push the digit toward the top edge of the face */
+  font-size: 1.9rem;
+  font-weight: bold;
+  color: var(--text);
+}
+
+/* ---------- Digital panel (rings + date) ---------- */
+
+.digital {
+  color: var(--text);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  padding: 2.5rem 3rem;
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.rings {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.ring {
+  position: relative;
+  width: 9rem;
+  height: 9rem;
+}
+
+.ring-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg); /* make the arc start at the top */
+}
+
+.ring-track {
+  fill: none;
+  stroke: var(--ring-track);
+  stroke-width: 8;
+}
+
+.ring-progress {
+  fill: none;
+  stroke-width: 8;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.3s ease;
+}
+
+/* The seconds ring is moved every frame by JavaScript, so it needs no
+   CSS transition of its own (that would fight the smooth animation). */
+.ring-seconds { stroke: var(--sec-color); transition: none; }
+.ring-minutes { stroke: var(--min-color); }
+.ring-hours   { stroke: var(--hour-color); }
+
+/* The number + label sit in the middle of the ring. */
+.ring-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+}
+
+.ring-value {
+  font-size: 2.6rem;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.ring-label {
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  color: var(--muted);
+}
+
+.digital-weekday {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-top: 1.8rem;
+}
+
+.digital-date {
+  font-size: 1.6rem;
+  margin-top: 0.6rem;
+  color: var(--muted);
+}
+
+.digital-year {
+  font-size: 1.6rem;
+  margin-top: 0.3rem;
+  color: var(--muted);
+}
+
+/* ---------- Theme toggle button ---------- */
+
+.theme-toggle {
+  position: fixed;
+  top: 1.6rem;
+  right: 1.6rem;
+  width: 4.4rem;
+  height: 4.4rem;
+  border: 1px solid var(--card-border);
+  border-radius: 50%;
+  background: var(--toggle-bg);
+  color: var(--text);
+  font-size: 2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease, transform 0.15s ease;
+  z-index: 10;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.08);
+}
+
+/* ---------- Random quote bar (top of the screen) ---------- */
+
+.quote-bar {
+  position: fixed;
+  top: 5%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  padding: 1.8rem 7rem; 
+  z-index: 5;
+}
+
+.quote {
+  color: var(--text);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+.quote-text {
+  display: block;
+  font-size: 2.8rem;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.quote-author {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 1.8rem;
+  color: var(--muted);
+}
