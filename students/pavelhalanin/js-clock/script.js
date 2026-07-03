@@ -19,7 +19,10 @@ class JSClockHelper {
     const MI = String(D.getMinutes()).padStart(2, "0");
     const SS = String(D.getSeconds()).padStart(2, "0");
 
-    this.updateSegmentDigits(HH, MI, SS);
+    const DAY_OF_WEEK = D.getDay();
+    const DAY_BY = this.getByDayOfWeek(DAY_OF_WEEK);
+    const DAY_RU = this.getRuDayOfWeek(DAY_OF_WEEK);
+    const DAY_EN = this.getEnDayOfWeek(DAY_OF_WEEK);
 
     const SECONDS_LINE = document.getElementById("seconds_line");
     if (!SECONDS_LINE) {
@@ -60,6 +63,75 @@ class JSClockHelper {
     const ARRAY = this.getArrayTimezoneData();
 
     TEXT_DATETIME.innerHTML = `
+      <p style="text-align: center;">${HH}:${MI}:${SS} ${DAY_RU}, ${DD} ${MONTH_RU}</p>
+      <p style="text-align: center;">${HH}:${MI}:${SS} ${DAY_BY}, ${DD} ${MONTH_BY} (Белоруская мова)</p>
+      <p style="text-align: center;">${HH}:${MI}:${SS} ${DAY_EN}, ${DD} ${MONTH_EN} (English)</p>
+      <div id="digital_segment_time" class="digital_segment_time">
+        <span class="digital_segment_time__wrapper">
+          <div class="seven_segment__container" data-symbol="0">
+            <div data-segment="a"></div>
+            <div data-segment="b"></div>
+            <div data-segment="c"></div>
+            <div data-segment="d"></div>
+            <div data-segment="e"></div>
+            <div data-segment="f"></div>
+            <div data-segment="g"></div>
+          </div>
+          <div class="seven_segment__container" data-symbol="0">
+            <div data-segment="a"></div>
+            <div data-segment="b"></div>
+            <div data-segment="c"></div>
+            <div data-segment="d"></div>
+            <div data-segment="e"></div>
+            <div data-segment="f"></div>
+            <div data-segment="g"></div>
+          </div>
+          <div class="segment_dots__container" data-is-on="true">
+            <div data-segment="top"></div>
+            <div data-segment="bottom"></div>
+          </div>
+          <div class="seven_segment__container" data-symbol="0">
+            <div data-segment="a"></div>
+            <div data-segment="b"></div>
+            <div data-segment="c"></div>
+            <div data-segment="d"></div>
+            <div data-segment="e"></div>
+            <div data-segment="f"></div>
+            <div data-segment="g"></div>
+          </div>
+          <div class="seven_segment__container" data-symbol="0">
+            <div data-segment="a"></div>
+            <div data-segment="b"></div>
+            <div data-segment="c"></div>
+            <div data-segment="d"></div>
+            <div data-segment="e"></div>
+            <div data-segment="f"></div>
+            <div data-segment="g"></div>
+          </div>
+          <div class="segment_dots__container" data-is-on="true">
+            <div data-segment="top"></div>
+            <div data-segment="bottom"></div>
+          </div>
+          <div class="seven_segment__container" data-symbol="0">
+            <div data-segment="a"></div>
+            <div data-segment="b"></div>
+            <div data-segment="c"></div>
+            <div data-segment="d"></div>
+            <div data-segment="e"></div>
+            <div data-segment="f"></div>
+            <div data-segment="g"></div>
+          </div>
+          <div class="seven_segment__container" data-symbol="0">
+            <div data-segment="a"></div>
+            <div data-segment="b"></div>
+            <div data-segment="c"></div>
+            <div data-segment="d"></div>
+            <div data-segment="e"></div>
+            <div data-segment="f"></div>
+            <div data-segment="g"></div>
+          </div>
+        </span>
+      </div>
       <table>
         <thead>
           <tr>
@@ -81,6 +153,8 @@ class JSClockHelper {
         </tbody>
       </table>
     `;
+
+    this.updateSegmentDigits(HH, MI, SS);
   }
 
   static updateSegmentDigits(hours, minutes, seconds) {
@@ -153,6 +227,42 @@ class JSClockHelper {
       "November",
       "December",
     ][monthIndex];
+  }
+
+  static getByDayOfWeek(dayIndex) {
+    return [
+      "нядзеля",
+      "панядзелак",
+      "аўторак",
+      "серада",
+      "чацвер",
+      "пятніца",
+      "субота",
+    ][dayIndex];
+  }
+
+  static getRuDayOfWeek(dayIndex) {
+    return [
+      "воскресенье",
+      "понедельник",
+      "вторник",
+      "среда",
+      "четверг",
+      "пятница",
+      "суббота",
+    ][dayIndex];
+  }
+
+  static getEnDayOfWeek(dayIndex) {
+    return [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ][dayIndex];
   }
 
   static getTimeZoneInfo(timeZone = "Europe/Minsk", now = new Date()) {
