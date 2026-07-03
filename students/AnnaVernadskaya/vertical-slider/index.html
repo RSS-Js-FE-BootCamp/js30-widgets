@@ -1,11 +1,74 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vertical Slider</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vertical Slider</title>
+    <link rel="icon" type="image/png" href="./images/rainbow.png">
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <div class="sidebar__slide sidebar__slide--red">
+          <h1>Raspberry Delight</h1>
+          <p>Sweet moments of summer</p>
+        </div>
 
-</body>
+        <div class="sidebar__slide sidebar__slide--orange">
+          <h1>Golden Lily</h1>
+          <p>Radiance in every petal</p>
+        </div>
+
+        <div class="sidebar__slide sidebar__slide--yellow">
+          <h1>Sunny Ride</h1>
+          <p>Freedom on bright days</p>
+        </div>
+
+        <div class="sidebar__slide sidebar__slide--green">
+          <h1>Green Escape</h1>
+          <p>Where nature breathes</p>
+        </div>
+
+        <div class="sidebar__slide sidebar__slide--light-blue">
+          <h1>Urban Blue</h1>
+          <p>Lines reaching the sky</p>
+        </div>
+
+        <div class="sidebar__slide sidebar__slide--blue">
+          <h1>Ocean Glow</h1>
+          <p>Mystery beneath the waves</p>
+        </div>
+
+        <div class="sidebar__slide sidebar__slide--purple">
+          <h1>Lavender Dreams</h1>
+          <p>Calm, soft and endless</p>
+        </div>
+      </div>
+
+      <div class="main-slide">
+        <div class="main-slide__item main-slide__item--purple"></div>
+        <div class="main-slide__item main-slide__item--blue"></div>
+        <div class="main-slide__item main-slide__item--light-blue"></div>
+        <div class="main-slide__item main-slide__item--green"></div>
+        <div class="main-slide__item main-slide__item--yellow"></div>
+        <div class="main-slide__item main-slide__item--orange"></div>
+        <div class="main-slide__item main-slide__item--red"></div>
+      </div>
+
+      <div class="controls">
+        <button
+          class="down-button"
+          type="button"
+          aria-label="Show previous slide"
+        >
+          ↓
+        </button>
+
+        <button class="up-button" type="button" aria-label="Show next slide">
+          ↑
+        </button>
+      </div>
+    </div>
+  </body>
 </html>
