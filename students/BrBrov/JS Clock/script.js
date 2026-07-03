@@ -1,5 +1,5 @@
 class StylesRulesData {
-  constructor(hour, minute, second, mode) {
+  constructor(hour, minute, second) {
     this.hour = hour;
     this.minute = minute;
     this.second = second;
@@ -22,11 +22,15 @@ class StylesRulesString {
     this._setBackGroundRules(rules.hour);
   }
 
-  _setAnalogClockRules(hour, minute, seconds){
+  _setAnalogClockRules(hour, minute, seconds) {
+    const hourAngle = hour * 30;
+    const minuteAngle = minute * 6;
+    const secondsAngle = seconds * 6;
+
     this._stringRules += `
-      --clock-analog-hour: ${hour};
-      --clock-analog-minute: ${minute};
-      --clock-analog-seconds: ${seconds};`;
+      --clock-analog-hour: ${hourAngle};
+      --clock-analog-minute: ${minuteAngle};
+      --clock-analog-seconds: ${secondsAngle};`;
   };
 
   _setBackGroundRules(hour) {
@@ -35,8 +39,8 @@ class StylesRulesString {
       night: 'https://images.pexels.com/photos/920534/pexels-photo-920534.jpeg'
     };
 
-    if (hour > 6 && hour < 20 ) {
-      this._stringRules += ('\n' +`--body-bg: url(${bgUrls.day});`);
+    if (hour > 6 && hour < 20) {
+      this._stringRules += ('\n' + `--body-bg: url(${bgUrls.day});`);
     } else {
       this._stringRules += ('\n' + `--body-bg: url(${bgUrls.night});`);
     }
@@ -142,9 +146,6 @@ class Clock extends ClockData {
   }
 
   setAnalogClock(timeData) {
-    const hourAngle = timeData.hour * 30;
-    const minuteAngle = timeData.minute * 6;
-    const secondsAngle = timeData.seconds * 6;
 
     const startStylesVariables = this.getRulesString(timeData.hour, timeData.minute, timeData.seconds);
 
