@@ -1,7 +1,8 @@
 # JS30 Widgets - @AnnaVernadskaya
 
-Pull Request: 
+Pull Request: https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/73
 
+Deploy: https://deploy-preview-73--js-30-widget-gallery.netlify.app/
 
 ## What was implemented
 
