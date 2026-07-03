@@ -38,11 +38,11 @@
   background-image: url('../assets/img/volume-solid-full.svg');
 }
 
-.button__rewind-back {
+.button__speed-decrease {
   background-image: url('../assets/img/backward-solid-full.svg');
 }
 
-.button__rewind-forward {
+.button__speed-increase {
   background-image: url('../assets/img/forward-solid-full.svg');
 }
 
