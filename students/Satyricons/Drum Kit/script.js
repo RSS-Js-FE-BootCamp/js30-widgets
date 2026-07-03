@@ -1,12 +1,9 @@
 //Вешаем событие на клик
 document.addEventListener('click', function (event) {
 
+    //Автобит:
     if (event.target.id === 'bit') {
-console.log ()
-
         function bit(sound) {
-
-
             AudioManager.play(sound)
         }
         setInterval(bit, 1000, event.target.parentElement.children[0].id);
@@ -42,10 +39,8 @@ document.addEventListener('transitionend', (event) => {
 
 //Обрабатываем изменение select    
 document.addEventListener('input', function (event) {
-    // console.log(event.target.value)
-    // console.log (event.target.parentElement.id)
     document.getElementById(event.target.parentElement.id).setAttribute('id', event.target.value)
-    AudioManager.stopAll()
+ if (event.target.id==='select_sint') AudioManager.stopAll()
 });
 
 // Создаем объект для управления звуком
