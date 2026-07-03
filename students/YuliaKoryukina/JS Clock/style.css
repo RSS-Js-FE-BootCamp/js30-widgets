@@ -120,3 +120,12 @@ html {
   .digital-clock.light-theme .digital-time { color: #000000; }
   .digital-clock.light-theme .digital-date { color: #555555; }
   .digital-clock.light-theme .digital-day { color: #000000; }
+  .welcome-text {
+    font-size: 2.8rem;         
+    color: #ffffff;       
+    margin-top: 1.5rem;        
+    font-style: italic;      
+  }
+  .digital-clock.light-theme .welcome-text {
+    color: #555555;            
+  }

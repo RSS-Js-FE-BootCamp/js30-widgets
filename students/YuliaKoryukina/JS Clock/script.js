@@ -4,6 +4,7 @@ const hourArrow = document.querySelector(".hour-arrow");
 const digitalTime = document.querySelector(".digital-time");
 const digitalDate = document.querySelector(".digital-date");
 const digitalDay = document.querySelector(".digital-day");
+const themeText = document.querySelector(".welcome-text");
 
 function setDate() {
   const now = new Date();
@@ -22,6 +23,16 @@ function setDate() {
   const currentHours = now.getHours();
   const hourDegrees = (currentHours / 12) * 360 + 90;
   hourArrow.style.transform = `rotate(${hourDegrees}deg)`;
+  // Greetings on time
+  if (currentHours >= 5 && currentHours < 12) {
+    themeText.textContent = "Доброе утро!";
+  } else if (currentHours >= 12 && currentHours < 18) {
+    themeText.textContent = "Добрый день!";
+  } else if (currentHours >= 18 && currentHours < 23) {
+    themeText.textContent = "Добрый вечер!";
+  } else {
+    themeText.textContent = "Доброй ночи!";
+  }
   // Digital Clock
   digitalTime.textContent = now.toLocaleTimeString("ru-RU", {
     hour: "2-digit",
@@ -38,13 +49,14 @@ function setDate() {
     weekday: "long",
   });
 }
+// Digital Clock BG color
 const themeClick = document.querySelector(".theme-click");
 const digitalClockPanel = document.querySelector(".digital-clock");
 themeClick.addEventListener("click", function () {
   if (digitalClockPanel.classList.contains("light-theme")) {
-    digitalClockPanel.classList.remove("light-theme"); 
+    digitalClockPanel.classList.remove("light-theme");
   } else {
-    digitalClockPanel.classList.add("light-theme"); 
+    digitalClockPanel.classList.add("light-theme");
   }
 });
 setInterval(setDate, 1000);
