@@ -57,31 +57,27 @@ class JSClockHelper {
       throw new Error(`Не найден узел: #text_datetime`);
     }
 
+    const ARRAY = this.getArrayTimezoneData();
+
     TEXT_DATETIME.innerHTML = `
       <table>
         <thead>
           <tr>
-            <td>Locale</td>
-            <td>Time</td>
+            <td>TIme Zone</td>
             <td>Date</td>
+            <td>Time</td>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>BY</td>
-            <td>${HH}:${MI}:${SS}</td>
-            <td>${DD} ${MONTH_BY} ${YYYY} г.</td>
-          </tr>
-          <tr>
-            <td>RU</td>
-            <td>${HH}:${MI}:${SS}</td>
-            <td>${DD} ${MONTH_RU} ${YYYY} г.</td>
-          </tr>
-          <tr>
-            <td>EN</td>
-            <td>${HH}:${MI}:${SS}</td>
-            <td>${DD} ${MONTH_EN}, ${YYYY}</td>
-          </tr>
+          ${ARRAY.map((e) => {
+            return `
+              <tr>
+                <td>${e["Зона"]}</td>
+                <td>${e["Дата"]}</td>
+                <td>${e["Время"]}</td>
+              </tr>
+            `;
+          }).join("")}
         </tbody>
       </table>
     `;
@@ -157,5 +153,58 @@ class JSClockHelper {
       "November",
       "December",
     ][monthIndex];
+  }
+
+  static getTimeZoneInfo(timeZone = "Europe/Minsk", now = new Date()) {
+    const STR = now.toLocaleString("ru-RU", { timeZone });
+
+    const DD = STR.slice(0, 2);
+    const MM = STR.slice(3, 5);
+    const YYYY = STR.slice(6, 10);
+
+    const HH = STR.slice(12, 14);
+    const MI = STR.slice(15, 17);
+    const SS = STR.slice(18, 20);
+
+    return {
+      Зона: timeZone,
+      Дата: `${DD}.${MM}.${YYYY}`,
+      Время: `${HH}:${MI}:${SS}`,
+    };
+  }
+
+  static getArrayTimezoneData() {
+    const now = new Date();
+
+    const arr = [
+      "Pacific/Samoa",
+      "Pacific/Marquesas",
+      "America/Anchorage",
+      "America/Phoenix",
+      "America/Costa_Rica",
+      "America/New_York",
+      "America/Montevideo",
+      "America/St_Johns",
+      "America/Noronha",
+      "Atlantic/Cape_Verde",
+      "Europe/London",
+      "Europe/Berlin",
+      "Europe/Vilnius",
+      "Europe/Minsk",
+      "Asia/Tashkent",
+      "Asia/Dhaka",
+      "Asia/Rangoon",
+      "Asia/Bangkok",
+      "Asia/Hong_Kong",
+      "Asia/Tokyo",
+      "Australia/Adelaide",
+      "Australia/Sydney",
+      "Pacific/Ponape",
+      "Pacific/Fiji",
+      "Pacific/Kiritimati",
+    ];
+
+    const THIS = this;
+    return arr.map((timeZone) => THIS.getTimeZoneInfo(timeZone, now));
   }
 }
