@@ -15,7 +15,7 @@ let isAnimating = false;
 mainSlide.prepend(mainItems[slidesCount - 1].cloneNode(true));
 mainSlide.append(mainItems[0].cloneNode(true));
 
-///клонируем последний слайд в начало, первый слайд в конец sidebar
+//клонируем последний слайд в начало, первый слайд в конец sidebar
 sidebar.prepend(sidebarItems[slidesCount - 1].cloneNode(true));
 sidebar.append(sidebarItems[0].cloneNode(true));
 
@@ -32,6 +32,28 @@ upButton.addEventListener('click', () => {
 
 downButton.addEventListener('click', () => {
   changeSlide('down');
+});
+
+//прокручивание колесиком мыши
+container.addEventListener('wheel', (event) => {
+  if (event.deltaY > 0) {
+    changeSlide('up');
+  }
+
+  if (event.deltaY < 0) {
+    changeSlide('down');
+  }
+});
+
+//перелистывание слайдов кнопками клавиатуры вверх-вниз
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'ArrowUp') {
+    changeSlide('down');
+  }
+
+  if (event.key === 'ArrowDown') {
+    changeSlide('up');
+  }
 });
 
 //после окончания анимации проверяем, не попали ли мы на клон
