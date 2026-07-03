@@ -66,7 +66,7 @@ body {
 }
 
 .sidebar__slide--blue {
-  background: linear-gradient(221.87deg, #00b4ff 1%, #001f7a 128%);
+  background: linear-gradient(221.87deg, #0b2d7a 1%, #020b3d 128%);
 }
 
 .sidebar__slide--purple {
@@ -118,7 +118,7 @@ body {
   background-image: url('./images/slide-red.jpg');
 }
 
-button {
+.controls button {
   position: absolute;
   left: 35%;
   top: 50%;
@@ -132,11 +132,11 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.controls button:hover {
   color: #222222;
 }
 
-button:focus {
+.controls button:focus {
   outline: none;
 }
 
