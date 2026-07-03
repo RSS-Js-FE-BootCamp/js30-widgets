@@ -1,37 +1,76 @@
-# JS30 Widgets - @AnnaVernadskaya
+# JS30 Widgets
 
-Pull Request: 
+Репозиторий для сдачи JS30-виджетов студентами RS School.
 
+## Как работать с репозиторием
 
-## What was implemented
+1. Склонируйте репозиторий:
 
-### Drum Kit
+   ```bash
+   git clone <repository-url>
+   cd js30-widgets
+   ```
 
-#### Stage 1 - Reproduction (20 points)
-- [x] The widget visually matches the original demo +10
-- [x] The core behaviour of the original widget works end-to-end +10
+2. Создайте новую ветку для своей работы:
 
-#### Stage 2 - Mandatory additional feature (15 points)
-- [x] The mandatory additional feature described in the widget's task file is implemented and works correctly. Allow the app to play sounds both on keyboard keypress and on mouse click on the corresponding on-screen pad. +10
-- [x] The feature is integrated with the rest of the UI +5
+   ```bash
+   git checkout -b github-login-widgets
+   ```
 
-#### Stage 3 - Optional improvements (up to 30 points)
-- [x] Added melody recording and playback +10
-- [x] Added floating musical notes animation +10
-- [x] Demo / custom theme toggle that persists across reloads. +10
+   Замените `github-login` на имя своего GitHub-аккаунта.
 
+3. В папке `students` создайте папку с названием вашего GitHub-аккаунта:
 
-### Vertical Slider
+   ```text
+   students/
+     github-login/
+   ```
 
-#### Stage 1 - Reproduction (20 points)
-- [x] The widget visually matches the original demo +10
-- [x] The core behaviour of the original widget works end-to-end +10
+4. Внутри своей папки создайте отдельные папки для виджетов и файл README.md . Все файлы каждого виджета храните внутри его папки.
 
-#### Stage 2 - Mandatory additional feature (15 points)
-- [x] The mandatory additional feature described in the widget's task file is implemented and works correctly. Make the slider infinite (looped). +10
-- [x] The feature is integrated with the rest of the UI +5
+   Пример:
 
-#### Stage 3 - Optional improvements (up to 30 points)
-- [x] Autoplay +10
-- [x] Keyboard navigation +10
-- [x] Mouse-wheel navigation +10
+   ```text
+   students/
+     github-login/
+       README.md 
+       drum-kit/
+         index.html
+         style.css
+         script.js
+       js-clock/
+         index.html
+         style.css
+         script.js
+   ```
+
+5. Ведите разработку виджетов внутри этих папок.
+
+6. В корневом файле `index.html` добавьте свою карточку по аналогии с уже существующими карточками.
+
+   Пример:
+
+   ```html
+   <article class="student-card">
+     <h3 class="student-name">@github-login</h3>
+     <div class="widget-links" aria-label="@github-login widget links">
+       <a class="widget-link" href="./students/github-login/drum-kit/">Drum Kit</a>
+       <a class="widget-link" href="./students/github-login/js-clock/">JS Clock</a>
+     </div>
+   </article>
+   ```
+
+   Замените `github-login`, названия папок и названия виджетов на свои.
+
+7. Закоммитьте изменения и запушьте свою ветку:
+
+   ```bash
+   git add .
+   git commit -m "feat: github-login widgets"
+   git push origin github-login-widgets
+   ```
+
+8. Не стесняйтесь делать пул реквесты для виджетов по отдельности, смотрите чужие пул реквесты, коментируйте код, кидайте апрувы.
+Если у вас есть мерж конфликты в ваших пулреквестах - старайтесь их исправить. 
+
+9. В РС апп сабмитим ссылку на ваш README.md файл где вы описали всю проделаную вами работу.

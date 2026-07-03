@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Music Kit</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="controls">
+        <button id="mode-toggle" class="mode-btn">Piano</button>
+        <input type="text" id="sequence-input" placeholder="Enter sequence (e.g. ACDF)..." maxlength="15">
+        <button id="play-sequence" class="play-btn">Play Sequence</button>
+        <button id="theme-toggle" class="theme-btn" title="Switch to topic">🌙</button>
+    </div>
+    <div id="drum-view" class="instrument-view active">
+        <div class="keys">
+            <div data-key="a" class="key">
+                <kbd>A</kbd>
+                <span class="sound">clap</span>
+            </div>
+            <div data-key="s" class="key">
+                <kbd>S</kbd>
+                <span class="sound">hihat</span>
+            </div>
+            <div data-key="d" class="key">
+                <kbd>D</kbd>
+                <span class="sound">kick</span>
+            </div>
+            <div data-key="f" class="key">
+                <kbd>F</kbd>
+                <span class="sound">openhat</span>
+            </div>
+            <div data-key="g" class="key">
+                <kbd>G</kbd>
+                <span class="sound">boom</span>
+            </div>
+            <div data-key="h" class="key">
+                <kbd>H</kbd>
+                <span class="sound">ride</span>
+            </div>
+            <div data-key="j" class="key">
+                <kbd>J</kbd>
+                <span class="sound">snare</span>
+            </div>
+            <div data-key="k" class="key">
+                <kbd>K</kbd>
+                <span class="sound">tom</span>
+            </div>
+            <div data-key="l" class="key">
+                <kbd>L</kbd>
+                <span class="sound">tink</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="piano-view" class="instrument-view">
+        <div class="piano-container">
+            <!-- White keys -->
+            <div class="piano-key white" data-key="a" data-freq="261.63" data-note="C4">A</div>
+            <div class="piano-key white" data-key="s" data-freq="293.66" data-note="D4">S</div>
+            <div class="piano-key white" data-key="d" data-freq="329.63" data-note="E4">D</div>
+            <div class="piano-key white" data-key="f" data-freq="349.23" data-note="F4">F</div>
+            <div class="piano-key white" data-key="g" data-freq="392.00" data-note="G4">G</div>
+            <div class="piano-key white" data-key="h" data-freq="440.00" data-note="A4">H</div>
+            <div class="piano-key white" data-key="j" data-freq="493.88" data-note="B4">J</div>
+            <div class="piano-key white" data-key="k" data-freq="523.25" data-note="C5">K</div>
+
+            <!-- Black keys -->
+            <div class="piano-key black" data-key="w" data-freq="277.18" data-note="C#4" style="left: 65px;">W</div>
+            <div class="piano-key black" data-key="e" data-freq="311.13" data-note="D#4" style="left: 125px;">E</div>
+            <div class="piano-key black" data-key="t" data-freq="369.99" data-note="F#4" style="left: 245px;">T</div>
+            <div class="piano-key black" data-key="y" data-freq="415.30" data-note="G#4" style="left: 305px;">Y</div>
+            <div class="piano-key black" data-key="u" data-freq="466.16" data-note="A#4" style="left: 365px;">U</div>
+        </div>
+    </div>
+
+    <audio data-key="a" src="sounds/clap.wav"></audio>
+        <audio data-key="s" src="sounds/hihat.wav"></audio>
+        <audio data-key="d" src="sounds/kick.wav"></audio>
+        <audio data-key="f" src="sounds/openhat.wav"></audio>
+        <audio data-key="g" src="sounds/boom.wav"></audio>
+        <audio data-key="h" src="sounds/ride.wav"></audio>
+        <audio data-key="j" src="sounds/snare.wav"></audio>
+        <audio data-key="k" src="sounds/tom.wav"></audio>
+        <audio data-key="l" src="sounds/tink.wav"></audio>
+
+        <script src='./script.js'></script>
+    </body>
+
+</html>
