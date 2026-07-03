@@ -41,8 +41,20 @@ const digitalYear = document.getElementById('digital-year');
     digitalDay.textContent = dayName;
     digitalDate.textContent = `${dayNum} ${monthName}`;
     digitalYear.textContent = year;
+
+    // === Индикатор прогресса (круговые диаграммы) ===
+    const secProgress = ((seconds / 60) * 100);
+    const minProgress = ((mins / 60) * 100);
+    const hourProgress = ((hour % 12) / 12) * 100;
+
+    document.getElementById('hours-progress').textContent = `${Math.round(hourProgress)}%`;
+    document.getElementById('minutes-progress').textContent = `${Math.round(minProgress)}%`;
+    document.getElementById('seconds-progress').textContent = `${Math.round(secProgress)}%`;
+
+    document.querySelector('#progress-hours').style.setProperty('--progress', `${hourProgress}%`);
+    document.querySelector('#progress-minutes').style.setProperty('--progress', `${minProgress}%`);
+    document.querySelector('#progress-seconds').style.setProperty('--progress', `${secProgress}%`);
   }
 
   setInterval(setDate, 1000);
   setDate();
-

@@ -46,7 +46,7 @@ body.dark .clock-wrapper {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
 }
 
-/* ���������� ��������� */
+/*  */
 .clock-face {
     position: relative;
     width: 300px;
@@ -258,3 +258,53 @@ body.dark .digital-block .date {
 body.dark .digital-block .year {
     color: #8a9aae;
 }
+
+/* Индикаторы прогресса (круговые диаграммы)*/
+    .extra-widgets {
+      margin-top: 3rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 3rem;
+      padding: 2rem 3rem;
+      border-radius: 6rem;
+    }
+
+    .progress-ring {
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    .progress-circle {
+      position: relative;
+      width: 7rem;
+      height: 7rem;
+      border-radius: 50%;
+      background: #e0e0e0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 0 1rem rgba(0,0,0,0.05);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      background: conic-gradient(#3498db var(--progress, 0%), #e0e0e0 var(--progress, 0%));
+      transition: background 0.3s;
+    }
+
+    body.dark .progress-circle {
+      background: conic-gradient(#5f9ea0 var(--progress, 0%), #3a3a55 var(--progress, 0%));
+      color: #ddd;
+      box-shadow: inset 0 0 1rem rgba(0,0,0,0.3);
+    }
+
+    .progress-circle .progress-label {
+      font-size: 0.6rem;
+      opacity: 0.7;
+    }
+
+    .progress-circle .progress-value {
+      font-size: 0.9rem;
+    }
