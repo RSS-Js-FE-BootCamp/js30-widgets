@@ -11,10 +11,10 @@ body {
 }
 
 .slider__container {
-position: relative;
-overflow: hidden;
-width: 100vw;
-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
 }
 
 .left__side {
@@ -25,21 +25,48 @@ height: 100vh;
   left: 0;
 }
 
-.left__side div:nth-child(1) { background-color: #2a86ba; }
-.left__side div:nth-child(2) { background-color: #ffb510; }
-.left__side div:nth-child(3) { background-color: #252e33; }
-.left__side div:nth-child(4) { background-color: #ff3555; }
-.left__side div:nth-child(5) { background-color: #515151; }
-.left__side div:nth-child(6) { background-color: #7b1fa2; }
+.left__side div:nth-child(1) {
+  background-color: #2a86ba;
+}
+.left__side div:nth-child(2) {
+  background-color: #ffb510;
+}
+.left__side div:nth-child(3) {
+  background-color: #252e33;
+}
+.left__side div:nth-child(4) {
+  background-color: #ff3555;
+}
+.left__side div:nth-child(5) {
+  background-color: #515151;
+}
+.left__side div:nth-child(6) {
+  background-color: #7b1fa2;
+}
 
 .left__side > div {
   height: 100%;
   width: 100%;
+  padding: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   color: white;
+}
+
+h1 {
+  font-size: 40px;
+  margin-top: -100px;
+  margin-bottom: 40px;
+}
+
+.left__side > div p {
+  font-size: 20px;
+  font-family:
+    "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  text-align: justify;
 }
 
 .right__side {
@@ -50,15 +77,58 @@ height: 100vh;
   width: 65%;
 }
 
-.right__side ul, 
+.right__side ul,
 .right__side li {
   height: 100%;
 }
 
 .right__side img {
-    object-fit: cover;
+  object-fit: cover;
   width: 100%;
   height: 100%;
 }
 
+.slider__container .buttons__container {
+  position: absolute;
+  left: 35%;
+  top: 50%;
+  z-index: 100;
+}
 
+.buttons__container button {
+  position: absolute;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  color: rgba(8, 24, 1, 0.527);
+  font-size: 27px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+}
+
+.buttons__container button:hover {
+  background-color: #9a9494;
+  color: rgb(251, 250, 245);
+}
+.buttons__container button:active {
+  background-color: #b4aeae;
+  color: rgb(229, 214, 138);
+}
+
+.btn__next {
+  left: 0;
+  transform: translateY(-100%);
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.btn__prev {
+  left: -50px;
+  transform: translateY(0);
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
