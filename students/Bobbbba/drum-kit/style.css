@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+}
+html {
+  scroll-behavior: smooth;
+   background: url(image/background.jpg) bottom center;
+}
+
+.keys {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-content: center;
+    margin: 400px auto;
+    
+}
+.letters {
+    color: #ffffff;
+}
+.discription {
+    color: #ffc600;
+}
+.letter_discription {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px solid #000000;
+    padding: 15px;
+}
