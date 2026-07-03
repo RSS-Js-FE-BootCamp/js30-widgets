@@ -1,6 +1,6 @@
 # JS30 Widgets - @alexanisa
 
-Pull Request:
+Pull Request:https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/66
 
 ## What was implemented
 
@@ -22,5 +22,5 @@ Pull Request:
 
 ## Live previews
 
-- Drum Kit:
-- Vertical Slider:
+- Drum Kit:https://deploy-preview-66--js-30-widget-gallery.netlify.app/students/alexanisa/drum-kit/
+- Vertical Slider:https://deploy-preview-66--js-30-widget-gallery.netlify.app/students/alexanisa/vertical-slider/
