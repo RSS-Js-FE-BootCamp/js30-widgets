@@ -26,7 +26,7 @@ body {
 }
 
 .left__side div:nth-child(1) {
-  background-color: #2a86ba;
+  background-color: #7b1fa2;
 }
 .left__side div:nth-child(2) {
   background-color: #ffb510;
@@ -41,7 +41,7 @@ body {
   background-color: #515151;
 }
 .left__side div:nth-child(6) {
-  background-color: #7b1fa2;
+  background-color: #2a86ba;
 }
 
 .left__side > div {
