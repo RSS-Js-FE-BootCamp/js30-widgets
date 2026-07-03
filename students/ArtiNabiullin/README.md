@@ -3,6 +3,8 @@
 Pull Request: https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/32
 Deploy Preview: https://deploy-preview-68--js-30-widget-gallery.netlify.app
 Deploy Preview: https://deploy-preview-68--elegant-quokka-1ce2cd.netlify.app
+Custom Video Player: https://deploy-preview-68--js-30-widget-gallery.netlify.app/students/artinabiullin/custom%20video%20player/
+Whack-A-Mole: https://deploy-preview-68--js-30-widget-gallery.netlify.app/students/artinabiullin/whack-a-mole/
 
 ## What was implemented
 
