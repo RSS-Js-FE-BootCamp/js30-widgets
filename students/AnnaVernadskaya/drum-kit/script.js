@@ -1,14 +1,15 @@
 //ОСНОВНОЙ ФУНКЦИОНАЛ
 const keys = document.querySelectorAll('.key');
 
-//удаляет класс анимации, когда событие закончилось
-const removeTransition = (event) => {
-  if (event.propertyName !== 'transform') {
-    return;
-  }
+//запись мелодии
+const recordButton = document.querySelector('[data-action="record"]');
+const stopButton = document.querySelector('[data-action="stop"]');
+const playButton = document.querySelector('[data-action="play"]');
 
-  event.target.classList.remove('playing');
-};
+let isRecording = false;
+let isPlayingRecord = false;
+let recordStartTime = 0;
+let recordedMelody = [];
 
 //воспроизведение аудио
 const playSound = (keyCode) => {
@@ -19,10 +20,27 @@ const playSound = (keyCode) => {
     return;
   }
 
+    //запись мелодии
+    if (isRecording && !isPlayingRecord) {
+    recordedMelody.push({
+      keyCode: keyCode,
+      time: Date.now() - recordStartTime,
+    });
+  }
+
   key.classList.add('playing');
 
   audio.currentTime = 0;
   audio.play();
+};
+
+//удаляет класс анимации, когда событие закончилось
+const removeTransition = (event) => {
+  if (event.propertyName !== 'transform') {
+    return;
+  }
+
+  event.target.classList.remove('playing');
 };
 
 //воспроизведение аудио при нажатии на клавишу
@@ -44,7 +62,6 @@ keys.forEach((key) => {
 });
 
 window.addEventListener('keydown', handleKeydown);
-
 
 // ПЕРЕКЛЮЧЕНИЕ ТЕМ
 const themeButtons = document.querySelectorAll('.theme-switcher__button');
@@ -92,3 +109,53 @@ const createFloatingNote = (event) => {
   });
 };
 
+//запись мелодии
+
+recordButton.addEventListener('click', () => {
+  recordedMelody = [];
+  recordStartTime = Date.now();
+  isRecording = true;
+
+  recordButton.classList.add('recorder__button--active');
+
+  recordButton.disabled = true;
+  stopButton.disabled = false;
+  playButton.disabled = true;
+});
+
+stopButton.addEventListener('click', () => {
+  isRecording = false;
+
+  recordButton.classList.remove('recorder__button--active');
+
+  recordButton.disabled = false;
+  stopButton.disabled = true;
+
+  if (recordedMelody.length > 0) {
+    playButton.disabled = false;
+  }
+});
+
+playButton.addEventListener('click', () => {
+  if (recordedMelody.length === 0) {
+    return;
+  }
+
+  isPlayingRecord = true;
+  playButton.disabled = true;
+  recordButton.disabled = true;
+
+  recordedMelody.forEach((note) => {
+    setTimeout(() => {
+      playSound(note.keyCode);
+    }, note.time);
+  });
+
+  const lastNote = recordedMelody[recordedMelody.length - 1];
+
+  setTimeout(() => {
+    isPlayingRecord = false;
+    playButton.disabled = false;
+    recordButton.disabled = false;
+  }, lastNote.time + 500);
+});
