@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Clock</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+</head>
+<body>
+    <div class="timezone-wrapper">
+        <div class="timezone">
+            <span>Tokyo</span>
+            <div class="timezone-clock" data-timezone="Asia/Tokyo"></div>
+        </div>
+        <div class="timezone">
+            <span>Dubai</span>
+            <div class="timezone-clock" data-timezone="Asia/Dubai"></div>
+        </div>
+        <div class="timezone">
+            <span>Paris</span>
+            <div class="timezone-clock" data-timezone="Europe/Paris"></div>
+        </div>
+        <div class="timezone">
+            <span>New-York</span>
+            <div class="timezone-clock" data-timezone="America/New_York"></div>
+        </div>
+    </div>
+    <div class="clock" data-timezone="local">
+        <div class="clock-face">
+            <div class="hand hour-hand"></div>
+            <div class="hand min-hand"></div>
+            <div class="hand sec-hand"></div>
+            <div class="circle"></div>
+            <div class="twelve">12</div>
+            <div class="three">3</div>
+            <div class="six">6</div>
+            <div class="nine">9</div>
+            <div class="one">1</div>
+            <div class="two">2</div>
+            <div class="four">4</div>
+            <div class="five">5</div>
+            <div class="seven">7</div>
+            <div class="eight">8</div>
+            <div class="ten">10</div>
+            <div class="eleven">11</div>
+        </div>
+    </div>
+    <div class="digital-clock"></div>
+    <a href="https://unsplash.com/photos/tropical-sunset-over-a-pier-with-bungalows-and-palm-trees-JSX5JXMg96g" target="_blank" class="credits">Photo by Rafael Peier</a>
+    <script src="script.js"></script>
+</body>
+</html>

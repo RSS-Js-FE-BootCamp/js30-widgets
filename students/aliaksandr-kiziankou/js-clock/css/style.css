@@ -1,0 +1,228 @@
+html {
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)),
+        url("../assets/img/resort.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+    padding-top: 30px;
+    padding-bottom: 70px;
+}
+
+.clock {
+    width: 25rem;
+    height: 25rem;
+    margin: 50px auto;
+    border-radius: 50%;
+    padding: 20px;
+    position: relative;
+    background: rgba(15, 36, 46, 0.235);
+    box-shadow:
+        0 0 0 4px rgba(190, 157, 187, 0.683),
+        inset 0 0 0 10px rgba(190, 157, 187, 0.683),
+        inset 0 0 10px black,
+        0 0 10px rgba(255, 255, 255, 0.557);
+}
+
+.clock-face {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform: translateY(-2px);
+}
+
+.hand {
+    width: 50%;
+    height: 4px;
+    background: rgb(255, 255, 255);
+    position: absolute;
+    border-radius: 50%;
+    top: 50%;
+    transition: all 0.07s;
+    transform-origin: 100%;
+    transform: rotate(90deg);
+    transition-timing-function: cubic-bezier(0.08, 1.87, 0.64, 0.97);
+}
+
+.circle {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgb(249, 176, 130);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-6px) translateY(-4px);
+}
+
+.sec-hand {
+    background: rgba(249, 176, 130, 0.753);
+    height: 2px;
+}
+
+.hour-hand {
+    height: 6px;
+}
+
+.twelve {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-14px);
+    color: white;
+    font-size: 25px;
+}
+
+.three {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-6px);
+    color: rgb(255, 255, 255);
+    font-size: 25px;
+}
+
+.nine {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-6px);
+    color: white;
+    font-size: 25px;
+}
+
+.six {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-8px) translateY(8px);
+    color: white;
+    font-size: 25px;
+}
+
+.one {
+    position: absolute;
+    top: 6%;
+    right: 20%;
+    transform: translateX(-14px);
+    color: white;
+    font-size: 15px;
+}
+
+.two {
+    position: absolute;
+    top: 25%;
+    right: 3%;
+    transform: translateX(-14px);
+    color: white;
+    font-size: 15px;
+}
+
+.four {
+    position: absolute;
+    bottom: 25%;
+    right: 3%;
+    transform: translateX(-14px);
+    color: white;
+    font-size: 15px;
+}
+
+.five {
+    position: absolute;
+    bottom: 6%;
+    right: 20%;
+    transform: translateX(-14px);
+    color: white;
+    font-size: 15px;
+}
+
+.seven {
+    position: absolute;
+    bottom: 6%;
+    left: 28%;
+    transform: translateX(-14px);
+    color: white;
+    font-size: 15px;
+}
+
+.eight {
+    position: absolute;
+    bottom: 22%;
+    left: 12%;
+    transform: translateX(-14px);
+    color: white;
+    font-size: 15px;
+}
+
+.ten {
+    position: absolute;
+    top: 24%;
+    left: 10%;
+    transform: translateX(-14px);
+    color: white;
+    font-size: 15px;
+}
+
+.eleven {
+    position: absolute;
+    top: 6%;
+    left: 28%;
+    transform: translateX(-14px);
+    color: white;
+    font-size: 15px;
+}
+
+/*-----------Digital Clock (Mandatory Additional Feature)-----------*/
+
+.digital-clock {
+    font-size: 20px;
+}
+
+/*---------------------Multiple Time Zones---------------------*/
+
+.timezone-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.486);
+    border-radius: 15px;
+}
+
+.timezone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+}
+
+.timezone span {
+    font-size: 20px;
+}
+
+.timezone-clock {
+    font-size: 17px;
+    max-width: 310px;
+    width: 100%;
+}
+
+.credits {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.224);
+}
