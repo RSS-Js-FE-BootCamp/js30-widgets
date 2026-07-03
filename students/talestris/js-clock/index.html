@@ -27,10 +27,7 @@
             background-size: cover;
         }
 
-        .theme-toggle-btn {
-            position: absolute;
-            top: 2rem;
-            right: 2rem;
+        .btn {
             display: flex;
             align-items: center;
             gap: 0.8rem;
@@ -47,7 +44,19 @@
             cursor: pointer;
         }
 
-        .theme-toggle-btn:hover {
+        .hands-mode-toggle-btn {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+        }
+
+        .theme-toggle-btn {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+        }
+
+        .btn:hover {
             background: white;
             transform: translateY(-0.2rem);
             box-shadow: 0 0.6rem 0.8rem rgba(0, 0, 0, 0.15);
@@ -103,7 +112,11 @@
             background: black;
             transform-origin: 100%;
             transform: rotate(90deg);
-            transition: all 0.05s;
+            transition: none;
+
+        }
+
+        .hand.ticking-mode {
             transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
         }
 
@@ -191,7 +204,8 @@
 </head>
 
 <body>
-    <button class="theme-toggle-btn" type="button" aria-label="toggle dark/light theme">
+    <button class="hands-mode-toggle-btn btn" type="button" aria-label="toggle clock hands mode">🔄 Smooth Mode</button>
+    <button class="theme-toggle-btn btn" type="button" aria-label="toggle dark/light theme">
         <span class="theme-btn-icon">🌙</span> Dark Mode
     </button>
     <div class="clock">
@@ -231,6 +245,33 @@
         const newYorkContainer = document.querySelector('#new-york-time');
 
         const themeBtn = document.querySelector('.theme-toggle-btn');
+
+        const modeBtn = document.querySelector('.hands-mode-toggle-btn');
+        const allHands = document.querySelectorAll('.hand');
+
+        let isTicking = localStorage.getItem('clock-mode') === 'ticking';
+        let clockTimer;
+
+        function applyClockMode() {
+            allHands.forEach(hand => {
+                if (isTicking) {
+                    hand.classList.add('ticking-mode');
+                    modeBtn.innerHTML = '🔄 Smooth Mode';
+                } else {
+                    hand.classList.remove('ticking-mode');
+                    modeBtn.innerHTML = '⏰ Ticking Mode';
+                }
+            });
+        }
+
+        modeBtn.addEventListener('click', () => {
+            isTicking = !isTicking;
+            localStorage.setItem('clock-mode', isTicking ? 'ticking' : 'smooth');
+            applyClockMode();
+            setDate();
+        });
+
+        applyClockMode();
 
         themeBtn.addEventListener('click', () => {
             document.body.classList.toggle('dark-theme');
@@ -283,10 +324,22 @@
             const seconds = now.getSeconds();
             const mins = now.getMinutes();
             const hours = now.getHours();
+            const ms = now.getMilliseconds();
+            const timeZoneOffsetMs = now.getTimezoneOffset() * 60 * 1000;
+            const timeMs = now.getTime() - timeZoneOffsetMs;
 
-            if (seconds < lastSeconds) secondsCycles++;
+            const smoothSecondsDeg = ((timeMs / 1000) * 6) % 360 + 90;
+            const smoothMinsDeg = ((timeMs / 1000 / 60) * 6) % 360 + 90;
+            const smoothHoursDeg = ((timeMs / 1000 / 60 / 12) * 6) % 360 + 90;
+
+            const tickingSecondsDeg = ((seconds / 60) * 360) + 90;
+            const tickingMinsDeg = ((mins / 60) * 360) + ((seconds / 60) * 6) + 90;
+            const tickingHoursDeg = (((hours % 12) / 12) * 360) + ((mins / 60) * 30) + 90;
+
+            /*if (seconds < lastSeconds) secondsCycles++;
             lastSeconds = seconds;
-            const totalSeconds = seconds + (secondsCycles * 60);
+            const exactSeconds = seconds + (isTicking ? 0 : ms / 1000);
+            const totalSeconds = exactSeconds + (secondsCycles * 60);
 
             if (mins < lastMinutes) minutesCycles++;
             lastMinutes = mins;
@@ -298,12 +351,12 @@
             const totalHours = hours12 + (hoursCycles * 12);
 
             const secondsDegrees = ((totalSeconds / 60) * 360) + 90;
-            const minsDegrees = ((totalMinutes / 60) * 360) + (seconds * 0.1) + 90;
-            const hoursDegrees = ((totalHours / 12) * 360) + (mins * 0.5) + 90;
+            const minsDegrees = ((totalMinutes / 60) * 360) + (exactSeconds * 0.1) + 90;
+            const hoursDegrees = ((totalHours / 12) * 360) + (mins * 0.5) + 90;*/
 
-            secondsHand.style.transform = `rotate(${secondsDegrees}deg)`;
-            minsHand.style.transform = `rotate(${minsDegrees}deg)`;
-            hoursHand.style.transform = `rotate(${hoursDegrees}deg)`;
+            secondsHand.style.transform = `rotate(${isTicking ? tickingSecondsDeg : smoothSecondsDeg}deg)`;
+            minsHand.style.transform = `rotate(${isTicking ? tickingMinsDeg : smoothMinsDeg}deg)`;
+            hoursHand.style.transform = `rotate(${isTicking ? tickingHoursDeg : smoothHoursDeg}deg)`;
 
             digitalTimeContainer.textContent = now.toLocaleTimeString('en-US', { hour12: false });
             digitalDateContainer.textContent = now.toLocaleDateString('en-US', {
@@ -316,9 +369,11 @@
             londonContainer.textContent = now.toLocaleTimeString('en-US', { timeZone: 'Europe/London', hour12: false });
             tokioContainer.textContent = now.toLocaleTimeString('en-US', { timeZone: 'Asia/Tokyo', hour12: false });
             newYorkContainer.textContent = now.toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour12: false });
-        }
 
-        setInterval(setDate, 1000);
+            const delay = isTicking ? (1000 - now.getMilliseconds()) : 50;
+            clearTimeout(clockTimer);
+            clockTimer = setTimeout(setDate, delay);
+        }
 
         setDate();
     </script>
