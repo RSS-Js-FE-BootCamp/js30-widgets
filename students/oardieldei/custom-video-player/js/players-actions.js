@@ -11,6 +11,7 @@ export function playPause(video) {
 		video.pause()
 	}
 }
+
 export function watchPlayPause(video) {
 	const playPauseBtn = document.querySelector('.play_pause__button')
 

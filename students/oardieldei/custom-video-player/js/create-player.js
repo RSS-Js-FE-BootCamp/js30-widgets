@@ -12,6 +12,7 @@ import {
 	changeVolume
 } from "./players-actions.js"
 import { createHotKeys } from "./hotkeys.js"
+import { createWrapper } from "./playlist.js"
 
 const playerContainer = document.querySelector('.content__wrapper')
 const titleItem = document.querySelector('.full__title')
@@ -19,7 +20,6 @@ const titleItem = document.querySelector('.full__title')
 const response = await fetch('./js/json/videos.json')
 const mediaData = await response.json()
 
-let isMuted = false
 let currentVideoIndex = 0
 
 export function createPlayer(videoIndex) {
@@ -34,11 +34,14 @@ export function createPlayer(videoIndex) {
 	videoViewer.classList.add('player__video')
 	videoViewer.classList.add('viewer')
 	videoViewer.src = mediaData[videoIndex].videoUrl
+	videoViewer.poster = mediaData[videoIndex].previewUrl
 
 	playerWrapper.append(videoViewer)
 	playerWrapper.append(createPlayerControls())
 
 	playerContainer.append(playerWrapper)
+	playerContainer.append(createWrapper(videoIndex))
+	
 
 	addActions(videoViewer)
 }
@@ -213,15 +216,6 @@ function createSpeedItem() {
 	speedWrapper.append(speedIcon)
 
 	return speedWrapper
-}
-
-function toggleMuted(elem) {
-	if (isMuted) {
-		elem.innerHTML = '<svg class="player-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 9H8L14 4V20L8 15H4Z"/><path d="M17 8C18.5 9.2 19.3 10.5 19.3 12C19.3 13.5 18.5 14.8 17 16"/></svg>'
-	} else {
-		elem.innerHTML = '<svg class="player-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 9H8L14 4V20L8 15H4Z"/><path d="M17 8L21 16"/><path d="M21 8L17 16"/></svg>'
-	}
-	isMuted = !isMuted
 }
 
 function addActions(video) {

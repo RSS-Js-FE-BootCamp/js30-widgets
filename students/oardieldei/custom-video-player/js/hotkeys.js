@@ -66,8 +66,6 @@ const codeMap = {
 const keyMap = {
 	j: (video) => video.currentTime -= 10,
 	l: (video) => video.currentTime += 10,
-	",": () => { },
-	".": () => { },
 	"<": (video) => {
 		changeSpeed(video, 'down')
 	},
