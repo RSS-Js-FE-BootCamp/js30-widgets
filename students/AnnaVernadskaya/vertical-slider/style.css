@@ -141,6 +141,12 @@ body {
 }
 
 .down-button {
+  transform: translateY(100%);
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.autoplay-button {
   transform: translateX(-100%);
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;

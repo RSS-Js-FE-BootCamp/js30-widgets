@@ -121,3 +121,35 @@ function jumpToSlide(index) {
     sidebar.classList.remove('no-transition');
   });
 }
+
+
+//автоплей
+const autoplayButton = document.querySelector('.autoplay-button');
+
+let autoplayId = null;
+
+
+autoplayButton.addEventListener('click', () => {
+  if (autoplayId) {
+    stopAutoplay();
+  } else {
+    startAutoplay();
+  }
+});
+
+function startAutoplay() {
+  autoplayId = setInterval(() => {
+    changeSlide('up');
+  }, 2000);
+
+  autoplayButton.textContent = '⏸';
+  autoplayButton.setAttribute('aria-label', 'Stop autoplay');
+}
+
+function stopAutoplay() {
+  clearInterval(autoplayId);
+  autoplayId = null;
+
+  autoplayButton.textContent = '▶';
+  autoplayButton.setAttribute('aria-label', 'Start autoplay');
+}
