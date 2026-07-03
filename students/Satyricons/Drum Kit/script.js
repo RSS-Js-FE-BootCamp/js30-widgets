@@ -28,8 +28,8 @@ document.addEventListener('transitionend', (event) => {
 
 //Обрабатываем изменение select    
 document.addEventListener('input', function (event) {
-    console.log(event.target.value)
-    console.log (event.target.parentElement.id)
+    // console.log(event.target.value)
+    // console.log (event.target.parentElement.id)
     document.getElementById(event.target.parentElement.id).setAttribute('id', event.target.value)
     AudioManager.stopAll()
 });

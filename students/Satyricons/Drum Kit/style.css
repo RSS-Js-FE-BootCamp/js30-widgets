@@ -116,10 +116,6 @@ display: flex;
     flex-direction: column-reverse;
 }
 
-#stop{
-    /* display: none; */
-}
-
 @media (max-width:767px) {
     body{
         transform: scale(0.5);
