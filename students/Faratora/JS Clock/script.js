@@ -13,39 +13,52 @@ const secondsProgress = document.getElementById('seconds-progress');
 
 const themeBtn = document.getElementById('theme-btn');
 
+let prevSecond = -1;
+let isTransitionDisabled = false;
 
 function updateClock() {
     const now = new Date();
-    
+
     const seconds = now.getSeconds();
     const minutes = now.getMinutes();
     const hours = now.getHours() % 12;
-    
-    const secondsDegrees = (seconds / 60) * 360;
 
+    const isSecondRollover = prevSecond === 59 && seconds === 0;
+
+    const secondsDegrees = (seconds / 60) * 360;
     const minutesDegrees = (minutes / 60) * 360 + (seconds / 60) * 6;
-    
     const hoursDegrees = (hours / 12) * 360 + (minutes / 60) * 30;
-    
+
+    if (isSecondRollover) {
+      secondHand.classList.add('no-transition');
+        minHand.classList.add('no-transition');
+        hourHand.classList.add('no-transition');
+        isTransitionDisabled = true;
+      }
+
     secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
     minHand.style.transform = `rotate(${minutesDegrees}deg)`;
     hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
 
+if (isTransitionDisabled) {
+        // Используем requestAnimationFrame для гарантии, что transition отключился
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            secondHand.classList.remove('no-transition');
+            minHand.classList.remove('no-transition');
+            hourHand.classList.remove('no-transition');
+            isTransitionDisabled = false;
+          });
+        });
+      }
+prevSecond = seconds;
     // === Цифровое время ===
     const hh = String(now.getHours()).padStart(2, '0');
     const mm = String(minutes).padStart(2, '0');
     const ss = String(seconds).padStart(2, '0');
     digitalTime.textContent = `${hh}:${mm}:${ss}`;
 
-    const days = [
-      'Воскресенье', 
-      'Понедельник', 
-      'Вторник', 
-      'Среда', 
-      'Четверг', 
-      'Пятница', 
-      'Суббота'
-    ];
+    const days = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
     const months = [
         'января',
         'февраля',
