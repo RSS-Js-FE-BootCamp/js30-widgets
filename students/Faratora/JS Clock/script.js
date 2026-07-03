@@ -7,6 +7,7 @@ const digitalTime = document.getElementById('digital-time');
 const digitalDay = document.getElementById('digital-day');
 const digitalDate = document.getElementById('digital-date');
 const digitalYear = document.getElementById('digital-year');
+const themeBtn = document.getElementById('theme-btn');
 
 
   function setDate() {
@@ -58,3 +59,27 @@ const digitalYear = document.getElementById('digital-year');
 
   setInterval(setDate, 1000);
   setDate();
+
+
+  // === Тёмная/светлая тема ===
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+      const isDark = document.body.classList.contains('dark');
+      themeBtn.textContent = isDark ? '☀️ Светлая' : '🌙 Тёмная';
+      localStorage.setItem('clock-theme', isDark ? 'dark' : 'light');
+    }
+
+    function loadTheme() {
+      const saved = localStorage.getItem('clock-theme');
+      if (saved === 'dark') {
+        document.body.classList.add('dark');
+        themeBtn.textContent = '☀️ Светлая';
+      } else {
+        document.body.classList.remove('dark');
+        themeBtn.textContent = '🌙 Тёмная';
+      }
+    }
+
+    themeBtn.addEventListener('click', toggleTheme);
+
+loadTheme();

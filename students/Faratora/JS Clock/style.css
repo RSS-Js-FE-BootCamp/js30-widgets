@@ -308,3 +308,31 @@ body.dark .digital-block .year {
     .progress-circle .progress-value {
       font-size: 0.9rem;
     }
+
+    /* Смена темы */
+
+     .theme-toggle button {
+      background: #2c3e50;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 40px;
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: 0.2s;
+    }
+
+    .theme-toggle button:hover {
+      transform: scale(1.05);
+      background: #1a2632;
+    }
+
+    body.dark .theme-toggle button {
+      background: #5f6b7a;
+      color: #1e1e2f;
+    }
+
+    body.dark .theme-toggle button:hover {
+      background: #8a9aae;
+    }
