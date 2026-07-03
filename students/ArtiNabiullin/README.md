@@ -1,6 +1,8 @@
 # JS30 Widgets - @ArtiNabiullin
 
 Pull Request: https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/32
+Deploy Preview: https://deploy-preview-68--js-30-widget-gallery.netlify.app
+Deploy Preview: https://deploy-preview-68--elegant-quokka-1ce2cd.netlify.app
 
 ## What was implemented
 
