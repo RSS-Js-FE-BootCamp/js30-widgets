@@ -46,7 +46,8 @@ class JSClockHelper {
     MINUTES_LINE.style.transition = MI == "00" ? "" : "all 0.5s ease-in-out";
     MINUTES_LINE.style.transform = `rotate(${MINUTES_DEG}deg)`;
 
-    let hours_deg = (HH / 60) * 360;
+    const HH12 = HH > 12 ? HH - 12 : HH;
+    let hours_deg = (HH12 / 12) * 360;
     const HOURS_DEG = hours_deg + 90;
     HOURS_LINE.style.transition = HH == "00" ? "" : "all 0.5s ease-in-out";
     HOURS_LINE.style.transform = `rotate(${HOURS_DEG}deg)`;
