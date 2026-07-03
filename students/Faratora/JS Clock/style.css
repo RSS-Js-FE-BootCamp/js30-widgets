@@ -59,6 +59,94 @@
         box-shadow: 0 0 0 6px #3d3d5c, inset 0 0 20px rgba(0, 0, 0, 0.5);
     }
 
+ /* Домик для кукушки */
+    .cuckoo-house {
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 45px;
+      background: #8B6914;
+      border-radius: 10px 10px 0 0;
+      border: 3px solid #5C4033;
+      border-bottom: none;
+      z-index: 20;
+      overflow: hidden;
+      box-shadow: 0 -4px 12px rgba(0,0,0,0.2);
+    }
+
+    body.dark .cuckoo-house {
+      background: #6B4F12;
+      border-color: #3D2B1E;
+    }
+
+    .cuckoo-house::after {
+      content: '🏠';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 20px;
+      opacity: 0.3;
+    }
+
+    /* Дверца для кукушки */
+    .cuckoo-door {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 30px;
+      height: 30px;
+      background: #5C4033;
+      border-radius: 50% 50% 0 0;
+      border: 2px solid #3D2B1E;
+      overflow: hidden;
+      transition: transform 0.3s ease-in-out;
+      z-index: 21;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cuckoo-door.open {
+      transform: translateX(-50%) translateY(-100%) rotateX(180deg);
+    }
+
+    body.dark .cuckoo-door {
+      background: #3D2B1E;
+      border-color: #2D1B0E;
+    }
+
+    /* Сама кукушка */
+    .cuckoo-bird {
+      position: absolute;
+      bottom: 5px;
+      left: 50%;
+      transform: translateX(-50%) scale(0);
+      font-size: 28px;
+      z-index: 22;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+      line-height: 1;
+    }
+
+    .cuckoo-bird.show {
+      transform: translateX(-50%) scale(1);
+    }
+
+    .cuckoo-bird.chiming {
+      animation: cuckooChime 0.6s ease-in-out infinite alternate;
+    }
+
+    @keyframes cuckooChime {
+      0% { transform: translateX(-50%) scale(1) rotate(0deg); }
+      100% { transform: translateX(-50%) scale(1.1) rotate(-10deg); }
+    }
+
+
+
     .hand {
         position: absolute;
         bottom: 50%;
@@ -628,3 +716,55 @@
     body.dark .theme-toggle button:hover {
         background: #8a9aae;
     }
+
+    /* Индикатор кукушки */
+    .cuckoo-indicator {
+      text-align: center;
+      margin-top: 100px;
+      font-size: 0.9rem;
+      color: #5d6d7e;
+      min-height: 24px;
+    }
+
+    body.dark .cuckoo-indicator {
+      color: #8a9aae;
+    }
+
+    /* Кнопка включения звука */
+    .cuckoo-sound-btn {
+      display: block;
+      margin: 8px auto 0;
+      padding: 6px 16px;
+      font-size: 0.75rem;
+      background: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .cuckoo-sound-btn:hover {
+      background: #2980b9;
+    }
+
+    .cuckoo-sound-btn.enabled {
+      background: #27ae60;
+    }
+
+    .cuckoo-sound-btn.enabled:hover {
+      background: #219a52;
+    }
+
+    body.dark .cuckoo-sound-btn {
+      background: #5f9ea0;
+    }
+
+    body.dark .cuckoo-sound-btn:hover {
+      background: #4a8a8c;
+    }
+
+    body.dark .cuckoo-sound-btn.enabled {
+      background: #2ecc71;
+    }
+
