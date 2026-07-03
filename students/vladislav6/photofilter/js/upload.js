@@ -1,4 +1,4 @@
-import { gallery, canvas, ctx, img } from "./main.js";
+import { gallery, canvas, ctx, img, setFiltersToPicture, filters } from "./main.js";
 
 const file = document.getElementById('file');
 const uploadError = document.querySelector('.upload-error');
@@ -24,6 +24,7 @@ const onUplodaFile = (e) => {
         canvas.width = img.width;
         canvas.height = img.height;
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        setFiltersToPicture(filters);
       };
 
       const ulr = URL.createObjectURL(blob);

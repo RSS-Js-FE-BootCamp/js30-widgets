@@ -60,7 +60,10 @@ export const setFiltersToPicture = (filters) => {
     saturate(${saturate})
     sepia(${sepia}%)
     `; 
+
   highlight.style.color = color;
+  ctx.fillStyle = color;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
   ctx.filter = filterTools;
   ctx.drawImage(img, 0, 0);
   ctx.lineWidth = spacing;
@@ -75,7 +78,7 @@ const onPictureEdit = (e) => {
   setFiltersToPicture(filters);
 };
 
-const filters = filterState(...filterInputs);
+export const filters = filterState(...filterInputs);
 img.onload = () => setFiltersToPicture(filters);
 
 filtersElement.addEventListener('input', onPictureEdit);
