@@ -1,9 +1,9 @@
 # JS30 Widgets - @oardieldei
 
-Pull Request: ?
+[Pull Request](https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/83)
 
 # Whack-a-mole!
-Ссылка: https://js-30-widget-gallery.netlify.app/students/oardieldei/whack-a-mole/
+[Ссылка](https://js-30-widget-gallery.netlify.app/students/oardieldei/whack-a-mole/)
 
 Игра сделана по заданию, плюс реализованы дополнительные возможности из списка. 
 
@@ -44,7 +44,7 @@ Pull Request: ?
 	- Сортировка происходит по очкам.
 
 # Custom media player!
-Ссылка: https://js-30-widget-gallery.netlify.app/students/oardieldei/custom-video-player/
+[Ссылка](https://js-30-widget-gallery.netlify.app/students/oardieldei/custom-video-player/)
 
 Плеер сделан по заданию, также реализованы дополнительные возможности и нормальное цветовое оформление.
 
