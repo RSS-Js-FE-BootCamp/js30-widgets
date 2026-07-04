@@ -76,6 +76,7 @@ class SearchHelper {
     const THIS = this;
     DIV.innerHTML = `
       <div class="search_result__content">
+        <div>Найдено: ${DATA.hits.length} шт.</div>
         <ul>
           ${DATA.hits
             .map((e) => {
