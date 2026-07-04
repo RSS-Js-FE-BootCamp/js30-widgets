@@ -1,11 +1,11 @@
 # JS30 Widgets - @YuliaKoryukina
 
-Pull Request: 
+Pull Request: https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/84
 
 ## Deploy Preview
 
-- JS Clock: 
-- Whack-A-Mole: 
+- JS Clock: https://deploy-preview-84--elegant-quokka-1ce2cd.netlify.app/students/yuliakoryukina/js%20clock/
+- Whack-A-Mole: https://deploy-preview-84--elegant-quokka-1ce2cd.netlify.app/students/yuliakoryukina/whack-a-mole/
 
 ## What was implemented
 
