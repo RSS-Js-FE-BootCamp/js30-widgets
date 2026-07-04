@@ -16,6 +16,7 @@ import { createWrapper } from "./playlist.js"
 
 const playerContainer = document.querySelector('.content__wrapper')
 const titleItem = document.querySelector('.full__title')
+const returnBtn = document.querySelector('.back')
 
 const response = await fetch('./js/json/videos.json')
 const mediaData = await response.json()
@@ -23,6 +24,7 @@ const mediaData = await response.json()
 let currentVideoIndex = 0
 
 export function createPlayer(videoIndex) {
+	returnBtn.classList.remove('hide-me')
 	currentVideoIndex = videoIndex
 	titleItem.textContent = mediaData[videoIndex].title
 	playerContainer.innerHTML = ''
@@ -40,8 +42,7 @@ export function createPlayer(videoIndex) {
 	playerWrapper.append(createPlayerControls())
 
 	playerContainer.append(playerWrapper)
-	playerContainer.append(createWrapper(videoIndex))
-	
+	playerContainer.append(createWrapper(videoIndex))	
 
 	addActions(videoViewer)
 }

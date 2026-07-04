@@ -2,6 +2,7 @@ import { createPlayer } from "./create-player.js"
 
 const cardsContainer = document.querySelector('.content__wrapper')
 const titleItem = document.querySelector('.full__title')
+const returnBtn = document.querySelector('.back')
 
 const response = await fetch('./js/json/videos.json')
 const mediaData = await response.json()
@@ -26,6 +27,7 @@ function createCardElement() {
 }
 
 export function fillCardsContainer() {
+	returnBtn.classList.add('hide-me')
 	cardsContainer.innerHTML = ''
 	titleItem.textContent = 'Choose any movie'
 	for (let i = 0; i < mediaData.length; i++) {
