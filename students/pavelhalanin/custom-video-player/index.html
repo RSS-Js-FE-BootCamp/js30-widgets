@@ -20,8 +20,13 @@
             <div class="video__bottom_menu">
                 <button id="video__play_stop_button" class="video__play_stop_button"
                     onclick="CustomVideoPlayer.togglePlay()">▶</button>
-                <button id="video__mute_button" class="video__mute_button"
-                    onclick="CustomVideoPlayer.mute()">🔊</button>
+                <div class="video__mute_volume">
+                    <button id="video__mute_button" class="video__mute_button"
+                        onclick="CustomVideoPlayer.mute()">🔊</button>
+                    <input id="video__mute_volume_range" type="range" min="0" max="1" step="0.01"
+                        onchange="CustomVideoPlayer.savePrevValue(this)" data-prev-value="1"
+                        oninput="CustomVideoPlayer.setVideoVolume(event.target.value)">
+                </div>
                 <div id="video__time" class="video__time"></div>
                 <div class="video__speed">
                     🚀

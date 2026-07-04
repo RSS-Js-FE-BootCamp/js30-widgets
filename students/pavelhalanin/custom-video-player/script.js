@@ -125,12 +125,61 @@ class CustomVideoPlayer {
       throw new Error(`Не найден узел: #video__mute_button`);
     }
 
+    const MUTE_VOLUME_RANGE = document.getElementById(
+      "video__mute_volume_range",
+    );
+
+    if (!MUTE_VOLUME_RANGE) {
+      throw new Error(`Не найден узел: #video__mute_volume_range`);
+    }
+
     if (!VIDEO) {
       return null;
     }
 
     VIDEO.muted = !VIDEO.muted;
     MUTE_BUTTON.innerHTML = VIDEO.muted ? "🔇" : "🔊";
+
+    if (!VIDEO.muted) {
+      this.setVideoVolume(MUTE_VOLUME_RANGE.getAttribute("data-prev-value"));
+    } else {
+      this.setVideoVolume(0);
+    }
+  }
+
+  static setVideoVolume(volume) {
+    const VIDEO = this.getVideoTag();
+
+    const MUTE_BUTTON = document.getElementById("video__mute_button");
+
+    if (!MUTE_BUTTON) {
+      throw new Error(`Не найден узел: #video__mute_button`);
+    }
+
+    const MUTE_VOLUME_RANGE = document.getElementById(
+      "video__mute_volume_range",
+    );
+
+    if (!MUTE_VOLUME_RANGE) {
+      throw new Error(`Не найден узел: #video__mute_volume_range`);
+    }
+
+    const NORMALIZED_VOLUME = Math.max(0, Math.min(1, volume));
+
+    VIDEO.muted = NORMALIZED_VOLUME == 0;
+    MUTE_BUTTON.innerHTML = VIDEO.muted ? "🔇" : "🔊";
+
+    VIDEO.volume = NORMALIZED_VOLUME;
+
+    MUTE_VOLUME_RANGE.value = NORMALIZED_VOLUME;
+  }
+
+  static savePrevValue(element) {
+    if (element.value == 0) {
+      return;
+    }
+
+    element.setAttribute("data-prev-value", element.value);
   }
 
   static toggleVideoFullscreen() {

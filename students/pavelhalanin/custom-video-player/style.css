@@ -90,6 +90,7 @@
 }
 
 .video__play_stop_button,
+.video__mute_volume,
 .video__mute_button,
 .video__time,
 .video__speed,
@@ -103,6 +104,7 @@
 }
 
 .video__time,
+.video__mute_volume,
 .video__speed {
   padding: 0 8px;
   border-radius: 16px;
