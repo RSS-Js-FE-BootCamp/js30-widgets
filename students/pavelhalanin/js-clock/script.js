@@ -22,6 +22,37 @@ class ThemeHelper {
 
 ThemeHelper.init();
 
+class ProcentCircleHelper {
+  static render(hours, minutes, seconds) {
+    const DIV = document.getElementById("procent_circle");
+    if (!DIV) {
+      throw new Error(`Не найден узел: procent_circle`);
+    }
+
+    const H_PROCENT = (hours * 100) / 24;
+    const M_PROCENT = (minutes * 100) / 60;
+    const S_PROCENT = (seconds * 100) / 60;
+
+    DIV.innerHTML = `
+      <div class="procent_circle__circle" style="background: conic-gradient(#009a61 0% ${H_PROCENT}%, rgba(0,0,0,0.1) ${H_PROCENT}% 100%);">
+        ${hours} ч
+        <br>
+        ${Number(H_PROCENT).toFixed(2)} %
+      </div>
+      <div class="procent_circle__circle" style="background: conic-gradient(#ec892e 0% ${M_PROCENT}%, rgba(0,0,0,0.1) ${M_PROCENT}% 100%);">
+        ${minutes} мин
+        <br>
+        ${Number(M_PROCENT).toFixed(2)} %
+      </div>
+      <div class="procent_circle__circle" style="background: conic-gradient(#753c94 0% ${S_PROCENT}%, rgba(0,0,0,0.1) ${S_PROCENT}% 100%);">
+        ${seconds} сек
+        <br>
+        ${Number(S_PROCENT).toFixed(2)} %
+      </div>
+    `;
+  }
+}
+
 class JSClockHelper {
   static sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
@@ -47,6 +78,8 @@ class JSClockHelper {
     const DAY_BY = this.getByDayOfWeek(DAY_OF_WEEK);
     const DAY_RU = this.getRuDayOfWeek(DAY_OF_WEEK);
     const DAY_EN = this.getEnDayOfWeek(DAY_OF_WEEK);
+
+    ProcentCircleHelper.render(HH, MI, SS);
 
     const SECONDS_LINE = document.getElementById("seconds_line");
     if (!SECONDS_LINE) {
