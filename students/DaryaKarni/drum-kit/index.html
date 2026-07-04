@@ -83,6 +83,7 @@
       const keyLeft = rect.left + rect.width/2 + window.scrollX;
       const keyTop = rect.top + rect.height /2 + window.scrollY;
       showNote(keyLeft, keyTop);
+      spawnRipples(keyLeft, keyTop);
     }
     const keys = document.querySelector(".keys");
     function removeTransition(e){
@@ -149,13 +150,26 @@
       note.style.left = `${x}px`;
       note.style.top = `${y}px`;
       const randomX = Math.floor(Math.random() * 60) - 30;
+      const randomY = Math.floor(Math.random() * 80) - 180;
       note.style.setProperty('--offsetX', `${randomX}px`);
+      note.style.setProperty('--offsetY', `${randomY}px`);
       document.body.appendChild(note);
       setTimeout(() => {
         note.remove();
       }, 1000);
     }
     
+    /*ripples animation*/
+    function spawnRipples(x,y){
+      const ripple = document.createElement('span');
+      ripple.classList.add('ripple');
+      ripple.style.left = `${x}px`;
+      ripple.style.top = `${y}px`;
+      document.body.appendChild(ripple);
+      setTimeout(() => {
+        ripple.remove();
+      }, 1000);
+    }
   </script>
 </body>
 </html>

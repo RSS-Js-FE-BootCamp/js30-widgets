@@ -34,6 +34,7 @@ html{
     text-shadow: 0 0 0.5rem black;
     transition: all 0.07s ease;
     box-shadow: 1rem 1rem 10rem 0rem black;
+    overflow: hidden;
     kbd{
       font-size: 4rem;
       display: block;
@@ -82,6 +83,27 @@ html{
   }
   to{
     opacity: 1;
-    transform: translate(-50%,-50%) translate(var(--offsetX), -120px) scale(1.2);
+    transform: translate(-50%,-50%) translate(var(--offsetX), var(--offsetY)) scale(1.2);
+  }
+}
+
+.ripple{
+  position: absolute;
+  background:rgb(255, 198, 0, 0.5);
+  border-radius: 50%;
+  animation: spawnRipples 1s ease forwards;
+  z-index: 999;
+  width: 10rem;
+  height: 10rem;
+  pointer-events: none;
+}
+@keyframes spawnRipples{
+  from{
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0);
+  }
+  to{
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2.2);
   }
 }
