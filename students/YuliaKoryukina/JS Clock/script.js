@@ -52,11 +52,19 @@ function setDate() {
 // Digital Clock BG color
 const themeClick = document.querySelector(".theme-click");
 const digitalClockPanel = document.querySelector(".digital-clock");
+const savedTheme = localStorage.getItem("clock-theme");
+if (savedTheme === "light") {
+  digitalClockPanel.classList.add("light-theme");
+} else if (savedTheme === "dark") {
+  digitalClockPanel.classList.remove("light-theme");
+}
 themeClick.addEventListener("click", function () {
   if (digitalClockPanel.classList.contains("light-theme")) {
     digitalClockPanel.classList.remove("light-theme");
+    localStorage.setItem("clock-theme", "dark");
   } else {
     digitalClockPanel.classList.add("light-theme");
+    localStorage.setItem("clock-theme", "light");
   }
 });
 setInterval(setDate, 1000);
