@@ -16,10 +16,17 @@
 .video__menu {
   position: absolute;
   bottom: 0;
+
+  padding: 8px;
+  width: calc(100% - 8px * 2);
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .video__progress {
-  width: 640px;
+  width: calc(640px - 8px * 2);
 }
 
 :root {
@@ -28,11 +35,13 @@
 }
 
 .video__progress_bar_wrapper {
-  width: 640px;
+  width: calc(640px - 8px * 2);
   height: var(--progress-bar-height);
   cursor: ew-resize;
+  overflow: hidden;
 
   background-color: gray;
+  border-radius: 8px;
 }
 
 .video__progress_bar_line {
@@ -54,6 +63,23 @@
     (var(--progress-bar-cicle-height) - var(--progress-bar-height)) / -2
   );
   right: calc(var(--progress-bar-cicle-height) / -2);
+}
+
+.video__play_stop_button {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.video__play_stop_button:focus-visible {
+  outline: none;
 }
 
 .key {

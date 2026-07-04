@@ -12,10 +12,18 @@ class CustomVideoPlayer {
   static togglePlay() {
     const VIDEO = this.getVideoTag();
 
+    const BUTTON = document.getElementById("video__play_stop_button");
+
+    if (!BUTTON) {
+      throw new Error(`Узел не найден: #video__play_stop_button`);
+    }
+
     if (VIDEO.paused) {
       VIDEO.play();
+      BUTTON.innerHTML = "⏸";
     } else {
       VIDEO.pause();
+      BUTTON.innerHTML = "▶";
     }
   }
 
