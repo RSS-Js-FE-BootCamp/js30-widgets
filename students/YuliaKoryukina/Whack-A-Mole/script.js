@@ -21,7 +21,8 @@ function pickBurrow() {
 }
 
 function showCritter() {
-    const delay = randomDelay(200, 1000);
+    const { min, max } = getDelayRange();
+    const delay = randomDelay(min, max);
     const burrow = pickBurrow();
     burrow.classList.add('burrow-active');
 
@@ -35,8 +36,14 @@ function startGame() {
     pointsBoard.textContent = 0;
     points = 0;
     timeUp = false;
+    startBtn.disabled = true;
+    startBtn.textContent = 'Playing...';
     showCritter();
-    setTimeout(() => (timeUp = true), 10000);
+    setTimeout(() => {
+        timeUp = true;
+        startBtn.disabled = false;
+        finishRound();
+    }, 10000);
 }
 
 function whack(event) {
@@ -48,3 +55,63 @@ function whack(event) {
 
 startBtn.addEventListener('click', startGame);
 critters.forEach((critter) => critter.addEventListener('click', whack));
+
+// --- Levels & localStorage ---
+const levelBoard = document.querySelector('.level');
+const bestScoreBoard = document.querySelector('.best-score');
+const STORAGE = { level: 'whackLevel', best: 'whackBestScore' };
+const POINTS_TO_LEVEL_UP = 5;
+
+let currentLevel = 1;
+let bestScore = 0;
+
+try {
+    currentLevel = Number(localStorage.getItem(STORAGE.level)) || 1;
+    bestScore = Number(localStorage.getItem(STORAGE.best)) || 0;
+} catch (e) {
+    // localStorage недоступен при открытии через file://
+}
+
+function getDelayRange() {
+    const step = currentLevel - 1;
+    return {
+        min: Math.max(80, 200 - step * 25),
+        max: Math.max(300, 1000 - step * 70),
+    };
+}
+
+function saveProgress() {
+    try {
+        localStorage.setItem(STORAGE.level, currentLevel);
+        localStorage.setItem(STORAGE.best, bestScore);
+    } catch (e) {
+        // игра работает и без сохранения
+    }
+}
+
+function updateStats() {
+    levelBoard.textContent = currentLevel;
+    bestScoreBoard.textContent = bestScore;
+}
+
+function finishRound() {
+    if (points > bestScore) {
+        bestScore = points;
+    }
+
+    const leveledUp = points >= POINTS_TO_LEVEL_UP;
+    if (leveledUp) {
+        currentLevel++;
+    }
+
+    updateStats();
+    saveProgress();
+
+    if (leveledUp) {
+        startBtn.textContent = `Level ${currentLevel}!`;
+    } else {
+        startBtn.textContent = `Need ${POINTS_TO_LEVEL_UP} pts to level up`;
+    }
+}
+
+updateStats();
