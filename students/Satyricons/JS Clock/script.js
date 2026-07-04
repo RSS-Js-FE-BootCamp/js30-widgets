@@ -15,7 +15,7 @@ function updateClock() {
     // Часовая стрелка: 30 градусов в час + плавный ход от минут
     const hourDeg = hours * 30 + minutes * 0.5; 
 
-    document.querySelector('.sec').style.transform = `rotate(${180+secondDeg}deg)`;
+    document.querySelector('.sec').style.transform = `rotate(${secondDeg}deg)`;
     document.querySelector('.min').style.transform = `rotate(${180+minuteDeg}deg)`;
     document.querySelector('.hour').style.transform = `rotate(${180+hourDeg}deg)`;
 
