@@ -10,6 +10,20 @@ const audio74 = new Audio('../shared/snare.wav');
 const audio75 = new Audio('../shared/tom.wav');
 const audio76 = new Audio('../shared/tink.wav');
 
+
+// Additional variable
+const btnTheme = document.querySelector('.theme-widget');
+const imgChange = document.querySelector('.theme-widget__item');
+let isSun = 1;
+
+document.addEventListener('DOMContentLoaded', () => {
+  const isSunStorage = localStorage.getItem('isSun');
+  isSun = Number(isSunStorage);
+  getThemeInStorage(Number(isSunStorage));
+});
+
+
+// Functions for clicking and use keyboard
 document.addEventListener('keydown', (event) => {
   if (event.which === 65) {
     audio65.currentTime = 0;
@@ -179,3 +193,33 @@ main.addEventListener('mouseup', (event) => {
     document.querySelector('[data-key="76"]').classList.remove('playing');
   }
 });
+
+// Change theme
+function getThemeInStorage(isSun) {
+  if (isSun === 0) {
+    imgChange.src = '../shared/moon.png';
+    document.body.classList.add('body-light');
+    btnTheme.classList.add('theme-widget-light');
+  } else {
+    document.body.classList.remove('body-light');
+    btnTheme.classList.remove('theme-widget-light');
+    imgChange.src = '../shared/sun.png';
+  }
+}
+
+btnTheme.addEventListener('click', (e) => {
+  document.body.classList.toggle('body-light');
+  btnTheme.classList.toggle('theme-widget-light');
+  if (isSun === 1) {
+    imgChange.src = '../shared/moon.png';
+    isSun = 0;
+    localStorage.setItem('isSun', 0);
+    return;
+  }
+  if (isSun === 0) {
+    imgChange.src = '../shared/sun.png';
+    isSun = 1;
+    localStorage.setItem('isSun', 1);
+    return;
+  }
+})  
