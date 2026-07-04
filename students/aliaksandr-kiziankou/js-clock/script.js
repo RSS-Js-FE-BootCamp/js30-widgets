@@ -70,7 +70,7 @@ function updateTime() {
 setInterval(updateTime, 1000);
 
 
-/*------------------Time Zones Section------------------*/
+/*----------------------Time Zones Section----------------------*/
 
 
 const timeZoneClocks = document.querySelectorAll('.timezone-clock');
@@ -93,3 +93,36 @@ function updateAllTimeZoneClocks() {
 
 updateAllTimeZoneClocks();
 setInterval(updateAllTimeZoneClocks, 1000);
+
+
+/*-------------------------Theme Toggle-------------------------*/
+
+
+const THEME_TOGGLE = document.querySelector('.theme-toggle');
+const THEME_TOGGLE_PIC = document.querySelector('.theme-toggle-pic');
+const CREDITS = document.querySelector('.credits');
+
+function applyTheme(theme) {
+    if (theme === 'dark') {
+        document.documentElement.classList.add('dark-theme');
+        THEME_TOGGLE_PIC.textContent = '🌙';
+        CREDITS.classList.add('hidden');
+    } else {
+        document.documentElement.classList.remove('dark-theme');
+        THEME_TOGGLE_PIC.textContent = '☀️';
+        CREDITS.classList.remove('hidden');
+    }
+}
+
+const savedTheme = localStorage.getItem('theme') || 'light';
+
+applyTheme(savedTheme);
+
+THEME_TOGGLE.addEventListener('click', () => {
+    const isDark = document.documentElement.classList.contains('dark-theme');
+    const newTheme = isDark ? 'light' : 'dark';
+
+    applyTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+    THEME_TOGGLE.classList.toggle('active');
+});

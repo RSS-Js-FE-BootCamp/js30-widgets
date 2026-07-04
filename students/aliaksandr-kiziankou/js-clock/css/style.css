@@ -1,7 +1,41 @@
+:root {
+    --background-mask: rgba(0, 0, 0, 0.1);
+    --background-mask2: rgba(0, 0, 0, 0.3);
+    --background-pic: url("../assets/img/resort.jpg");
+    --text-color: white;
+    --clock-bg: rgba(15, 36, 46, 0.235);
+    --clock-border: rgba(190, 157, 187, 0.683);
+    --clock-hand-color: rgb(255, 255, 255);
+    --clock-digits-color: white;
+    --second-hand-color: rgba(249, 176, 130, 0.753);
+    --second-hand-circle-color: rgb(249, 176, 130);
+    --time-zone-bg: rgba(0, 0, 0, 0.486);
+    --toggle-bg: rgba(0, 0, 0, 0.345);
+    --toggle-box-shadow: rgba(31, 31, 31, 0.386);
+    --credits-text-color: rgba(255, 255, 255, 0.224);
+}
+
+html.dark-theme {
+    --background-mask: rgba(0, 0, 0, 0.92);
+    --background-mask2: rgba(0, 0, 0, 0.863);
+    --background-pic: none;
+    --text-color: white;
+    --clock-bg: rgba(133, 130, 130, 0.541);
+    --clock-border: rgba(192, 186, 191, 0.808);
+    --clock-hand-color: rgb(255, 255, 255);
+    --clock-digits-color: white;
+    --second-hand-color: rgba(249, 176, 130, 0.753);
+    --second-hand-circle-color: rgb(249, 176, 130);
+    --time-zone-bg: rgba(105, 105, 105, 0.486);
+    --toggle-bg: rgba(187, 187, 187, 0.345);
+    --toggle-box-shadow: rgba(219, 219, 219, 0.386);
+    --credits-text-color: rgba(255, 255, 255, 0.224);
+}
+
 html {
     background-image:
-        linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)),
-        url("../assets/img/resort.jpg");
+        linear-gradient(var(--background-mask), var(--background-mask2)),
+        var(--background-pic);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -15,9 +49,8 @@ body {
     align-items: center;
     flex-direction: column;
     justify-content: space-between;
-    color: white;
-    padding-top: 30px;
-    padding-bottom: 70px;
+    color: var(--text-color);
+    padding: 30px 20px 70px 20px;
 }
 
 .clock {
@@ -27,10 +60,10 @@ body {
     border-radius: 50%;
     padding: 20px;
     position: relative;
-    background: rgba(15, 36, 46, 0.235);
+    background: var(--clock-bg);
     box-shadow:
-        0 0 0 4px rgba(190, 157, 187, 0.683),
-        inset 0 0 0 10px rgba(190, 157, 187, 0.683),
+        0 0 0 4px var(--clock-border),
+        inset 0 0 0 10px var(--clock-border),
         inset 0 0 10px black,
         0 0 10px rgba(255, 255, 255, 0.557);
 }
@@ -45,7 +78,7 @@ body {
 .hand {
     width: 50%;
     height: 4px;
-    background: rgb(255, 255, 255);
+    background: var(--clock-hand-color);
     position: absolute;
     border-radius: 50%;
     top: 50%;
@@ -59,7 +92,7 @@ body {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: rgb(249, 176, 130);
+    background: var(--second-hand-circle-color);
     position: absolute;
     top: 50%;
     left: 50%;
@@ -67,7 +100,7 @@ body {
 }
 
 .sec-hand {
-    background: rgba(249, 176, 130, 0.753);
+    background: var(--second-hand-color);
     height: 2px;
 }
 
@@ -80,7 +113,7 @@ body {
     top: 0;
     left: 50%;
     transform: translateX(-14px);
-    color: white;
+    color: var(--clock-digits-color);
     font-size: 25px;
 }
 
@@ -89,16 +122,16 @@ body {
     top: 50%;
     right: 0;
     transform: translateY(-6px);
-    color: rgb(255, 255, 255);
+    color: var(--clock-digits-color);
     font-size: 25px;
 }
 
 .nine {
     position: absolute;
-    top: 50%;
+    top: 48%;
     left: 0;
     transform: translateY(-6px);
-    color: white;
+    color: var(--clock-digits-color);
     font-size: 25px;
 }
 
@@ -107,16 +140,16 @@ body {
     bottom: 0;
     left: 50%;
     transform: translateX(-8px) translateY(8px);
-    color: white;
+    color: var(--clock-digits-color);
     font-size: 25px;
 }
 
 .one {
     position: absolute;
-    top: 6%;
+    top: 23px;
     right: 20%;
     transform: translateX(-14px);
-    color: white;
+    color: var(--clock-digits-color);
     font-size: 15px;
 }
 
@@ -125,16 +158,16 @@ body {
     top: 25%;
     right: 3%;
     transform: translateX(-14px);
-    color: white;
+    color: var(--clock-digits-color);
     font-size: 15px;
 }
 
 .four {
     position: absolute;
-    bottom: 25%;
+    bottom: 23%;
     right: 3%;
     transform: translateX(-14px);
-    color: white;
+    color: var(--clock-digits-color);
     font-size: 15px;
 }
 
@@ -143,7 +176,7 @@ body {
     bottom: 6%;
     right: 20%;
     transform: translateX(-14px);
-    color: white;
+    color: var(--clock-digits-color);
     font-size: 15px;
 }
 
@@ -152,16 +185,16 @@ body {
     bottom: 6%;
     left: 28%;
     transform: translateX(-14px);
-    color: white;
+    color: var(--clock-digits-color);
     font-size: 15px;
 }
 
 .eight {
     position: absolute;
-    bottom: 22%;
+    bottom: 23%;
     left: 12%;
     transform: translateX(-14px);
-    color: white;
+    color: var(--clock-digits-color);
     font-size: 15px;
 }
 
@@ -170,7 +203,7 @@ body {
     top: 24%;
     left: 10%;
     transform: translateX(-14px);
-    color: white;
+    color: var(--clock-digits-color);
     font-size: 15px;
 }
 
@@ -179,7 +212,7 @@ body {
     top: 6%;
     left: 28%;
     transform: translateX(-14px);
-    color: white;
+    color: var(--clock-digits-color);
     font-size: 15px;
 }
 
@@ -189,7 +222,7 @@ body {
     font-size: 20px;
 }
 
-/*---------------------Multiple Time Zones---------------------*/
+/*-----------------------Multiple Time Zones-----------------------*/
 
 .timezone-wrapper {
     display: flex;
@@ -197,7 +230,7 @@ body {
     justify-content: center;
     gap: 30px;
     padding: 20px;
-    background: rgba(0, 0, 0, 0.486);
+    background: var(--time-zone-bg);
     border-radius: 15px;
 }
 
@@ -214,15 +247,77 @@ body {
 }
 
 .timezone-clock {
-    font-size: 17px;
+    letter-spacing: 6%;
+    font-size: 16px;
     max-width: 310px;
     width: 100%;
 }
+
+/*--------------------------Theme Toggle--------------------------*/
+
+.theme-toggle-container {
+    position:fixed;
+    bottom: 15px;
+    left: 20px;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 7px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--toggle-box-shadow);
+    background: var(--toggle-bg);
+}
+
+.theme-toggle {
+    width: 50px;
+    height: 24px;
+    border: none;
+    border-radius: 999px;
+    background: #8e8e93;
+    padding: 2px;
+    cursor: pointer;
+
+    position: relative;
+
+    transition: background-color 0.25s ease;
+}
+
+.theme-toggle-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    top: 2px;
+    left: 2px;
+
+    transition: transform 0.25s cubic-bezier(.4, 0, .2, 1);
+}
+
+.theme-toggle.active {
+    background: #34c759;
+}
+
+.theme-toggle.active .theme-toggle-thumb {
+    transform: translateX(25px);
+}
+
+
 
 .credits {
     position: fixed;
     bottom: 0;
     right: 0;
     text-decoration: none;
-    color: rgba(255, 255, 255, 0.224);
+    color: var(--credits-text-color);
+}
+
+.hidden {
+    display: none;
 }
