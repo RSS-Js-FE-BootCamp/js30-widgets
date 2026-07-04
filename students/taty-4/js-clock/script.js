@@ -9,12 +9,22 @@ const btnTimeContainer = document.querySelector(".relax-time-btn");
 const allBtnTime = document.querySelectorAll(".time-btn");
 const btnPlay = document.querySelector(".play");
 const timerTxt = document.querySelector(".timer-txt");
+const btnStartAlarm = document.querySelector(".btn-start-alarm");
+const btnSnoozeAlarm = document.querySelector(".btn-snooze-alarm");
+const inputTime = document.querySelector(".input-time");
+const beforeAlarm = document.querySelector(".before-alarm");
 
 function setTime() {
   const now = new Date();
 
   const seconds = now.getSeconds();
   const secondsDegrees = (seconds / 60) * 360 + 90;
+  if ((seconds / 60) * 360 <= 0) {
+    secondHand.style.transition = "none";
+    secondHand.style.transform = `translateY(-40%) rotate(${secondsDegrees}deg)`;
+    secondHand.style.transition =
+      "transform 0.03s cubic-bezier(0.52, 0.1, 0.67, 2.49);";
+  }
   secondHand.style.transform = `translateY(-40%) rotate(${secondsDegrees}deg)`;
 
   const minutes = now.getMinutes();
@@ -81,7 +91,7 @@ btnTimeContainer.addEventListener("click", (event) => {
 
 function createAudio() {
   const min = 1;
-  const max = 3;
+  const max = 5;
   const random = Math.floor(Math.random() * (max - min + 1)) + min;
   const audio = new Audio(`./audio/${random}.mp3`);
   audio.loop = true;
@@ -123,24 +133,93 @@ function updateTimeAudio(time) {
   }, 1000);
 }
 
+function offRelax() {
+  if (!audio) return;
+  audio.pause();
+  btnPlay.textContent = "▶ Старт"; //
+  clearTimeout(timerAudio);
+  clearInterval(timerAudioTime);
+  timerAudioTime = null;
+  timerAudio = null;
+  timerTxt.textContent = "";
+  allBtnTime.forEach((btn) => btn.classList.remove("active"));
+  audio = null;
+}
+
 btnPlay.addEventListener("click", () => {
   if (!audio) {
     startAudioTimer();
   } else {
-    audio.pause();
-    btnPlay.textContent = "▶ Старт"; //
-    clearTimeout(timerAudio);
-    clearInterval(timerAudioTime);
-    timerAudioTime = null;
-    timerAudio = null;
-    timerTxt.textContent = "";
-    allBtnTime.forEach((btn) => btn.classList.remove("active"));
-    audio = null;
+    offRelax();
   }
 });
 
+let timerIdAlarm = null;
+let alarmTriggered = false;
+let isSetAlarm = false;
+const alarmAudio = new Audio("./audio/alarm.mp3");
+alarmAudio.loop = true;
+
+function startAlarm(time) {
+  const alarmTime = time;
+  beforeAlarm.textContent = `Будильник прозвенит в ${alarmTime}`;
+  isSetAlarm = true;
+
+  timerIdAlarm = setInterval(() => {
+    if (alarmTriggered) return;
+
+    const now = new Date();
+    const currentTime = now.toTimeString().slice(0, 5);
+
+    if (currentTime === alarmTime) {
+      offRelax();
+      beforeAlarm.textContent = "Будильник звонит";
+      alarmTriggered = true;
+      btnSnoozeAlarm.disabled = false;
+      alarmAudio.play();
+    }
+  }, 1000);
+}
+
+function snoozeAllarm() {
+  offAlarm();
+  const now = new Date();
+  now.setMinutes(now.getMinutes() + 2);
+  const nexTime = now.toTimeString().slice(0, 5);
+  startAlarm(nexTime);
+}
+
+inputTime.addEventListener("input", () => {
+  btnStartAlarm.disabled = !inputTime.value;
+});
+
+function offAlarm() {
+  alarmAudio.pause();
+  clearInterval(timerIdAlarm);
+  alarmAudio.currentTime = 0;
+  isSetAlarm = false;
+  btnSnoozeAlarm.disabled = true;
+  alarmTriggered = false;
+}
+
+btnStartAlarm.addEventListener("click", () => {
+  if (isSetAlarm) {
+    offAlarm();
+    beforeAlarm.textContent = "Будильник не заведен";
+    btnStartAlarm.textContent = "Старт";
+  } else {
+    const time = inputTime.value;
+    startAlarm(time);
+    btnStartAlarm.textContent = "Отключить";
+  }
+});
+
+btnSnoozeAlarm.addEventListener("click", () => {
+  snoozeAllarm();
+});
+
 function initClock() {
-  const theme = localStorage.getItem("theme") || "night";
+  const theme = localStorage.getItem("theme") || "forest";
   document.body.className = theme;
   setDate();
   setTime();

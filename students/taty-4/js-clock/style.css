@@ -11,6 +11,19 @@ html {
   font-size: 10px;
 }
 
+body.orange {
+  --bg: #2a170a;
+  --surface-light: #593313;
+
+  --text: #fff7f0;
+  --text-secondary: #d8b89b;
+
+  --accent: #ff8c00;
+  --accent-accent: #ffa726;
+
+  --border: #6f4820;
+}
+
 body.night {
   --bg: #0f172a;
   --surface-light: #334155;
@@ -259,7 +272,7 @@ body {
 }
 
 .btn-theme.forest {
-  background-color: #08251c;
+  background-color: #0f4735;
 }
 
 .btn-theme.matcha {
@@ -272,6 +285,10 @@ body {
 
 .btn-theme.night {
   background-color: #0f172a;
+}
+
+.btn-theme.orange {
+  background-color: orange;
 }
 
 .relax-time-btn-container,
@@ -314,23 +331,60 @@ body {
 }
 
 .play,
-.btn-start {
+.btn-start-alarm,
+.btn-snooze-alarm {
   background-color: transparent;
   border-radius: 0.5rem;
   border: none;
   background-color: var(--accent);
   color: var(--text);
   padding: 0.5rem 1rem;
+  opacity: 0.5;
   cursor: pointer;
   font-family: "Courier New", Courier, monospace;
   font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transition: background-color 0.3s;
+}
+
+.play:hover {
+  background-color: var(--accent-accent);
+}
+
+.btn-snooze-alarm {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.btn-snooze-alarm:hover {
+  background-color: var(--accent-accent);
+}
+
+.btn-start-alarm:hover {
+  background-color: var(--accent-accent);
+}
+
+.btn-snooze-alarm:disabled {
   opacity: 0.5;
   pointer-events: none;
 }
 
-.btn-start {
+.btn-start-alarm {
   opacity: 1;
   pointer-events: auto;
+}
+
+.btn-start-alarm:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.wrapper-btn-alarm {
+  display: flex;
+  gap: 1rem;
 }
 
 .relax-time-btn:has(.time-btn.active) ~ .play {

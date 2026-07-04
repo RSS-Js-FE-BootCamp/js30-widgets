@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JS Clock</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
@@ -25,6 +27,7 @@
           <button class="btn-theme matcha" data-theme="matcha"></button>
           <button class="btn-theme rose" data-theme="rose"></button>
           <button class="btn-theme night" data-theme="night"></button>
+          <button class="btn-theme orange" data-theme="orange"></button>
         </div>
       </div>
     </div>
@@ -43,9 +46,12 @@
     <div class="alarm-block">
       <p class="alarm-txt">Будильник</p>
       <div class="alarm-container">
-        <input type="time" />
-        <p class="before-alarm">Будильник прозвенит в</p>
-        <button class="btn-start">Start</button>
+        <input class="input-time" type="time" />
+        <p class="before-alarm">Будильник не заведен</p>
+        <div class="wrapper-btn-alarm">
+          <button class="btn-snooze-alarm" disabled>Отложить</button>
+          <button class="btn-start-alarm">Старт</button>
+        </div>
       </div>
     </div>
     <script src="./script.js"></script>
