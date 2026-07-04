@@ -38,12 +38,6 @@ img {
   --color-shadow-playing: #ffc600;
 }
 
-.container {
-  max-width: 1680px;
-  margin: 0 auto;
-  padding: 0 15px;
-}
-
 .hero {
   display: flex;
   justify-content: center;
@@ -58,18 +52,22 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 1920px;
+  width: 100%;
 }
 
 .keys__item {
-  width: 10rem;
+  flex: 1;
+  width: 10%;
+  max-width: 10rem;
   padding: 1rem 0.5rem;
-  margin: 1rem;
+  margin: 1%;
   border: 0.4rem solid var(--color-border);
   border-radius: 0.5rem;
-  font-size: 1.5rem;
+  font-size: 1.5vw;
   color: var(--color-text);
   background: var(--color-background);
-  text-shadow: 0 0 0.5rem var(--text-shadow);
+  text-shadow: 0 0 0.5rem var(--color-text-shadow);
   text-align: center;
   transition: all 0.07s ease;
   cursor: pointer;
@@ -77,17 +75,17 @@ img {
 
 .keys__kbd {
   display: block;
-  font-size: 4rem;
+  font-size: 4vw;
 }
 
-.keys__kbd-playing {
+.keys__item--playing {
   transform: scale(1.1);
   border-color: var(--color-border-playing);
   box-shadow: 0 0 1rem var(--color-shadow-playing);
 }
 
 .keys__subtitle {
-  font-size: 1.2rem;
+  font-size: 1.2vw;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
   color: var(--color-text-subtitle);
