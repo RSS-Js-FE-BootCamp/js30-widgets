@@ -1,11 +1,6 @@
 # JS30 Widgets - @fainmariya
 
-Pull Request: add PR link here
-
-## Deploy Preview
-
-- Drum Kit: add Netlify preview link here
-- JS Clock: add Netlify preview link here
+Pull Request: https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/80
 
 ## What was implemented
 
@@ -23,6 +18,5 @@ Pull Request: add PR link here
 - [x] Implemented analog clock hands
 - [x] Implemented digital clock panel
 - [x] Added weekday, date, month and year
-- [x] Added blurred second trail sector
-- [x] Added automatic background change
 - [x] Added custom glass UI
+- [x] Added blurred second trail sector
