@@ -92,6 +92,7 @@
 .video__play_stop_button,
 .video__mute_button,
 .video__time,
+.video__speed,
 .video__full_screen_button {
   background-color: #242424;
   color: white;
@@ -101,7 +102,8 @@
   align-items: center;
 }
 
-.video__time {
+.video__time,
+.video__speed {
   padding: 0 8px;
   border-radius: 16px;
 }
@@ -147,6 +149,9 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .hot_keys > div {

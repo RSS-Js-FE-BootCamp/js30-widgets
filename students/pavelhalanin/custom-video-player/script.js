@@ -144,6 +144,28 @@ class CustomVideoPlayer {
     VIDEO.requestFullscreen();
     return true;
   }
+
+  static speedUpdate(speed) {
+    if (speed < 0 || speed > 3) {
+      return;
+    }
+
+    video.playbackRate = speed;
+
+    const SPEED_RANGE = document.getElementById("video__speed_range");
+    if (!SPEED_RANGE) {
+      throw new Error(`Узел не найден: #video__speed_range`);
+    }
+
+    SPEED_RANGE.value = speed;
+
+    const SPEED_VALUE = document.getElementById("video__speed_value");
+    if (!SPEED_VALUE) {
+      throw new Error(`Узел не найден: #video__speed_value`);
+    }
+
+    SPEED_VALUE.innerHTML = `Video speed := ${Number(speed).toFixed(2)}`;
+  }
 }
 
 document.addEventListener("keydown", function (event) {
