@@ -23,25 +23,24 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  transition: transform 0.5s ease-in-out;
 }
 
-.left__side div:nth-child(1) {
+.slide-6 {
   background-color: #951876;
 }
-.left__side div:nth-child(2) {
+.slide-5 {
   background-color: #ffb510;
 }
-.left__side div:nth-child(3) {
+.slide-4 {
   background-color: #252e33;
 }
-.left__side div:nth-child(4) {
+.slide-3 {
   background-color: #7196ab;
 }
-.left__side div:nth-child(5) {
+.slide-2 {
   background-color: #515151;
 }
-.left__side div:nth-child(6) {
+.slide-1 {
   background-color: #2a86ba;
 }
 
@@ -75,7 +74,6 @@ h1 {
   top: 0;
   left: 35%;
   width: 65%;
-  transition: transform 0.5s ease-in-out;
 }
 
 .right__side ul,
