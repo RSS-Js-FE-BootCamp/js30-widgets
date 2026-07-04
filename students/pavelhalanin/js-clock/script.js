@@ -1,3 +1,27 @@
+class ThemeHelper {
+  static ls_key = "js30_widjects__js_clock_theme";
+
+  static init() {
+    const CURRENT_THEME = this.getTheme();
+    document.body.setAttribute("data-theme", CURRENT_THEME);
+  }
+
+  static getTheme() {
+    const THEME = localStorage.getItem(this.ls_key);
+    const CURRENT_THEME = THEME == "dark" ? "dark" : "light";
+    return CURRENT_THEME;
+  }
+
+  static changeTheme() {
+    const CURRENT_THEME = this.getTheme();
+    const NEW_THEME = CURRENT_THEME == "dark" ? "light" : "dark";
+    localStorage.setItem(this.ls_key, NEW_THEME);
+    document.body.setAttribute("data-theme", NEW_THEME);
+  }
+}
+
+ThemeHelper.init();
+
 class JSClockHelper {
   static sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));

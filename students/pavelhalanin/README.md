@@ -8,7 +8,7 @@
 | Custom Video Player |  |
 
 3. Done 04.07.2026 / deadline 06.07.2026
-4. Score: 90 / 130
+4. Score: 100 / 130
 
 ---
 
@@ -19,7 +19,7 @@
 
 ### 🟢 Widget 1: JS Clock
 
-**Score: 45 / 65**
+**Score: 55 / 65**
 
 **Stage 1 - Reproduction (20/20)**
 - [ ] The widget visually matches the original demo (layout, key colors, key interactions) (+10)
@@ -29,9 +29,9 @@
 - [ ] The mandatory additional feature described in the widget's task file is implemented and works correctly (+10)
 - [ ] The feature is integrated with the rest of the UI (does not break Stage 1 functionality, handles edge cases reasonably) (+5)
 
-**Stage 3 - Optional improvements (10/30)**
+**Stage 3 - Optional improvements (20/30)**
 - [x] A multi-timezone view showing time at several cities of the world simultaneously (+10)
-- [ ] Dark / light theme toggle that persists across reloads (+10)
+- [x] Dark / light theme toggle that persists across reloads (+10)
 - [ ] An online alarm clock with sound and dismiss/snooze controls (+10)
 - [ ] A cuckoo clock - at the top of each hour the bird pops out and chimes (+10)
 - [ ] A "do nothing for 2 minutes" / "Quiet Place" relaxation mode with a timer that resets on user input (+10)
@@ -43,7 +43,7 @@
 
 ### 🟢 Виджет 1: JS Clock
 
-**Оценка: 45 / 65**
+**Оценка: 55 / 65**
 
 **Этап 1 - Воспроизведение (20/20)**
 - [x] Виджет визуально соответствует оригинальному демо (макет, основные цвета, ключевые взаимодействия) (+10)
@@ -53,9 +53,9 @@
 - [x] Обязательная дополнительная функция, описанная в файле задачи виджета, реализована и работает корректно (+10)
 - [x] Функция интегрирована с остальным интерфейсом (не нарушает функциональность Этапа 1, корректно обрабатывает пограничные случаи) (+5)
 
-**Этап 3 - Дополнительные улучшения (10/30)**
+**Этап 3 - Дополнительные улучшения (20/30)**
 - [x] Мультичасовой пояс с отображением времени в нескольких городах мира одновременно (+10)
-- [ ] Переключение темной/светлой темы, сохраняющееся при перезагрузке (+10)
+- [x] Переключение темной/светлой темы, сохраняющееся при перезагрузке (+10)
 - [ ] Онлайн-будильник со звуком и кнопками отключения/откладывания (+10)
 - [ ] Часы с кукушкой — в начале каждого часа выскакивает птичка и кукует (+10)
 - [ ] Режим релаксации "ничего не делать 2 минуты" / "Тихое место" с таймером, сбрасывающимся при действии пользователя (+10)
@@ -151,6 +151,6 @@
 
 | Widget | Score |
 |---|---|
-| JS Clock | 45 / 65 |
+| JS Clock | 55 / 65 |
 | Custom Video Player | 45 / 65 |
-| **Max Score** | 90 / **130** |
+| **Max Score** | 100 / **130** |

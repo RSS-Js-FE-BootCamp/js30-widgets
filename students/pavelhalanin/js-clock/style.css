@@ -1,6 +1,31 @@
-body {
+body[data-theme="dark"] {
   background-color: #212529;
   color: #dee2e6;
+}
+
+.theme_button {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 64px;
+  height: 64px;
+
+  border-radius: 16px;
+  border: 1px solid #06c;
+  background-color: #06c;
+  color: white;
+}
+
+.theme_button::after {
+  content: "Dark";
+}
+
+body[data-theme="dark"] .theme_button::after {
+  content: "Light";
 }
 
 .clock__container {
@@ -166,7 +191,13 @@ body {
 }
 
 .seven_segment__container [data-segment] {
+  background-color: #eeeeee;
+  transition: all 0.5s ease-in-out;
+}
+
+body[data-theme="dark"] .seven_segment__container [data-segment] {
   background-color: #1b1f22;
+  transition: all 0.5s ease-in-out;
 }
 
 /* 0 */
@@ -228,7 +259,7 @@ body {
 .seven_segment__container[data-symbol='9'] [data-segment='d'],
 .seven_segment__container[data-symbol='9'] [data-segment='f'],
 .seven_segment__container[data-symbol='9'] [data-segment='g'] {
-  background-color: red;
+  background-color: red !important;
 }
 
 /* dots */
