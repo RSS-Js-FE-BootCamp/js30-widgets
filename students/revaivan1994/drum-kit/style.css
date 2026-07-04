@@ -59,6 +59,10 @@ kbd {
 
 .key:hover {
     cursor: pointer;
-    background-color: beige;
-    transform: scale(1.05);
+}
+
+.key--playing {
+    transform: scale(1.1);
+    border-color: #ffcc00;
+    box-shadow: 0 0 20px #ffcc00;
 }
