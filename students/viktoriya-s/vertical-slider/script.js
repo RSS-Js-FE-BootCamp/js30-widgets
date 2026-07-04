@@ -9,6 +9,11 @@
   let current = 0;
   let isAnimating = false;
 
+  const clickSound = new Audio("audio/click.mp3");
+  clickSound.volume = 1; // громкость от 0 до 1
+  console.log(clickSound.volume); // должно быть > 0
+  console.log(clickSound.muted); // должно быть false
+
   function circularOffset(i, cur, n) {
     let diff = i - cur;
     if (diff > n / 2) diff -= n;
@@ -76,12 +81,33 @@
     }, 800);
   }
 
-  document
-    .querySelector(".down-button")
-    .addEventListener("click", () => goTo(1));
-  document
-    .querySelector(".up-button")
-    .addEventListener("click", () => goTo(-1));
+  document.querySelector(".down-button").addEventListener("click", () => {
+    goTo(1);
+    clickSound.currentTime = 0;
+    clickSound.play();
+  });
+
+  document.querySelector(".up-button").addEventListener("click", () => {
+    goTo(-1);
+    clickSound.currentTime = 0;
+    clickSound.play();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    clickSound.currentTime = 0;
+  });
+
+  document.addEventListener("click", (e) => {
+    // не останавливаем, если клик именно по кнопкам up/down —
+    // иначе звук будет обрываться сразу же после запуска
+    if (e.target.closest(".up-button") || e.target.closest(".down-button")) {
+      return;
+    }
+
+    clickSound.pause();
+    clickSound.currentTime = 0;
+  });
 
   render(true); // первичная расстановка без анимации
 })();
+
