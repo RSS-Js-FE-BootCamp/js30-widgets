@@ -94,7 +94,7 @@ function spawnParticles(burrow) {
 startBtn.addEventListener('click', startGame);
 critters.forEach((critter) => critter.addEventListener('click', whack));
 
-// --- Levels & localStorage ---
+//Levels localStorage
 const levelBoard = document.querySelector('.level');
 const bestScoreBoard = document.querySelector('.best-score');
 const STORAGE = { level: 'whackLevel', best: 'whackBestScore' };
@@ -107,7 +107,6 @@ try {
     currentLevel = Number(localStorage.getItem(STORAGE.level)) || 1;
     bestScore = Number(localStorage.getItem(STORAGE.best)) || 0;
 } catch (e) {
-    // localStorage недоступен при открытии через file://
 }
 
 function getDelayRange() {
@@ -123,7 +122,6 @@ function saveProgress() {
         localStorage.setItem(STORAGE.level, currentLevel);
         localStorage.setItem(STORAGE.best, bestScore);
     } catch (e) {
-        // игра работает и без сохранения
     }
 }
 
@@ -153,3 +151,20 @@ function finishRound() {
 }
 
 updateStats();
+
+//Reset progress
+const resetBtn = document.querySelector('.reset-btn');
+
+resetBtn.addEventListener('click', () => {
+    currentLevel = 1;
+    bestScore = 0;
+    pointsBoard.textContent = 0;
+    startBtn.textContent = 'Start!';
+
+    try {
+        localStorage.removeItem(STORAGE.level);
+        localStorage.removeItem(STORAGE.best);
+    } catch (e) {}
+
+    updateStats();
+});

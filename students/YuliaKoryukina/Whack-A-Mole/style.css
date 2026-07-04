@@ -46,6 +46,15 @@ h1 {
     cursor: pointer;
 }
 
+.reset-btn {
+    display: block;
+    margin: 0 auto 2rem;
+    font-family: 'Amatic SC', cursive;
+    font-size: 2rem;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
 .playground {
     width: 600px;
     height: 400px;
