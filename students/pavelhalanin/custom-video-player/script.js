@@ -213,5 +213,13 @@ document.addEventListener("keydown", function (event) {
   VIDEO.addEventListener("timeupdate", () => {
     const INFO = CustomVideoPlayer.getVideoInfo();
     CustomVideoPlayer.updateProgress(INFO.progress);
+
+    const VIDEO_TIME = document.getElementById("video__time");
+
+    if (!VIDEO_TIME) {
+      throw new Error(`Не найден узел: #video__time`);
+    }
+
+    VIDEO_TIME.innerHTML = `${INFO.currentTimeFormatted} / ${INFO.durationFormatted}`;
   });
 })();

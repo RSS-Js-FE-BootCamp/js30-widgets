@@ -65,21 +65,35 @@
   right: calc(var(--progress-bar-cicle-height) / -2);
 }
 
+.video__bottom_menu {
+  display: flex;
+  gap: 8px;
+}
+
 .video__play_stop_button {
-  background-color: rgba(0, 0, 0, 0.5);
   width: 32px;
   height: 32px;
   border-radius: 50%;
   border: none;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
 }
 
 .video__play_stop_button:focus-visible {
   outline: none;
+}
+
+.video__play_stop_button,
+.video__time {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.video__time {
+  padding: 0 8px;
+  border-radius: 16px;
 }
 
 .key {
