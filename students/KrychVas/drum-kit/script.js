@@ -34,3 +34,22 @@ keys.forEach(key => {
   key.addEventListener('click', playSound);
   key.addEventListener('transitionend', removeTransition);
 });
+
+// === ФІЧА 2: Перемикання підказок ===
+const toggleHintsBtn = document.querySelector('#toggle-hints');
+
+toggleHintsBtn.addEventListener('click', () => {
+  // Перемикаємо клас hints-hidden у кожної клавіші барабанів
+  keys.forEach(key => key.classList.toggle('hints-hidden'));
+  
+  // Змінюємо текст на самій кнопці залежно від стану
+  if (toggleHintsBtn.textContent === '🚫 Hide Hints') {
+    toggleHintsBtn.textContent = '👁️ Show Hints';
+    toggleHintsBtn.style.background = '#666';
+    toggleHintsBtn.style.color = 'white';
+  } else {
+    toggleHintsBtn.textContent = '🚫 Hide Hints';
+    toggleHintsBtn.style.background = '#ffc600';
+    toggleHintsBtn.style.color = 'black';
+  }
+});
