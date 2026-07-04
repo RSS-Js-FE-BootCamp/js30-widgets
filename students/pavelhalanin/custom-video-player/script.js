@@ -105,15 +105,14 @@ class CustomVideoPlayer {
     VIDEO.currentTime = duration * percent;
   }
 
-  static updateProgress(video_value) {
-    const PROGRESS = document.getElementById("video__progress");
-    if (!PROGRESS) {
-      throw new Error(`Не найден узел: #video__progress`);
+  static setVideoRange() {
+    const VIDEO_RANGE = document.getElementById("video__range");
+
+    if (!VIDEO_RANGE) {
+      throw new Error(`Не найден узел: #video__range`);
     }
 
-    const X = (640 * video_value) / 100;
-
-    PROGRESS.style.width = `${X}px`;
+    this.setVideoToPercent(VIDEO_RANGE.value / 100);
   }
 
   static mute() {
@@ -290,13 +289,20 @@ document.addEventListener("keydown", function (event) {
 
   VIDEO.addEventListener("timeupdate", () => {
     const INFO = CustomVideoPlayer.getVideoInfo();
-    CustomVideoPlayer.updateProgress(INFO.progress);
 
     const VIDEO_TIME = document.getElementById("video__time");
 
     if (!VIDEO_TIME) {
       throw new Error(`Не найден узел: #video__time`);
     }
+
+    const VIDEO_RANGE = document.getElementById("video__range");
+
+    if (!VIDEO_RANGE) {
+      throw new Error(`Не найден узел: #video__range`);
+    }
+
+    VIDEO_RANGE.value = (INFO.currentTime / INFO.duration) * 100;
 
     VIDEO_TIME.innerHTML = `${INFO.currentTimeFormatted} / ${INFO.durationFormatted}`;
   });

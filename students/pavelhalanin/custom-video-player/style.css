@@ -25,49 +25,18 @@
   gap: 8px;
 }
 
-.video__progress {
-  width: calc(640px - 8px * 2);
-}
-
 :root {
   --progress-bar-height: 10px;
   --progress-bar-cicle-height: 16px;
 }
 
-.video__progress_bar_wrapper {
-  width: calc(640px - 8px * 2);
-  height: var(--progress-bar-height);
-  cursor: ew-resize;
-  overflow: hidden;
-
-  background-color: gray;
-  border-radius: 8px;
-}
-
-.video__progress_bar_line {
-  background-color: red;
-  height: 100%;
-
-  position: relative;
-}
-
-.video__progress_bar_line::after {
-  content: "";
-  width: var(--progress-bar-cicle-height);
-  height: var(--progress-bar-cicle-height);
-  background-color: orange;
-  border-radius: 50%;
-
-  position: absolute;
-  top: calc(
-    (var(--progress-bar-cicle-height) - var(--progress-bar-height)) / -2
-  );
-  right: calc(var(--progress-bar-cicle-height) / -2);
-}
-
 .video__bottom_menu {
   display: flex;
   gap: 8px;
+}
+
+.video__range {
+  width: 100%;
 }
 
 .video__play_stop_button,
