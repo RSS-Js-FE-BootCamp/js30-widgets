@@ -212,7 +212,7 @@ class CustomVideoPlayer {
       throw new Error(`Узел не найден: #video__speed_value`);
     }
 
-    SPEED_VALUE.innerHTML = `Video speed := ${Number(speed).toFixed(2)}`;
+    SPEED_VALUE.innerHTML = Number(speed).toFixed(2);
   }
 }
 

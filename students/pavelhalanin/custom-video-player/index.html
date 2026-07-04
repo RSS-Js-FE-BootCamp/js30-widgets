@@ -33,6 +33,7 @@
                     🚀
                     <input id="video__speed_range" type="range" min="0.25" max="3" step="0.01"
                         oninput="CustomVideoPlayer.speedUpdate(event.target.value)">
+                    <span id="video__speed_value">1.00</span>
                 </div>
                 <button class="video__full_screen_button"
                     title="Открыть видео в полном экране / Выйти из полного экрана"
@@ -44,19 +45,18 @@
     </div>
 
     <div class="hot_keys">
-        <div style="justify-content: space-between;">
-            <div>
-                Speed:
-                <button onclick="CustomVideoPlayer.speedUpdate(1)">1</button>
-                <button onclick="CustomVideoPlayer.speedUpdate(1.25)">1.25</button>
-                <button onclick="CustomVideoPlayer.speedUpdate(1.5)">1.5</button>
-                <button onclick="CustomVideoPlayer.speedUpdate(2)">2</button>
-                <button onclick="CustomVideoPlayer.speedUpdate(3)">3</button>
-            </div>
-            <div>
-                <div id="video__speed_value"></div>
-            </div>
+        <div>🚀Video Speed</div>
+        <div>
+            <button class="key" onclick="CustomVideoPlayer.speedUpdate(0.1)">0.1</button>
+            <button class="key" onclick="CustomVideoPlayer.speedUpdate(0.25)">0.25</button>
+            <button class="key" onclick="CustomVideoPlayer.speedUpdate(0.5)">0.5</button>
+            <button class="key" onclick="CustomVideoPlayer.speedUpdate(1)">1</button>
+            <button class="key" onclick="CustomVideoPlayer.speedUpdate(1.25)">1.25</button>
+            <button class="key" onclick="CustomVideoPlayer.speedUpdate(1.5)">1.5</button>
+            <button class="key" onclick="CustomVideoPlayer.speedUpdate(2)">2</button>
+            <button class="key" onclick="CustomVideoPlayer.speedUpdate(3)">3</button>
         </div>
+        <div>Hot Keys</div>
         <div>
             <button class="key" title="Перемотка видео на 10%"
                 onclick="CustomVideoPlayer.setVideoToPercent(0.1)">1</button>
