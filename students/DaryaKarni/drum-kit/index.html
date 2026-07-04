@@ -79,6 +79,10 @@
       key.classList.add('playing');
       audio.currentTime = 0;
       audio.play();
+      const rect = key.getBoundingClientRect();
+      const keyLeft = rect.left + rect.width/2 + window.scrollX;
+      const keyTop = rect.top + rect.height /2 + window.scrollY;
+      showNote(keyLeft, keyTop);
     }
     const keys = document.querySelector(".keys");
     function removeTransition(e){
@@ -134,6 +138,24 @@
         saveTheme('light');
       }
     })
+
+    /*notes animation*/
+    const notes = ['♩','♪','♫','♬'];
+    function showNote(x,y){
+      const note = document.createElement('span');
+      note.classList.add('note');
+      const randomNote = notes[Math.floor(Math.random() * notes.length)];
+      note.innerText = randomNote;
+      note.style.left = `${x}px`;
+      note.style.top = `${y}px`;
+      const randomX = Math.floor(Math.random() * 60) - 30;
+      note.style.setProperty('--offsetX', `${randomX}px`);
+      document.body.appendChild(note);
+      setTimeout(() => {
+        note.remove();
+      }, 1000);
+    }
+    
   </script>
 </body>
 </html>

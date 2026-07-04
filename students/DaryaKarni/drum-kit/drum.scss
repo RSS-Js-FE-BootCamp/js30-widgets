@@ -2,6 +2,7 @@ body,html {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  width: 100vw;
 }
 html{
   font-size: 10px;
@@ -63,5 +64,24 @@ html{
   top: 5rem;
   svg{
     width: 5rem;
+  }
+}
+.note{
+  position: absolute;
+  pointer-events: none;
+  font-size: 5rem;
+  z-index: 1;
+  animation: spawnNotes 1s ease forwards;
+  color: #ffc600;
+}
+
+@keyframes spawnNotes {
+  from{
+    opacity: 0;
+    transform: translate(-50%,-50%) translate(0, 0) scale(0.5);
+  }
+  to{
+    opacity: 1;
+    transform: translate(-50%,-50%) translate(var(--offsetX), -120px) scale(1.2);
   }
 }
