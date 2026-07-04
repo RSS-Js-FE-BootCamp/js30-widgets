@@ -48,9 +48,47 @@ function startGame() {
 
 function whack(event) {
     if (!event.isTrusted) return;
+
+    const burrow = this.parentNode;
+    if (!burrow.classList.contains('burrow-active') || this.classList.contains('critter-whacked')) {
+        return;
+    }
+
     points++;
-    this.parentNode.classList.remove('burrow-active');
     pointsBoard.textContent = points;
+
+    burrow.classList.remove('burrow-active');
+    burrow.classList.add('burrow-hit');
+    this.classList.add('critter-whacked');
+    spawnParticles(burrow);
+
+    setTimeout(() => {
+        burrow.classList.remove('burrow-hit');
+        this.classList.remove('critter-whacked');
+    }, 450);
+}
+
+function spawnParticles(burrow) {
+    const burst = document.createElement('div');
+    burst.className = 'particles';
+    burrow.appendChild(burst);
+
+    const colors = ['#8B4513', '#D2691E', '#FFD700', '#ffc600', '#654321', '#f4a460'];
+    const count = 14;
+
+    for (let i = 0; i < count; i++) {
+        const particle = document.createElement('span');
+        const isStar = i % 4 === 0;
+        particle.className = isStar ? 'particle particle--star' : 'particle';
+        particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        particle.style.setProperty('--tx', `${(Math.random() - 0.5) * 140}px`);
+        particle.style.setProperty('--ty', `${-30 - Math.random() * 90}px`);
+        particle.style.setProperty('--rot', `${Math.random() * 720 - 360}deg`);
+        particle.style.animationDelay = `${Math.random() * 0.08}s`;
+        burst.appendChild(particle);
+    }
+
+    setTimeout(() => burst.remove(), 650);
 }
 
 startBtn.addEventListener('click', startGame);
