@@ -1,7 +1,107 @@
+class SearchHelper {
+  static api_key = "56567110-9e9784ee47552cf188976d5d2";
+
+  static getSearchUrl(search) {
+    const URI = `https://pixabay.com/api/videos/?key=${this.api_key}&q=${encodeURIComponent(search)}`;
+    return URI;
+  }
+
+  static async fetchSearch(search) {
+    const URI = this.getSearchUrl(search);
+    const RESPONSE = await fetch(URI);
+
+    const HTTP_STATUS = RESPONSE.status;
+    if (HTTP_STATUS !== 200) {
+      const TEXT = await RESPONSE.text();
+      throw new Error(`HTTP ${HTTP_STATUS}\n${TEXT}`);
+    }
+
+    const DATA = await RESPONSE.json();
+    return DATA;
+  }
+
+  static getSearch() {
+    const INPUT = document.getElementById("search");
+
+    if (!INPUT) {
+      throw new Error(`Узел не найден: #search`);
+    }
+
+    return INPUT.value;
+  }
+
+  static getImageSrcByRaw(element) {
+    if (!element.videos) {
+      return "";
+    }
+
+    if (element.videos.large) {
+      return element.videos.large.url;
+    }
+
+    if (element.videos.medium) {
+      return element.videos.medium.url;
+    }
+
+    if (element.videos.small) {
+      return element.videos.small.url;
+    }
+
+    if (element.videos.tiny) {
+      return element.videos.tiny.url;
+    }
+
+    return "";
+  }
+
+  static async renderEmpty() {
+    const DIV = document.getElementById("search_result");
+    if (!DIV) {
+      throw new Error(`Узел не найден: #search_result`);
+    }
+
+    DIV.innerHTML = "";
+  }
+
+  static async render() {
+    const DIV = document.getElementById("search_result");
+    if (!DIV) {
+      throw new Error(`Узел не найден: #search_result`);
+    }
+
+    const SEARCH = this.getSearch();
+    const DATA = await this.fetchSearch(SEARCH);
+    console.log(DATA);
+
+    const THIS = this;
+    DIV.innerHTML = `
+      <div class="search_result__content">
+        <ul>
+          ${DATA.hits
+            .map((e) => {
+              const IMAGE_SRC = THIS.getImageSrcByRaw(e);
+              return `
+              <li>
+                <button data-video-src="${IMAGE_SRC}" onclick="GalleryHelper.setVideo(this.getAttribute('data-video-src'))">
+                  <img src="${e.userImageURL}">
+                  ${e.name}
+                </button>
+              </li>
+            `;
+            })
+            .join("")}
+        </ul>
+      </div>
+    `;
+  }
+}
+
 class GalleryHelper {
   static setVideo(videoSrc) {
     const VIDEO = CustomVideoPlayer.getVideoTag();
     VIDEO.src = videoSrc;
+
+    SearchHelper.renderEmpty();
   }
 }
 
