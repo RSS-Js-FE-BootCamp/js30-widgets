@@ -1,13 +1,17 @@
-html {
-  background: url("./assets/background.jpg") bottom center;
-  background-size: cover;
-  font-size: 10px;
-}
-
 body, html {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+}
+
+html {
+  font-size: 10px;
+  transition: filter 0.3s, background-color 0.3s;
+  background: url("./assets/background.jpg") bottom center;
+  background-size: cover;
+}
+html.light {
+  filter: invert(100%);
 }
 
 .keys {
@@ -16,7 +20,8 @@ body, html {
   align-items: center;
   min-height: 100vh;
 }
-.keys .key {
+
+.key {
   text-align: center;
   width: 10rem;
   margin: 10px;
@@ -27,19 +32,37 @@ body, html {
   padding: 1rem 0.5rem;
   text-shadow: 0 0 0.5rem black;
   transition: all 0.07s ease;
+  box-shadow: 1rem 1rem 10rem 0rem black;
 }
-.keys .key kbd {
+.key kbd {
   font-size: 4rem;
   display: block;
 }
-.keys .key span {
+.key span {
   font-size: 1.2rem;
   color: #ffc600;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
 }
-.keys .playing {
+.key.light {
+  background: rgba(255, 255, 255, 0.4);
+  border: 0.4rem solid white;
+}
+.key .hidden {
+  display: none;
+}
+.key.playing {
   border-color: #ffc600;
   box-shadow: 0 0 1rem #ffc600;
   transform: scale(1.1);
+}
+
+.theme {
+  position: absolute;
+  width: 10rem;
+  left: 5rem;
+  top: 5rem;
+}
+.theme svg {
+  width: 5rem;
 }/*# sourceMappingURL=drum.css.map */
