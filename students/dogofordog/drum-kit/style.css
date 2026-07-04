@@ -80,6 +80,16 @@ kbd {
   cursor: pointer;
 }
 
-body.light {
-  filter: invert(1) hue-rotate(180deg);
+body.light .key {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: #333;
+  color: black;
+}
+
+body.light .key .sound {
+  color: #8B6914;
+}
+
+body.light kbd {
+  color: black;
 }
