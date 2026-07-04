@@ -68,6 +68,9 @@ body {
 }
 
 .digital {
+  border: 1px solid gold;
+  background:rgba(226, 8, 8, 0.4);
+  border-radius: 5px;
   color: white;
   display: flex;
   flex-direction: column;
@@ -92,4 +95,22 @@ body {
   font-size: clamp(0.6rem, 1.5vw, 1rem);
   font-weight: bold;
   pointer-events: none;
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(255,255,255,0.2);
+  border: 2px solid gold;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+body.light {
+  background: url('img/background.jpg') center / cover no-repeat;
+  filter: invert(1) hue-rotate(180deg);
 }
