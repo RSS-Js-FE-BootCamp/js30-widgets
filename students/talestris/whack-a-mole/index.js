@@ -4,7 +4,7 @@ const scoreBoard = document.querySelector(".score");
 const startBtn = document.querySelector(".start-btn");
 
 const level = document.querySelector(".level");
-const highScoreDisplay = document.querySelector("high-score");
+const highScoreDisplay = document.querySelector(".high-score");
 
 startBtn.addEventListener("click", startGame);
 
