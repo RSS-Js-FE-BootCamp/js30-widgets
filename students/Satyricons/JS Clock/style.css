@@ -19,6 +19,7 @@ background: rgb(202, 162, 110);
 }
 
 .clock {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,15 +41,24 @@ background: rgb(202, 162, 110);
     z-index: 100;
 }
 
-.sec{
-   display: flex
-;
-    position: absolute;
-    background: url(./img/sec.png);
+.sec, .min, .hour{
+    position: absolute;    
     width: 24px;
     height: 178px;
     top: 190px;
-    left: 780px;
-    transform-origin: 12px 11px;
-    transform: rotate(180deg);
+    left: 190px;
+    transform-origin: 12px 11px;    
+    transition-timing-function: ease-in-out;
+}
+
+.sec{
+    background: url(./img/sec.png);
+}
+
+.min{
+    background: url(./img/min.png);   
+}
+
+.hour{    
+    background: url(./img/hour.png);
 }
