@@ -1,9 +1,54 @@
-body{
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-.container_clock{
+body{
     display: flex;
     justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+background: rgb(202, 162, 110);
+}
+
+.container_clock {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.clock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url(./img/clock.png);
+    background-size: cover;
+    width: 400px;
+    height: 400px;
+    box-shadow: 0px 0px 15px 15px rgba(0, 0, 0, 0.384);
+    border-radius: 50%;
+}
+
+.clock:before {
+    content: "";
+    position: absolute;
+    background: rgb(22, 22, 22);
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    z-index: 100;
+}
+
+.sec{
+   display: flex
+;
+    position: absolute;
+    background: url(./img/sec.png);
+    width: 24px;
+    height: 178px;
+    top: 190px;
+    left: 780px;
+    transform-origin: 12px 11px;
+    transform: rotate(180deg);
 }
