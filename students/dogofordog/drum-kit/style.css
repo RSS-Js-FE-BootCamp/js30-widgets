@@ -66,3 +66,20 @@ kbd {
   0%   { opacity: 1; transform: translateY(0) scale(1); }
   100% { opacity: 0; transform: translateY(-100px) scale(1.5); }
 }
+
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(255,255,255,0.2);
+  border: 2px solid gold;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+body.light {
+  filter: invert(1) hue-rotate(180deg);
+}
