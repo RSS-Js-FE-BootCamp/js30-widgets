@@ -1,6 +1,10 @@
 # JS30 Widgets - @fainmariya
 
 Pull Request: https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/80
+## Deploy Preview
+
+- Drum Kit: https://deploy-preview-80--js-30-widget-gallery.netlify.app/students/fainmariya/drum-kit/
+- JS Clock: https://deploy-preview-80--js-30-widget-gallery.netlify.app/students/fainmariya/js-clock/
 
 ## What was implemented
 
