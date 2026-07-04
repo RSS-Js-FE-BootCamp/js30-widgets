@@ -8,6 +8,7 @@
   margin: 0 auto;
 
   border: 8px solid #06c;
+  background-color: #06c;
   border-radius: 8px;
 
   position: relative;
@@ -129,4 +130,44 @@
   display: flex;
   justify-content: center;
   gap: 8px;
+}
+
+/* galery */
+
+.galery {
+  padding: 16px 0;
+}
+
+.galery > ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.galery > ul > li {
+  list-style-type: none;
+}
+
+.galery > ul > li > button {
+  width: 200px;
+  height: 200px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #06c;
+  background-color: transparent;
+  transition: all 1s ease;
+}
+
+.galery > ul > li > button:hover {
+  box-shadow: 0 0 8px black;
+}
+
+.galery > ul > li > button > img {
+  max-width: 180px;
+  max-height: 180px;
+  width: auto;
+  height: auto;
 }

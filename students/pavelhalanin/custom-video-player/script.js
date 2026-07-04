@@ -1,3 +1,10 @@
+class GalleryHelper {
+  static setVideo(videoSrc) {
+    const VIDEO = CustomVideoPlayer.getVideoTag();
+    VIDEO.src = videoSrc;
+  }
+}
+
 class CustomVideoPlayer {
   static getVideoTag() {
     const VIDEO = document.getElementById("video");

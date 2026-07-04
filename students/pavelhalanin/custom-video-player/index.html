@@ -93,6 +93,31 @@
             <button class="key" title="Запуск видео / Пауза видео"
                 onclick="CustomVideoPlayer.togglePlay()">Пробел</button>
         </div>
+        <div>Mini movie catalog</div>
+    </div>
+    <div class="galery">
+        <ul>
+            <li>
+                <button data-video-src="https://cdn.pixabay.com/video/2020/11/11/56189-480695649_small.mp4" onclick="GalleryHelper.setVideo(this.getAttribute('data-video-src'))">
+                    <img src="https://cdn.pixabay.com/video/2020/11/11/56189-480695649_small.jpg" alt="">
+                </button>
+            </li>
+            <li>
+                <button data-video-src="https://cdn.pixabay.com/video/2020/02/01/31851-389009390_small.mp4" onclick="GalleryHelper.setVideo(this.getAttribute('data-video-src'))">
+                    <img src="https://cdn.pixabay.com/video/2020/02/01/31851-389009390_small.jpg" alt="">
+                </button>
+            </li>
+            <li>
+                <button data-video-src="https://cdn.pixabay.com/video/2022/09/01/129855-746780897_small.mp4" onclick="GalleryHelper.setVideo(this.getAttribute('data-video-src'))">
+                    <img src="https://cdn.pixabay.com/video/2022/09/01/129855-746780897_small.jpg" alt="">
+                </button>
+            </li>
+            <li>
+                <button data-video-src="https://cdn.pixabay.com/video/2020/01/05/30904-383991333_small.mp4" onclick="GalleryHelper.setVideo(this.getAttribute('data-video-src'))">
+                    <img src="https://cdn.pixabay.com/video/2020/01/05/30904-383991333_small.jpg" alt="">
+                </button>
+            </li>
+        </ul>
     </div>
 
     <script src="./script.js"></script>
