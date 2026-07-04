@@ -10,7 +10,6 @@ const audio74 = new Audio('../shared/snare.wav');
 const audio75 = new Audio('../shared/tom.wav');
 const audio76 = new Audio('../shared/tink.wav');
 
-// console.log(main)
 document.addEventListener('keydown', (event) => {
   if (event.which === 65) {
     audio65.currentTime = 0;
@@ -59,7 +58,6 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
-
 document.addEventListener('keyup', (event) => {
   if (event.which === 65) {
     document.querySelector('[data-key="65"]').classList.remove('playing');
@@ -71,21 +69,113 @@ document.addEventListener('keyup', (event) => {
     document.querySelector('[data-key="68"]').classList.remove('playing');
   }
   if (event.which === 70) {
-    document.querySelector('[data-key="70"]').classList.remove('playing');;
+    document.querySelector('[data-key="70"]').classList.remove('playing');
   }
   if (event.which === 71) {
-    document.querySelector('[data-key="71"]').classList.remove('playing');;
+    document.querySelector('[data-key="71"]').classList.remove('playing');
   }
   if (event.which === 72) {
-    document.querySelector('[data-key="72"]').classList.remove('playing');;
+    document.querySelector('[data-key="72"]').classList.remove('playing');
   }
   if (event.which === 74) {
-    document.querySelector('[data-key="74"]').classList.remove('playing');;
+    document.querySelector('[data-key="74"]').classList.remove('playing');
   }
   if (event.which === 75) {
-    document.querySelector('[data-key="75"]').classList.remove('playing');;
+    document.querySelector('[data-key="75"]').classList.remove('playing');
   }
   if (event.which === 76) {
-    document.querySelector('[data-key="76"]').classList.remove('playing');;;
+    document.querySelector('[data-key="76"]').classList.remove('playing');
+  }
+});
+
+// Clicks on Button
+main.addEventListener('mousedown', (event) => {
+  const drum = event.target.closest('.drum__box-item');
+  if (!drum) return;
+  
+  if (event.isTrusted) {
+    const element = event.target.closest('[data-key]')
+
+    if (element.dataset.key === '65') {
+      audio65.currentTime = 0;
+      audio65.play()
+      document.querySelector('[data-key="65"]').classList.add('playing');
+    }
+    if (element.dataset.key === '83') {
+      audio83.currentTime = 0;
+      audio83.play()
+      document.querySelector('[data-key="83"]').classList.add('playing');
+    }
+    if (element.dataset.key === '68') {
+      audio68.currentTime = 0;
+      audio68.play()
+      document.querySelector('[data-key="68"]').classList.add('playing');
+    }
+    if (element.dataset.key === '70') {
+      audio70.currentTime = 0;
+      audio70.play()
+      document.querySelector('[data-key="70"]').classList.add('playing');
+    }
+    if (element.dataset.key === '71') {
+      audio71.currentTime = 0;
+      audio71.play()
+      document.querySelector('[data-key="71"]').classList.add('playing');
+    }
+    if (element.dataset.key === '72') {
+      audio72.currentTime = 0;
+      audio72.play()
+      document.querySelector('[data-key="72"]').classList.add('playing');
+    }
+    if (element.dataset.key === '74') {
+      audio74.currentTime = 0;
+      audio74.play()
+      document.querySelector('[data-key="74"]').classList.add('playing');
+    }
+    if (element.dataset.key === '75') {
+      audio75.currentTime = 0;
+      audio75.play()
+      document.querySelector('[data-key="75"]').classList.add('playing');
+    }
+    if (element.dataset.key === '76') {
+      audio76.currentTime = 0;
+      audio76.play()
+      document.querySelector('[data-key="76"]').classList.add('playing');
+    }
+  }
+
+});
+
+main.addEventListener('mouseup', (event) => {
+  const drum = event.target.closest('.drum__box-item');
+  if (!drum) return;
+
+  const element = event.target.closest('[data-key]');
+
+  if (element.dataset.key === '65') {
+    document.querySelector('[data-key="65"]').classList.remove('playing');
+  }
+  if (element.dataset.key === '83') {
+    document.querySelector('[data-key="83"]').classList.remove('playing');
+  }
+  if (element.dataset.key === '68') {
+    document.querySelector('[data-key="68"]').classList.remove('playing');
+  }
+  if (element.dataset.key === '70') {
+    document.querySelector('[data-key="70"]').classList.remove('playing');
+  }
+  if (element.dataset.key === '71') {
+    document.querySelector('[data-key="71"]').classList.remove('playing');
+  }
+  if (element.dataset.key === '72') {
+    document.querySelector('[data-key="72"]').classList.remove('playing');
+  }
+  if (element.dataset.key === '74') {
+    document.querySelector('[data-key="74"]').classList.remove('playing');
+  }
+  if (element.dataset.key === '75') {
+    document.querySelector('[data-key="75"]').classList.remove('playing');
+  }
+  if (element.dataset.key === '76') {
+    document.querySelector('[data-key="76"]').classList.remove('playing');
   }
 });
