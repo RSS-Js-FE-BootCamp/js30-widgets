@@ -3,11 +3,27 @@ const moles = document.querySelectorAll(".mole");
 const scoreBoard = document.querySelector(".score");
 const startBtn = document.querySelector(".start-btn");
 
+const level = document.querySelector(".level");
+const highScoreDisplay = document.querySelector("high-score");
+
 startBtn.addEventListener("click", startGame);
 
 let lastHole;
 let timeUp = false;
 let score = 0;
+
+let currentLevel = parseInt(localStorage.getItem("moleCurrentLevel")) || 1;
+let highScore = parseInt(localStorage.getItem("moleHighScore")) || 0;
+const pointsToWin = 10;
+
+level.textContent = currentLevel;
+highScoreDisplay.textContent = highScore;
+
+function getLevelSpeed() {
+  if (currentLevel === 1) return { min: 400, max: 1200 };
+  if (currentLevel === 2) return { min: 250, max: 800 };
+  return { min: 150, max: 500 };
+}
 
 function randomTime(min, max) {
   return Math.round(Math.random() * (max - min) + min);
@@ -23,9 +39,12 @@ function randomHole(holes) {
 }
 
 function stickOut() {
-  const time = randomTime(200, 1000);
+  const speed = getLevelSpeed();
+  const time = randomTime(speed.min, speed.max);
   const hole = randomHole(holes);
+
   hole.classList.add("up");
+
   setTimeout(() => {
     hole.classList.remove("up");
     if (!timeUp) stickOut();
@@ -36,8 +55,19 @@ function startGame() {
   scoreBoard.textContent = 0;
   timeUp = false;
   score = 0;
+
+  startBtn.disabled = true;
+  startBtn.textContent = "Playing...";
+
   stickOut();
-  setTimeout(() => (timeUp = true), 10000);
+
+  setTimeout(() => {
+    timeUp = true;
+    startBtn.disabled = false;
+    startBtn.textContent = "Start!";
+
+    endGameCheck();
+  }, 10000);
 }
 
 function bonk(e) {
@@ -45,6 +75,43 @@ function bonk(e) {
   score++;
   this.classList.remove("up");
   scoreBoard.textContent = score;
+
+  if (score > highScore) {
+    highScore = score;
+    highScoreDisplay.textContent = highScore;
+    localStorage.setItem("moleHighScore", highScore);
+  }
+}
+
+const modal = document.querySelector("#game-modal");
+const modalText = document.querySelector(".modal-txt");
+const modalBtn = document.querySelector("#modal_btn");
+
+modalBtn.addEventListener("click", () => {
+  modal.close();
+});
+
+function showMessage(text) {
+  modalText.textContent = text;
+  modal.showModal();
+}
+
+function endGameCheck() {
+  if (score >= pointsToWin) {
+    if (currentLevel < 3) {
+      currentLevel++;
+      showMessage(`Great job! Welcome to Level ${currentLevel}!`);
+    } else {
+      showMessage("Congratulations! You beat the game! Resetting to Level 1.");
+      currentLevel = 1;
+    }
+  } else {
+    showMessage(
+      `Game Over! You needed ${pointsToWin} points. Try Level ${currentLevel} again!`,
+    );
+  }
+  localStorage.setItem("moleCurrentLevel", currentLevel);
+  level.textContent = currentLevel;
 }
 
 moles.forEach((mole) => mole.addEventListener("click", bonk));

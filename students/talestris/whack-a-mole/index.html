@@ -10,34 +10,48 @@
 </head>
 
 <body>
-    <h1>Whack a mole! <span class="score">0</span></h1>
-    <button type="button" class="start-btn" aria-label="start button">Start!</button>
-    <div class="game">
-        <div class="hole hole1">
-            <div class="mole"></div>
-            <img src="./pile_of_soil.webp" alt="dirt pile" class="dirt">
+    <div class="wrapper">
+        <h1>Whack a mole! <span class="score">0</span></h1>
+        <div class="game-info">
+            <h2>Level: <span class="level">1</span></h2>
+            <h2>High Score: <span class="high-score">0</span></h2>
         </div>
-        <div class="hole hole2">
-            <div class="mole"></div>
-            <img src="./pile_of_soil.webp" alt="dirt pile" class="dirt">
+        <button type="button" class="btn start-btn" aria-label="start button">Start!</button>
+        <div class="help">
+            <p><strong>Rules:</strong>Score 10 points in 10 seconds to advance to the next level. Moles get faster each
+                level!</p>
         </div>
-        <div class="hole hole3">
-            <div class="mole"></div>
-            <img src="./pile_of_soil.webp" alt="dirt pile" class="dirt">
-        </div>
-        <div class="hole hole4">
-            <div class="mole"></div>
-            <img src="./pile_of_soil.webp" alt="dirt pile" class="dirt">
-        </div>
-        <div class="hole hole5">
-            <div class="mole"></div>
-            <img src="./pile_of_soil.webp" alt="dirt pile" class="dirt">
-        </div>
-        <div class="hole hole6">
-            <div class="mole"></div>
-            <img src="./pile_of_soil.webp" alt="dirt pile" class="dirt">
+        <div class="game">
+            <div class="hole hole1">
+                <div class="mole"></div>
+                <img src="./pile_of_soil.webp" alt="dirt pile" class="dirt">
+            </div>
+            <div class="hole hole2">
+                <div class="mole"></div>
+                <img src="./pile_of_soil.webp" alt="dirt pile" class="dirt">
+            </div>
+            <div class="hole hole3">
+                <div class="mole"></div>
+                <img src="./pile_of_soil.webp" alt="dirt pile" class="dirt">
+            </div>
+            <div class="hole hole4">
+                <div class="mole"></div>
+                <img src="./pile_of_soil.webp" alt="dirt pile" class="dirt">
+            </div>
+            <div class="hole hole5">
+                <div class="mole"></div>
+                <img src="./pile_of_soil.webp" alt="dirt pile" class="dirt">
+            </div>
+            <div class="hole hole6">
+                <div class="mole"></div>
+                <img src="./pile_of_soil.webp" alt="dirt pile" class="dirt">
+            </div>
         </div>
     </div>
+    <dialog id="game-modal">
+        <p class="modal-txt">Welcome to the game!</p>
+        <button type="button" class="modal-btn" id="modal_btn">OK</button>
+    </dialog>
     <script src="./index.js"></script>
 </body>
 
