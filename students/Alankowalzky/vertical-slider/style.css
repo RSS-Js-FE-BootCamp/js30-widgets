@@ -11,7 +11,7 @@ body {
   overflow: hidden;
 }
 
-/* ─── Main container — the "aperture" ─── */
+/* ─── Main container ─── */
 .slider-container {
   position: relative;
   width: 100vw;
@@ -19,13 +19,34 @@ body {
   overflow: hidden;
 }
 
-/* ─── Left column — text strips ─── */
-.left-slide {
+/* ─── Column clip windows ─── */
+.left-col,
+.right-col {
   position: absolute;
   top: 0;
+  height: 100%;
+  overflow: hidden;       /* THIS is the true clip boundary */
+}
+
+.left-col {
   left: 0;
   width: 35%;
-  height: 400vh;
+}
+
+.right-col {
+  left: 35%;
+  width: 65%;
+}
+
+/* ─── Left sliding strip (REVERSE DOM order: Castle→Flower→Mountain→Eagle) ─── */
+/* Formula: translateY((index - (N-1)) * 100vh)                                  */
+/*   index=0 → -300vh → Eagle in viewport  ✓                                     */
+/*   index=1 → -200vh → Mountain           ✓                                     */
+/*   index=2 → -100vh → Flower             ✓                                     */
+/*   index=3 →    0   → Castle             ✓                                     */
+.left-slide {
+  width: 100%;
+  height: 400vh;          /* 4 panels × 100vh */
   transition: transform 0.5s ease-in-out;
 }
 
@@ -55,12 +76,10 @@ body {
   font-weight: 400;
 }
 
-/* ─── Right column — image strips ─── */
+/* ─── Right sliding strip (NORMAL DOM order: Eagle→Mountain→Flower→Castle) ─── */
+/* Formula: translateY(-index * 100vh)                                            */
 .right-slide {
-  position: absolute;
-  top: 0;
-  left: 35%;
-  width: 65%;
+  width: 100%;
   height: 400vh;
   transition: transform 0.5s ease-in-out;
 }
@@ -72,7 +91,7 @@ body {
   background-position: center;
 }
 
-/* ─── Navigation buttons ─── */
+/* ─── Navigation buttons — centred on the 35% split line ─── */
 .action-buttons {
   position: absolute;
   left: calc(35% - 24px);
@@ -173,35 +192,44 @@ body {
 
 /* ─── Responsive — mobile ─── */
 @media (max-width: 768px) {
-  .left-slide {
+  .left-col {
     width: 100%;
-    height: 400vh;
+    height: 50%;
+    top: 0;
+  }
+
+  .right-col {
+    left: 0;
+    width: 100%;
+    height: 50%;
+    top: 50%;
+  }
+
+  .left-slide {
+    height: 400%;   /* 4 × 25vh equivalent inside the 50vh col */
   }
 
   .left-slide > div {
-    height: 50vh;
+    height: 100vh;  /* will be clipped to 50vh by left-col */
     padding: 0 24px;
     align-items: center;
     text-align: center;
   }
 
   .right-slide {
-    left: 0;
-    top: 50vh;
-    width: 100%;
-    height: 400vh;
+    height: 400%;
   }
 
   .right-slide > div {
-    height: 50vh;
+    height: 100vh;
   }
 
   .action-buttons {
     left: 50%;
-    top: auto;
-    bottom: 12px;
-    transform: translateX(-50%);
+    top: 50%;
+    transform: translate(-50%, -50%);
     flex-direction: row;
+    z-index: 200;
   }
 
   .dots-nav {
