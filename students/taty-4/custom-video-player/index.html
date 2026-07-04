@@ -5,6 +5,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HTML Video Player</title>
     <link rel="stylesheet" href="./style.css" />
+    <link rel="icon" href="./favicon.ico?v=3" type="favicon" />
   </head>
-  <body></body>
+  <body>
+    <h1 class="title">The Land of Sometimes</h1>
+    <div class="player" tabindex="0">
+      <video class="player__video"></video>
+      <div class="player-controls">
+        <input
+          class="player__track"
+          type="range"
+          min="0"
+          max="100"
+          value="0"
+          step="0.1"
+        />
+        <div class="player-controls__bottom-part">
+          <div class="player-controls__bottom-part--left">
+            <button class="player__play"></button>
+            <button class="player__rewind-back" data-step="-10">-10</button>
+            <button class="player__rewind-forward" data-step="10">10</button>
+            <button class="player__volume"></button>
+            <input
+              type="range"
+              name="volume"
+              value="0.5"
+              min="0"
+              max="1"
+              step="0.05"
+            />
+            <p class="player__time">
+              <span class="player__time--current">00:00</span> /
+              <span class="player__time--full">00:00</span>
+            </p>
+          </div>
+          <div class="player-controls__bottom-part--right">
+            <input
+              class="player__speed"
+              type="range"
+              name="playbackRate"
+              value="1"
+              min="0.25"
+              max="2"
+              step="0.05"
+            />
+            <button class="player__full-screen"></button>
+          </div>
+        </div>
+      </div>
+      <p class="title-video">The Land of Sometimes (part 1)</p>
+    </div>
+
+    <ul class="biblioteka-list">
+      <li data-part="1" class="biblioteka__item active">
+        <img src="./assets/posters/poster1.webp" alt="" />
+        <p class="item-subtitle">The Land of Sometimes (part 1)</p>
+      </li>
+      <li data-part="2" class="biblioteka__item">
+        <img src="./assets/posters/poster2.webp" alt="" />
+        <p class="item-subtitle">The Land of Sometimes (part 2)</p>
+      </li>
+      <li data-part="3" class="biblioteka__item">
+        <img src="./assets/posters/poster3.webp" alt="" />
+        <p class="item-subtitle">The Land of Sometimes (part 3)</p>
+      </li>
+      <li data-part="4" class="biblioteka__item">
+        <img src="./assets/posters/poster4.webp" alt="" />
+        <p class="item-subtitle">The Land of Sometimes (part 4)</p>
+      </li>
+      <li data-part="5" class="biblioteka__item">
+        <img src="./assets/posters/poster5.webp" alt="" />
+        <p class="item-subtitle">The Land of Sometimes (part 5)</p>
+      </li>
+      <li data-part="6" class="biblioteka__item">
+        <img src="./assets/posters/poster6.webp" alt="" />
+        <p class="item-subtitle">The Land of Sometimes (part 6)</p>
+      </li>
+    </ul>
+    <script type="module" src="./script.js"></script>
+  </body>
 </html>
