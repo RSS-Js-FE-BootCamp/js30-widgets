@@ -64,21 +64,25 @@
       audio.currentTime = 0;
       audio.play();
     }
-    const keys = document.querySelectorAll(".key");
+    const keys = document.querySelector(".keys");
     function removeTransition(e){
       if(e.propertyName !== "transform"){
         return;
       }
       e.target.classList.remove('playing');
     }
-    keys.forEach(key => key.addEventListener('transitionend', removeTransition))
-    keys.forEach(key => key.addEventListener('click', function(e){
-      playSound(e.target.closest(".key").dataset.key);
-    }));
+    keys.addEventListener('transitionend', removeTransition)
+    keys.addEventListener('click', function(e){
+      const key = e.target.closest(".key");
+      if (!key) return;
+      playSound(key.dataset.key);
+    });
     window.addEventListener('keydown', (e) => playSound(e.keyCode));
     window.addEventListener('keyup', function(e){
       document.querySelector(`.key[data-key="${e.keyCode}"]`)?.classList.remove('playing');
     });
+
+
   </script>
 </body>
 </html>
