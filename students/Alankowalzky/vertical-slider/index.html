@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vertical Slider</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="slider-container" role="region" aria-label="Image slider">
+
+      <div class="left-slide">
+        <div style="background-color: #2c7da0;">
+          <h1>Flying Eagle</h1>
+          <p>in the Sky</p>
+        </div>
+        <div style="background-color: #1a1a2e;">
+          <h1>Mountain Peak</h1>
+          <p>above the Clouds</p>
+        </div>
+        <div style="background-color: #6b3fa0;">
+          <h1>Wild Flower</h1>
+          <p>in the Field</p>
+        </div>
+        <div style="background-color: #3d5a6c;">
+          <h1>Ancient Castle</h1>
+          <p>in the Mist</p>
+        </div>
+      </div>
+
+      <div class="right-slide">
+        <div style="background-image: url('images/eagle.jpg');"></div>
+        <div style="background-image: url('images/mountains.jpg');"></div>
+        <div style="background-image: url('images/flower.jpg');"></div>
+        <div style="background-image: url('images/castle.jpg');"></div>
+      </div>
+
+      <div class="action-buttons">
+        <button class="up-button" aria-label="Previous slide">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.5"
+               stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+          </svg>
+        </button>
+        <button class="down-button" aria-label="Next slide">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.5"
+               stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <div class="slide-counter" aria-live="polite" aria-atomic="true">
+        <span class="counter-current">01</span>
+        <span class="counter-sep"> / </span>
+        <span class="counter-total">04</span>
+      </div>
+
+      <div class="dots-nav" role="tablist" aria-label="Slide navigation"></div>
+
+      <div class="progress-bar" aria-hidden="true">
+        <div class="progress-fill"></div>
+      </div>
+
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
