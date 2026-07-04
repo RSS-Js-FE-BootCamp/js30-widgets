@@ -52,3 +52,17 @@ kbd {
 .key:focus {
   outline: none;
 }
+
+.floating-note {
+  position: fixed;
+  font-size: 2rem;
+  color: gold;
+  pointer-events: none;
+  animation: floatUp 1s ease-out forwards;
+  z-index: 999;
+}
+
+@keyframes floatUp {
+  0%   { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(-100px) scale(1.5); }
+}
