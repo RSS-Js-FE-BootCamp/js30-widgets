@@ -10,9 +10,9 @@ function updateClock() {
   const seconds = now.getSeconds();
   const minutes = now.getMinutes();
   const hours = now.getHours();
-  const secondDeg = 90 + (seconds / 60) * 360;
-  const minuteDeg = 90 + (minutes / 60) * 360 + (seconds / 3600) * 360;
-  const hourDeg = 90 + (hours / 12) * 360 + (minutes / 720) * 360;
+  const secondDeg = (seconds / 60) * 360;
+  const minuteDeg = (minutes / 60) * 360 + (seconds / 3600) * 360;
+const hourDeg = ((hours % 12) / 12) * 360 + (minutes / 720) * 360;
   if (seconds === 0) {
     secondHand.style.transition = 'none';
   } else {
@@ -24,7 +24,7 @@ function updateClock() {
   hourHand.style.transform = `translateX(-50%) rotate(${hourDeg}deg)`;
 
   digitalTime.textContent = now.toLocaleTimeString('en-GB');
-  
+
   digitalDate.innerHTML = now.toLocaleDateString('en-GB', {
     weekday: 'long',
     day: 'numeric',
