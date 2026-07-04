@@ -71,6 +71,7 @@
 }
 
 .video__play_stop_button,
+.video__mute_button,
 .video__full_screen_button {
   width: 32px;
   height: 32px;
@@ -78,7 +79,9 @@
   border: none;
 }
 
-.video__play_stop_button:focus-visible {
+.video__play_stop_button:focus-visible,
+.video__mute_button:focus-visible,
+.video__full_screen_button:focus-visible {
   outline: none;
 }
 
@@ -87,6 +90,7 @@
 }
 
 .video__play_stop_button,
+.video__mute_button,
 .video__time,
 .video__full_screen_button {
   background-color: #242424;

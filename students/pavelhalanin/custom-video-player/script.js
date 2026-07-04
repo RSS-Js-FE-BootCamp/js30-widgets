@@ -119,11 +119,18 @@ class CustomVideoPlayer {
   static mute() {
     const VIDEO = this.getVideoTag();
 
+    const MUTE_BUTTON = document.getElementById("video__mute_button");
+
+    if (!MUTE_BUTTON) {
+      throw new Error(`Не найден узел: #video__mute_button`);
+    }
+
     if (!VIDEO) {
       return null;
     }
 
     VIDEO.muted = !VIDEO.muted;
+    MUTE_BUTTON.innerHTML = VIDEO.muted ? "🔇" : "🔊";
   }
 
   static toggleVideoFullscreen() {
