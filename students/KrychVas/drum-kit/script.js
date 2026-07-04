@@ -1,26 +1,34 @@
+// 1. Знаходимо наш повзунок гучності на самому початку
+const volumeControl = document.querySelector('#volume');
+
+// 2. Функція відтворення звуку
 function playSound(e) {
-  // Шукаємо аудіоелемент з відповідним data-key (працює і для клавіатури, і для кліків)
+  // Визначаємо код клавіші (підтримує і клавіатуру, і кліки мишкою)
   const keyCode = e.keyCode || this.getAttribute('data-key');
   const audio = document.querySelector(`audio[data-key="${keyCode}"]`);
   const key = document.querySelector(`.key[data-key="${keyCode}"]`);
   
-  if (!audio) return; // Якщо натиснули іншу клавішу — ігноруємо
+  if (!audio) return; // Якщо елемент не знайдено — виходимо
 
-  audio.currentTime = 0; // Перемотуємо звук на початок (щоб можна було клікати швидко)
+  // Встановлюємо актуальну гучність з повзунка перед відтворенням
+  audio.volume = volumeControl.value;
+
+  audio.currentTime = 0; // Скидаємо час на початок для швидких повторних кліків
   audio.play();
   
   key.classList.add('playing'); // Додаємо ефект підсвічування
 }
 
+// 3. Функція видалення ефекту підсвічування після завершення CSS-анімації
 function removeTransition(e) {
-  if (e.propertyName !== 'transform') return; // Чекаємо саме на завершення анімації transform
-  this.classList.remove('playing'); // Прибираємо підсвічування
+  if (e.propertyName !== 'transform') return;
+  this.classList.remove('playing');
 }
 
-// 1. Слухаємо натискання клавіш на клавіатурі
+// 4. Глобальний слухач для клавіатури
 window.addEventListener('keydown', playSound);
 
-// 2. Слухаємо кліки мишкою по кнопках на екрані (додатковий бонус для зручності)
+// 5. Навішуємо слухачі кліків та завершення анімації на кожну клавішу барабанів
 const keys = document.querySelectorAll('.key');
 keys.forEach(key => {
   key.addEventListener('click', playSound);
