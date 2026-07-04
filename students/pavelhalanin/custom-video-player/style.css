@@ -70,7 +70,8 @@
   gap: 8px;
 }
 
-.video__play_stop_button {
+.video__play_stop_button,
+.video__full_screen_button {
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -81,9 +82,14 @@
   outline: none;
 }
 
+.video__time:empty {
+  display: none;
+}
+
 .video__play_stop_button,
-.video__time {
-  background-color: rgba(0, 0, 0, 0.5);
+.video__time,
+.video__full_screen_button {
+  background-color: #242424;
   color: white;
 
   display: flex;
