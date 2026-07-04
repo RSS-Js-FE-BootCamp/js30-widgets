@@ -10,9 +10,7 @@
   let isAnimating = false;
 
   const clickSound = new Audio("audio/click.mp3");
-  clickSound.volume = 1; // громкость от 0 до 1
-  console.log(clickSound.volume); // должно быть > 0
-  console.log(clickSound.muted); // должно быть false
+  clickSound.volume = 0.5; // громкость от 0 до 1
 
   function circularOffset(i, cur, n) {
     let diff = i - cur;
