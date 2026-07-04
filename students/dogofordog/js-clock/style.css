@@ -85,3 +85,11 @@ body {
   color: gold;
   line-height: 1.62;
 }
+.clock-number {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: clamp(0.6rem, 1.5vw, 1rem);
+  font-weight: bold;
+  pointer-events: none;
+}

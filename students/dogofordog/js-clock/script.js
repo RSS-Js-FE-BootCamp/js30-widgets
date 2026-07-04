@@ -32,6 +32,28 @@ const hourDeg = ((hours % 12) / 12) * 360 + (minutes / 720) * 360;
     year: 'numeric'
   });
 }
+function renderClockFace() {
+  const clock = document.querySelector('.clock');
+  const numbers = [12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+  
+  numbers.forEach((num, i) => {
+    const span = document.createElement('span');
+    span.classList.add('clock-number');
+    span.textContent = num;
+    
+    const angle = (i / 12) * 360 - 90;
+    const radius = 42; 
+    const x = 50 + radius * Math.cos(angle * Math.PI / 180);
+    const y = 50 + radius * Math.sin(angle * Math.PI / 180);
+    
+    span.style.left = `${x}%`;
+    span.style.top = `${y}%`;
+    
+    clock.appendChild(span);
+  });
+}
+
+renderClockFace();
 
 updateClock();
 setInterval(updateClock, 1000);
@@ -41,5 +63,6 @@ console.table([
   { stage: 1, item: 'Visual match with original', points: 10 },
   { stage: 1, item: 'Hands rotate correctly in real time', points: 10 },
   { stage: 2, item: 'Digital clock panel with time, date, weekday, year', points: 15 },
+  { stage: 3, item: 'Clock face numbers rendered dynamically', points: 10 },
 ]);
-console.log('Claimed total: 35/65');
+console.log('Claimed total: 45/65');
