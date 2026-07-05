@@ -1,0 +1,419 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background-size: cover;
+  font-family: "Courier New", Courier, monospace;
+  text-align: center;
+  font-size: 10px;
+}
+
+body.orange {
+  --bg: #2a170a;
+  --surface-light: #593313;
+
+  --text: #fff7f0;
+  --text-secondary: #d8b89b;
+
+  --accent: #ff8c00;
+  --accent-accent: #ffa726;
+
+  --border: #6f4820;
+}
+
+body.night {
+  --bg: #0f172a;
+  --surface-light: #334155;
+
+  --text: #f8fafc;
+  --text-secondary: #94a3b8;
+
+  --accent: #8b5cf6;
+  --accent-accent: #7c3aed;
+}
+
+body.forest {
+  --bg: #08251c;
+  --surface-light: #245042;
+
+  --text: #f1fff8;
+  --text-secondary: #a8d5c2;
+
+  --accent: #2ecc71;
+  --accent-accent: #27ae60;
+}
+
+body.rose {
+  --bg: #5c3b56;
+  --surface-light: #473049;
+
+  --text: #fff7fb;
+  --text-secondary: #d7b6c8;
+
+  --accent: #ec4899;
+  --accent-accent: #db2777;
+}
+
+body.matcha {
+  --bg: #f5f7f1;
+  --surface-light: #eef2e7;
+
+  --text: #24321f;
+  --text-secondary: #6e7b67;
+
+  --accent: #7cb342;
+  --accent-accent: #689f38;
+
+  --border: #d7dec9;
+}
+
+body {
+  background-color: var(--bg);
+  font-size: 2rem;
+  min-height: 100vh;
+  max-width: 700px;
+  margin: 0 auto;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1rem;
+  gap: 2rem;
+}
+
+.wrapper-clock {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: 650px) {
+  .wrapper-clock {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.wrapper-date {
+  align-self: center;
+}
+
+.clock {
+  max-width: 30rem;
+  width: 100%;
+  aspect-ratio: 1 /1;
+  border: 0.2rem solid var(--text-secondary);
+  border-radius: 50%;
+
+  position: relative;
+  background-color: var(--bg);
+}
+
+.clock::after {
+  content: "";
+  position: absolute;
+  top: -0.3rem;
+  right: -0.3rem;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--accent), var(--surface-light));
+  border-radius: 50%;
+  filter: blur(0.5rem);
+  opacity: 0.6;
+  z-index: -1;
+}
+
+.clock-face {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.clock-face::before {
+  content: "";
+  display: block;
+  height: 1.5rem;
+  width: 1.5rem;
+  background-color: var(--bg);
+  border: 0.41rem solid var(--accent);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 100;
+}
+
+.clock-face::after {
+  content: "";
+  display: block;
+  height: 0.5rem;
+  width: 0.5rem;
+  background-color: var(--accent);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 100;
+}
+
+.hand {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-40%) rotate(90deg);
+  background-color: var(--text);
+  border-radius: 0.5rem;
+  transform-origin: 100%;
+  transition: transform 0.03s cubic-bezier(0.52, 0.1, 0.67, 2.49);
+}
+
+.sec-hand {
+  width: 45%;
+  left: 5%;
+  height: 0.2rem;
+  background-color: var(--accent-accent);
+}
+
+.min-hand {
+  left: 13%;
+  width: 37%;
+  height: 0.5rem;
+}
+
+.hour-hand {
+  left: 20%;
+  width: 30%;
+  height: 0.5rem;
+}
+
+.marks-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.mark {
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  left: calc(50% - 1px);
+  top: 0;
+  transform-origin: center center;
+}
+
+.mark::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 100%;
+  height: 12px;
+  background: var(--text-secondary);
+  border-radius: 2px;
+}
+
+.mark.hour::before {
+  height: 20px;
+  width: 4px;
+  left: -1px;
+  background: var(--text);
+}
+
+.digital-clock {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 4.8rem;
+  font-weight: bold;
+  padding: 15px 30px;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.date-container {
+  font-family: "Courier New", Courier, monospace;
+  letter-spacing: 10%;
+  font-size: 2.2rem;
+}
+
+.theme-txt {
+  font-weight: 500;
+  letter-spacing: 6%;
+  margin: 3rem 0 1.5rem;
+}
+
+.themes-container {
+  padding: 1rem;
+  background-color: var(--surface-light);
+  border-radius: 10px;
+}
+
+.btn-theme {
+  padding: 0.5rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 3px;
+  border: 1px solid black;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.btn-theme:hover {
+  transform: scale(1.1);
+}
+
+.btn-theme.active {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.btn-theme.forest {
+  background-color: #0f4735;
+}
+
+.btn-theme.matcha {
+  background-color: #f5f7f1;
+}
+
+.btn-theme.rose {
+  background-color: #5c3b56;
+}
+
+.btn-theme.night {
+  background-color: #0f172a;
+}
+
+.btn-theme.orange {
+  background-color: orange;
+}
+
+.relax-time-btn-container,
+.alarm-container {
+  margin-top: 1rem;
+  width: 100%;
+  min-height: 5.2rem;
+  background-color: var(--surface-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+}
+
+.time-btn {
+  background-color: transparent;
+  border-radius: 0.5rem;
+  border: none;
+  background-color: var(--accent);
+  color: var(--text);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.6rem;
+  letter-spacing: 6%;
+  margin: 0 0.5rem;
+  transition:
+    background-color 0.3s,
+    opacity 0.3s;
+}
+
+.time-btn.active {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.time-btn:hover {
+  background-color: var(--accent-accent);
+}
+
+.play,
+.btn-start-alarm,
+.btn-snooze-alarm {
+  background-color: transparent;
+  border-radius: 0.5rem;
+  border: none;
+  background-color: var(--accent);
+  color: var(--text);
+  padding: 0.5rem 1rem;
+  opacity: 0.5;
+  cursor: pointer;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transition: background-color 0.3s;
+}
+
+.play:hover {
+  background-color: var(--accent-accent);
+}
+
+.btn-snooze-alarm {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.btn-snooze-alarm:hover {
+  background-color: var(--accent-accent);
+}
+
+.btn-start-alarm:hover {
+  background-color: var(--accent-accent);
+}
+
+.btn-snooze-alarm:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.btn-start-alarm {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.btn-start-alarm:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.wrapper-btn-alarm {
+  display: flex;
+  gap: 1rem;
+}
+
+.relax-time-btn:has(.time-btn.active) ~ .play {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.before-alarm {
+  font-size: 1.6rem;
+}
+
+input[type="time"] {
+  padding: 0.5rem 1rem;
+  font-size: 1.8rem;
+  background-color: var(--bg);
+  color: var(--text);
+  outline: none;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+input[type="time"]:focus {
+  box-shadow: 0 0 2px rgba(187, 255, 214, 0.4);
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(48%) sepia(79%) saturate(2500%) hue-rotate(115deg)
+    brightness(115%) contrast(115%);
+  cursor: pointer;
+  transform: scale(1.2);
+}
