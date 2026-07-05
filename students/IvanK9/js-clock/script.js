@@ -2,6 +2,8 @@ const hourHand = document.querySelector(".clock__hand--hour");
 const minuteHand = document.querySelector(".clock__hand--minute");
 const secondHand = document.querySelector(".clock__hand--second");
 
+const digitalTime = document.querySelector(".clock__digital-wrapper");
+
 function setDate() {
   const now = new Date();
 
@@ -23,6 +25,20 @@ function setDate() {
   const hours = now.getHours();
   const hoursDegrees = (hours / 12) * 360 + 90;
   hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
+
+  const formatter = new Intl.DateTimeFormat("ru", {
+    weekday: "long",
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+    hour12: false,
+  });
+
+  const digitalDateTime = formatter.format(now).charAt(0).toUpperCase() + formatter.format(now).slice(1);
+  digitalTime.textContent = digitalDateTime;
 }
 
 setInterval(setDate, 1000);
