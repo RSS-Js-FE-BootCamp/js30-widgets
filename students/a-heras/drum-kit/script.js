@@ -1,4 +1,6 @@
 const keys = document.querySelectorAll('.key');
+const notesLayer = document.querySelector('.notes-layer');
+const floatingSymbols = ['♪', '♫', '✦', '✧'];
 
 function createRipple(key, pointerPosition) {
   const ripple = document.createElement('span');
@@ -13,6 +15,22 @@ function createRipple(key, pointerPosition) {
 
   ripple.addEventListener('animationend', () => {
     ripple.remove();
+  });
+}
+
+function createFloatingNote(key) {
+  const rect = key.getBoundingClientRect();
+  const note = document.createElement('span');
+  const randomSymbol = floatingSymbols[Math.floor(Math.random() * floatingSymbols.length)];
+
+  note.className = 'floating-note';
+  note.textContent = randomSymbol;
+  note.style.left = `${rect.left + rect.width / 2}px`;
+  note.style.top = `${rect.top + rect.height / 2}px`;
+  notesLayer.append(note);
+
+  note.addEventListener('animationend', () => {
+    note.remove();
   });
 }
 
@@ -37,6 +55,7 @@ function activateKey(keyCode, pointerPosition) {
   playSound(keyCode);
   key.classList.add('playing');
   createRipple(key, pointerPosition);
+  createFloatingNote(key);
 }
 
 function removePlayingClass(event) {
