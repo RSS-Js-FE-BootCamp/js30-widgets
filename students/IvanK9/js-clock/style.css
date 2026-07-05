@@ -32,17 +32,30 @@ img {
   --color-hand-second: #ff4756;
   --color-pin: white;
   --color-text: black;
+  --bg-image: url(./image/bg-light.jpg);
+}
+
+body.dark {
+  --color-border: rgba(0, 0, 0, 0.5);
+  --color-hand: rgba(0, 0, 0, 0.8);
+  --color-hand-second: #ff4756;
+  --color-pin: black;
+  --color-text: white;
+  --bg-image: url(./image/bg-dark.jpg);
 }
 
 .clock {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   min-height: 100vh;
   width: 100%;
-  background-image: url(./image/bg-light.jpg);
+  background-image: var(--bg-image);
   background-position: center;
   background-size: cover;
+  transition: background-image 0.3s ease-in-out;
 }
 
 .clock__wrapper {
@@ -54,6 +67,7 @@ img {
   border: 1rem solid var(--color-border);
   border-radius: 50%;
   background-color: transparent;
+  transition: border-color 0.3s ease-in-out;
 }
 
 .clock__face {
@@ -119,4 +133,24 @@ img {
   color: var(--color-text);
   text-align: center;
   letter-spacing: 0.1rem;
+  transition: color 0.3s ease-in-out;
+}
+
+.clock__controls {
+  position: fixed;
+  bottom: 2rem;
+}
+
+.controls__btn--theme {
+  width: 70px;
+  height: 70px;
+  border: 5px solid var(--color-border);
+  border-radius: 1rem;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.controls__btn--theme:hover {
+  opacity: 0.6;
 }
