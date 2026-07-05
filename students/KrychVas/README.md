@@ -1,7 +1,7 @@
 # 🚀 JS30 Widgets — @KrychVas
 
-**Pull Request:** [Link to Pull Request](буде_тут_за_хвилину)  
-**Live Preview:** [Link to Netlify Preview](буде_тут_після_деплою)
+**Pull Request:** [Link to Pull Request](https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/91)  
+**Live Preview:** [Link to Netlify Preview](https://deploy-preview-91--js-30-widget-gallery.netlify.app/students/KrychVas/drum-kit/index.html)
 
 ---
 
