@@ -23,6 +23,8 @@ Deploy: https://deploy-preview-117--elegant-quokka-1ce2cd.netlify.app/students/d
 
 ---
 
+### Custom Video Player
+
 #### Stage 1 - Reproduction (20 points)
 - [x] The widget visually matches the original demo (layout, key colors, key interactions) +10
 - [x] The core behaviour of the original widget works end-to-end (no broken features, no console errors) +10
