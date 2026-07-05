@@ -5,6 +5,9 @@ const digitalTime = document.querySelector('.digital-time');
 const weekday = document.querySelector('.weekday');
 const date = document.querySelector('.date');
 const year = document.querySelector('.year');
+const secondsProgress = document.querySelector('.seconds-progress');
+const minutesProgress = document.querySelector('.minutes-progress');
+const hoursProgress = document.querySelector('.hours-progress');
 
 const locale = 'en-US';
 const timeFormatter = new Intl.DateTimeFormat(locale, {
@@ -34,10 +37,14 @@ function setClock() {
 
   const hours = now.getHours();
   const hoursDegrees = ((hours % 12) / 12) * 360 + (minutes / 60) * 30 + 90;
+  const hoursProgressDegrees = (((hours % 12) * 60 + minutes) / 720) * 360;
 
   secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
   minuteHand.style.transform = `rotate(${minutesDegrees}deg)`;
   hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
+  secondsProgress.style.setProperty('--progress', `${(seconds / 60) * 360}deg`);
+  minutesProgress.style.setProperty('--progress', `${((minutes * 60 + seconds) / 3600) * 360}deg`);
+  hoursProgress.style.setProperty('--progress', `${hoursProgressDegrees}deg`);
 
   digitalTime.textContent = timeFormatter.format(now);
   weekday.textContent = weekdayFormatter.format(now);

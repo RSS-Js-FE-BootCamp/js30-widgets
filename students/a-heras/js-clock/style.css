@@ -187,6 +187,49 @@ body {
   font-size: 1rem;
 }
 
+.progress-panel {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(90px, 1fr));
+  gap: 16px;
+  width: min(520px, 100%);
+}
+
+.progress-card {
+  display: grid;
+  place-items: center;
+  gap: 10px;
+  color: #b6c7d4;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.progress-ring {
+  --progress: 0deg;
+
+  width: 74px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, #020617 0 54%, transparent 55%),
+    conic-gradient(#ffd54f var(--progress), rgb(229 237 245 / 0.12) 0);
+  box-shadow: 0 0 14px rgb(255 213 79 / 0.18);
+}
+
+.minutes-progress {
+  background:
+    radial-gradient(circle, #020617 0 54%, transparent 55%),
+    conic-gradient(#26c6da var(--progress), rgb(229 237 245 / 0.12) 0);
+  box-shadow: 0 0 14px rgb(38 198 218 / 0.18);
+}
+
+.hours-progress {
+  background:
+    radial-gradient(circle, #020617 0 54%, transparent 55%),
+    conic-gradient(#8fb9c9 var(--progress), rgb(229 237 245 / 0.12) 0);
+  box-shadow: 0 0 14px rgb(143 185 201 / 0.18);
+}
+
 @media (max-width: 480px) {
   .clock-app {
     gap: 24px;
@@ -207,5 +250,9 @@ body {
     width: min(86vw, 340px);
     min-width: auto;
     padding: 22px;
+  }
+
+  .progress-panel {
+    width: min(86vw, 340px);
   }
 }
