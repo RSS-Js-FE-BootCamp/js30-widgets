@@ -1,14 +1,18 @@
 1. Task: [JS30-Widgets](https://github.com/rolling-scopes-school/tasks/blob/master/stage0.5%20Bootcamp/tasks/js30/js30.md)
 2. Screenshots:
 
-<!-- Add your screenshot for your Widget, past it in the empty row in column -->
 | Widget | Screenshot |
 |---|---|
 | JS Clock |  |
 | Custom Video Player |  |
 
-3. Done 04.07.2026 / deadline 06.07.2026
-4. Score: 110 / 130
+3. Deploy:
+    - [Studens cards](https://js-30-widget-gallery.netlify.app/)
+    - [Custom video player](https://js-30-widget-gallery.netlify.app/students/pavelhalanin/custom-video-player/index.html)
+    - [JS Clock](https://js-30-widget-gallery.netlify.app/students/pavelhalanin/js-clock/index.html)
+
+4. Done 05.07.2026 / deadline 06.07.2026
+5. Score: 130 / 130
 
 ---
 
@@ -22,19 +26,16 @@
 **Score: 65 / 65**
 
 **Stage 1 - Reproduction (20/20)**
-- [ ] The widget visually matches the original demo (layout, key colors, key interactions) (+10)
-- [ ] The core behaviour of the original widget works end-to-end (no broken features, no console errors) (+10)
+- [x] The widget visually matches the original demo (layout, key colors, key interactions) (+10)
+- [x] The core behaviour of the original widget works end-to-end (no broken features, no console errors) (+10)
 
 **Stage 2 - Mandatory additional feature (15/15)**
-- [ ] The mandatory additional feature described in the widget's task file is implemented and works correctly (+10)
-- [ ] The feature is integrated with the rest of the UI (does not break Stage 1 functionality, handles edge cases reasonably) (+5)
+- [x] The mandatory additional feature described in the widget's task file is implemented and works correctly (+10)
+- [x] The feature is integrated with the rest of the UI (does not break Stage 1 functionality, handles edge cases reasonably) (+5)
 
 **Stage 3 - Optional improvements (30/30)**
 - [x] A multi-timezone view showing time at several cities of the world simultaneously (+10)
 - [x] Dark / light theme toggle that persists across reloads (+10)
-- [ ] An online alarm clock with sound and dismiss/snooze controls (+10)
-- [ ] A cuckoo clock - at the top of each hour the bird pops out and chimes (+10)
-- [ ] A "do nothing for 2 minutes" / "Quiet Place" relaxation mode with a timer that resets on user input (+10)
 - [x] Circular progress diagrams for seconds / minutes / hours rendered next to the face (+10)
 </details>
 
@@ -56,9 +57,6 @@
 **Этап 3 - Дополнительные улучшения (30/30)**
 - [x] Мультичасовой пояс с отображением времени в нескольких городах мира одновременно (+10)
 - [x] Переключение темной/светлой темы, сохраняющееся при перезагрузке (+10)
-- [ ] Онлайн-будильник со звуком и кнопками отключения/откладывания (+10)
-- [ ] Часы с кукушкой — в начале каждого часа выскакивает птичка и кукует (+10)
-- [ ] Режим релаксации "ничего не делать 2 минуты" / "Тихое место" с таймером, сбрасывающимся при действии пользователя (+10)
 - [x] Круговые диаграммы прогресса для секунд/минут/часов, отображаемые рядом с циферблатом (+10)
 </details>
 
@@ -145,7 +143,6 @@
 ---
 
 ### 📝 Total Summary
-<!-- Leave only the widgets you implemented (usually 2 widgets) -->
 
 | Widget | Score |
 |---|---|
