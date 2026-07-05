@@ -1,20 +1,24 @@
 let secondArrow = document.querySelector('.second-arrow');
 let minuteArrow = document.querySelector('.min-arrow');
 let hourArrow = document.querySelector('.hour-arrow');
-isTheme = 1;
+let isTheme = 1;
+let isName = 1;
 // Theme
 const theme = document.querySelector('#theme');
+const muteBtn = document.querySelector('#btn-mute');
+const audio = new Audio('../shared/sound.mp3');
 
 document.addEventListener('DOMContentLoaded', () => {
   const isThemeStorage = localStorage.getItem('isTheme');
+  const timeStorage = localStorage.getItem('audioTime');
+
   isTheme = Number(isThemeStorage);
   startTheme(Number(isThemeStorage));
+  getSound(timeStorage);
 });
 
 function setTime() {
   const time = new Date();
-  // const moscowTime = time.toLocaleString('ru-RU', { timeZone: 'Europe/Moscow' })
-  // console.log(time)
 
   const seconds = time.getSeconds();
   const minutes = time.getMinutes();
@@ -77,6 +81,7 @@ function setTheme() {
     document.querySelectorAll('.num').forEach((e) => e.classList.add('num-active'));
     document.querySelector('.dot').classList.add('dot-active');
     document.querySelector('.second-arrow').classList.add('second-arrow-active');
+    document.querySelector('#btn-mute').classList.add('btn-active');
     isTheme = 0;
     localStorage.setItem('isTheme', 0)
   } else {
@@ -87,19 +92,62 @@ function setTheme() {
     document.querySelector('.digital-time').classList.remove('digital-time-light');
     document.querySelectorAll('.num').forEach((e) => e.classList.remove('num-active'));
     document.querySelector('.dot').classList.remove('dot-active');
-    document.querySelector('.second-arrow').classList.remove('second-arrow-active')
+    document.querySelector('.second-arrow').classList.remove('second-arrow-active');
+    document.querySelector('#btn-mute').classList.remove('btn-active');
     isTheme = 1;
     localStorage.setItem('isTheme', 1)
   }
 }
+// Set time London, New-york
+function setWorldTime() {
+  const time = new Date();
 
+  document.querySelector('.London').innerHTML = time.toLocaleTimeString('ru-RU', {
+    timeZone: 'Europe/London',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+  });
+  document.querySelector('.New-York').innerHTML = time.toLocaleTimeString('ru-RU', {
+    timeZone: 'America/New_York',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit'
+  });
+}
+
+// Set time 
 startTheme(Number(isTheme));
+setWorldTime();
 setTime();
 setDigitalTime();
 
 setInterval(setTime, 1000);
 setInterval(setDigitalTime, 1000);
+setInterval(setWorldTime, 1000);
+
+function sound() {
+  if (Number(isName) === 1) {
+    document.querySelector('#btn-mute').innerHTML = 'Mute';
+    isName = 0;
+    audio.play();
+  } else {
+    document.querySelector('#btn-mute').innerHTML = 'Unmute';
+    audio.pause();
+    isName = 1;
+  }
+}
+
+function getSound(time) {
+  document.querySelector('#btn-mute').innerHTML = 'Unmute';
+  audio.currentTime = Number(time);
+  isName = 1;
+}
 
 theme.addEventListener('click', setTheme);
+muteBtn.addEventListener('click', sound);
+audio.addEventListener('timeupdate', () => {
+  localStorage.setItem('audioTime', audio.currentTime);
+});
 
 

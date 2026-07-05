@@ -11,6 +11,10 @@
   <main class="js-clock">
     <h1 class="title">JS clock</h1>
     <div class="clock-wrapper">
+      <div class="world-time">
+        <div class="London-wrapper">London: <span class="London"></span></div>
+        <div class="New-York-wrapper">New-York: <span class="New-York"></span></div>
+      </div>
       <div class="clock">
         <div class="arrow hour-arrow"></div>
         <div class="arrow min-arrow"></div>
@@ -23,7 +27,10 @@
       </div>
     </div>
     <div class="digital-time"></div>
-    <div class="theme" id="theme">Change theme</div>
+    <div class="controls">
+      <div class="btn" id="btn-mute">Unmute</div>
+      <div class="theme" id="theme">Change theme</div>
+    </div>
   </main>
   <script src="./main.js"></script>
 </body>
