@@ -1,4 +1,4 @@
-https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/88
+https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/89
 
 Сделал ЧАСЫ 
 	-progress circle
