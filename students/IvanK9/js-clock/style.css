@@ -1,3 +1,108 @@
-html  {
-  background: aqua;
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+img {
+  max-width: 100%;
+}
+
+.list-reset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+:root {
+  --color-border: rgba(255, 255, 255, 0.5);
+  --color-hand: rgba(255, 255, 255, 0.8);
+  --color-hand-second: #ff4756;
+  --color-pin: white;
+}
+
+.clock {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  background-image: url(./image/bg-light.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+.clock__wrapper {
+  position: relative;
+  padding: 2rem;
+  margin: 50px auto;
+  width: 22rem;
+  height: 22rem;
+  border: 1rem solid var(--color-border);
+  border-radius: 50%;
+  background-color: transparent;
+}
+
+.clock__face {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: translateY(-3px);
+}
+
+.clock__hand {
+  position: absolute;
+  top: 50%;
+  width: 50%;
+  height: 10px;
+  background-color: var(--color-hand);
+  transform-origin: 100%;
+  transform: rotate(90deg);
+  transition: all 0.05s cubic-bezier(0.1, 2.7, 0.58, 1);
+  border-radius: 10px;
+}
+
+.clock__hand--hour {
+  width: 35%;
+  left: 15%;
+  height: 8px;
+  transform: rotate(45deg);
+}
+
+.clock__hand--minute {
+  width: 45%;
+  left: 5%;
+  height: 6px;
+  transform: rotate(135deg);
+}
+
+.clock__hand--second {
+  width: 48%;
+  left: 2%;
+  height: 3px;
+  background-color: var(--color-hand-second);
+  transform: rotate(180deg);
+}
+
+.clock__pin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 25px;
+  height: 25px;
+  background-color: var(--color-pin);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
 }
