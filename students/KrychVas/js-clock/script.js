@@ -53,7 +53,7 @@ function setDate() {
 
   digitalDisplay.textContent = `${padZero(hour)}:${padZero(mins)}:${padZero(seconds)}`;
 
-  // 1. Рух секундної стрілки
+  // 1. Рух секундної стрілки з фіксом секундного глічу на 0
   const secondsDegrees = ((seconds / 60) * 360) + 90;
   if (seconds === 0) {
     secondHand.style.transition = 'none';
@@ -90,11 +90,11 @@ inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
 
 // --- Перемикання заднього фону ---
 const backgrounds = [
-  'url("https://unsplash.it/1500/1000?image=881&blur=5")',
   'url("https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?auto=format&fit=crop&w=1950&q=80")', 
   'url("https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?auto=format&fit=crop&w=1950&q=80")', 
   'url("https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&w=1950&q=80")', 
-  'url("https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1950&q=80")'  
+  'url("https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1950&q=80")',
+  'url("https://unsplash.it/1500/1000?image=881&blur=5")'  
 ];
 
 let currentBgIndex = 0;
@@ -102,19 +102,18 @@ const bgToggleBtn = document.getElementById('bg-toggle');
 
 bgToggleBtn.addEventListener('click', () => {
   currentBgIndex = (currentBgIndex + 1) % backgrounds.length;
-  // Міняємо тільки backgroundImage, щоб зберігалися плавність і стилі з CSS
   document.documentElement.style.backgroundImage = backgrounds[currentBgIndex];
 });
 
-// --- Логіка перемикання цифр на циферблаті ---
+// --- Логіка перемикання цифр та інтерфейсу циферблата ---
 const clockFace = document.querySelector('.clock-face');
 const dialToggleBtn = document.getElementById('dial-toggle');
-const numbersColorGroup = document.getElementById('numbers-color-group'); // Наш новий елемент кольору
+const numbersColorGroup = document.getElementById('numbers-color-group');
 
 const arabicNumbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
 const romanNumbers = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
 
-let currentDialMode = 2; // 0 - арабські, 1 - римські, 2 - без цифр
+let currentDialMode = 2; // 0 - арабські, 1 - римські, 2 - без цифр (цифрове табло увімкнене)
 
 function renderClockNumbers(mode) {
   const oldNumbers = document.querySelectorAll('.clock-number');
@@ -144,16 +143,20 @@ dialToggleBtn.addEventListener('click', () => {
   
   if (currentDialMode === 0) {
     dialToggleBtn.textContent = '🔢 АРАБСЬКІ';
-    numbersColorGroup.style.display = 'flex'; // Показуємо вибір кольору
+    numbersColorGroup.style.display = 'flex'; // Показуємо вибір кольору цифр
+    digitalDisplay.style.display = 'none';    // Автоматично ховаємо цифрове табло
   } else if (currentDialMode === 1) {
     dialToggleBtn.textContent = '🏛️ РИМСЬКІ';
-    numbersColorGroup.style.display = 'flex'; // Показуємо вибір кольору
+    numbersColorGroup.style.display = 'flex'; // Показуємо вибір кольору цифр
+    digitalDisplay.style.display = 'none';    // Автоматично ховаємо цифрове табло
   } else {
     dialToggleBtn.textContent = '⭕ БЕЗ ЦИФР';
-    numbersColorGroup.style.display = 'none'; // Ховаємо вибір кольору
+    numbersColorGroup.style.display = 'none'; // Ховаємо вибір кольору цифр
+    digitalDisplay.style.display = 'block';   // Повертаємо цифрове табло
   }
   
   renderClockNumbers(currentDialMode);
 });
 
+// Ініціалізація початкового стану
 renderClockNumbers(currentDialMode);
