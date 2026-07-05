@@ -7,7 +7,8 @@
 # JS30 Widgets - @Faratora
 
 Pull Request:   (https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/62) \
-Pull Request:   (https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/72)
+Pull Request:   (https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/72) \
+Pull Request:   (https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/93)
 
 ## What was implemented
 
