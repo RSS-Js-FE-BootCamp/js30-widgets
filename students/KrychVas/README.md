@@ -1,12 +1,15 @@
 # 🚀 JS30 Widgets — @KrychVas
 
 **Pull Request:** [Link to Pull Request](https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/91)  
-**Live Preview:** [Link to Netlify Preview](https://deploy-preview-91--js-30-widget-gallery.netlify.app/students/KrychVas/drum-kit/index.html)
+**Live Preview (Drum Kit):** [Link to Netlify Preview](https://deploy-preview-91--js-30-widget-gallery.netlify.app/students/KrychVas/drum-kit/index.html)  
+**Live Preview (JS Clock):** [Link to Netlify Preview](https://deploy-preview-91--js-30-widget-gallery.netlify.app/students/KrychVas/js-clock/index.html)
 
 ---
 
 ### 🟢 Widget 1: Drum Kit
 **Score: 65 / 65**
+
+<img width="1880" height="874" alt="Screenshot 2026-07-05 174712" src="https://github.com/user-attachments/assets/a83d7258-5ce5-4ed1-97d7-91bc1cded8ac" />
 
 **Stage 1 - Reproduction (20/20)**
 - [x] The widget visually matches the original demo (layout, key colors, key interactions with the custom background image) (+10)
@@ -24,6 +27,22 @@
 
 ---
 
-### 🟡 Widget 2: JS Clock
-**Score: 0 / 65**
-- [ ] *In progress / Not started yet. Will be submitted in the next stage.*
+### 🟢 Widget 2: JS Clock
+**Score: 65 / 65**
+
+<img width="1902" height="881" alt="Screenshot 2026-07-05 174337" src="https://github.com/user-attachments/assets/7d0ed943-4bf0-4fdf-835f-3c4935d78422" />
+
+
+**Stage 1 - Reproduction (20/20)**
+- [x] The widget visually matches the original demo (layout, clock face, smooth arrow movements) (+10)
+- [x] The core behaviour works flawlessly end-to-end (accurate time rendering, seamless 0-second boundary transition reset, no console errors) (+10)
+
+**Stage 2 - Mandatory additional feature - digital display (15/15)**
+- [x] Implemented a real-time digital display showing the exact current time in standard `HH:MM:SS` format (+10)
+- [x] Perfectly integrated with the analog interface, dynamically adapting to the dynamic control flow (+5)
+
+**Stage 3 - Optional improvements (30/30)**
+- [x] **Web Audio API Real-time Ticking Sound:** Developed a completely synthetic oscillator-based audio generator mimicking a realistic clock mechanical tick on every second change, bypasses network assets, and features a user-friendly UI sound toggle switch (+10)
+- [x] **Dynamic Background Image Carousel:** Added an interactive background cycler linked to high-quality unsplash visual assets that provides seamless background switching on client request (+10)
+- [x] **Smart Dial Modes & Color Input Autohide:** Designed an intuitive 3-state control cycle (Arabic, Roman, No Numbers). It features smart interface responsiveness by automatically hiding the digital display when numbers clutter the dial, and dynamically showing/hiding color pickers to match the current view (+10)
+- [x] **Cohesive Control Panel Theme Styling:** Completely overhauled native browser HTML color inputs using custom border-radius properties and CSS state selectors to match the exact design tokens, width, height, and hover animations of the general interface buttons (+10)
