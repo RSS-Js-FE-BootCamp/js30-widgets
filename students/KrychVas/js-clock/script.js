@@ -1,7 +1,7 @@
 const secondHand = document.querySelector('.second-hand');
 const minsHand = document.querySelector('.min-hand');
 const hourHand = document.querySelector('.hour-hand');
-const digitalDisplay = document.getElementById('digital'); // Новий елемент
+const digitalDisplay = document.getElementById('digital'); 
 
 // --- Елементи для звуку (Stage 3) ---
 const soundToggle = document.getElementById('sound-toggle');
@@ -41,19 +41,16 @@ soundToggle.addEventListener('click', () => {
   }
 });
 
-// Допоміжна функція для додавання ведучого нуля (наприклад, 9 -> 09)
 const padZero = (num) => String(num).padStart(2, '0');
 
 // --- Основна логіка годинника ---
 function setDate() {
   const now = new Date();
 
-  // Отримуємо поточні значення часу
   const seconds = now.getSeconds();
   const mins = now.getMinutes();
   const hour = now.getHours();
 
-  // Оновлюємо цифрове табло
   digitalDisplay.textContent = `${padZero(hour)}:${padZero(mins)}:${padZero(seconds)}`;
 
   // 1. Рух секундної стрілки
@@ -91,9 +88,9 @@ function handleUpdate() {
 inputs.forEach(input => input.addEventListener('change', handleUpdate));
 inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
 
-// Масив із посиланнями на фонові зображення
+// --- Перемикання заднього фону ---
 const backgrounds = [
-  'url(https://unsplash.it/1500/1000?image=881&blur=5)',
+  'url("https://unsplash.it/1500/1000?image=881&blur=5")',
   'url("https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?auto=format&fit=crop&w=1950&q=80")', 
   'url("https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?auto=format&fit=crop&w=1950&q=80")', 
   'url("https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&w=1950&q=80")', 
@@ -104,48 +101,36 @@ let currentBgIndex = 0;
 const bgToggleBtn = document.getElementById('bg-toggle');
 
 bgToggleBtn.addEventListener('click', () => {
-  // Збільшуємо індекс на 1, а якщо дійшли до кінця — повертаємося на 0
   currentBgIndex = (currentBgIndex + 1) % backgrounds.length;
-  
-  // Змінюємо властивість background безпосередньо у тегу html
-  document.documentElement.style.background = backgrounds[currentBgIndex];
-  document.documentElement.style.backgroundSize = 'cover';
-  document.documentElement.style.backgroundPosition = 'center';
+  // Міняємо тільки backgroundImage, щоб зберігалися плавність і стилі з CSS
+  document.documentElement.style.backgroundImage = backgrounds[currentBgIndex];
 });
 
-// --- Логіка перемикання цифр на циферблаті (Stage 3+) ---
-
+// --- Логіка перемикання цифр на циферблаті ---
 const clockFace = document.querySelector('.clock-face');
 const dialToggleBtn = document.getElementById('dial-toggle');
+const numbersColorGroup = document.getElementById('numbers-color-group'); // Наш новий елемент кольору
 
-// Масиви цифр від 1 до 12
 const arabicNumbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
 const romanNumbers = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
 
-// Режими: 0 - арабські, 1 - римські, 2 - без цифр
-let currentDialMode = 2; // Почнемо з "без цифр" (оригінальний вигляд), або постав 0 для арабських
+let currentDialMode = 2; // 0 - арабські, 1 - римські, 2 - без цифр
 
 function renderClockNumbers(mode) {
-  // Спочатку видаляємо всі старі цифри, якщо вони є
   const oldNumbers = document.querySelectorAll('.clock-number');
   oldNumbers.forEach(num => num.remove());
 
-  // Якщо режим 2 (без цифр), просто виходимо
   if (mode === 2) return;
 
   const numbersArray = mode === 0 ? arabicNumbers : romanNumbers;
-  const radius = 125; // Радіус розстановки цифр у пікселях (для кола 300px підходить ідеально)
+  const radius = 125; 
 
   numbersArray.forEach((num, index) => {
     const numberElement = document.createElement('div');
     numberElement.classList.add('clock-number');
     numberElement.textContent = num;
 
-    // Годинна стрілка на 12 годин починається зверху. 
-    // Кожна година — це 30 градусів. Віднімаємо 90 градусів, щоб 12 була рівно вгорі.
     const angle = ((index + 1) * 30 - 90) * (Math.PI / 180);
-
-    // Математика розстановки по колу за допомогою синуса і косинуса
     const x = Math.round(radius * Math.cos(angle));
     const y = Math.round(radius * Math.sin(angle));
 
@@ -154,20 +139,21 @@ function renderClockNumbers(mode) {
   });
 }
 
-// Обробник кліку на кнопку перемикання цифр
 dialToggleBtn.addEventListener('click', () => {
   currentDialMode = (currentDialMode + 1) % 3;
   
   if (currentDialMode === 0) {
     dialToggleBtn.textContent = '🔢 АРАБСЬКІ';
+    numbersColorGroup.style.display = 'flex'; // Показуємо вибір кольору
   } else if (currentDialMode === 1) {
     dialToggleBtn.textContent = '🏛️ РИМСЬКІ';
+    numbersColorGroup.style.display = 'flex'; // Показуємо вибір кольору
   } else {
     dialToggleBtn.textContent = '⭕ БЕЗ ЦИФР';
+    numbersColorGroup.style.display = 'none'; // Ховаємо вибір кольору
   }
   
   renderClockNumbers(currentDialMode);
 });
 
-// Запускаємо початковий стан (якщо хочеш цифри одразу при завантаженні, зміни currentDialMode на 0 і виклич функцію)
 renderClockNumbers(currentDialMode);

@@ -141,3 +141,19 @@ body {
   margin-top: -15px;
   margin-left: -15px;
 }
+
+.clock-number {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: var(--numbers-color, #000000); 
+  text-align: center;
+  line-height: 30px;
+  font-family: 'Georgia', serif;
+  top: 50%;
+  left: 50%;
+  margin-top: -15px;
+  margin-left: -15px;
+}
