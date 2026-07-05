@@ -77,3 +77,11 @@ window.addEventListener("resize", () => {
 
 upButton.addEventListener("click", () => changeSlide("up"));
 downButton.addEventListener("click", () => changeSlide("down"));
+
+sliderContainer.addEventListener("wheel", (e) => {
+  if (e.deltaY < 0) {
+    changeSlide("up");
+  } else {
+    changeSlide("down");
+  }
+});
