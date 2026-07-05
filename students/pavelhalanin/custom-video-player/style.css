@@ -1,0 +1,284 @@
+.text-center {
+  text-align: center;
+}
+
+/* search */
+
+.search__block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search__block > button {
+  border: 1px solid #06c;
+  padding: 8px;
+  background-color: #06c;
+  color: white;
+
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.search {
+  width: 200px;
+  border: 2px solid #06c;
+  margin: 16px 0;
+  border-radius: 8px;
+  padding: 8px;
+
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.search_result__content {
+  width: calc(100% - 8px * 2);
+  margin: 0 auto;
+  max-height: 70vh;
+  overflow-y: scroll;
+  background-color: white;
+
+  margin: 16px 0;
+  padding: 8px;
+
+  border: 2px solid #06c;
+  border-radius: 8px;
+}
+
+.search_result__content > ul {
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.search_result__content > ul > li {
+  list-style-type: none;
+}
+
+.search_result__content > ul > li > button {
+  background-color: transparent;
+  padding: 8px;
+  border-radius: 8px;
+  border: 2px solid lightgray;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  width: 100%;
+
+  z-index: 20;
+
+  transition: all 1s ease;
+}
+
+.search_result__content > ul > li > button:hover {
+  background-color: lightgray;
+  border-color: #06c;
+}
+
+.search_result__content > ul > li > button > img {
+  max-width: 50px;
+  max-height: 50px;
+  width: auto;
+  height: auto;
+}
+
+/* video player */
+
+.video__wrapper {
+  width: 640px;
+  height: 358px;
+  margin: 0 auto;
+
+  border: 8px solid #06c;
+  background-color: #06c;
+  border-radius: 8px;
+
+  position: relative;
+}
+
+.video__menu {
+  position: absolute;
+  bottom: 0;
+
+  padding: 8px;
+  width: calc(100% - 8px * 2);
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+:root {
+  --progress-bar-height: 10px;
+  --progress-bar-cicle-height: 16px;
+}
+
+.video__bottom_menu {
+  display: flex;
+  gap: 8px;
+}
+
+.video__range {
+  width: 100%;
+}
+
+.video__play_stop_button,
+.video__mute_button,
+.video__full_screen_button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+}
+
+.video__play_stop_button:focus-visible,
+.video__mute_button:focus-visible,
+.video__full_screen_button:focus-visible {
+  outline: none;
+}
+
+.video__time:empty {
+  display: none;
+}
+
+.video__play_stop_button,
+.video__mute_volume,
+.video__mute_button,
+.video__time,
+.video__speed,
+.video__full_screen_button {
+  background-color: #242424;
+  color: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.video__time,
+.video__mute_volume,
+.video__speed {
+  padding: 0 8px;
+  border-radius: 16px;
+}
+
+.key {
+  padding: 4px 12px;
+  min-width: 36px;
+  height: 36px;
+
+  font-family: "Courier New", monospace;
+  font-weight: 700;
+  font-size: 14px;
+  color: #333;
+
+  border: 1px solid #b3b3b3;
+  border-radius: 6px;
+  background: #f0f0f0;
+  box-shadow:
+    0 2px 0 #b3b3b3,
+    inset 0 -1px 0 #d9d9d9,
+    inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.25s ease;
+}
+
+.key:active {
+  transform: translateY(2px);
+  box-shadow:
+    0 0 0 #b3b3b3,
+    inset 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.key:hover {
+  background: #f8f8f8;
+  border-color: #999;
+}
+
+.hot_keys {
+  padding-top: 16px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.hot_keys > div {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* galery */
+
+.galery {
+  position: relative;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.galery__buttons {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  max-width: 300px;
+  margin: 0 auto;
+
+  z-index: 9;
+}
+
+.galery__buttons button {
+  border: 1px solid #06c;
+  background-color: #06c;
+  color: white;
+}
+
+.galery > ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.galery > ul > li {
+  list-style-type: none;
+  z-index: 10;
+}
+
+.galery > ul > li > button {
+  width: 200px;
+  height: 200px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #06c;
+  background-color: transparent;
+  transition: all 1s ease;
+}
+
+.galery > ul > li > button:hover {
+  box-shadow: 0 0 8px black;
+}
+
+.galery > ul > li > button > img {
+  max-width: 180px;
+  max-height: 180px;
+  width: auto;
+  height: auto;
+}
