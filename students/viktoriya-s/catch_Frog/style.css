@@ -1,0 +1,144 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #016d13;
+}
+
+h1 {
+    display: inline-block;
+    text-align: center;
+    padding: 20px;
+    font-size: 60px;
+    font-weight: 700;
+    color: #e6c807;
+    margin: 0;
+}
+
+#game-container {
+    background-image: url('image/1 (1).jpg');
+    background-size :cover;
+    background-repeat: no-repeat;
+    /* max-width: 1200px; */
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow-y: hidden;
+}
+
+#leafs {
+    width: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 60px;
+    position: relative;
+}
+
+.leaf {
+    width: 190px;
+    height: 120px;
+}
+
+.frog {
+    width: 120px;
+    height: 170px;
+    position: absolute;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.title-container {
+    display: inline-block;
+    width: 100%;
+    display: flex;
+}
+
+#title {
+    display: inline-block;
+    flex-wrap: wrap;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 160px;
+}
+
+.score {
+    font-size: 38px;
+    font-weight: 700;
+    color: #e337d2;
+    text-shadow: 2px 2px 4px rgb(0 0 0 / 50%);
+    z-index: 1;
+    display: inline-block;
+    border-radius: 10px;
+    background-color: #ffc107;
+    padding: 5px 20px;
+}
+
+.level-badge,
+.best-badge {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    padding: 5px 15px;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+button {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    background-color: #e337d2;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    outline: none;
+}
+
+
+@media screen and (max-width: 578px) {
+    #leafs {
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 570px) {
+    h1 {
+        font-size: 40px;
+        margin-bottom: 0;
+    }
+
+    #leafs {
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0;
+        row-gap: 30px;
+    }
+}
+
+@media screen and (max-width: 390px) {
+    h1 {
+        font-size: 30px;
+    }
+
+    #leafs {
+        row-gap: 30px;
+    }
+
+    .leaf {
+        width: 150px;
+        height: 80px;
+    }
+}
