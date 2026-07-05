@@ -3,7 +3,7 @@
 [Pull Request](https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/83)
 
 # Whack-a-mole!
-[Ссылка](https://deploy-preview-83--js-30-widget-gallery.netlify.app/students/oardieldei/whack-a-mole/)
+[Ссылка](https://deploy-preview-83--js-30-widget-gallery.netlify.app/students/oardieldei/whack-a-mole/index.html)
 
 Игра сделана по заданию, плюс реализованы дополнительные возможности из списка. 
 
@@ -44,7 +44,7 @@
   - Сортировка происходит по очкам.
 
 # Custom media player!
-[Ссылка](https://deploy-preview-83--js-30-widget-gallery.netlify.app/students/oardieldei/custom-video-player/)
+[Ссылка](https://deploy-preview-83--js-30-widget-gallery.netlify.app/students/oardieldei/custom-video-player/index.html)
 
 Плеер сделан по заданию, также реализованы дополнительные возможности и нормальное цветовое оформление.
 
