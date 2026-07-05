@@ -189,6 +189,8 @@ function snoozeAllarm() {
   startAlarm(nexTime);
 }
 
+console.log(inputTime.value);
+
 inputTime.addEventListener("input", () => {
   btnStartAlarm.disabled = !inputTime.value;
 });
