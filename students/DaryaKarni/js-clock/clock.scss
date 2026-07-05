@@ -4,7 +4,7 @@ html, body{
   width: 100%;
   box-sizing: border-box;
   min-height: 100vh;
-  font-family: sans-serif;
+  font-family:'Courier New', Courier, monospace;
   font-size: 10px;
 }
 html{
@@ -26,11 +26,14 @@ html{
       color: #fcdab8;
     }
     .theme-button{
-      border: 0.6rem solid rgba(252, 218, 184);
+      border: 0.4rem solid rgba(252, 218, 184);
       background-color: rgba(252, 218, 184, 0.1);
       box-shadow: 0 0 10rem rgb(252, 218, 184, 0.7);
       padding: 2rem;
       color: #fcdab8;
+    }
+    .do-nothing{
+      box-shadow: 0 0 10rem rgb(252, 218, 184, 0.4);
     }
   }
 }
@@ -76,13 +79,28 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 0.6rem solid rgb(58, 20, 58);
+  border: 0.4rem solid rgb(58, 20, 58);
   background-color: rgba(255, 119, 0, 0.5);
   border-radius: 50%;
   box-shadow: 0 0 10rem rgb(255, 123, 0);
   color: rgb(58, 20, 58);
+  cursor: pointer;
 }
 .hidden{
   display: none;
+}
+.do-nothing{
+  position: absolute;
+  bottom: 10rem;
+  font-size: 2rem;
+  padding: 1.5rem 2rem;
+  border-radius: 5rem;
+  text-align: center;
+  color: rgb(252, 218, 184);
+  background-color: rgba(58, 20, 58);
+  font-family:'Courier New', Courier, monospace;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 10rem rgb(255, 123, 0, 0.4);
 }
 
