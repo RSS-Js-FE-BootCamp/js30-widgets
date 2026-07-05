@@ -21,9 +21,9 @@ level.textContent = currentLevel;
 highScoreDisplay.textContent = highScore;
 
 function getLevelSpeed() {
-  if (currentLevel === 1) return { min: 400, max: 1200 };
-  if (currentLevel === 2) return { min: 250, max: 800 };
-  return { min: 150, max: 500 };
+  if (currentLevel === 1) return { min: 600, max: 1600 };
+  if (currentLevel === 2) return { min: 550, max: 1550 };
+  return { min: 450, max: 1250 };
 }
 
 function randomTime(min, max) {
@@ -68,7 +68,7 @@ function startGame() {
     startBtn.textContent = "Start!";
 
     endGameCheck();
-  }, 10000);
+  }, 25000);
 }
 
 const hitSound = new Audio("./hit.mp3");
@@ -88,6 +88,9 @@ muteBtn.addEventListener("click", () => {
 function bonk(e) {
   if (!e.isTrusted) return;
   e.stopPropagation();
+
+  /*if (this.isHit) return;
+  this.isHit = true;*/
   score++;
 
   if (!isMuted) {
@@ -95,7 +98,14 @@ function bonk(e) {
     hitSound.play();
   }
 
-  this.classList.remove("up");
+  this.classList.add("hit");
+
+  setTimeout(() => {
+    this.classList.remove("up");
+    this.classList.remove("hit");
+    this.isHit = false;
+  }, 250);
+
   scoreBoard.textContent = score;
 
   if (score > highScore) {
@@ -137,7 +147,9 @@ function endGameCheck() {
       currentLevel++;
       showMessage(`Great job! Welcome to Level ${currentLevel}!`);
     } else {
-      showMessage("Congratulations! You beat the game! Resetting to Level 1.");
+      showMessage(
+        "🎉 AMAZING! You are the ultimate Mole Whacker! You have beaten the game!",
+      );
       currentLevel = 1;
     }
   } else {

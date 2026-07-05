@@ -96,7 +96,6 @@ p {
   cursor:
     url(./hammer.png) 16 16,
     auto;
-  transform: rotate(-2deg);
 }
 
 .hole {
@@ -129,6 +128,13 @@ p {
   left: 12.5%;
   transition: all 0.4s;
   z-index: 1;
+}
+
+.mole.hit {
+  filter: hue-rotate(90deg) invert(1);
+  transform: scale(0.7) rotate(30deg);
+  transition: none;
+  pointer-events: none;
 }
 
 .hole.up .mole {
