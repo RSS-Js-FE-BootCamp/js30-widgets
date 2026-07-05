@@ -19,7 +19,7 @@ function setDate() {
     }
 
     if (mins === 0 && seconds === 0) {
-        MINS_HAND.style.transition = 'none';
+        MIN_HAND.style.transition = 'none';
     }
 
     if (hours % 12 === 0 && mins === 0 && seconds === 0) {
@@ -47,6 +47,8 @@ function setDate() {
             });
         });
     }
+
+    checkAlarmTime(hours, mins, seconds);
 }
 
 setInterval(setDate, 1000);
@@ -125,4 +127,73 @@ THEME_TOGGLE.addEventListener('click', () => {
     applyTheme(newTheme);
     localStorage.setItem('theme', newTheme);
     THEME_TOGGLE.classList.toggle('active');
+});
+
+
+/*----------------------------Alarm----------------------------*/
+
+
+const ALARM_BTN = document.querySelector('.alarm-btn');
+const ALARM_STOP_BTN = document.querySelector('.alarm-stop-btn');
+const ALARM_SNOOZE_BTN = document.querySelector('.alarm-snooze-btn');
+const ALARM = document.querySelector('.alarm');
+const ALARM_RING = new Audio('assets/sounds/alarm.mp3');
+const SNOOZE = document.querySelector('.snooze-duration');
+const MODAL_WINDOW = document.querySelector('.modal-window');
+
+let alarmTime = null;
+
+const savedAlarm = localStorage.getItem('alarmTime');
+alarmTime = savedAlarm ? JSON.parse(savedAlarm) : null;
+
+ALARM_BTN.addEventListener('click', () => {
+    const timeParts = ALARM.value.split(':');
+    alarmTime = {hours: parseInt(timeParts[0], 10), mins: parseInt(timeParts[1], 10)};
+
+    ALARM_BTN.classList.add('active-btn');
+
+    localStorage.setItem('alarmTime', JSON.stringify(alarmTime));
+});
+
+function checkAlarmTime(hours, mins, seconds) {
+    if (!alarmTime) return;
+
+    if (hours === alarmTime.hours && mins === alarmTime.mins && seconds === 0) {
+        triggerAlarm();
+
+        alarmTime = null;
+        localStorage.removeItem('alarmTime');
+    }
+
+}
+
+function triggerAlarm() {
+    ALARM_RING.loop = true;
+    ALARM_RING.play();
+
+    MODAL_WINDOW.classList.remove('hide');
+}
+
+ALARM_STOP_BTN.addEventListener('click' , () => {
+    ALARM_RING.pause();
+    ALARM_RING.currentTime = 0;
+    alarmTime = null;
+    ALARM_BTN.classList.remove('active-btn');
+    localStorage.removeItem('alarmTime');
+});
+
+ALARM_SNOOZE_BTN.addEventListener('click', () => {
+    const snoozeMinutes = parseInt(SNOOZE.value, 10);
+
+    const now = new Date();
+    now.setMinutes(now.getMinutes() + snoozeMinutes);
+
+    ALARM_RING.pause();
+    ALARM_RING.currentTime = 0;
+    alarmTime = {hours: now.getHours(), mins: now.getMinutes()};
+    localStorage.setItem('alarmTime', JSON.stringify(alarmTime));
+});
+
+MODAL_WINDOW.addEventListener('click', () => {
+    MODAL_WINDOW.classList.add('hide');
 });

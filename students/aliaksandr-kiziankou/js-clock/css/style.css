@@ -11,8 +11,10 @@
     --second-hand-circle-color: rgb(249, 176, 130);
     --time-zone-bg: rgba(0, 0, 0, 0.486);
     --toggle-bg: rgba(0, 0, 0, 0.345);
-    --toggle-box-shadow: rgba(31, 31, 31, 0.386);
+    --toggle-box-shadow: rgba(31, 31, 31, 0.763);
     --credits-text-color: rgba(255, 255, 255, 0.224);
+    --alarm-bg: rgb(209, 178, 186);
+    --alarm-text: #000000;
 }
 
 html.dark-theme {
@@ -30,6 +32,8 @@ html.dark-theme {
     --toggle-bg: rgba(187, 187, 187, 0.345);
     --toggle-box-shadow: rgba(219, 219, 219, 0.386);
     --credits-text-color: rgba(255, 255, 255, 0.224);
+    --alarm-bg: #000000d1;
+    --alarm-text: #ffffff;
 }
 
 html {
@@ -257,7 +261,7 @@ body {
 
 .theme-toggle-container {
     position:fixed;
-    bottom: 15px;
+    bottom: 35px;
     left: 20px;
     gap: 10px;
     display: flex;
@@ -308,7 +312,114 @@ body {
     transform: translateX(25px);
 }
 
+/*------------------------------Alarm------------------------------*/
 
+.alarm-container {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    bottom: 55px;
+    right: 30px;
+    padding: 10px;
+    border-radius: 8px;
+    gap: 10px;
+    background-color: var(--toggle-bg);
+    box-shadow: 0 0 10px var(--toggle-box-shadow);
+}
+
+.alarm {
+    width: 100px;
+    height: 30px;
+    background: white;
+    border: none;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    border-radius: 10px;
+    text-align: center;
+    transition: scale 0.3s ease;
+}
+
+.alarm-btn {
+    width: 100px;
+    height: 30px;
+    background: var(--alarm-bg);
+    border: none;
+    border-radius: 10px;
+    color: var(--alarm-text);
+    cursor: pointer;
+    transition: scale 0.3s ease;
+}
+
+.alarm-stop-btn {
+    width: 100px;
+    height: 30px;
+    background: var(--alarm-bg);
+    border: none;
+    border-radius: 10px;
+    color:var(--alarm-text);
+    cursor: pointer;
+    transition: scale 0.3s ease;
+}
+
+.alarm-snooze-btn {
+    width: 100px;
+    height: 30px;
+    background: var(--alarm-bg);
+    border: none;
+    border-radius: 10px;
+    color:var(--alarm-text);
+    cursor: pointer;
+    transition: scale 0.3s ease;
+}
+
+.alarm:hover, .alarm-btn:hover, .alarm-stop-btn:hover, .alarm-snooze-btn:hover, .snooze-duration:hover {
+    scale: 1.1;
+}
+
+.active-btn {
+    box-shadow: 0 0 15px var(--alarm-bg);
+    pointer-events: none;
+    scale: 0.9;
+}
+
+.snooze-duration {
+    color: var(--alarm-text);
+    background: var(--alarm-bg);
+    width: 100px;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: scale 0.3s ease;
+}
+
+/*-----------------------------Modal Window-----------------------------*/
+
+.modal-window {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    background: #000000a1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-text {
+    background: rgba(142, 142, 147, 0.717);
+    margin: 0 auto;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 3vw;
+    display: flex;
+}
+
+.hide {
+    display: none;
+}
 
 .credits {
     position: fixed;

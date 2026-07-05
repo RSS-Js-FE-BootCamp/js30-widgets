@@ -23,7 +23,7 @@
             <div class="timezone-clock" data-timezone="Europe/Paris"></div>
         </div>
         <div class="timezone">
-            <span>New-York</span>
+            <span>New York</span>
             <div class="timezone-clock" data-timezone="America/New_York"></div>
         </div>
     </div>
@@ -55,6 +55,21 @@
         <button class="theme-toggle" aria-label="Toggle">
             <span class="theme-toggle-thumb"></span>
         </button>
+    </div>
+
+    <div class="alarm-container">
+        <input type="time" class="alarm">
+        <button class="alarm-btn">Set alarm</button>
+        <button class="alarm-stop-btn">Stop alarm</button>
+        <button class="alarm-snooze-btn">Snooze alarm</button>
+        <select class="snooze-duration" id="snooze">
+            <option value="5">5 mins</option>
+            <option value="10">10 mins</option>
+            <option value="15">15 mins</option>
+        </select>
+    </div>
+    <div class="modal-window hide">
+        <span class="modal-text">Wake Up!</span>
     </div>
     
     <a href="https://unsplash.com/photos/tropical-sunset-over-a-pier-with-bungalows-and-palm-trees-JSX5JXMg96g" target="_blank" class="credits">Photo by Rafael Peier</a>
