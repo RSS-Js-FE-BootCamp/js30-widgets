@@ -53,3 +53,25 @@ function setDate() {
 }
 
 setInterval(setDate, 1000);
+const themeBtn = document.querySelector(".theme-btn");
+
+function updateThemeButton() {
+  if (document.body.classList.contains("dark")) {
+    themeBtn.textContent = "☀️ Light Mode";
+  } else {
+    themeBtn.textContent = "🌙 Dark Mode";
+  }
+}
+
+updateThemeButton();
+
+themeBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+
+  localStorage.setItem(
+    "theme",
+    document.body.classList.contains("dark") ? "dark" : "light",
+  );
+
+  updateThemeButton();
+});
