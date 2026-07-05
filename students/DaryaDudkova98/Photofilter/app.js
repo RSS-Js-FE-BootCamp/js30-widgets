@@ -1,5 +1,5 @@
 // ============================================
-// 1. ФИЛЬТРЫ + ОТОБРАЖЕНИЕ ЗНАЧЕНИЙ
+// 1. FILTERS + IMAGE VALUES
 // ============================================
 const inputs = document.querySelectorAll('.filter-grid input');
 
@@ -16,12 +16,14 @@ function handleUpdate() {
         void display.offsetWidth;
         display.classList.add('pop');
     }
+    
+    setTimeout(adjustPositions, 10);
 }
 
 inputs.forEach(input => input.addEventListener('input', handleUpdate));
 
 // ============================================
-// 2. ПРЕСЕТЫ
+// 2. PRESETS
 // ============================================
 const presets = {
     vintage: {
@@ -115,14 +117,15 @@ document.querySelectorAll('.preset').forEach(btn => {
         });
         
         console.log(`Применен пресет: ${presetName}`);
+        setTimeout(adjustPositions, 50);
     });
 });
 
 // ============================================
-// 3. ЗАГРУЗКА ФОТО
+// 3. UPLOAD
 // ============================================
 const uploadInput = document.getElementById('upload');
-const img = document.querySelector('.wrapper img');
+const img = document.querySelector('.image-wrapper img');
 
 uploadInput.addEventListener('change', function() {
     const file = this.files[0];
@@ -133,6 +136,7 @@ uploadInput.addEventListener('change', function() {
         reader.onload = function(e) {
             img.src = e.target.result;
             console.log('Фото загружено:', file.name);
+            setTimeout(adjustPositions, 100);
         };
         
         reader.onerror = function() {
@@ -147,7 +151,7 @@ uploadInput.addEventListener('change', function() {
 });
 
 // ============================================
-// 4. СКАЧИВАНИЕ ФОТО
+// 4. DOWNLOAD
 // ============================================
 const downloadBtn = document.getElementById('download');
 
@@ -223,7 +227,7 @@ downloadBtn.addEventListener('click', function() {
 // ============================================
 // 5. DRAG & DROP
 // ============================================
-const wrapper = document.querySelector('.wrapper');
+const wrapper = document.querySelector('.image-wrapper');
 
 ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
     wrapper.addEventListener(eventName, preventDefaults, false);
@@ -239,14 +243,12 @@ function preventDefaults(e) {
     wrapper.addEventListener(eventName, function() {
         wrapper.style.border = '3px dashed var(--base)';
         wrapper.style.borderRadius = '10px';
-        wrapper.style.padding = '10px';
     }, false);
 });
 
 ['dragleave', 'drop'].forEach(eventName => {
     wrapper.addEventListener(eventName, function() {
         wrapper.style.border = 'none';
-        wrapper.style.padding = '0';
     }, false);
 });
 
@@ -259,6 +261,7 @@ wrapper.addEventListener('drop', function(e) {
         reader.onload = function(e) {
             img.src = e.target.result;
             console.log('Фото загружено через Drag & Drop');
+            setTimeout(adjustPositions, 100);
         };
         reader.readAsDataURL(file);
     } else {
@@ -268,3 +271,59 @@ wrapper.addEventListener('drop', function(e) {
 
 console.log('PhotoFilter готов к работе!');
 console.log('Доступные пресеты: Vintage, Neon, Warm, Cold, B&W, Reset');
+
+// ============================================
+// 6. УПРАВЛЕНИЕ РАЗМЕРАМИ
+// ============================================
+const actionButtons = document.getElementById('actionButtons');
+const imageWrapper = document.querySelector('.image-wrapper');
+
+function adjustPositions() {
+    if (!img || !img.complete || img.naturalWidth === 0) {
+        actionButtons.style.transform = 'translateY(0)';
+        actionButtons.style.marginTop = '0';
+        return;
+    }
+    
+    const scaleValue = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--scale')) || 1;
+    const rotateValue = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--rotate')) || 0;
+    
+    let normalizeDeg = rotateValue % 360;
+    if (normalizeDeg < 0) normalizeDeg += 360;
+    
+    const rotateDeg = Math.min(normalizeDeg, 360 - normalizeDeg);
+    
+    // Получаем реальные размеры изображения
+    const rect = img.getBoundingClientRect();
+    const imgWidth = rect.width;
+    const imgHeight = rect.height;
+    
+    // ПРОСТОЙ PADDING
+    const padding = 60 + (rotateDeg / 360) * 300;
+    
+    // РАЗМЕРЫ ВРАППЕРА
+    const w = imgWidth + padding * 2;
+    const h = imgHeight + padding * 2;
+    
+    imageWrapper.style.minWidth = w + 'px';
+    imageWrapper.style.minHeight = h + 'px';
+    imageWrapper.style.padding = padding + 'px';
+    
+    // ОТСТУПЫ
+    const topMargin = 40 + (scaleValue - 1) * 120 + (rotateDeg / 360) * 150;
+    imageWrapper.style.marginTop = topMargin + 'px';
+    imageWrapper.style.marginBottom = (topMargin * 0.7) + 'px';
+    
+    // КНОПКИ
+    const shiftY = (scaleValue - 1) * 20 + (rotateDeg / 360) * 40 + 10;
+    actionButtons.style.transform = `translateY(${shiftY}px)`;
+    actionButtons.style.marginTop = `${shiftY * 0.3}px`;
+}
+
+document.querySelectorAll('.filter-grid input').forEach(input => {
+    input.addEventListener('input', () => setTimeout(adjustPositions, 50));
+});
+
+img.addEventListener('load', adjustPositions);
+window.addEventListener('resize', adjustPositions);
+setTimeout(adjustPositions, 200);
