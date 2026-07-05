@@ -12,15 +12,8 @@ body{
 background: rgb(202, 162, 110);
 }
 
-@media (max-width: 767px) { 
-
-    
-}
-
 .container_clock {
     display: flex;
-
-
 }
 
 .clock {
@@ -50,8 +43,8 @@ background: rgb(202, 162, 110);
     position: absolute;    
     width: 24px;
     height: 178px;
-    top: 190px;
-    left: 190px;
+    top: 189px;
+    left: 188px;
     transform-origin: 12px 11px;    
     transition: all 0.05s;
     transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
