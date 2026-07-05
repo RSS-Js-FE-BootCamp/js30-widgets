@@ -242,6 +242,7 @@ h3 {
   gap: 1.25rem;
   padding: 2rem;
   width: fit-content;
+  min-width: 255px;
 }
 
 .student-name {
