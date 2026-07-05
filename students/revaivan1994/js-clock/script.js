@@ -10,6 +10,8 @@ const digitalYear = document.querySelector('.digital-year');
 const cities = document.querySelectorAll('.city');
 const themeButton = document.querySelector('.theme-button');
 
+const locale = 'en-US';
+
 function addZero(number) {
   if (number < 10) {
     return `0${number}`;
@@ -50,3 +52,42 @@ function updateClock() {
 
   updateCitiesTime(now);
 }
+
+function updateCitiesTime(date) {
+  cities.forEach((city) => {
+    const timeZone = city.dataset.timezone;
+    const timeElement = city.querySelector('b');
+
+    timeElement.textContent = new Intl.DateTimeFormat(locale, {
+      timeZone,
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false,
+    }).format(date);
+  });
+}
+
+function loadTheme() {
+  const savedTheme = localStorage.getItem('theme');
+
+  if (savedTheme === 'light') {
+    document.body.classList.add('light');
+  }
+}
+
+function changeTheme() {
+  document.body.classList.toggle('light');
+
+  if (document.body.classList.contains('light')) {
+    localStorage.setItem('theme', 'light');
+  } else {
+    localStorage.setItem('theme', 'dark');
+  }
+}
+
+themeButton.addEventListener('click', changeTheme);
+
+loadTheme();
+updateClock();
+setInterval(updateClock, 1000);
