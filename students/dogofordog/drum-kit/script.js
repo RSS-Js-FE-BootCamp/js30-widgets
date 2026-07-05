@@ -26,6 +26,18 @@ function spawnNote(x, y) {
   setTimeout(() => note.remove(), 1000);
 }
 
+function createRipple(e) {
+  const key = e.currentTarget;
+  const ripple = document.createElement('span');
+  ripple.classList.add('ripple');
+  const size = Math.max(key.offsetWidth, key.offsetHeight);
+  ripple.style.width = ripple.style.height = `${size}px`;
+  ripple.style.left = `${e.clientX - key.getBoundingClientRect().left - size / 2}px`;
+  ripple.style.top = `${e.clientY - key.getBoundingClientRect().top - size / 2}px`;
+  key.appendChild(ripple);
+  setTimeout(() => ripple.remove(), 600);
+}
+
 window.addEventListener('keydown', (e) => playSound(e.code));
 
 document.querySelector('.keys').addEventListener('click', (e) => {
@@ -37,6 +49,7 @@ document.querySelector('.keys').addEventListener('click', (e) => {
 
 document.querySelectorAll('.key').forEach(key => {
   key.addEventListener('transitionend', removePlaying);
+  key.addEventListener('click', createRipple);
 });
 
 const themeBtn = document.getElementById('theme-toggle');
@@ -57,5 +70,6 @@ console.table([
   { stage: 2, item: 'Mouse click plays sounds with same feedback', points: 15 },
   { stage: 3, item: 'Floating notes spawn on click', points: 10 },
   { stage: 3, item: 'Dark/light theme toggle with localStorage', points: 10 },
+  { stage: 3, item: 'Material ripple effect on click', points: 10 },
 ]);
-console.log('Claimed total: 55/65');
+console.log('Claimed total: 65/65');
