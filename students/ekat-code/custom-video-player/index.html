@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Custom Video Player</title>
+</head>
+<body>
+  <main class="main">
+    <div class="video-player">
+      <video width="500" height="280" src="./assets/video/Жил-был-пёс.mp4">
+        <p>Your browser does not support the video tag :(</p>
+      </video>
+      <div class="video-player__controls">
+        <button class="video-player__button" type="button">
+          <span class="button__icon button__play-pause"></span>
+        </button>
+        <input class="video-player__range" type="range" min="0" max="100" value="0">
+        <button class="video-player__button" type="button">
+          <span class="button__icon button__volume"></span>
+        </button>
+        <input class="video-player__range" type="range" min="0" max="5" value="1">
+        <button class="video-player__button" type="button">
+          <span class="button__icon button__speed-decrease"></span>
+        </button>
+        <button class="video-player__button" type="button">
+          <span class="button__icon button__speed-increase"></span>
+        </button>
+        <button class="video-player__button" type="button">
+          <span class="button__icon button__fullscreen"></span>
+        </button>
+      </div>
+    </div>
+  </main>
+  <script type="module" src="./js/index.js"></script>
+</body>
+</html>
