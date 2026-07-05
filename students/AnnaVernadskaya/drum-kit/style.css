@@ -1,0 +1,238 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: sans-serif;
+  background: url('./images/background.jpg') bottom center / cover no-repeat;
+}
+
+.theme-demo {
+  background-image: url('./images/background.jpg');
+}
+
+.theme-custom {
+  background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.4)
+    ),
+    url('./images/background-modern.jpg') center / cover no-repeat;
+}
+
+.drum-kit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.keys {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 150rem;
+}
+
+.key {
+  width: 12rem;
+  padding: 1rem 0.5rem;
+  color: #ffffff;
+  text-align: center;
+  border: 0.4rem solid #000000;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-shadow: 0 0 0.5rem #000000;
+  cursor: pointer;
+  transition:
+    transform 0.07s ease,
+    border-color 0.07s ease,
+    box-shadow 0.07s ease;
+}
+
+.key__letter {
+  display: block;
+  font-size: 4rem;
+}
+
+.sound {
+  font-size: 1.2rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  color: #ffc600;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  border: 0;
+}
+
+.playing {
+  transform: scale(1.1);
+  border-color: #ffc600;
+  box-shadow: 0 0 1rem #ffc600;
+}
+
+/*кнопка переключатель тем*/
+.theme-switcher {
+  position: fixed;
+  top: 26px;
+  right: 40px;
+  z-index: 10;
+  display: flex;
+  padding: 4px;
+  border: 0.4rem solid #000000;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  box-shadow:
+    0 0 0.5rem #000000,
+    inset 0 0 8px rgba(255, 255, 255, 0.12);
+}
+
+.theme-switcher__button {
+  min-width: 88px;
+  padding: 10px 14px;
+  font-family: inherit;
+  font-size: 1.2rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ffffff;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.theme-switcher__button--active {
+  color: #ffffff;
+  background-color: #e1b102;
+  box-shadow:
+    inset 0 2px 6px rgba(0, 0, 0, 0.65),
+    0 0 8px rgba(213, 169, 11, 0.35);
+  transform: translateY(1px);
+}
+
+.theme-switcher__button:not(.theme-switcher__button--active):hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+/*стили для второй темы*/
+.theme-custom .key {
+  border-color: rgba(158, 8, 28, 0.8);
+  background-color: rgba(0, 0, 0, 0.42);
+  box-shadow:
+    0 0 1rem rgba(255, 42, 70, 0.35),
+    inset 0 0 1rem rgba(255, 255, 255, 0.05);
+}
+
+.theme-custom .sound {
+  color: #ff3d57;
+}
+
+.theme-custom .playing {
+  border-color: #ff3d57;
+  box-shadow:
+    0 0 1.6rem rgba(255, 61, 87, 0.95),
+    inset 0 0 1.2rem rgba(255, 61, 87, 0.3);
+}
+
+/*нота при клике*/
+.floating-note {
+  position: fixed;
+  z-index: 20;
+
+  font-size: 2.8rem;
+  color: #ffc600;
+  text-shadow: 0 0 1rem #000000;
+
+  pointer-events: none;
+
+  animation: note-fly 0.9s ease-out forwards;
+}
+
+@keyframes note-fly {
+  to {
+    transform: translateY(-80px) rotate(18deg);
+    opacity: 0;
+  }
+}
+
+
+/*запись мелодии*/
+.recorder {
+  position: fixed;
+  top: 90px;
+  right: 40px;
+  z-index: 10;
+
+  display: flex;
+  gap: 0.8rem;
+
+  padding: 0.6rem;
+
+  border: 0.3rem solid #000000;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.8);
+
+  box-shadow:
+    0 0 0.5rem #000000,
+    inset 0 0 0.8rem rgba(255, 255, 255, 0.12);
+}
+
+.recorder__button {
+  padding: 0.8rem 1rem;
+
+  font-family: inherit;
+  font-size: 1.2rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  color: #ffffff;
+
+  border: none;
+  border-radius: 0.3rem;
+  background-color: transparent;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.recorder__button:hover:not(:disabled) {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.recorder__button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.recorder__button--active {
+  background-color: rgba(225, 177, 2, 0.35);
+  box-shadow: 0 0 0.8rem rgba(225, 177, 2, 0.5);
+}
