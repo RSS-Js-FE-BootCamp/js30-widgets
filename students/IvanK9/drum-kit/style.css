@@ -36,16 +36,63 @@ img {
   --color-background: rgba(0, 0, 0, 0.4);
   --color-text-shadow: black;
   --color-shadow-playing: #ffc600;
+  --color-bg-btn: rgba(255, 255, 255, 0.2);
+
+  --bg-image: url(./image/bg.jpg);
+}
+
+body .light-theme {
+  --color-border: #333;
+  --color-border-playing: #ff4757;
+  --color-text: #222;
+  --color-text-subtitle: #ff4757;
+  --color-background: rgba(255, 255, 255, 0.75);
+  --color-text-shadow: transparent;
+  --color-shadow-playing: rgba(255, 71, 87, 0.4);
+}
+
+body.light-theme .hero {
+  filter: invert(0.9) brightness(1.2) contrast(0.8);
+}
+
+body.light-theme .header__btn,
+body.light-theme .keys__list {
+  filter: invert(0.9);
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.header__btn {
+  width: 6rem;
+  height: 6rem;
+  padding: 0.5rem;
+  background: var(--color-bg-btn);
+  color: var(--color-text);
+  border: 0.2rem solid var(--color-border);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  backdrop-filter: blur(2px);
 }
 
 .hero {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-image: url(./image/bg.jpg);
+  background-image: var(--bg-image);
   background-size: cover;
   background-position: center;
+  transition:
+    filter 0.3s ease,
+    background-color 0.3s ease;
 }
 
 .keys__list {
