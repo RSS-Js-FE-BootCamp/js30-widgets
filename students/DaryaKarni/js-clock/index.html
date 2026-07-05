@@ -11,7 +11,7 @@
     }
   </script>
 </head>
-<body >
+< >
   <button class="theme-button">
     <svg class="sun" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-brightness-high" viewBox="0 0 16 16">
       <path  d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"/>
@@ -27,15 +27,18 @@
     <div class="hand secs"></div>
   </div>
   <button class="do-nothing">do nothing 2 mins</button>
+  <img class="cuckoo" src="./assets/cuckoo.png"/>
 
   <audio data-name="clock" src="./assets/clock-alarm.wav"></audio>
   <audio data-name="relax" src="./assets/relax.mp3"></audio>
+  <audio data-name="cuckoo" src="./assets/krik-kukushki.mp3"></audio>
 
   <script>
     const secondHand = document.querySelector(".secs");
     const minuteHand = document.querySelector(".mins");
     const hourHand = document.querySelector(".hours");
     const textDate = document.querySelector('.date-text');
+    const cuckoo = document.querySelector('.cuckoo');
     function setDate(){
       const now = new Date();
       const secs = now.getSeconds();
@@ -52,11 +55,40 @@
       const monthDayNum = now.getDate();
       const monthDay = now.toLocaleString('en-US', { month: 'long' });
       const year = now.getFullYear();
-      console.log(weekDay);
-      textDate.innerText = `${hours}:${mins}:${secs} ${weekDay}, ${monthDayNum} ${monthDay} ${year}`;
+      const zeroS = secs<10 ? '0' : '';
+      const zeroM = mins<10 ? '0' : '';
+      textDate.innerText = `${hours}:${zeroM}${mins}:${zeroS}${secs} ${weekDay}, ${monthDayNum} ${monthDay} ${year}`;
+      const times = hours%12 === 0 ? 12 : hours % 12;
+      if(mins === 0 && secs === 0){
+        playCuckoo(times);
+      }
     } 
     setInterval(setDate, 1000);
     
+    const audioCuckoo = document.querySelector("[data-name=cuckoo]");
+    function spawnCuckoo(times){
+      cuckoo.classList.remove('seen');
+      setTimeout(() => {
+        cuckoo.classList.add('seen');
+        cuckoo.style.setProperty('--times', `${times}`);
+      }, 1600);
+    }
+    function playCuckoo(times){
+      let count = 1;
+      const interval = setInterval(()=>{
+        if(count >= times){
+          clearInterval(interval);
+        }
+        audioCuckoo.currentTime = 1.8;
+        audioCuckoo.play();
+        setTimeout(() => {
+          audioCuckoo.pause();
+        }, 1190);
+        count++;
+      }, 1600);
+      spawnCuckoo(times);
+      return interval;
+    }
     /*theme changing*/
     const html = document.querySelector('html');
     const sun = document.querySelector('.sun');
@@ -100,6 +132,7 @@
     const tickTimer = setInterval(() => {
       if(secs === 0){
         if(mins === 0){
+          audioClock.currentTime = 0;
           audioClock.play();
           timerButton.innerText = 'time is out';
           clearInterval(tickTimer);
@@ -125,6 +158,7 @@
       this.innerText = `2:00`;
       this.disabled = true;
       startTimer(2,0);  
+      audioRelax.currentTime = 0;
       audioRelax.play();
       setTimeout(() => {
         audioRelax.pause();
@@ -138,7 +172,7 @@
       { stage: 2, item: 'Mandatory feature: date display', claimed: 15 },
       { stage: 3, item: 'Optional: Dark / light theme toggle that persists across reloads', claimed: 10 },
       { stage: 3, item: 'Optional: A "do nothing for 2 minutes" relaxation mode with a timer ', claimed: 10 },
-      { stage: 3, item: 'Optional: ',     claimed: 10 },
+      { stage: 3, item: 'Optional: A cuckoo clock - at the top of each hour the bird pops out and chimes',     claimed: 10 },
     ]);
     console.log('Claimed total: 65/65');
   </script>
