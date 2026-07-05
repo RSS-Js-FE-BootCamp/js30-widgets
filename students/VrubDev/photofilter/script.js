@@ -1,5 +1,6 @@
 const inputs = document.querySelectorAll(".controls input");
 const presets = document.querySelectorAll(".preset-item");
+const resetBtn = document.querySelector(".btn-reset");
 const fileInput = document.querySelector(".btn-upload");
 const mainImage = document.querySelector(".main-img");
 
@@ -32,6 +33,22 @@ function applyPreset() {
   }
 }
 
+function resetAllFilters() {
+  inputs.forEach((input) => {
+    if (input.type === "color") {
+      input.value = "#9fcfb2";
+    } else {
+      input.value = input.getAttribute("value");
+    }
+
+    const suffix = input.dataset.sizing || "";
+    document.documentElement.style.setProperty(
+      `--${input.name}`,
+      input.value + suffix,
+    );
+  });
+}
+
 function handleFileUpload() {
   const file = fileInput.files[0];
 
@@ -51,4 +68,5 @@ function handleFileUpload() {
 inputs.forEach((input) => input.addEventListener("input", handleUpdate));
 presets.forEach((preset) => preset.addEventListener("click", applyPreset));
 
+resetBtn.addEventListener("click", resetAllFilters);
 fileInput.addEventListener("change", handleFileUpload);
