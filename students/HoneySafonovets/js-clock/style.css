@@ -1,0 +1,82 @@
+html {
+  background: #0C0D0F;
+  background-size: cover;
+  font-family: 'helvetica neue';
+  text-align: center;
+  font-size: 10px;
+}
+
+.js-clock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+}
+
+.clock-wrapper {
+  width: 30rem;
+  height: 30rem;
+  border: 20px solid white;
+  border-radius: 50%;
+  margin: 50px auto;
+  position: relative;
+  padding: 2rem;
+  box-shadow: 
+    0 0 0 4px rgba(0, 0, 0, 0.1),
+    inset 0 0 0 3px #EFEFEF,
+    inset 0 0 10px black,
+    0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.title {
+  font-size: 5rem;
+  color: #EFEFEF;
+}
+
+.clock {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.dot {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #EFEFEF;
+  border-radius: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%)
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: 0% 50%;
+}
+
+.second-arrow {
+  width: 43%;
+  height: 4px;
+  background-color: #EFEFEF;
+  transform: rotate(90deg);
+}
+
+.min-arrow {
+  width: 43%;
+  height: 6px;
+  background-color: rgba(47, 47, 232, 0.667);
+  transform: rotate(45deg);
+}
+
+.hour-arrow {
+  width: 30%;
+  height: 10px;
+  background-color: rgba(63, 63, 155, 0.667);
+  transform: rotate(0deg);
+  opacity: 1;
+}
