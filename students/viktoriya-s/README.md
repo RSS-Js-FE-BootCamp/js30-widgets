@@ -2,6 +2,13 @@
 
 Pull Request:  https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/105
 
+
+## Preview links
+
+- Vertical Slider: https://deploy-preview-105--elegant-quokka-1ce2cd.netlify.app/students/viktoriya-s/vertical-slider/
+- Catch 20 Frogs: https://deploy-preview-105--elegant-quokka-1ce2cd.netlify.app/students/viktoriya-s/catch_Frog/
+
+
 ## Что было реализовано
 
 ### Frog Game
