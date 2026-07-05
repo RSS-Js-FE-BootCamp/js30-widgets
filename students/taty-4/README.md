@@ -1,8 +1,8 @@
 # JS30 Widgets - @taty4
 
 Pull Request: 
-- [Pull Request 1](https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/123)
-- [Pull Request 1](https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/123)
+- [Pull Request 1](https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/77)
+- [Pull Request 2](https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/87)
 
 Deploy: 
 - [Custom Video Player](https://js-30-widget-gallery.netlify.app/students/taty-4/custom-video-player/)
@@ -65,6 +65,14 @@ _5 Mandatory Additional Feature and 11 Optional Improvements_
 - [x] Dark / light theme toggle that persists across reloads (+10)
 - [x] An online alarm clock with sound and dismiss/snooze controls (+10)
 - [x] A "do nothing for 2 minutes" / "Quiet Place" relaxation mode with a timer that resets on user input. (+10)
+
+### Engineering & delivery requirements (applies to all widgets)
+
+- [x] JavaScript code is readable, not minified or obfuscated (-10 if violated per widget)
+- [x] No forbidden JS library/framework is used (jQuery, React, Vue, Angular, etc.) (-65, the whole widget is voided)
+- [x] Commit history reflects real development (not a single dump commit) (-10 if violated per widget)
+- [x] PR is open against main of the shared repository, with working Netlify preview links for all widgets (-10 if violated; without preview a widget cannot be scored)
+
 
 
 ## 📊 Итоговый результат
