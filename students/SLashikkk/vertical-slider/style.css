@@ -131,3 +131,66 @@ h1 {
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }
+
+.slider__button__direction {
+  position: absolute;
+  left: 5%;
+  bottom: 6%;
+  z-index: 100;
+  background-color: rgb(208, 229, 22);
+  box-shadow: 0 5px 20px rgba(183, 252, 7, 0.4);
+  border: none;
+  cursor: pointer;
+  color: black;
+  padding: 10px;
+  border-radius: 10px;
+  transition: background-color 0.3s;
+  animation-name: btn-direction;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+}
+
+.slider__button__direction:hover {
+  transform: translateY(-2px);
+  background: rgb(98, 233, 8);
+  box-shadow: 2px 5px 20px rgba(100, 101, 99, 0.4);
+}
+
+.slider__button__direction:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 15px rgba(199, 252, 7, 0.3);
+  color: #26698f;
+}
+
+@keyframes btn-direction {
+  0% {
+    background-color: rgb(208, 229, 22);
+  }
+  50% {
+    background-color: rgb(216, 198, 76);
+  }
+  100% {
+    background-color: rgb(208, 229, 22);
+  }
+}
+
+.arrow-down,
+.arrow-up {
+  display: inline-block;
+  transition: transform 0.5s ease;
+  will-change: transform;
+}
+
+.arrow-down.horizontal {
+  transform: rotate(90deg);
+}
+.arrow-up.horizontal {
+  transform: rotate(90deg);
+}
+
+.slider__button__direction.on {
+  background-color: brown;
+  animation: none;
+  color: white;
+  box-shadow: 0 5px 15px rgba(165, 42, 42, 0.4);
+}

@@ -85,3 +85,14 @@ sliderContainer.addEventListener("wheel", (e) => {
     changeSlide("down");
   }
 });
+
+const arrowLeft = document.querySelector(".btn__prev span");
+const arrowRight = document.querySelector(".btn__next span");
+const btnDirection = document.querySelector(".slider__button__direction");
+
+btnDirection.addEventListener("click", () => {
+  arrowLeft.classList.toggle("horizontal");
+  arrowRight.classList.toggle("horizontal");
+  sliderContainer.classList.toggle("horizontal");
+  btnDirection.classList.toggle("on")
+})
