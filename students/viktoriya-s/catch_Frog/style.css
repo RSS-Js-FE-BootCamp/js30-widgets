@@ -48,6 +48,7 @@ h1 {
     height: 170px;
     position: absolute;
     cursor: pointer;
+    z-index: 5;
 }
 
 .title-container {
