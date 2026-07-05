@@ -133,3 +133,9 @@ button:hover {
 .timeline_control_wrapper:hover {
     cursor: ew-resize;
 }
+
+
+.video_list {
+    display: flex;
+    flex-direction: row
+}
