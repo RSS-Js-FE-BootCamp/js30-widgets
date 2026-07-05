@@ -1,3 +1,4 @@
+const html = document.documentElement
 const secHand = document.querySelector('.sec-hand')
 const minHand = document.querySelector('.min-hand')
 const hourHand = document.querySelector('.hour-hand')
@@ -5,11 +6,32 @@ const digitalDate = document.querySelector('.OUR')
 const UK = document.querySelector(".UK")
 const US = document.querySelector(".US")
 
-const html = document.documentElement
+
+
+
+
 
 const clockDeg = 6;
 const hourDeg = 30;
 const time = new Date()
+
+function reloadRing(time){
+		const minRing = document.querySelector('#minutes-ring')
+		const hourRing = document.querySelector('#hours-ring')
+		const secRing = document.querySelector('#seconds-ring')
+
+		let secondsProgress = (time.getSeconds() / 60) * 100;
+		let minutesProgress = (time.getMinutes() / 60) * 100;
+		let hoursProgress = (time.getHours()%12 / 12) * 100;
+		
+		secRing.lastElementChild.textContent = secondsProgress.toFixed(0) + '%'
+		hourRing.lastElementChild.textContent = hoursProgress.toFixed(0) + '%'
+		minRing.lastElementChild.textContent = minutesProgress.toFixed(0) + '%'
+
+		secRing.style.setProperty('--progress', `${secondsProgress}%`);
+		hourRing.style.setProperty('--progress', `${hoursProgress}%`);
+		minRing.style.setProperty('--progress', `${minutesProgress}%`);
+}
 
 
 function BuildDigitalDate (time){
@@ -51,16 +73,17 @@ function BuildDigitalDate (time){
 		const minutes = time.getMinutes() + seconds / 60;
 		const hours = (time.getHours()%12) + minutes / 60;
 
+		reloadRing(time)
 		digitalDate.textContent = BuildDigitalDate(time)
 		
-		US.textContent = `USA: `+time.toLocaleTimeString('en-US', {
+		US.textContent = `America/Los-Angeles `+time.toLocaleTimeString('en-US', {
     timeZone: 'America/Los_Angeles',
     hour: '2-digit',
     minute: '2-digit',
     second: '2-digit',
 		});
 
-		UK.textContent = `UK: `+  time.toLocaleTimeString('en-US', {
+		UK.textContent = `Europe/London `+  time.toLocaleTimeString('en-US', {
     timeZone: 'Europe/London',
     hour: '2-digit',
     minute: '2-digit',
@@ -76,15 +99,17 @@ function BuildDigitalDate (time){
 
 	setInterval(()=>{
 		const time = new Date()
-		digitalDate.textContent = BuildDigitalDate(time)
 
-		US.textContent = `USA: `+time.toLocaleTimeString('en-US', {
+		digitalDate.textContent = BuildDigitalDate(time)
+		reloadRing(time)
+
+		US.textContent = `America/Los-Angeles: `+time.toLocaleTimeString('en-US', {
     timeZone: 'America/Los_Angeles',
     hour: '2-digit',
     minute: '2-digit',
     second: '2-digit',
 		});
-		UK.textContent = `UK: `+  time.toLocaleTimeString('en-US', {
+		UK.textContent = `Europe/London: `+  time.toLocaleTimeString('en-US', {
     timeZone: 'Europe/London',
     hour: '2-digit',
     minute: '2-digit',

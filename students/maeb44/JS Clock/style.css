@@ -1,18 +1,20 @@
 
 html[data-theme='light']{
 	--bg: rgb(251, 251, 251);
+	--circle: #dfdddd;
 	--hand: #000;
 	--card-border:#628abb;
-	--main-txt:#303a45;
+	--main-txt:#000000;
 	--sound-txt:#3d5559;
 	--card-bg: transparent;
 }
 
 html[data-theme='dark']{
 	--bg: rgb(8, 7, 7);
+	--circle: #dfdddd;
 	--hand: #fff;
 	--card-border:#a3b3b5;
-	--main-txt:#657b96;
+	--main-txt:#000;
 	--sound-txt:#3e747d;
 	--card-bg: #fff;
 }
@@ -36,7 +38,7 @@ body {
 }
 .theme{
 	background: var(--card-bg);
-	border: 2px solid var(--card-border);
+	border: 2px solid var(--hand);
 	user-select: none;
 	padding: 10px;
 	border-radius: 100px;
@@ -48,7 +50,7 @@ body {
 	right: 10px;
 }
 .theme:hover{
-	box-shadow: 0 0 10px var(--card-border);
+	box-shadow: 0 0 10px var(--hand);
 }
 
 .clock{
@@ -103,17 +105,58 @@ body {
 }
 .digital-clock{
 	display: flex;
-	align-items: flex-start;
+	padding-top: 30px;
+	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	position: absolute;
-	bottom: 0px;
 	color: var(--hand);
 	font-size: 2rem;
 	font-weight: 500;
 }
 .digital-date{
 }
+.progress-div{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	padding: 10px;
+}
+.progress-ring {
+  position: relative;
+	color: var(--hand);
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: 600;
+  background: conic-gradient(var(--hand) var(--progress, 0%), var(--circle) var(--progress, 0%));
+  transition: all 0.3s;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+}
+.progress-ring span:first-child{
+
+	position: absolute;
+	bottom: -30px;
+}
+.progress-ring span:last-child{
+	position: absolute;
+	bottom: -20px;
+}
+#seconds-ring{
+	--progress:0%;
+}
+#minutes-ring{
+	--progress:20%;
+}
+#hours-ring{
+	--progress:0%;
+}
+
 
 
 @media (max-width:600px) {
