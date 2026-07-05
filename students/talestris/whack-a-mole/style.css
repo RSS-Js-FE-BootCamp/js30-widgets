@@ -73,6 +73,19 @@ h1 {
   margin: 0 auto;
 }
 
+.time_left {
+  background-color: rgba(255, 255, 255, 0.4);
+  border: none;
+  border-radius: 1rem;
+  padding: 0 3rem;
+}
+
+.time-left.hurry {
+  color: rgb(226, 15, 15);
+  font-weight: bold;
+  transition: color 0.2s ease;
+}
+
 p {
   font-size: 2rem;
   padding: 2rem 0;

@@ -7,6 +7,22 @@ const gameArea = document.querySelector(".game");
 const level = document.querySelector(".level");
 const highScoreDisplay = document.querySelector(".high-score");
 
+const hitSound = new Audio("./hit.mp3");
+const missSound = new Audio("./miss.mp3");
+const startSound = new Audio("./start.mp3");
+const levelUpSound = new Audio("./level-up.mp3");
+const gameOverSound = new Audio("./game-over.mp3");
+
+const timeLeftDisplay = document.querySelector(".time-left");
+
+let countdown;
+let clicksLeft = 0;
+let maxClicksPerRound = 50;
+
+let isMuted = false;
+
+let gameActive = false;
+
 startBtn.addEventListener("click", startGame);
 
 let lastHole;
@@ -19,6 +35,26 @@ const pointsToWin = 10;
 
 level.textContent = currentLevel;
 highScoreDisplay.textContent = highScore;
+
+function startCountdown(seconds) {
+  clearInterval(countdown);
+
+  timeLeftDisplay.classList.remove("hurry");
+  timeLeftDisplay.textContent = seconds;
+
+  countdown = setInterval(() => {
+    seconds--;
+    timeLeftDisplay.textContent = seconds;
+
+    if (seconds <= 10) {
+      timeLeftDisplay.classList.add("hurry");
+    }
+
+    if (seconds <= 0) {
+      clearInterval(countdown);
+    }
+  }, 1000);
+}
 
 function getLevelSpeed() {
   if (currentLevel === 1) return { min: 600, max: 1600 };
@@ -54,26 +90,40 @@ function stickOut() {
 
 function startGame() {
   scoreBoard.textContent = 0;
+  timeLeftDisplay.textContent = 25;
+  timeLeftDisplay.classList.remove("hurry");
+
   timeUp = false;
   score = 0;
+  gameActive = false;
+  clicksLeft = maxClicksPerRound;
 
   startBtn.disabled = true;
   startBtn.textContent = "Playing...";
 
-  stickOut();
+  if (!isMuted) {
+    startSound.currentTime = 0;
+    startSound.play().catch((err) => console.log("Audio play blocked", err));
+  }
+
+  setTimeout(() => {
+    if (!timeUp) {
+      gameActive = true;
+      stickOut();
+      startCountdown(25);
+    }
+  }, 500);
 
   setTimeout(() => {
     timeUp = true;
+    gameActive = false;
     startBtn.disabled = false;
     startBtn.textContent = "Start!";
 
+    clearInterval(countdown);
     endGameCheck();
-  }, 25000);
+  }, 25500);
 }
-
-const hitSound = new Audio("./hit.mp3");
-const missSound = new Audio("./miss.mp3");
-let isMuted = false;
 
 const muteBtn = document.querySelector("#mute_btn");
 muteBtn.addEventListener("click", () => {
@@ -87,6 +137,9 @@ muteBtn.addEventListener("click", () => {
 
 function bonk(e) {
   if (!e.isTrusted) return;
+  if (!gameActive || clicksLeft <= 0) return;
+  clicksLeft--;
+
   e.stopPropagation();
 
   /*if (this.isHit) return;
@@ -95,7 +148,7 @@ function bonk(e) {
 
   if (!isMuted) {
     hitSound.currentTime = 0;
-    hitSound.play();
+    hitSound.play().catch((err) => console.log("Audio play blocked", err));
   }
 
   this.classList.add("hit");
@@ -116,13 +169,16 @@ function bonk(e) {
 }
 
 function missClick(e) {
-  if (timeUp) return;
-
+  if (!gameActive) return;
   if (e.target.tagName === "BUTTON") return;
+  if (e.target.classList.contains("mole")) return;
+
+  if (clicksLeft <= 0) return;
+  clicksLeft--;
 
   if (!isMuted) {
     missSound.currentTime = 0;
-    missSound.play();
+    missSound.play().catch((err) => console.log("Audio play blocked", err));
   }
 }
 
@@ -143,6 +199,13 @@ function showMessage(text) {
 
 function endGameCheck() {
   if (score >= pointsToWin) {
+    if (!isMuted) {
+      levelUpSound.currentTime = 0;
+      levelUpSound
+        .play()
+        .catch((err) => console.log("Audio play blocked", err));
+    }
+
     if (currentLevel < 3) {
       currentLevel++;
       showMessage(`Great job! Welcome to Level ${currentLevel}!`);
@@ -153,6 +216,17 @@ function endGameCheck() {
       currentLevel = 1;
     }
   } else {
+    if (!isMuted) {
+      gameOverSound.currentTime = 0;
+      gameOverSound
+        .play()
+        .catch((err) => console.log("Audio play blocked", err));
+    }
+
+    if (currentLevel === 3) {
+      currentLevel = 1;
+      showMessage(`Game Over! Level 3 is tough. Starting over from Level 1!`);
+    }
     showMessage(
       `Game Over! You needed ${pointsToWin} points. Try Level ${currentLevel} again!`,
     );
