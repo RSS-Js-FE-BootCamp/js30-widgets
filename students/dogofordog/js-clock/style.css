@@ -1,0 +1,154 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('img/background.jpg') center / cover no-repeat; 
+  font-family: 'Arial', sans-serif;
+}
+
+.clock-wrapper {
+  display: flex;
+  align-items: center;
+  gap: clamp(30px, 5vw, 80px);
+}
+
+.clock {
+  position: relative;
+  width: clamp(200px, 30vw, 350px);
+  height: clamp(200px, 30vw, 350px);
+  border-radius: 50%;
+  border: 20px solid rgba(255, 215, 0, 0.5);
+  background: rgba(226, 8, 8, 0.4);
+}
+
+.hand {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform-origin: bottom center;
+  transform: translateX(-50%);
+  border-radius: 4px;
+  transition: transform 0.05s cubic-bezier(0.1, 2.7, 0.58, 1);
+}
+
+.hour-hand {
+  width: 6px;
+  height: 30%;
+  background: white;
+}
+
+.min-hand {
+  width: 4px;
+  height: 40%;
+  background: white;
+}
+
+.second-hand {
+  width: 2px;
+  height: 45%;
+  background: gold;
+}
+
+.clock-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  background: red;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.digital {
+  border: 1px solid gold;
+  background:rgba(226, 8, 8, 0.4);
+  border-radius: 5px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.digital__time {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: bold;
+  letter-spacing: 0.05em;
+}
+
+.digital__date {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  color: gold;
+  line-height: 1.62;
+}
+.clock-number {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: clamp(0.6rem, 1.5vw, 1rem);
+  font-weight: bold;
+  pointer-events: none;
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(255,255,255,0.2);
+  border: 2px solid gold;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+body.light {
+  background: url('img/background.jpg') center / cover no-repeat;
+  filter: invert(1) hue-rotate(180deg);
+}
+.ring-wrapper {
+  position: relative;
+  width: clamp(60px, 7vw, 85px);
+  height: clamp(60px, 7vw, 85px);
+  background: rgba(226, 8, 8, 0.4);
+  border: 1px solid gold;
+  border-radius: 50%;
+  
+}
+
+.ring {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+  display: block;
+}
+
+.ring-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+}
+
+.ring-label {
+  font-size: clamp(0.4rem, 0.8vw, 0.6rem);
+  color: gold;
+}
+
+.ring-value {
+  font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+  color: white;
+  font-weight: bold;
+}
