@@ -1,50 +1,85 @@
- html {
-      background: #018DED url(https://unsplash.it/1500/1000?image=881&blur=5);
-      background-size: cover;
-      font-family: 'helvetica neue';
-      text-align: center;
-      font-size: 10px;
-    }
+:root {
+  --base: #ffffff;
+  --hand: #000000;
+}
 
-    body {
-      margin: 0;
-      font-size: 2rem;
-      display: flex;
-      flex: 1;
-      min-height: 100vh;
-      align-items: center;
-    }
+html {
+  background: #018DED url(https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?auto=format&fit=crop&w=1950&q=80);
+  background-size: cover;
+  font-family: 'helvetica neue';
+  text-align: center;
+  font-size: 10px;
+}
 
-    .clock {
-      width: 30rem;
-      height: 30rem;
-      border: 20px solid white;
-      border-radius: 50%;
-      margin: 50px auto;
-      position: relative;
-      padding: 2rem;
-      box-shadow:
-        0 0 0 4px rgba(0,0,0,0.1),
-        inset 0 0 0 3px #EFEFEF,
-        inset 0 0 10px black,
-        0 0 10px rgba(0,0,0,0.2);
-    }
+body {
+  margin: 0;
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column; /* Змінюємо на колонку, щоб панель і годинник встали один під одного */
+  gap: 2rem;             /* Задаємо відступ між ними */
+  flex: 1;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center; /* Центруємо весь контент по вертикалі */
+}
 
-    .clock-face {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      transform: translateY(-3px); /* account for the height of the clock hands */
-    }
+.clock {
+  width: 30rem;
+  height: 30rem;
+  border: 20px solid var(--base); /* Замінили white на нашу змінну --base */
+  border-radius: 50%;
+  margin: 0 auto;                 /* Змінили марджин, бо центруванням тепер керує flexbox на body */
+  position: relative;
+  padding: 2rem;
+  box-shadow:
+    0 0 0 4px rgba(0,0,0,0.1),
+    inset 0 0 0 3px #EFEFEF,
+    inset 0 0 10px black,
+    0 0 10px rgba(0,0,0,0.2);
+}
 
-    .hand {
-      width: 50%;
-      height: 6px;
-      background: black;
-      position: absolute;
-      top: 50%;
-      transform-origin: 100%;
-      transform: rotate(90deg);
-      transition: all 0.05s;
-      transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
-    }
+.clock-face {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: translateY(-3px); /* account for the height of the clock hands */
+}
+
+.hand {
+  width: 50%;
+  height: 6px;
+  background: var(--hand); /* Замінили black на нашу змінну --hand */
+  position: absolute;
+  top: 50%;
+  transform-origin: 100%;
+  transform: rotate(90deg);
+  transition: all 0.05s;
+  transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+}
+
+/* Додаємо нові стилі лише для самої панелі керування */
+.controls {
+  display: flex;
+  gap: 2rem;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+}
+
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: white;
+  font-size: 1.4rem;
+}
+
+.controls input {
+  cursor: pointer;
+  border: none;
+  background: none;
+  width: 40px;
+  height: 40px;
+}

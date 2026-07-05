@@ -27,3 +27,17 @@ function setDate() {
 
 setInterval(setDate, 1000);
 setDate();
+
+// --- Логіка кастомізації кольорів (Stage 3) ---
+
+// Знаходимо обидва інпути всередині панелі .controls
+const inputs = document.querySelectorAll('.controls input');
+
+function handleUpdate() {
+  // Цей рядок бере назву інпуту (base або hand) і оновлює відповідну CSS-змінну в :root
+  document.documentElement.style.setProperty(`--${this.name}`, this.value);
+}
+
+// Слухаємо зміну значення (change) та рух повзунка (mousemove) для кожного інпуту
+inputs.forEach(input => input.addEventListener('change', handleUpdate));
+inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
