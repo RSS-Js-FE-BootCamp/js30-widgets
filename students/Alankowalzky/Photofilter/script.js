@@ -2,11 +2,10 @@
 
 /*
  * Photofilter – script.js
- * Stage 4: extra CSS filters + preset thumbnails
+ * Stage 6: image upload via file input and drag-and-drop
  * Pure vanilla JavaScript – no frameworks, no libraries
  */
 
-// ── Filter definitions ────────────────────────────────────────
 const FILTER_DEFS = [
   { name: 'blur',        label: 'Blur',        unit: 'px',  min: 0,   max: 25,  step: 0.5, defaultVal: 0    },
   { name: 'brightness',  label: 'Brightness',  unit: '%',   min: 50,  max: 200, step: 1,   defaultVal: 100  },
@@ -19,7 +18,6 @@ const FILTER_DEFS = [
   { name: 'opacity',     label: 'Opacity',     unit: '%',   min: 0,   max: 100, step: 1,   defaultVal: 100, extra: true },
 ];
 
-// ── Preset definitions ────────────────────────────────────────
 const PRESETS = [
   { name: 'Original', filters: {} },
   { name: 'Vintage',  filters: { sepia: 70, contrast: 115, brightness: 108, saturate: 75 } },
@@ -32,10 +30,12 @@ const PRESETS = [
   { name: 'X-Ray',    filters: { invert: 100, grayscale: 60, contrast: 140 } },
 ];
 
-// ── State ─────────────────────────────────────────────────────
+const DEFAULT_SRC = 'https://picsum.photos/seed/photofilter-a/900/600';
+
 const state = {
   filterValues: buildDefaultFilters(),
   activePreset: 0,
+  userImageSrc: null,
 };
 
 function buildDefaultFilters() {
@@ -50,11 +50,13 @@ function resolvePresetFilters(preset) {
   return values;
 }
 
-// ── DOM references ─────────────────────────────────────────────
+const mainImage        = document.getElementById('main-image');
 const slidersContainer = document.getElementById('sliders-container');
 const presetsContainer = document.getElementById('presets-container');
+const dropZone         = document.getElementById('drop-zone');
+const fileInput        = document.getElementById('file-input');
 
-// ── Build slider UI ────────────────────────────────────────────
+// ── Sliders ────────────────────────────────────────────────────
 function buildSliders() {
   FILTER_DEFS.forEach(def => {
     const group = document.createElement('div');
@@ -97,7 +99,6 @@ function buildSliders() {
   });
 }
 
-// ── CSS custom property update (core JS30 pattern) ─────────────
 function handleUpdate() {
   const suffix = this.dataset.sizing || '';
   const value  = parseFloat(this.value);
@@ -124,7 +125,7 @@ function buildPresets() {
     thumb.className    = 'preset-thumb';
     thumb.alt          = preset.name;
     thumb.crossOrigin  = 'anonymous';
-    thumb.src          = 'https://picsum.photos/seed/photofilter-a/900/600';
+    thumb.src          = DEFAULT_SRC;
     thumb.style.filter = buildFilterString(resolvePresetFilters(preset));
 
     const label = document.createElement('span');
@@ -139,19 +140,15 @@ function buildPresets() {
 
 function applyPreset(index) {
   const values = resolvePresetFilters(PRESETS[index]);
-
   FILTER_DEFS.forEach(def => {
     const val = values[def.name];
     state.filterValues[def.name] = val;
-
     const slider  = document.getElementById(`slider-${def.name}`);
     const valueEl = document.getElementById(`value-${def.name}`);
     if (slider)  slider.value = val;
     if (valueEl) valueEl.textContent = `${val}${def.unit}`;
-
     document.documentElement.style.setProperty(`--${def.name}`, val + def.unit);
   });
-
   state.activePreset = index;
   updateActivePreset();
 }
@@ -163,17 +160,56 @@ function updateActivePreset() {
 }
 
 function buildFilterString(values) {
-  return FILTER_DEFS
-    .map(def => `${def.name}(${values[def.name]}${def.unit})`)
-    .join(' ');
+  return FILTER_DEFS.map(def => `${def.name}(${values[def.name]}${def.unit})`).join(' ');
 }
+
+// ── File upload ────────────────────────────────────────────────
+fileInput.addEventListener('change', function () {
+  if (this.files[0]) loadUserFile(this.files[0]);
+});
+
+function loadUserFile(file) {
+  if (!file.type.startsWith('image/')) return;
+  if (state.userImageSrc && state.userImageSrc.startsWith('blob:')) {
+    URL.revokeObjectURL(state.userImageSrc);
+  }
+  const url = URL.createObjectURL(file);
+  state.userImageSrc = url;
+  mainImage.src = url;
+  mainImage.crossOrigin = '';
+  presetsContainer.querySelectorAll('.preset-thumb').forEach(t => {
+    t.src = url;
+    t.crossOrigin = '';
+  });
+}
+
+// ── Drag-and-drop ──────────────────────────────────────────────
+let dragCounter = 0;
+
+dropZone.addEventListener('dragenter', e => {
+  e.preventDefault();
+  dragCounter++;
+  dropZone.classList.add('drag-over');
+});
+dropZone.addEventListener('dragleave', () => {
+  dragCounter = Math.max(0, dragCounter - 1);
+  if (dragCounter === 0) dropZone.classList.remove('drag-over');
+});
+dropZone.addEventListener('dragover', e => {
+  e.preventDefault();
+  e.dataTransfer.dropEffect = 'copy';
+});
+dropZone.addEventListener('drop', e => {
+  e.preventDefault();
+  dragCounter = 0;
+  dropZone.classList.remove('drag-over');
+  if (e.dataTransfer.files[0]) loadUserFile(e.dataTransfer.files[0]);
+});
 
 // ── Init ──────────────────────────────────────────────────────
 function init() {
   buildSliders();
   buildPresets();
-
-  // JS30 canonical pattern: querySelectorAll → forEach → addEventListener
   const inputs = document.querySelectorAll('.controls input');
   inputs.forEach(input => input.addEventListener('change', handleUpdate));
   inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
