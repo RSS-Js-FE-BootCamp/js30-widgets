@@ -1,8 +1,8 @@
 # JS30 Widgets - IvanK9
 
-Pull Request: https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/119
-Drum Kit: https://deploy-preview-119--elegant-quokka-1ce2cd.netlify.app/students/ivank9/drum-kit/
-JS Clock: https://deploy-preview-119--elegant-quokka-1ce2cd.netlify.app/students/ivank9/js-clock/
+- [Pull Request](https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/119)
+- [Drum Kit](https://deploy-preview-119--elegant-quokka-1ce2cd.netlify.app/students/ivank9/drum-kit/)
+- [JS Clock](https://deploy-preview-119--elegant-quokka-1ce2cd.netlify.app/students/ivank9/js-clock/)
 
 ## What was implemented
 
