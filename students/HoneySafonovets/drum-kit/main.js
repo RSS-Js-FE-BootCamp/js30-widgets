@@ -24,52 +24,77 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+function boom(item) {
+  const ripple = document.createElement('div');
+  ripple.classList.add('ripple');
+  item.appendChild(ripple);
+  ripple.innerHTML = 'BOOM';
+
+  ripple.classList.add('ripple-moving');
+
+  // Remove function
+  setTimeout(() => ripple.remove(), 300);
+}
+
+drumBtns.forEach((item) => {
+  item.addEventListener('click', (event) => boom(item))
+});
+
 // Functions for clicking and use keyboard
 document.addEventListener('keydown', (event) => {
   if (event.which === 65) {
     audio65.currentTime = 0;
     audio65.play()
     document.querySelector('[data-key="65"]').classList.add('playing');
+    boom(document.querySelector('[data-key="65"]'));
   }
   if (event.which === 83) {
     audio83.currentTime = 0;
     audio83.play()
     document.querySelector('[data-key="83"]').classList.add('playing');
+    boom(document.querySelector('[data-key="83"]'));
   }
   if (event.which === 68) {
     audio68.currentTime = 0;
     audio68.play()
     document.querySelector('[data-key="68"]').classList.add('playing');
+    boom(document.querySelector('[data-key="68"]'));
   }
   if (event.which === 70) {
     audio70.currentTime = 0;
     audio70.play()
     document.querySelector('[data-key="70"]').classList.add('playing');
+    boom(document.querySelector('[data-key="70"]'));
   }
   if (event.which === 71) {
     audio71.currentTime = 0;
     audio71.play()
     document.querySelector('[data-key="71"]').classList.add('playing');
+    boom(document.querySelector('[data-key="71"]'));
   }
   if (event.which === 72) {
     audio72.currentTime = 0;
     audio72.play()
     document.querySelector('[data-key="72"]').classList.add('playing');
+    boom(document.querySelector('[data-key="72"]'));
   }
   if (event.which === 74) {
     audio74.currentTime = 0;
     audio74.play()
     document.querySelector('[data-key="74"]').classList.add('playing');
+    boom(document.querySelector('[data-key="74"]'));
   }
   if (event.which === 75) {
     audio75.currentTime = 0;
     audio75.play()
     document.querySelector('[data-key="75"]').classList.add('playing');
+    boom(document.querySelector('[data-key="75"]'));
   }
   if (event.which === 76) {
     audio76.currentTime = 0;
     audio76.play()
     document.querySelector('[data-key="76"]').classList.add('playing');
+    boom(document.querySelector('[data-key="76"]'));
   }
 });
 
