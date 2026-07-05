@@ -1,0 +1,90 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+}
+
+.main-container{
+    position: relative;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+
+}
+
+.left-slider{
+    height: 100%;
+    width: 35%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.5s ease-in-out;
+}
+
+.info-container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.right-slider{
+    height: 100%;
+    width: 65%;
+    position: absolute;
+    top: 0;
+    left: 35%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.image-slide{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height: 100%;
+    width: 100%;
+}
+
+button{
+    background-color: #ffff;
+    border: none;
+    color: #aaa;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 15px;
+}
+
+button:hover{
+    color: #222;
+}
+
+button:focus{
+    overflow: none;
+}
+
+.main-container .control-container button{
+    position: absolute;
+    left: 35%;
+    top: 50%;
+    z-index: 100;
+
+}
+
+.down-button{
+    transform: translateX(-100%);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.up-button{
+    transform: translateY(-100%);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}

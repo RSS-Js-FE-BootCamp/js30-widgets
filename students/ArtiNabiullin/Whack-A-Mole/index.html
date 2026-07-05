@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Whack A Mole!</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="icon" href="./img/mole.svg" />
+  </head>
+  <body>
+    <h1>Whack-a-mole! <span class="score block">0</span></h1>
+    <section class="help">
+      <h2>Difficulty</h2>
+      <p class="help__description">
+        Each level makes moles appear faster. From level 3, round time becomes
+        shorter. Reach enough points to unlock the next level during the current
+        session. Your best score is saved after reload.
+      </p>
+    </section>
+    <p>Level: <span class="level block">1</span></p>
+    <p>Best score: <span class="best-score block">0</span></p>
+    <p>Target: <span class="target block">5</span></p>
+    <p>Hits left: <span class="clicks block">20</span></p>
+    <button class="start-btn">Start!</button>
+
+    <section class="section">
+      <div class="leaderboard">
+        <h2>🏆 Leaderboard</h2>
+        <ol class="scoreboard"></ol>
+      </div>
+
+      <div class="game">
+        <div class="hole hole1">
+          <div class="mole"></div>
+        </div>
+        <div class="hole hole2">
+          <div class="mole"></div>
+        </div>
+        <div class="hole hole3">
+          <div class="mole"></div>
+        </div>
+        <div class="hole hole4">
+          <div class="mole"></div>
+        </div>
+        <div class="hole hole5">
+          <div class="mole"></div>
+        </div>
+        <div class="hole hole6">
+          <div class="mole"></div>
+        </div>
+      </div>
+    </section>
+
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>
