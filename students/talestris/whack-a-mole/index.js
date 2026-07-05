@@ -2,6 +2,7 @@ const holes = document.querySelectorAll(".hole");
 const moles = document.querySelectorAll(".mole");
 const scoreBoard = document.querySelector(".score");
 const startBtn = document.querySelector(".start-btn");
+const gameArea = document.querySelector(".game");
 
 const level = document.querySelector(".level");
 const highScoreDisplay = document.querySelector(".high-score");
@@ -70,9 +71,30 @@ function startGame() {
   }, 10000);
 }
 
+const hitSound = new Audio("./hit.mp3");
+const missSound = new Audio("./miss.mp3");
+let isMuted = false;
+
+const muteBtn = document.querySelector("#mute_btn");
+muteBtn.addEventListener("click", () => {
+  isMuted = !isMuted;
+  /*
+  hitSound.muted = isMuted;
+  missSound.muted = isMuted;*/
+
+  muteBtn.textContent = isMuted ? "🔇 Sound: OFF" : "🔊 Sound: ON";
+});
+
 function bonk(e) {
   if (!e.isTrusted) return;
+  e.stopPropagation();
   score++;
+
+  if (!isMuted) {
+    hitSound.currentTime = 0;
+    hitSound.play();
+  }
+
   this.classList.remove("up");
   scoreBoard.textContent = score;
 
@@ -82,6 +104,19 @@ function bonk(e) {
     localStorage.setItem("moleHighScore", highScore);
   }
 }
+
+function missClick(e) {
+  if (timeUp) return;
+
+  if (e.target.tagName === "BUTTON") return;
+
+  if (!isMuted) {
+    missSound.currentTime = 0;
+    missSound.play();
+  }
+}
+
+gameArea.addEventListener("click", missClick);
 
 const modal = document.querySelector("#game-modal");
 const modalText = document.querySelector(".modal-txt");

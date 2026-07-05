@@ -26,18 +26,33 @@ body {
   justify-content: center;
 }
 
+.game-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5rem;
+  padding: 2rem 0;
+}
+
 h1 {
-  font-size: 10rem;
+  font-size: 8rem;
   text-align: center;
   line-height: 1;
   margin-bottom: 0;
+  padding-top: 3rem;
+  padding-bottom: 2rem;
 }
 
 .score {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.4);
   border-radius: 1rem;
   line-height: 1;
   padding: 0 3rem;
+}
+
+.info-txt {
+  font-size: 3rem;
+  font-weight: bold;
 }
 
 .btn {
@@ -55,7 +70,12 @@ h1 {
   cursor: pointer;
   transition: all 0.1s;
   justify-self: center;
-  margin: 2rem auto;
+  margin: 0 auto;
+}
+
+p {
+  font-size: 2rem;
+  padding: 2rem 0;
 }
 
 .game {
@@ -63,7 +83,20 @@ h1 {
   flex-wrap: wrap;
   width: 60rem;
   height: 40rem;
-  margin: 4rem auto;
+  margin: 0 auto;
+  cursor:
+    url(./hammer.png) 16 16,
+    auto;
+  border: 0.2rem dashed;
+  align-content: space-around;
+  padding-bottom: 1rem;
+}
+
+.game:active {
+  cursor:
+    url(./hammer.png) 16 16,
+    auto;
+  transform: rotate(-2deg);
 }
 
 .hole {
