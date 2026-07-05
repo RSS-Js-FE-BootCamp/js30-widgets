@@ -1,3 +1,5 @@
+Pull Request Link: https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/107
+
 One widget "Drum-kit"
 **Score: 65 / 65**
 
