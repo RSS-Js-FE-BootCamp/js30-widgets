@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Clock (Pavel Halanin)</title>
+</head>
+
+<body>
+    <button class="theme_button" onclick="ThemeHelper.changeTheme()"></button>
+    <div class="clock__container">
+        <div class="clock__circle" style="position: relative;">
+            <div id="hours_line" class="clock__hours_line"></div>
+            <div id="minites_line" class="clock__minutes_line"></div>
+            <div id="seconds_line" class="clock__seconds_line"></div>
+            <div class="clock__center"></div>
+            <div class="clock-numbers" style="position: absolute; top: 92px; left: 96px;">
+                <div class="number" style="position: absolute; transform: rotate(30deg)  translateY(-88px) rotate(-30deg);">1</div>
+                <div class="number" style="position: absolute; transform: rotate(60deg)  translateY(-88px) rotate(-60deg);">2</div>
+                <div class="number" style="position: absolute; transform: rotate(90deg)  translateY(-88px) rotate(-90deg);">3</div>
+                <div class="number" style="position: absolute; transform: rotate(120deg) translateY(-88px) rotate(-120deg);">4</div>
+                <div class="number" style="position: absolute; transform: rotate(150deg) translateY(-88px) rotate(-150deg);">5</div>
+                <div class="number" style="position: absolute; transform: rotate(180deg) translateY(-88px) rotate(-180deg);">6</div>
+                <div class="number" style="position: absolute; transform: rotate(210deg) translateY(-88px) rotate(-210deg);">7</div>
+                <div class="number" style="position: absolute; transform: rotate(240deg) translateY(-88px) rotate(-240deg);">8</div>
+                <div class="number" style="position: absolute; transform: rotate(270deg) translateY(-88px) rotate(-270deg);">9</div>
+                <div class="number" style="position: absolute; transform: rotate(300deg) translateY(-88px) rotate(-300deg);">10</div>
+                <div class="number" style="position: absolute; transform: rotate(330deg) translateY(-88px) rotate(-330deg);">11</div>
+                <div class="number" style="position: absolute; transform: rotate(360deg) translateY(-88px) rotate(-360deg);">12</div>
+            </div>
+        </div>
+    </div>
+    <div id="procent_circle" class="procent_circle"></div>
+    <div id="text_datetime" class="datetime_table"></div>
+    <script src="./script.js"></script>
+    <script>
+        (async function () {
+            while (1) {
+                await JSClockHelper.sleep(1000);
+                JSClockHelper.setTextTime();
+            }
+        })();
+    </script>
+    <link rel="stylesheet" href="./style.css">
+</body>
+
+</html>
