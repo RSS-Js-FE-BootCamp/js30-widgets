@@ -4,6 +4,7 @@
 - [Pull Request 1](https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/77)
 - [Pull Request 2](https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/87)
 - [Pull Request 3](https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/114)
+- [Pull Request 4](https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/120)
 
 **Deploy:**
 - [Custom Video Player](https://js-30-widget-gallery.netlify.app/students/taty-4/custom-video-player/)
