@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drum Kit</title>
+  <link rel="icon" type="image/svg+xml" href="./images/favicon.svg">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body class="theme-demo">
+  <main class="drum-kit">
+    <h1 class="drum-kit__title visually-hidden">Drum Kit</h1>
+
+  <div class="theme-switcher">
+  <button
+    class="theme-switcher__button theme-switcher__button--active"
+    type="button"
+    data-theme="demo"
+  >
+    Demo
+  </button>
+
+  <button
+    class="theme-switcher__button"
+    type="button"
+    data-theme="custom"
+  >
+    Custom
+  </button>
+</div>
+
+<div class="recorder">
+  <button class="recorder__button" type="button" data-action="record">
+    ● Record
+  </button>
+
+  <button class="recorder__button" type="button" data-action="stop" disabled>
+    ■ Stop
+  </button>
+
+  <button class="recorder__button" type="button" data-action="play" disabled>
+    ▶ Play
+  </button>
+</div>
+
+    <div class="keys">
+      <button class="key" type="button" data-key="KeyA">
+        <kbd class="key__letter">A</kbd>
+        <span class="sound">clap</span>
+      </button>
+
+      <button class="key" type="button" data-key="KeyS">
+        <kbd class="key__letter">S</kbd>
+        <span class="sound">hihat</span>
+      </button>
+
+      <button class="key" type="button" data-key="KeyD">
+        <kbd class="key__letter">D</kbd>
+        <span class="sound">kick</span>
+      </button>
+
+      <button class="key" type="button" data-key="KeyF">
+        <kbd class="key__letter">F</kbd>
+        <span class="sound">openhat</span>
+      </button>
+
+      <button class="key" type="button" data-key="KeyG">
+        <kbd class="key__letter">G</kbd>
+        <span class="sound">boom</span>
+      </button>
+
+      <button class="key" type="button" data-key="KeyH">
+        <kbd class="key__letter">H</kbd>
+        <span class="sound">ride</span>
+      </button>
+
+      <button class="key" type="button" data-key="KeyJ">
+        <kbd class="key__letter">J</kbd>
+        <span class="sound">snare</span>
+      </button>
+
+      <button class="key" type="button" data-key="KeyK">
+        <kbd class="key__letter">K</kbd>
+        <span class="sound">tom</span>
+      </button>
+
+      <button class="key" type="button" data-key="KeyL">
+        <kbd class="key__letter">L</kbd>
+        <span class="sound">tink</span>
+      </button>
+    </div>
+
+    <audio data-key="KeyA" src="./sounds/clap.wav"></audio>
+    <audio data-key="KeyS" src="./sounds/hihat.wav"></audio>
+    <audio data-key="KeyD" src="./sounds/kick.wav"></audio>
+    <audio data-key="KeyF" src="./sounds/openhat.wav"></audio>
+    <audio data-key="KeyG" src="./sounds/boom.wav"></audio>
+    <audio data-key="KeyH" src="./sounds/ride.wav"></audio>
+    <audio data-key="KeyJ" src="./sounds/snare.wav"></audio>
+    <audio data-key="KeyK" src="./sounds/tom.wav"></audio>
+    <audio data-key="KeyL" src="./sounds/tink.wav"></audio>
+  </main>
+  <script src="./script.js"></script>
+</body>
+</html>
