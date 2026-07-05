@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drum Kit</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="drum-kit">
+    <header class="hero">
+      <h1 class="title">Drum Kit</h1>
+      <button class="theme-toggle" type="button" aria-pressed="false">Light mode</button>
+    </header>
+
+    <section class="keys" aria-label="Drum pads">
+      <button class="key" data-key="KeyA" type="button">
+        <kbd>A</kbd>
+        <span class="sound">clap</span>
+      </button>
+
+      <button class="key" data-key="KeyS" type="button">
+        <kbd>S</kbd>
+        <span class="sound">hihat</span>
+      </button>
+
+      <button class="key" data-key="KeyD" type="button">
+        <kbd>D</kbd>
+        <span class="sound">kick</span>
+      </button>
+
+      <button class="key" data-key="KeyF" type="button">
+        <kbd>F</kbd>
+        <span class="sound">openhat</span>
+      </button>
+
+      <button class="key" data-key="KeyG" type="button">
+        <kbd>G</kbd>
+        <span class="sound">boom</span>
+      </button>
+
+      <button class="key" data-key="KeyH" type="button">
+        <kbd>H</kbd>
+        <span class="sound">ride</span>
+      </button>
+
+      <button class="key" data-key="KeyJ" type="button">
+        <kbd>J</kbd>
+        <span class="sound">snare</span>
+      </button>
+
+      <button class="key" data-key="KeyK" type="button">
+        <kbd>K</kbd>
+        <span class="sound">tom</span>
+      </button>
+
+      <button class="key" data-key="KeyL" type="button">
+        <kbd>L</kbd>
+        <span class="sound">tink</span>
+      </button>
+    </section>
+
+    <audio data-key="KeyA" src="./sounds/clap.wav"></audio>
+    <audio data-key="KeyS" src="./sounds/hihat.wav"></audio>
+    <audio data-key="KeyD" src="./sounds/kick.wav"></audio>
+    <audio data-key="KeyF" src="./sounds/openhat.wav"></audio>
+    <audio data-key="KeyG" src="./sounds/boom.wav"></audio>
+    <audio data-key="KeyH" src="./sounds/ride.wav"></audio>
+    <audio data-key="KeyJ" src="./sounds/snare.wav"></audio>
+    <audio data-key="KeyK" src="./sounds/tom.wav"></audio>
+    <audio data-key="KeyL" src="./sounds/tink.wav"></audio>
+    <div class="notes-layer" aria-hidden="true"></div>
+  </main>
+
+  <script src="./script.js"></script>
+</body>
+</html>

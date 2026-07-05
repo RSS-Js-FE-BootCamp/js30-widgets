@@ -1,0 +1,80 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: url('https://js3001.github.io/img/background.jpg') center / cover no-repeat;
+}
+
+.page {
+  box-sizing: border-box;
+  width: clamp(320px, 100%, 1280px);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.drum-kit {
+  display: flex;
+  width: 100%;
+  padding-top: 100px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.drum-kit__label {
+  will-change: backdrop-filter;
+  padding: 0;
+  margin: 0;
+  color: rgb(243, 10, 99);
+  text-shadow: 1px 1px 2px #0a317a;
+  border-radius: 3px;
+  background: #22293573;
+}
+
+.drum-kit__keywords {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.drum-kit__button {
+  align-self: center;
+  display: flex;
+  width: 100px;
+  height: 80px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background: transparent;
+  border-radius: 3px;
+  border: 1px solid #d5e217;
+  backdrop-filter: brightness(60%);
+  user-select: none;
+
+  &:hover {
+    border-color: #12c01b;
+    box-shadow: 0 0 2px 4px #d5e217;
+  }
+
+  &:active,
+  &.drum-kit__button_marked {
+    border-color: #12c01b;
+    box-shadow: 0 0 2px 4px #12c01b;
+  }
+}
+
+.drum-kit__key {
+  font-size: 25px;
+  color: rgb(170, 226, 219);
+  text-transform: capitalize;
+  
+}
+
+.drum-kit__title {
+  font-size: 18px;
+  color: rgb(199, 190, 170);
+  text-transform: capitalize;
+}
