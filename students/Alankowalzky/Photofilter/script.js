@@ -112,6 +112,7 @@ function handleUpdate() {
 
   state.activePreset = null;
   updateActivePreset();
+  updateCssOutput();
 }
 
 // ── Presets ────────────────────────────────────────────────────
@@ -151,6 +152,7 @@ function applyPreset(index) {
   });
   state.activePreset = index;
   updateActivePreset();
+  updateCssOutput();
 }
 
 function updateActivePreset() {
@@ -213,6 +215,48 @@ function init() {
   const inputs = document.querySelectorAll('.controls input');
   inputs.forEach(input => input.addEventListener('change', handleUpdate));
   inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
+  updateCssOutput();
+}
+// ── Reset ─────────────────────────────────────────────────────
+const btnReset = document.getElementById('btn-reset');
+btnReset.addEventListener('click', () => applyPreset(0));
+
+// ── Save PNG via canvas.toBlob() ───────────────────────────────
+const btnSave = document.getElementById('btn-save');
+btnSave.addEventListener('click', () => {
+  function doExport() {
+    const canvas = document.createElement('canvas');
+    canvas.width  = mainImage.naturalWidth;
+    canvas.height = mainImage.naturalHeight;
+    const ctx = canvas.getContext('2d');
+    ctx.filter = buildFilterString(state.filterValues);
+    ctx.drawImage(mainImage, 0, 0);
+    canvas.toBlob(blob => {
+      if (!blob) { alert('Export failed – use a built-in image (CORS).'); return; }
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'photofilter-export.png';
+      a.click();
+      URL.revokeObjectURL(a.href);
+    }, 'image/png');
+  }
+  if (mainImage.complete && mainImage.naturalWidth > 0) doExport();
+  else mainImage.addEventListener('load', doExport, { once: true });
+});
+
+// ── Live CSS output + clipboard ────────────────────────────────
+const cssOutput = document.getElementById('css-output');
+const btnCopy   = document.getElementById('btn-copy');
+
+function updateCssOutput() {
+  cssOutput.textContent = `filter: ${buildFilterString(state.filterValues)};`;
 }
 
+btnCopy.addEventListener('click', () => {
+  navigator.clipboard.writeText(cssOutput.textContent).then(() => {
+    btnCopy.textContent = '✓ Copied!';
+    btnCopy.classList.add('copied');
+    setTimeout(() => { btnCopy.textContent = 'Copy CSS'; btnCopy.classList.remove('copied'); }, 1500);
+  });
+});
 init();
