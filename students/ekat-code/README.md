@@ -1,6 +1,6 @@
 # JS30 Widgets — @ekat-code
 
-Pull Request 1: (https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/)  
+Pull Request 1: (https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/96)  
 Deploy: (https://js-30-widget-gallery.netlify.app/students/ekat-code/custom-video-player/)
 
 ## Custom Video Player
