@@ -1,10 +1,11 @@
 # JS30 Widgets - @taty4
 
-Pull Request: 
+**Pull Request:** 
 - [Pull Request 1](https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/77)
 - [Pull Request 2](https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/87)
+- [Pull Request 3](https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/114)
 
-Deploy: 
+**Deploy:**
 - [Custom Video Player](https://js-30-widget-gallery.netlify.app/students/taty-4/custom-video-player/)
 - [JS Clock](https://js-30-widget-gallery.netlify.app/students/taty-4/js-clock/)
 
@@ -27,6 +28,7 @@ Deploy:
 **Stage 3 - Optional improvements (30/30)**
 
 - [x] Support additional YouTube-style hotkeys: Arrow keys for seek/volume, J/K/L, 0-9 for percent-jump, C for captions (+2 each, up to +20 total) (+20)
+- [x] A video carousel / slider - switch between several video sources with prev / next controls and a thumbnail strip (+10)
 - [x] A mini movie catalog - a "kinopoisk" of your own where each tile opens a video in the player (+10)
 
 **Full list hot keys**
@@ -46,8 +48,6 @@ Deploy:
 - Toggle full screen - **F**
 - Toggle mute - **M**
 
-_5 Mandatory Additional Feature and 11 Optional Improvements_
-
 
 ###  Widget 1: JS Clock
 
@@ -62,9 +62,12 @@ _5 Mandatory Additional Feature and 11 Optional Improvements_
 - [x] The feature is integrated with the rest of the UI (does not break Stage 1 functionality, handles edge cases reasonably) (+5)
 
 **Stage 3 - Optional improvements (30/30)**
+- [ ] A multi-timezone view showing time at several cities of the world simultaneously (+10)
 - [x] Dark / light theme toggle that persists across reloads (+10)
 - [x] An online alarm clock with sound and dismiss/snooze controls (+10)
-- [x] A "do nothing for 2 minutes" / "Quiet Place" relaxation mode with a timer that resets on user input. (+10)
+- [ ] A cuckoo clock - at the top of each hour the bird pops out and chimes (+10)
+- [x] A "do nothing for 2 minutes" / "Quiet Place" relaxation mode with a timer that resets on user input (+10)
+- [ ] Circular progress diagrams for seconds / minutes / hours rendered next to the face (+10)
 
 ### Engineering & delivery requirements (applies to all widgets)
 
