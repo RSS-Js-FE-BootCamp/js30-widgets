@@ -1,11 +1,11 @@
 # JS30 Widgets - @a-heras
 
-Pull Request: TODO
+Pull Request: https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/106
 
 ## Live Preview
 
-- Drum Kit: TODO
-- JS Clock: TODO
+- Drum Kit: https://deploy-preview-106--js-30-widget-gallery.netlify.app/students/a-heras/drum-kit/
+- JS Clock: https://deploy-preview-106--js-30-widget-gallery.netlify.app/students/a-heras/js-clock/
 
 ## What was implemented
 
