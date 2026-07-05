@@ -13,11 +13,29 @@
     <title>Wack A Mole!</title>
   </head>
   <body>
+
     <h1>
       Wack-A-Mole!
       <span class="score" id="score">0</span>
     </h1>
+
+    <div class="game-info">
+      <div class="info-item">
+        <span>⏱️</span>
+        <span id="timer">30</span>
+        <span>сек</span>
+      </div>
+    </div>
+
+    <div class="time-selector">
+      <button class="time-btn" data-time="10">10 сек</button>
+      <button class="time-btn" data-time="20">20 сек</button>
+      <button class="time-btn active" data-time="30">30 сек</button>
+      <button class="time-btn" data-time="60">60 сек</button>
+    </div>
+
     <button id="startGame">Start!</button>
+
     <div class="game">
       <div class="hole hole1"><div class="mole"></div></div>
       <div class="hole hole2"><div class="mole"></div></div>
@@ -26,11 +44,15 @@
       <div class="hole hole5"><div class="mole"></div></div>
       <div class="hole hole6"><div class="mole"></div></div>
     </div>
+
+    <div id="gameMessage" class="game-message"></div>
+
     <div class="game-stats">
       <span>Игр: <span id="gameCount">0</span></span>
       <span>Рекорд: <span id="bestScore">0</span></span>
       <button id="resetStatsBtn">Сбросить</button>
     </div>
+
     <script src="app.js"></script>
   </body>
 </html>
