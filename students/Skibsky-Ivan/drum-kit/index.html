@@ -1,60 +1,80 @@
 <!doctype html>
 <html lang="en">
-  <head>
+  <head data-theme="light">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Drum Kit</title>
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <div class="keys">
-      <div class="key" data-key="65">
-        <kbd>a</kbd>
-        <span class="sound">clap</span>
+    <div class="panel">
+      <button class="panel-button switch-instrument" data-instrument="drum">
+        drum
+      </button>
+      <button class="panel-button theme-toggle" data-theme="leght">leght</button>
+    </div>
+
+    <div class="drum active keys-container">
+      <div class="drum-key" data-key="a">
+        <kbd>a</kbd><span class="sound">clap</span>
       </div>
-      <div class="key" data-key="83">
-        <kbd>s</kbd>
-        <span class="sound">hihat</span>
+      <div class="drum-key" data-key="s">
+        <kbd>s</kbd><span class="sound">hihat</span>
       </div>
-      <div class="key" data-key="68">
-        <kbd>d</kbd>
-        <span class="sound">kick</span>
+      <div class="drum-key" data-key="d">
+        <kbd>d</kbd><span class="sound">kick</span>
       </div>
-      <div class="key" data-key="70">
-        <kbd>f</kbd>
-        <span class="sound">openhat</span>
+      <div class="drum-key" data-key="f">
+        <kbd>f</kbd><span class="sound">openhat</span>
       </div>
-      <div class="key" data-key="71">
-        <kbd>g</kbd>
-        <span class="sound">boom</span>
+      <div class="drum-key" data-key="g">
+        <kbd>g</kbd><span class="sound">boom</span>
       </div>
-      <div class="key" data-key="72">
-        <kbd>h</kbd>
-        <span class="sound">ride</span>
+      <div class="drum-key" data-key="h">
+        <kbd>h</kbd><span class="sound">ride</span>
       </div>
-      <div class="key" data-key="74">
-        <kbd>j</kbd>
-        <span class="sound">snare</span>
+      <div class="drum-key" data-key="j">
+        <kbd>j</kbd><span class="sound">snare</span>
       </div>
-      <div class="key" data-key="75">
-        <kbd>k</kbd>
-        <span class="sound">tom</span>
+      <div class="drum-key" data-key="k">
+        <kbd>k</kbd><span class="sound">tom</span>
       </div>
-      <div class="key" data-key="76">
-        <kbd>l</kbd>
-        <span class="sound">tink</span>
+      <div class="drum-key" data-key="l">
+        <kbd>l</kbd><span class="sound">tink</span>
       </div>
     </div>
-    <audio data-key="65" src="./sounds/drums/clap.wav"></audio>
-    <audio data-key="83" src="./sounds/drums/hihat.wav"></audio>
-    <audio data-key="68" src="./sounds/drums/kick.wav"></audio>
-    <audio data-key="70" src="./sounds/drums/openhat.wav"></audio>
-    <audio data-key="71" src="./sounds/drums/boom.wav"></audio>
-    <audio data-key="72" src="./sounds/drums/ride.wav"></audio>
-    <audio data-key="74" src="./sounds/drums/snare.wav"></audio>
-    <audio data-key="75" src="./sounds/drums/tom.wav"></audio>
-    <audio data-key="76" src="./sounds/drums/tink.wav"></audio>
-  
+
+    <div class="piano keys-container">
+      <!-- White keys -->
+      <div data-key="a" class="piano-key white"><kbd>a</kbd></div>
+      <div data-key="s" class="piano-key white"><kbd>s</kbd></div>
+      <div data-key="d" class="piano-key white"><kbd>d</kbd></div>
+      <div data-key="f" class="piano-key white"><kbd>f</kbd></div>
+      <div data-key="g" class="piano-key white"><kbd>g</kbd></div>
+      <div data-key="h" class="piano-key white"><kbd>h</kbd></div>
+      <div data-key="j" class="piano-key white"><kbd>j</kbd></div>
+
+      <!-- Black keys -->
+      <div data-key="e" class="piano-key black black-e"><kbd>e</kbd></div>
+      <div data-key="t" class="piano-key black black-t"><kbd>t</kbd></div>
+      <div data-key="y" class="piano-key black black-y"><kbd>y</kbd></div>
+      <div data-key="u" class="piano-key black black-u"><kbd>u</kbd></div>
+    </div>
+
+    <audio data-key="a"></audio>
+    <audio data-key="s"></audio>
+    <audio data-key="d"></audio>
+    <audio data-key="f"></audio>
+    <audio data-key="g"></audio>
+    <audio data-key="h"></audio>
+    <audio data-key="j"></audio>
+    <audio data-key="k"></audio>
+    <audio data-key="l"></audio>
+    <audio data-key="e"></audio>
+    <audio data-key="t"></audio>
+    <audio data-key="y"></audio>
+    <audio data-key="u"></audio>
+
     <script src="./script.js"></script>
   </body>
 </html>
