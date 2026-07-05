@@ -81,6 +81,11 @@ body.light-theme .keys__list {
   backdrop-filter: blur(2px);
 }
 
+.header__btn:hover {
+  opacity: 0.6;
+  transition: all 0.3s ease-in-out;
+}
+
 .hero {
   position: relative;
   display: flex;

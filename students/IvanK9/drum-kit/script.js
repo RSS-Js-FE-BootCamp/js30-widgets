@@ -16,6 +16,75 @@ themeBtn.addEventListener("click", () => {
   }
 });
 
+// INSTRUMENTS
+
+const instrumentsBtn = document.querySelector(".header__btn--instruments");
+const instrumentIcon = document.querySelector(".header__btn--instruments img");
+let currentInstrument = "drum";
+
+const drumSettings = {
+  65: { sound: "clap.wav", label: "clap" },
+  83: { sound: "hihat.wav", label: "hihat" },
+  68: { sound: "kick.wav", label: "kick" },
+  70: { sound: "openhat.wav", label: "openhat" },
+  71: { sound: "boom.wav", label: "boom" },
+  72: { sound: "ride.wav", label: "ride" },
+  74: { sound: "snare.wav", label: "snare" },
+  75: { sound: "tom.wav", label: "tom" },
+  76: { sound: "tink.wav", label: "tink" },
+};
+
+const pianoSettings = {
+  65: { sound: "do.wav", label: "do" },
+  83: { sound: "re.wav", label: "re" },
+  68: { sound: "mi.wav", label: "mi" },
+  70: { sound: "fa.wav", label: "fa" },
+  71: { sound: "sol.wav", label: "salt" },
+  72: { sound: "la.wav", label: "la" },
+  74: { sound: "si.wav", label: "c" },
+  75: { sound: "do2.wav", label: "do 2" },
+  76: { sound: "re2.wav", label: "re 2" },
+};
+
+instrumentsBtn.addEventListener("click", () => {
+  const audios = document.querySelectorAll("audio");
+  const keysElements = document.querySelectorAll(".keys__item");
+
+  if (currentInstrument === "drum") {
+    currentInstrument = "piano";
+    instrumentIcon.src = "./image/drum.png";
+
+    audios.forEach((audio) => {
+      const keyCode = audio.getAttribute("data-key");
+      audio.src = `./audio/piano/${pianoSettings[keyCode].sound}`;
+    });
+
+    keysElements.forEach((key) => {
+      const keyCode = key.getAttribute("data-key");
+      const subtitle = key.querySelector(".keys__subtitle");
+      if (subtitle) {
+        subtitle.textContent = pianoSettings[keyCode].label;
+      }
+    });
+  } else {
+    currentInstrument = "drum";
+    instrumentIcon.src = "./image/piano.png";
+
+    audios.forEach((audio) => {
+      const keyCode = audio.getAttribute("data-key");
+      audio.src = `./audio/${drumSettings[keyCode].sound}`;
+    });
+
+    keysElements.forEach((key) => {
+      const keyCode = key.getAttribute("data-key");
+      const subtitle = key.querySelector(".keys__subtitle");
+      if (subtitle) {
+        subtitle.textContent = drumSettings[keyCode].label;
+      }
+    });
+  }
+});
+
 // PLAY
 
 function playSound(e) {
