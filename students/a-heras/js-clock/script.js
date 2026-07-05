@@ -8,6 +8,7 @@ const year = document.querySelector('.year');
 const secondsProgress = document.querySelector('.seconds-progress');
 const minutesProgress = document.querySelector('.minutes-progress');
 const hoursProgress = document.querySelector('.hours-progress');
+const timezoneCards = document.querySelectorAll('.timezone-card');
 
 const locale = 'en-US';
 const timeFormatter = new Intl.DateTimeFormat(locale, {
@@ -25,6 +26,16 @@ const dateFormatter = new Intl.DateTimeFormat(locale, {
 const yearFormatter = new Intl.DateTimeFormat(locale, {
   year: 'numeric',
 });
+
+const timezoneFormatters = Array.from(timezoneCards).map((card) => ({
+  card,
+  formatter: new Intl.DateTimeFormat(locale, {
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    timeZone: card.dataset.timezone,
+  }),
+}));
 
 function setClock() {
   const now = new Date();
@@ -50,6 +61,10 @@ function setClock() {
   weekday.textContent = weekdayFormatter.format(now);
   date.textContent = dateFormatter.format(now);
   year.textContent = yearFormatter.format(now);
+
+  timezoneFormatters.forEach(({ card, formatter }) => {
+    card.querySelector('strong').textContent = formatter.format(now);
+  });
 }
 
 setClock();

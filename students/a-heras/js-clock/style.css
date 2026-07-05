@@ -230,6 +230,52 @@ body {
   box-shadow: 0 0 14px rgb(143 185 201 / 0.18);
 }
 
+.timezone-panel {
+  width: min(680px, 100%);
+  padding: 22px;
+  border: 1px solid rgb(38 198 218 / 0.34);
+  border-radius: 18px;
+  background-color: rgb(2 6 23 / 0.48);
+}
+
+.timezone-panel h2 {
+  margin: 0 0 16px;
+  color: #8fb9c9;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.timezone-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.timezone-card {
+  display: grid;
+  gap: 8px;
+  padding: 16px;
+  border: 1px solid rgb(229 237 245 / 0.12);
+  border-radius: 14px;
+  background:
+    linear-gradient(135deg, rgb(38 198 218 / 0.08), rgb(171 71 188 / 0.06)),
+    rgb(2 6 23 / 0.54);
+}
+
+.timezone-card span {
+  color: #b6c7d4;
+  font-size: 0.85rem;
+}
+
+.timezone-card strong {
+  color: #ffd54f;
+  font-size: 1.25rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
 @media (max-width: 480px) {
   .clock-app {
     gap: 24px;
@@ -254,5 +300,14 @@ body {
 
   .progress-panel {
     width: min(86vw, 340px);
+  }
+
+  .timezone-panel {
+    width: min(86vw, 340px);
+    padding: 18px;
+  }
+
+  .timezone-list {
+    grid-template-columns: 1fr;
   }
 }
