@@ -225,16 +225,25 @@ function getThemeInStorage(isSun) {
     imgChange.src = '../shared/moon.png';
     document.documentElement.classList.add('body-light');
     btnTheme.classList.add('theme-widget-light');
+    btnsTools.forEach((e) => {
+      e.classList.add('choose-tools-item-light');
+    });
   } else {
     document.documentElement.classList.remove('body-light');
     btnTheme.classList.remove('theme-widget-light');
     imgChange.src = '../shared/sun.png';
+    btnsTools.forEach((e) => {
+      e.classList.remove('choose-tools-item-light');
+    });
   }
 };
 
 btnTheme.addEventListener('click', (e) => {
   document.documentElement.classList.toggle('body-light');
   btnTheme.classList.toggle('theme-widget-light');
+  btnsTools.forEach((e) => {
+    e.classList.toggle('choose-tools-item-light');
+  });
   if (isSun === 1) {
     imgChange.src = '../shared/moon.png';
     isSun = 0;
