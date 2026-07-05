@@ -7,11 +7,20 @@
 </head>
 <body>
 
-<div class="volume-container">
+  <div class="volume-container">
     <div class="volume-box">
       <label for="volume">🔊 Volume:</label>
       <input type="range" id="volume" min="0" max="1" step="0.1" value="0.5">
     </div>
+    
+    <div class="volume-box">
+      <label for="sound-pack">🎵 Pack:</label>
+      <select id="sound-pack" class="pack-select">
+        <option value="original">Original Drums</option>
+        <option value="electronic">Electronic Beats</option>
+      </select>
+    </div>
+
     <button id="toggle-hints" class="hints-btn">🚫 Hide Hints</button>
   </div>
 
