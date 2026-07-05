@@ -1,6 +1,6 @@
 # JS30 Widgets - @Skibsky-Ivan
 
-Pull Request: 
+Pull Request: [CLICK MY](https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/122)
 
 ## What was implemented
 
