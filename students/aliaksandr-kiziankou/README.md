@@ -1,8 +1,6 @@
 # JS30 Widgets - @aliaksandr-kiziankou
 
-Pull Request: https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/123
-
-Pull Request: https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/322
+Pull Request: https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/100
 
 ## What was implemented
 
