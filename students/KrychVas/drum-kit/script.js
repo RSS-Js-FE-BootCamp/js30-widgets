@@ -37,46 +37,20 @@ const soundPacks = {
     names: { 65: "e-boom", 83: "e-snare", 68: "e-tom", 70: "e-tink", 71: "e-ride", 72: "e-open", 74: "e-kick", 75: "e-hihat", 76: "e-clap" }
   },
   piano: {
-    // Всі частоти зібрані в один список клавіш клавіатури
     frequencies: {
-      65: 261.63, // A -> Do
-      87: 277.18, // W -> Do# (чорна)
-      83: 293.66, // S -> Re
-      69: 311.13, // E -> Re# (чорна)
-      68: 329.63, // D -> Mi
-      70: 349.23, // F -> Fa
-      84: 369.99, // T -> Fa# (чорна)
-      71: 392.00, // G -> Sol
-      89: 415.30, // Y -> Sol# (чорна)
-      72: 440.00, // H -> La
-      85: 466.16, // U -> La# (чорна)
-      74: 493.88, // J -> Si
-      75: 523.25, // K -> Do 2
-      79: 554.37, // O -> Do# 2 (чорна)
-      76: 587.33  // L -> Re 2
+      65: 261.63, 87: 277.18, 83: 293.66, 69: 311.13, 68: 329.63,
+      70: 349.23, 84: 369.99, 71: 392.00, 89: 415.30, 72: 440.00,
+      85: 466.16, 74: 493.88, 75: 523.25, 79: 554.37, 76: 587.33
     },
     names: { 65: "Do", 83: "Re", 68: "Mi", 70: "Fa", 71: "Sol", 72: "La", 74: "Si", 75: "Do 2", 76: "Re 2" }
   }
 };
 
-// Співвідношення між кодами чорних клавіш та батьківськими білими клавішами
-const blackKeyMap = {
-  87: 65, // W висить на клавіші A
-  69: 83, // E висить на клавіші S
-  84: 70, // T висить на клавіші F
-  89: 71, // Y висить на клавіші G
-  85: 72, // U висить на клавіші H
-  79: 75  // O висить на клавіші K
-};
-
-// Спеціальна карта для кліків мишкою по зонах
-const whiteToBlackClickMap = {
-  65: 87, 83: 69, 70: 84, 71: 89, 72: 85, 75: 79
-};
+const blackKeyMap = { 87: 65, 69: 83, 84: 70, 89: 71, 85: 72, 79: 75 };
+const whiteToBlackClickMap = { 65: 87, 83: 69, 70: 84, 71: 89, 72: 85, 75: 79 };
 
 function playPianoTone(frequency) {
   if (audioCtx.state === 'suspended') audioCtx.resume();
-  
   const oscillator = audioCtx.createOscillator();
   const gainNode = audioCtx.createGain();
   
@@ -89,29 +63,23 @@ function playPianoTone(frequency) {
   
   oscillator.connect(gainNode);
   gainNode.connect(audioCtx.destination);
-  
   oscillator.start();
   oscillator.stop(audioCtx.currentTime + 1.0);
 }
 
-// Головна функція
 function playSound(e) {
   let keyCode = e.type === 'click' ? this.getAttribute('data-key') : e.keyCode;
   
-  // Якщо режим піаніно, перевіряємо чи це клік мишкою у правій частині клавіші (зона чорної кнопки)
   if (soundPackSelect.value === 'piano' && e.type === 'click') {
     const clickX = e.offsetX;
     const buttonWidth = this.offsetWidth;
-    // Якщо клікнули на крайні 18 пікселів справа, де візуально знаходиться чорна кнопка
     if (clickX > (buttonWidth - 18) && whiteToBlackClickMap[keyCode]) {
       keyCode = whiteToBlackClickMap[keyCode];
     }
   }
 
-  // Шукаємо візуальний елемент для підсвічування
   let visualKeyCode = keyCode;
   let isBlack = false;
-  
   if (blackKeyMap[keyCode]) {
     visualKeyCode = blackKeyMap[keyCode];
     isBlack = true;
@@ -123,12 +91,8 @@ function playSound(e) {
     const freq = soundPacks.piano.frequencies[keyCode];
     if (!freq) return;
     playPianoTone(freq);
-    
-    if (key) {
-      key.classList.add(isBlack ? 'black-playing' : 'playing');
-    }
+    if (key) key.classList.add(isBlack ? 'black-playing' : 'playing');
   } else {
-    // Режим барабанів (ігнорує чорні кнопки з верхнього ряду)
     const audio = document.querySelector(`audio[data-key="${keyCode}"]`);
     if (!audio) return;
     audio.volume = volumeControl.value;
@@ -145,11 +109,19 @@ function removeTransition(e) {
   this.classList.remove('black-playing');
 }
 
-// Зміна звукових паків
+// Зміна звукових паків + ДИНАМІЧНА ФАВІКОНКА ТУТ
 soundPackSelect.addEventListener('change', (e) => {
   const selectedPack = e.target.value;
   const keysContainer = document.querySelector('.keys');
   
+  // === МАГІЯ ЗМІНИ ФАВІКОНКИ ===
+  const favicon = document.querySelector("link[rel*='icon']");
+  if (favicon) {
+    const emoji = selectedPack === 'piano' ? '🎹' : '🥁';
+    favicon.href = `data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>${emoji}</text></svg>`;
+  }
+  // ============================
+
   if (selectedPack === 'piano') {
     keysContainer.classList.add('piano-mode');
   } else {
@@ -188,7 +160,6 @@ toggleHintsBtn.addEventListener('click', () => {
   }
 });
 
-// Слухачі подій
 window.addEventListener('keydown', playSound);
 keys.forEach(key => {
   key.addEventListener('click', playSound);
