@@ -21,3 +21,7 @@ Pull Request: https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/110
     - 1. A multi-timezone view showing time at several cities of the world simultaneously (London, New York).
     - 2. Play relaxing music, the duration of which is saved in LocalStorage and resumes after a page refresh.
     - 3. Dark / light theme toggle that persists across reloads.
+
+Deploy:
+- [Drum kit](https://deploy-preview-110--elegant-quokka-1ce2cd.netlify.app/students/honeysafonovets/drum-kit/)
+- [JS Clock](https://deploy-preview-110--elegant-quokka-1ce2cd.netlify.app/students/honeysafonovets/js-clock/)

@@ -23,9 +23,15 @@ let isTools = 1;
 document.addEventListener('DOMContentLoaded', () => {
   const isSunStorage = localStorage.getItem('isSun');
   const isToolsStorage = localStorage.getItem('isTools');
-  isSun = Number(isSunStorage);
-  getThemeInStorage(Number(isSunStorage));
-  getIsTools(Number(isToolsStorage));
+  if (isToolsStorage !== null) {
+    // console.log(isSunStorage)
+    // console.log(isToolsStorage)
+    getIsTools(Number(isToolsStorage));
+  }
+  if (isSunStorage !== null) {
+    isSun = Number(isSunStorage);
+    getThemeInStorage(Number(isSunStorage));
+  }
 });
 
 
@@ -339,6 +345,7 @@ btnsTools.forEach((item) => {
 // Choose tools
 function madePiano() {
   isTools = 0;
+  console.log(isTools)
   // Change audio
   audio65 = new Audio('../shared/do.mp3');
   audio83 = new Audio('../shared/re.mp3');
@@ -364,6 +371,34 @@ function madePiano() {
   piano.classList.toggle('choose-tools-item-active');
   drums.classList.remove('choose-tools-item-active');
   localStorage.setItem('isTools', 0);
+}
+
+function startPiano() {
+  isTools = 0;
+  // Change audio
+  audio65 = new Audio('../shared/do.mp3');
+  audio83 = new Audio('../shared/re.mp3');
+  audio68 = new Audio('../shared/mi.mp3');
+  audio70 = new Audio('../shared/fa.mp3');
+  audio71 = new Audio('../shared/salt.mp3');
+  audio72 = new Audio('../shared/la.mp3');
+  audio74 = new Audio('../shared/c.mp3');
+  audio75 = new Audio('../shared/do.mp3');
+  audio76 = new Audio('../shared/re.mp3');
+  drumKit = document.querySelectorAll('.drum__box-item');
+
+  document.querySelector('[data-name="clap"]').innerHTML = 'note C';
+  document.querySelector('[data-name="hihat"]').innerHTML = 'note D';
+  document.querySelector('[data-name="kick"]').innerHTML = 'note E';
+  document.querySelector('[data-name="openhat"]').innerHTML = 'note F';
+  document.querySelector('[data-name="boom"]').innerHTML = 'note G';
+  document.querySelector('[data-name="ride"]').innerHTML = 'note A';
+  document.querySelector('[data-name="snare"]').innerHTML = 'note B';
+  document.querySelector('[data-name="tom"]').innerHTML = 'note C';
+  document.querySelector('[data-name="tink"]').innerHTML = 'note D';
+
+  piano.classList.toggle('choose-tools-item-active');
+  drums.classList.remove('choose-tools-item-active');
 }
 
 function madeDrums() {
@@ -395,11 +430,44 @@ function madeDrums() {
   localStorage.setItem('isTools', 1);
 }
 
+function startDrums() {
+  isTools = 1;
+  // Change audio
+  audio65 = new Audio('../shared/clap.wav');
+  audio83 = new Audio('../shared/hihat.wav');
+  audio68 = new Audio('../shared/kick.wav');
+  audio70 = new Audio('../shared/openhat.wav');
+  audio71 = new Audio('../shared/boom.wav');
+  audio72 = new Audio('../shared/ride.wav');
+  audio74 = new Audio('../shared/snare.wav');
+  audio75 = new Audio('../shared/tom.wav');
+  audio76 = new Audio('../shared/tink.wav');
+  drumKit = document.querySelectorAll('.drum__box-item');
+
+  document.querySelector('[data-name="clap"]').innerHTML = 'clap';
+  document.querySelector('[data-name="hihat"]').innerHTML = 'hihat';
+  document.querySelector('[data-name="kick"]').innerHTML = 'kick';
+  document.querySelector('[data-name="openhat"]').innerHTML = 'openhat';
+  document.querySelector('[data-name="boom"]').innerHTML = 'boom';
+  document.querySelector('[data-name="ride"]').innerHTML = 'ride';
+  document.querySelector('[data-name="snare"]').innerHTML = 'snare';
+  document.querySelector('[data-name="tom"]').innerHTML = 'tom';
+  document.querySelector('[data-name="tink"]').innerHTML = 'tink';
+
+  drums.classList.toggle('choose-tools-item-active');
+  piano.classList.remove('choose-tools-item-active');
+}
+
 function getIsTools(isTools) {
+  console.log(isTools)
   if (isTools === 0) {
-    madePiano();
+    startPiano();
+    document.querySelector('#piano').classList.add('choose-tools-item-active');
+    document.querySelector('#drums').classList.remove('choose-tools-item-active');
   } else {
-    madeDrums();
+    startDrums();
+    document.querySelector('#drums').classList.add('choose-tools-item-active');
+    document.querySelector('#piano').classList.remove('choose-tools-item-active');
   }
 }
 
