@@ -15,9 +15,13 @@ const gameOverSound = new Audio("./game-over.mp3");
 
 const timeLeftDisplay = document.querySelector(".time-left");
 
+const resetBtn = document.querySelector(".reset-btn");
+
 let countdown;
 let clicksLeft = 0;
 let maxClicksPerRound = 50;
+
+let gameTimeout;
 
 let isMuted = false;
 
@@ -29,12 +33,23 @@ let lastHole;
 let timeUp = false;
 let score = 0;
 
-let currentLevel = parseInt(localStorage.getItem("moleCurrentLevel")) || 1;
-let highScore = parseInt(localStorage.getItem("moleHighScore")) || 0;
+let currentLevel =
+  parseInt(localStorage.getItem("talestris-moleCurrentLevel")) || 1;
+let highScore = parseInt(localStorage.getItem("talestris-moleHighScore")) || 0;
 const pointsToWin = 10;
 
 level.textContent = currentLevel;
 highScoreDisplay.textContent = highScore;
+
+resetBtn.addEventListener("click", () => {
+  localStorage.removeItem("talestris-moleHighScore");
+  localStorage.removeItem("talestris-moleCurrentLevel");
+
+  currentLevel = 1;
+  highScore = 0;
+  level.textContent = currentLevel;
+  highScoreDisplay.textContent = highScore;
+});
 
 function startCountdown(seconds) {
   clearInterval(countdown);
@@ -114,7 +129,7 @@ function startGame() {
     }
   }, 500);
 
-  setTimeout(() => {
+  gameTimeout = setTimeout(() => {
     timeUp = true;
     gameActive = false;
     startBtn.disabled = false;
@@ -164,7 +179,7 @@ function bonk(e) {
   if (score > highScore) {
     highScore = score;
     highScoreDisplay.textContent = highScore;
-    localStorage.setItem("moleHighScore", highScore);
+    localStorage.setItem("talestris-moleHighScore", highScore);
   }
 }
 
@@ -226,13 +241,34 @@ function endGameCheck() {
     if (currentLevel === 3) {
       currentLevel = 1;
       showMessage(`Game Over! Level 3 is tough. Starting over from Level 1!`);
+    } else {
+      showMessage(
+        `Game Over! You needed ${pointsToWin} points. Try Level ${currentLevel} again!`,
+      );
     }
-    showMessage(
-      `Game Over! You needed ${pointsToWin} points. Try Level ${currentLevel} again!`,
-    );
   }
-  localStorage.setItem("moleCurrentLevel", currentLevel);
+  localStorage.setItem("talestris-moleCurrentLevel", currentLevel);
   level.textContent = currentLevel;
+}
+
+function decreaseClicks() {
+  clicksLeft--;
+
+  if (clicksLeft <= 0 && gameActive) {
+    endGameEarly();
+  }
+}
+
+function endGameEarly() {
+  timeUp = true;
+  gameActive = false;
+  startBtn.disabled = false;
+  startBtn.textContent = "Start!";
+
+  clearInterval(countdown);
+  clearTimeout(gameTimeout);
+
+  endGameCheck();
 }
 
 moles.forEach((mole) => mole.addEventListener("click", bonk));
