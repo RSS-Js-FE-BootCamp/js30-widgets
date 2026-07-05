@@ -90,3 +90,25 @@ function handleUpdate() {
 
 inputs.forEach(input => input.addEventListener('change', handleUpdate));
 inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
+
+// Масив із посиланнями на фонові зображення
+const backgrounds = [
+  'url(https://unsplash.it/1500/1000?image=881&blur=5)',
+  'url("https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?auto=format&fit=crop&w=1950&q=80")', 
+  'url("https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?auto=format&fit=crop&w=1950&q=80")', 
+  'url("https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&w=1950&q=80")', 
+  'url("https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1950&q=80")'  
+];
+
+let currentBgIndex = 0;
+const bgToggleBtn = document.getElementById('bg-toggle');
+
+bgToggleBtn.addEventListener('click', () => {
+  // Збільшуємо індекс на 1, а якщо дійшли до кінця — повертаємося на 0
+  currentBgIndex = (currentBgIndex + 1) % backgrounds.length;
+  
+  // Змінюємо властивість background безпосередньо у тегу html
+  document.documentElement.style.background = backgrounds[currentBgIndex];
+  document.documentElement.style.backgroundSize = 'cover';
+  document.documentElement.style.backgroundPosition = 'center';
+});
