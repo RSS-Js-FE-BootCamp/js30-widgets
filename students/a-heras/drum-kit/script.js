@@ -1,6 +1,17 @@
 const keys = document.querySelectorAll('.key');
+const themeToggle = document.querySelector('.theme-toggle');
 const notesLayer = document.querySelector('.notes-layer');
+const themeStorageKey = 'a-heras-drum-kit-theme';
 const floatingSymbols = ['♪', '♫', '✦', '✧'];
+
+function setTheme(theme) {
+  const isLight = theme === 'light';
+
+  document.body.classList.toggle('light-theme', isLight);
+  themeToggle.textContent = isLight ? 'Dark mode' : 'Light mode';
+  themeToggle.setAttribute('aria-pressed', String(isLight));
+  localStorage.setItem(themeStorageKey, theme);
+}
 
 function createRipple(key, pointerPosition) {
   const ripple = document.createElement('span');
@@ -80,3 +91,11 @@ keys.forEach((key) => {
 
   key.addEventListener('transitionend', removePlayingClass);
 });
+
+themeToggle.addEventListener('click', () => {
+  const nextTheme = document.body.classList.contains('light-theme') ? 'dark' : 'light';
+
+  setTheme(nextTheme);
+});
+
+setTheme(localStorage.getItem(themeStorageKey) || 'dark');
