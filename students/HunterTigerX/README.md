@@ -13,6 +13,8 @@
 
 3. Done 05.07.2026 / deadline 06.07.2026
 4. Score: 130 / 130
+5. Deploy: [JS30-Widgets](https://deploy-preview-103--js-30-widget-gallery.netlify.app)  
+5. Deploy: [elegant-quokka](https://deploy-preview-103--elegant-quokka-1ce2cd.netlify.app)  
 
 ---
 
