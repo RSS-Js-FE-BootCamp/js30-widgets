@@ -7,8 +7,8 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="../../../favicon.svg">
 </head>
-<button class="theme-toggle" id="theme-toggle">☀️</button>
 <body>
+  <button class="theme-toggle" id="theme-toggle">☀️</button>
   <div class="clock-wrapper">
 
     <article class="clock">
@@ -23,6 +23,40 @@
       <div class="digital__date" id="digital-date"></div>
     </article>
 
+    <div class="progress-rings">
+  <div class="ring-wrapper">
+    <svg class="ring" viewBox="0 0 100 100">
+      <circle class="ring-bg" cx="50" cy="50" r="45"/>
+      <circle class="ring-fill" id="seconds-ring" cx="50" cy="50" r="45"/>
+    </svg>
+    <div class="ring-text">
+      <span class="ring-value" id="seconds-value">00</span>
+      <span class="ring-label">SEC</span>
+    </div>
+  </div>
+
+  <div class="ring-wrapper">
+    <svg class="ring" viewBox="0 0 100 100">
+      <circle class="ring-bg" cx="50" cy="50" r="45"/>
+      <circle class="ring-fill" id="minutes-ring" cx="50" cy="50" r="45"/>
+    </svg>
+    <div class="ring-text">
+      <span class="ring-value" id="minutes-value">00</span>
+      <span class="ring-label">MIN</span>
+    </div>
+  </div>
+
+  <div class="ring-wrapper">
+    <svg class="ring" viewBox="0 0 100 100">
+      <circle class="ring-bg" cx="50" cy="50" r="45"/>
+      <circle class="ring-fill" id="hours-ring" cx="50" cy="50" r="45"/>
+    </svg>
+    <div class="ring-text">
+      <span class="ring-value" id="hours-value">00</span>
+      <span class="ring-label">HRS</span>
+    </div>
+  </div>
+</div>
   </div>
   <script src="script.js" defer></script>
 </body>

@@ -33,11 +33,17 @@ import {
   moveToPoint,
 } from "./modules/handles.js";
 
+import { initSlider, scroll } from "./modules/slider.js";
+
 export let isMouseIverPanel = false;
 
 document.addEventListener("DOMContentLoaded", () => {
+  initSlider();
   initPlayer();
-  biblioteka.addEventListener("click", (event) => switchVideo(event));
+  biblioteka.addEventListener("click", (event) => {
+    switchVideo(event);
+    scroll();
+  });
 
   //   Обработчик движения мыши
   player.addEventListener("mousemove", () => {

@@ -31,6 +31,22 @@ function updateClock() {
     month: 'long',
     year: 'numeric'
   });
+  const circumference = 283;
+  
+  document.getElementById('seconds-ring').style.strokeDashoffset = 
+    circumference - (seconds / 60) * circumference;
+  document.getElementById('seconds-value').textContent = 
+    String(seconds).padStart(2, '0');
+
+  document.getElementById('minutes-ring').style.strokeDashoffset = 
+    circumference - (minutes / 60) * circumference;
+  document.getElementById('minutes-value').textContent = 
+    String(minutes).padStart(2, '0');
+
+  document.getElementById('hours-ring').style.strokeDashoffset = 
+    circumference - ((hours % 12) / 12) * circumference;
+  document.getElementById('hours-value').textContent = 
+    String(hours).padStart(2, '0');
 }
 
 function renderClockFace() {
@@ -76,5 +92,6 @@ console.table([
   { stage: 2, item: 'Digital clock panel with time, date, weekday, year', points: 15 },
   { stage: 3, item: 'Clock face numbers rendered dynamically', points: 10 },
   { stage: 3, item: 'Dark/light theme toggle with localStorage', points: 10 },
+  { stage: 3, item: 'Circular progress rings for seconds/minutes/hours', points: 10 },
 ]);
-console.log('Claimed total: 55/65');
+console.log('Claimed total: 65/65');
