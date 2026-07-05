@@ -1,6 +1,27 @@
 const hourHand = document.querySelector('.hour-hand');
 const minuteHand = document.querySelector('.minute-hand');
 const secondHand = document.querySelector('.second-hand');
+const digitalTime = document.querySelector('.digital-time');
+const weekday = document.querySelector('.weekday');
+const date = document.querySelector('.date');
+const year = document.querySelector('.year');
+
+const locale = 'en-US';
+const timeFormatter = new Intl.DateTimeFormat(locale, {
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+});
+const weekdayFormatter = new Intl.DateTimeFormat(locale, {
+  weekday: 'long',
+});
+const dateFormatter = new Intl.DateTimeFormat(locale, {
+  day: 'numeric',
+  month: 'long',
+});
+const yearFormatter = new Intl.DateTimeFormat(locale, {
+  year: 'numeric',
+});
 
 function setClock() {
   const now = new Date();
@@ -17,6 +38,11 @@ function setClock() {
   secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
   minuteHand.style.transform = `rotate(${minutesDegrees}deg)`;
   hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
+
+  digitalTime.textContent = timeFormatter.format(now);
+  weekday.textContent = weekdayFormatter.format(now);
+  date.textContent = dateFormatter.format(now);
+  year.textContent = yearFormatter.format(now);
 }
 
 setClock();
