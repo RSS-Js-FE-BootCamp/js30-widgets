@@ -1,0 +1,143 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #e5edf5;
+  background:
+    radial-gradient(circle at 50% 0%, rgb(38 198 218 / 0.12), transparent 34%),
+    linear-gradient(180deg, #111827 0%, #0f172a 42%, #020617 100%);
+}
+
+.clock-app {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  padding: 32px;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  letter-spacing: 0.16em;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow:
+    0 0 8px rgb(38 198 218 / 0.65),
+    0 0 18px rgb(38 198 218 / 0.34),
+    3px 3px 0 rgb(171 71 188 / 0.62);
+}
+
+.clock {
+  width: min(72vw, 380px);
+  aspect-ratio: 1;
+  padding: 18px;
+  border: 3px solid #26c6da;
+  border-radius: 50%;
+  background:
+    linear-gradient(135deg, rgb(38 198 218 / 0.1), rgb(171 71 188 / 0.08)),
+    rgb(2 6 23 / 0.86);
+  box-shadow:
+    0 0 0 1px rgb(255 255 255 / 0.06) inset,
+    0 0 20px rgb(38 198 218 / 0.18),
+    0 18px 54px rgb(0 0 0 / 0.35);
+}
+
+.clock-face {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgb(229 237 245 / 0.12);
+  border-radius: 50%;
+}
+
+.marker {
+  position: absolute;
+  color: #ffd54f;
+  font-size: 1rem;
+  font-weight: 700;
+  text-shadow: 0 0 6px rgb(255 213 79 / 0.55);
+  transform: translate(-50%, -50%);
+}
+
+.marker-12 {
+  top: 9%;
+  left: 50%;
+}
+
+.marker-3 {
+  top: 50%;
+  left: 91%;
+}
+
+.marker-6 {
+  top: 91%;
+  left: 50%;
+}
+
+.marker-9 {
+  top: 50%;
+  left: 9%;
+}
+
+.hand {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  width: 44%;
+  height: 5px;
+  border-radius: 999px;
+  background: #e5edf5;
+  transform: rotate(90deg);
+  transform-origin: 100%;
+  transition: transform 0.05s cubic-bezier(0.1, 2.7, 0.58, 1);
+}
+
+.hour-hand {
+  width: 32%;
+  height: 7px;
+  background: #8fb9c9;
+  box-shadow: 0 0 10px rgb(143 185 201 / 0.35);
+}
+
+.minute-hand {
+  width: 42%;
+  background: #26c6da;
+  box-shadow: 0 0 10px rgb(38 198 218 / 0.38);
+}
+
+.second-hand {
+  height: 3px;
+  background: #ffd54f;
+  box-shadow: 0 0 10px rgb(255 213 79 / 0.55);
+}
+
+.center-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  border: 3px solid #020617;
+  border-radius: 50%;
+  background: #ffd54f;
+  box-shadow: 0 0 12px rgb(255 213 79 / 0.55);
+  transform: translate(-50%, -50%);
+}
+
+@media (max-width: 480px) {
+  .clock-app {
+    gap: 24px;
+    padding: 20px;
+  }
+
+  .clock {
+    width: min(86vw, 340px);
+  }
+}
