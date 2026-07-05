@@ -46,6 +46,7 @@ body {
 }
 
 .key {
+  position: relative;
   display: flex;
   min-height: 118px;
   flex-direction: column;
@@ -62,11 +63,17 @@ body {
     0 0 0 1px rgb(255 255 255 / 0.06) inset,
     0 0 12px rgb(38 198 218 / 0.18);
   cursor: pointer;
+  overflow: hidden;
   transition:
     transform 0.07s ease,
     border-color 0.07s ease,
     box-shadow 0.07s ease,
     background-color 0.07s ease;
+}
+
+.key > *:not(.ripple) {
+  position: relative;
+  z-index: 1;
 }
 
 .key kbd {
@@ -104,6 +111,24 @@ body {
     0 0 24px rgb(171 71 188 / 0.42),
     0 0 32px rgb(38 198 218 / 0.24);
   transform: scale(1.06);
+}
+
+.ripple {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: rgb(255 255 255 / 0.36);
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0);
+  animation: ripple 0.55s ease-out;
+}
+
+@keyframes ripple {
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(8);
+  }
 }
 
 @media (max-width: 900px) {
