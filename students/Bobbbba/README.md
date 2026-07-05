@@ -1,4 +1,4 @@
-# 1. PR: [😛CLICK ME😛]https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/94
+# 1. PR: [😛CLICK ME😛] https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/94
 
 ### 🟢 Widget 1: JS Clock
 **Score: 65 / 65**
