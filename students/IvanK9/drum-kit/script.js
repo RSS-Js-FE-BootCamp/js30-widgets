@@ -99,6 +99,12 @@ function playSound(e) {
   sound.currentTime = 0;
   sound.play();
   el.classList.add("keys__item--playing");
+
+  const rect = el.getBoundingClientRect();
+  const centerX = rect.left + rect.width / 2 + window.scrollX;
+  const centerY = rect.top + rect.height / 2 + window.scrollY;
+
+  floatingNote(centerX, centerY);
 }
 
 function removeTransition(e) {
@@ -114,3 +120,25 @@ keys.forEach((key) => {
 });
 
 window.addEventListener("keydown", playSound);
+
+// NOTES
+
+const notesSymbols = ['♩', '♪', '♫', '♬', '𝄞'];
+
+function floatingNote(x, y) {
+  const note = document.createElement("div");
+  note.classList.add("note");
+
+  const randomSymbol =
+    notesSymbols[Math.floor(Math.random() * notesSymbols.length)];
+  note.textContent = randomSymbol;
+
+  note.style.left = `${x}px`;
+  note.style.top = `${y}px`;
+
+  document.body.appendChild(note);
+
+  setTimeout(() => {
+    note.remove();
+  }, 1000);
+}

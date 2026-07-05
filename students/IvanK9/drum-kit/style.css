@@ -142,3 +142,25 @@ body.light-theme .keys__list {
   letter-spacing: 0.1rem;
   color: var(--color-text-subtitle);
 }
+
+.note {
+  display: block;
+  position: absolute;
+  font-size: 6rem;
+  color: var(--color-border-playing);
+  text-shadow: 0 0 0.5rem rgba(255, 255, 255, 1);
+  pointer-events: none;
+  z-index: 10;
+  animation: float 2s ease-out forwards;
+}
+
+@keyframes float {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -600px) scale(1.2) rotate(25deg);
+    opacity: 0;
+  }
+}
