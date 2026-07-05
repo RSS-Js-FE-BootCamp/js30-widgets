@@ -2,19 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JS + CSS Clock</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="clock">
-    <div class="clock-face">
-      <div class="hand hour-hand"></div>
-      <div class="hand min-hand"></div>
-      <div class="hand second-hand"></div>
-    </div>
-  </div>
-
+  <!-- Панель керування (Кастомізація та Звук) -->
   <div class="controls">
     <div class="control-group">
       <label for="base-color">Циферблат:</label>
@@ -25,8 +19,11 @@
       <label for="hand-color">Стрілки:</label>
       <input id="hand-color" type="color" name="hand" value="#000000">
     </div>
+
+    <button id="sound-toggle" class="sound-btn" title="Увімкнути/Вимкнути звук">🔇</button>
   </div>
 
+  <!-- Аналоговий годинник -->
   <div class="clock">
     <div class="clock-face">
       <div class="hand hour-hand"></div>
@@ -34,6 +31,8 @@
       <div class="hand second-hand"></div>
     </div>
   </div>
+
+  <audio id="tick-sound" src="https://actions.google.com/sounds/v1/ui/click_on.ogg" preload="auto"></audio>
 
   <script src="script.js"></script>
 </body>
