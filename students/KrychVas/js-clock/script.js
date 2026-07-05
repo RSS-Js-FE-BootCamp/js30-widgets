@@ -112,3 +112,62 @@ bgToggleBtn.addEventListener('click', () => {
   document.documentElement.style.backgroundSize = 'cover';
   document.documentElement.style.backgroundPosition = 'center';
 });
+
+// --- Логіка перемикання цифр на циферблаті (Stage 3+) ---
+
+const clockFace = document.querySelector('.clock-face');
+const dialToggleBtn = document.getElementById('dial-toggle');
+
+// Масиви цифр від 1 до 12
+const arabicNumbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
+const romanNumbers = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
+
+// Режими: 0 - арабські, 1 - римські, 2 - без цифр
+let currentDialMode = 2; // Почнемо з "без цифр" (оригінальний вигляд), або постав 0 для арабських
+
+function renderClockNumbers(mode) {
+  // Спочатку видаляємо всі старі цифри, якщо вони є
+  const oldNumbers = document.querySelectorAll('.clock-number');
+  oldNumbers.forEach(num => num.remove());
+
+  // Якщо режим 2 (без цифр), просто виходимо
+  if (mode === 2) return;
+
+  const numbersArray = mode === 0 ? arabicNumbers : romanNumbers;
+  const radius = 125; // Радіус розстановки цифр у пікселях (для кола 300px підходить ідеально)
+
+  numbersArray.forEach((num, index) => {
+    const numberElement = document.createElement('div');
+    numberElement.classList.add('clock-number');
+    numberElement.textContent = num;
+
+    // Годинна стрілка на 12 годин починається зверху. 
+    // Кожна година — це 30 градусів. Віднімаємо 90 градусів, щоб 12 була рівно вгорі.
+    const angle = ((index + 1) * 30 - 90) * (Math.PI / 180);
+
+    // Математика розстановки по колу за допомогою синуса і косинуса
+    const x = Math.round(radius * Math.cos(angle));
+    const y = Math.round(radius * Math.sin(angle));
+
+    numberElement.style.transform = `translate(${x}px, ${y}px)`;
+    clockFace.appendChild(numberElement);
+  });
+}
+
+// Обробник кліку на кнопку перемикання цифр
+dialToggleBtn.addEventListener('click', () => {
+  currentDialMode = (currentDialMode + 1) % 3;
+  
+  if (currentDialMode === 0) {
+    dialToggleBtn.textContent = '🔢 АРАБСЬКІ';
+  } else if (currentDialMode === 1) {
+    dialToggleBtn.textContent = '🏛️ РИМСЬКІ';
+  } else {
+    dialToggleBtn.textContent = '⭕ БЕЗ ЦИФР';
+  }
+  
+  renderClockNumbers(currentDialMode);
+});
+
+// Запускаємо початковий стан (якщо хочеш цифри одразу при завантаженні, зміни currentDialMode на 0 і виклич функцію)
+renderClockNumbers(currentDialMode);
