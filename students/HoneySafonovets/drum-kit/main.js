@@ -22,8 +22,10 @@ let isTools = 1;
 
 document.addEventListener('DOMContentLoaded', () => {
   const isSunStorage = localStorage.getItem('isSun');
+  const isToolsStorage = localStorage.getItem('isTools');
   isSun = Number(isSunStorage);
   getThemeInStorage(Number(isSunStorage));
+  getIsTools(Number(isToolsStorage));
 });
 
 
@@ -361,6 +363,7 @@ function madePiano() {
 
   piano.classList.toggle('choose-tools-item-active');
   drums.classList.remove('choose-tools-item-active');
+  localStorage.setItem('isTools', 0);
 }
 
 function madeDrums() {
@@ -389,6 +392,15 @@ function madeDrums() {
 
   drums.classList.toggle('choose-tools-item-active');
   piano.classList.remove('choose-tools-item-active');
+  localStorage.setItem('isTools', 1);
+}
+
+function getIsTools(isTools) {
+  if (isTools === 0) {
+    madePiano();
+  } else {
+    madeDrums();
+  }
 }
 
 piano.addEventListener('click', () => madePiano())
