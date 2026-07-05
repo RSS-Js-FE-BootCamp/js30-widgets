@@ -104,10 +104,14 @@ changesSounds('drum');
 const themeBtn = document.querySelector('.theme-toggle');
 const html = document.documentElement;
 
-function switchTheme() {
-  html.dataset.theme = html.dataset.theme === 'dark' ? 'light' : 'dark';
-  themeBtn.textContent = html.dataset.theme;
+function setTheme(theme) {
+  themeBtn.textContent = theme;
+  html.dataset.theme = theme;
+  localStorage.setItem('theme', theme);
 }
 
-themeBtn.addEventListener('click', switchTheme);
-switchTheme();
+setTheme(localStorage.getItem('theme') || 'dark');
+
+themeBtn.addEventListener('click', () => {
+  setTheme(html.dataset.theme === 'dark' ? 'light' : 'dark');
+});
