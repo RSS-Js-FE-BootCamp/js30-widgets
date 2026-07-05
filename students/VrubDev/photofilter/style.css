@@ -87,3 +87,36 @@ input[type="range"] {
   border-color: #9fcfb2;
   transform: translateY(-3px);
 }
+
+.btn-container {
+  margin-top: 40px;
+  margin-bottom: 30px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.btn,
+.btn-upload-label {
+  background-color: #f2e9dc;
+  color: #2e303d;
+  border: 1px solid #e2e4e9;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.btn:hover,
+.btn-upload-label:hover {
+  background-color: var(--base);
+  color: #ffffff;
+  border-color: var(--base);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(159, 207, 178, 0.3);
+}
