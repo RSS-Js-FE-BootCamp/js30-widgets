@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS Clock</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="clock-app">
+    <header class="hero">
+      <h1 class="title">JS Clock</h1>
+      <button class="theme-toggle" type="button" aria-pressed="false">Light mode</button>
+    </header>
+
+    <div class="clock-layout">
+      <section class="clock" aria-label="Analog clock">
+        <div class="clock-face">
+          <span class="marker marker-12">12</span>
+          <span class="marker marker-3">3</span>
+          <span class="marker marker-6">6</span>
+          <span class="marker marker-9">9</span>
+
+          <div class="hand hour-hand"></div>
+          <div class="hand minute-hand"></div>
+          <div class="hand second-hand"></div>
+          <div class="center-dot"></div>
+        </div>
+      </section>
+
+      <section class="digital-panel" aria-label="Digital clock panel">
+        <p class="panel-label">Current time</p>
+        <p class="digital-time">--:--:--</p>
+        <p class="weekday">---</p>
+        <p class="date">---</p>
+        <p class="year">----</p>
+      </section>
+    </div>
+
+    <section class="progress-panel" aria-label="Clock progress diagrams">
+      <div class="progress-card">
+        <div class="progress-ring seconds-progress" aria-hidden="true"></div>
+        <span>Seconds</span>
+      </div>
+      <div class="progress-card">
+        <div class="progress-ring minutes-progress" aria-hidden="true"></div>
+        <span>Minutes</span>
+      </div>
+      <div class="progress-card">
+        <div class="progress-ring hours-progress" aria-hidden="true"></div>
+        <span>Hours</span>
+      </div>
+    </section>
+
+    <section class="timezone-panel" aria-label="World time">
+      <h2>World Time</h2>
+      <div class="timezone-list">
+        <article class="timezone-card" data-timezone="Europe/London">
+          <span>London</span>
+          <strong>--:--:--</strong>
+        </article>
+        <article class="timezone-card" data-timezone="America/New_York">
+          <span>New York</span>
+          <strong>--:--:--</strong>
+        </article>
+        <article class="timezone-card" data-timezone="Asia/Tokyo">
+          <span>Tokyo</span>
+          <strong>--:--:--</strong>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="./script.js"></script>
+</body>
+</html>

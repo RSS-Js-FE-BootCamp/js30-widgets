@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon">
+  <title>Photofilter</title>
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <button class="aside-btn">Show filters</button>
+      <h1 class="title">Photofilter in <span class="highlight">JS</span></h1>
+      <div class="filters">
+        <label for="Spacing">Spacing:
+          <input id="spacing" type="range" name="spacing" data-init="0" min="0" max="200" value="20">
+        </label>
+        <label for="blur">Blur:
+          <input id="blur" type="range" name="blur" data-init="0" min="0" max="25" value="0">
+        </label>
+        <label for="base-color">Base color:
+          <input id="color" type="color" name="color" data-init="#ffffff" value="#ffc600">
+        </label>
+        <label for="brightness">Brightness:
+          <input id="brightness" type="range" name="brightness" data-init="1" step="0.1" min="0" max="2" value="1">
+        </label>
+        <label for="contrast">Contrast:
+          <input id="contrast" type="range" name="contrast" data-init="1" step="0.1" min="0" max="2" value="1">
+        </label>
+         <label for="grayscale">Grayscale:
+          <input id="grayscale" type="range" name="grayscale" data-init="0" min="0" max="100" value="0">
+        </label>
+        <label for="hue">Hue-rotate:
+          <input id="hue" type="range" name="hue" data-init="0" min="0" max="360" value="0">
+        </label>
+        <label for="invert">Invert:
+          <input id="invert" type="range" name="invert" data-init="0" min="0" max="100" value="0">
+        </label>
+        <label for="saturate">Saturate:
+          <input id="saturate" type="range" name="saturate" data-init="1" step="0.1" min="0" max="2" value="1">
+        </label>
+        <label for="sepia">Sepia:
+          <input id="sepia" type="range" name="sepia" data-init="0" min="0" max="100" value="0">
+        </label>
+        <button class="reset">Reset to default value</button>
+      </div>
+    </header>
+    <main>
+      <section class="preview">
+        <canvas class="picture-edit" id="canvas"></canvas>
+        <div class="load-block">
+          <input id="file" type="file" accept="image/*">
+          <button class="download">Download</button>
+        </div>
+        <div class="upload-error"></div>
+      </section>
+      <section class="gallery">
+        <figure class="picture-select" data-select="default">
+          <img src="./assets/picture.jpg" alt="Editeble picture">
+          <figcaption>Default</figcaption>
+        </figure>
+        <figure class="picture-select" data-select="blur" data-value="5">
+          <img src="./assets/picture.jpg" alt="Editeble picture" style="filter: blur(5px);">
+          <figcaption>Blur</figcaption>
+        </figure>
+        <figure class="picture-select" data-select="brightness" data-value="2">
+          <img src="./assets/picture.jpg" alt="Editeble picture" style="filter: brightness(2);">
+          <figcaption>Brightness</figcaption>
+        </figure>
+        <figure class="picture-select" data-select="contrast" data-value="2">
+          <img src="./assets/picture.jpg" alt="Editeble picture" style="filter: contrast(2);">
+          <figcaption>Contrast</figcaption>
+        </figure>
+        <figure class="picture-select" data-select="grayscale" data-value="100">
+          <img src="./assets/picture.jpg" alt="Editeble picture" style="filter: grayscale(100%);">
+          <figcaption>Grayscale</figcaption>
+        </figure>
+        <figure class="picture-select" data-select="hue" data-value="180">
+          <img src="./assets/picture.jpg" alt="Editeble picture" style="filter: hue-rotate(180deg);">
+          <figcaption>Hue-rotate</figcaption>
+        </figure>
+        <figure class="picture-select" data-select="invert" data-value="100">
+          <img src="./assets/picture.jpg" alt="Editeble picture" style="filter: invert(100%);">
+          <figcaption>Invert</figcaption>
+        </figure>
+        <figure class="picture-select" data-select="saturate" data-value="2">
+          <img src="./assets/picture.jpg" alt="Editeble picture" style="filter: saturate(2);">
+          <figcaption>Saturate</figcaption>
+        </figure>
+        <figure class="picture-select" data-select="sepia" data-value="180">
+          <img src="./assets/picture.jpg" alt="Editeble picture" style="filter: sepia(100%);">
+          <figcaption>Sepia</figcaption>
+        </figure>
+      </section>
+    </main>
+  </div>
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>
