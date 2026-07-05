@@ -6,9 +6,8 @@
 
 /* ====================== THEME ====================== */
 
-:root {
+html[data-theme='dark'] {
   /* Background */
-  --bg-image: url(./background.jpg);
   --bg-overlay: rgba(214, 212, 212, 0.3);
 
   /* Panel */
@@ -37,7 +36,7 @@
   --black-key-text: #ddd;
 }
 
-html.theme-light {
+html[data-theme='light'] {
   /* Background */
   --bg-overlay: rgba(255, 255, 255, 0.35);
 
@@ -71,7 +70,7 @@ html.theme-light {
 
 html {
   font-size: 10px;
-  background: var(--bg-image) bottom center;
+  background: url(./background.jpg) bottom center;
   background-size: cover;
 }
 

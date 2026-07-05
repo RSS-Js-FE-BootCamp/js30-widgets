@@ -99,3 +99,15 @@ function switchInstrument() {
 switchBtn.addEventListener('click', switchInstrument);
 
 changesSounds('drum');
+
+// ================= SWITCH THEME ======================
+const themeBtn = document.querySelector('.theme-toggle');
+const html = document.documentElement;
+
+function switchTheme() {
+  html.dataset.theme = html.dataset.theme === 'dark' ? 'light' : 'dark';
+  themeBtn.textContent = html.dataset.theme;
+}
+
+themeBtn.addEventListener('click', switchTheme);
+switchTheme();
