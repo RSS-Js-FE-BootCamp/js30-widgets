@@ -1,0 +1,192 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #eeeeee;
+  color: #222222;
+}
+
+.page {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 25px;
+  font-size: 32px;
+}
+
+.clock-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.clock {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  border: 8px solid #333333;
+  border-radius: 50%;
+  background-color: #ffffff;
+}
+
+.number {
+  position: absolute;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.number-12 {
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.number-3 {
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.number-6 {
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.number-9 {
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hand {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  transform-origin: bottom;
+  transform: translateX(-50%) rotate(0deg);
+}
+
+.hour-hand {
+  width: 7px;
+  height: 70px;
+  background-color: #000000;
+}
+
+.minute-hand {
+  width: 5px;
+  height: 95px;
+  background-color: #0000ff;
+}
+
+.second-hand {
+  width: 2px;
+  height: 110px;
+  background-color: #ff0000;
+}
+
+.center {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background-color: #000000;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.digital-clock {
+  width: 230px;
+  padding: 20px;
+  border: 2px solid #333333;
+  background-color: #ffffff;
+  text-align: left;
+}
+
+.digital-time {
+  margin-bottom: 15px;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.digital-weekday {
+  margin-bottom: 8px;
+  font-size: 22px;
+}
+
+.digital-date,
+.digital-year {
+  margin-bottom: 6px;
+  font-size: 18px;
+}
+
+.cities {
+  margin-top: 35px;
+}
+
+.cities h2 {
+  font-size: 24px;
+}
+
+.city-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.city {
+  padding: 12px;
+  border: 2px solid #333333;
+  background-color: #ffffff;
+  text-align: left;
+}
+
+.city span {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.city b {
+  font-size: 18px;
+}
+
+.theme-button {
+  margin-top: 30px;
+  padding: 10px 15px;
+  border: 2px solid #333333;
+  background-color: #ffffff;
+  color: #222222;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+body.light {
+  background-color: #ffffff;
+  color: #222222;
+}
+
+body.light .clock,
+body.light .digital-clock,
+body.light .city,
+body.light .theme-button {
+  background-color: #f5f5f5;
+}
+
+@media (max-width: 720px) {
+  .clock-wrapper {
+    flex-direction: column;
+  }
+
+  .city-list {
+    grid-template-columns: 1fr;
+  }
+}

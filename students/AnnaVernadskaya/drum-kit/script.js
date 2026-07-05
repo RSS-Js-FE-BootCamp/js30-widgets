@@ -20,8 +20,8 @@ const playSound = (keyCode) => {
     return;
   }
 
-    //запись мелодии
-    if (isRecording && !isPlayingRecord) {
+  //запись мелодии
+  if (isRecording && !isPlayingRecord) {
     recordedMelody.push({
       keyCode: keyCode,
       time: Date.now() - recordStartTime,
@@ -29,6 +29,7 @@ const playSound = (keyCode) => {
   }
 
   key.classList.add('playing');
+  createFloatingNote(key);
 
   audio.currentTime = 0;
   audio.play();
@@ -53,11 +54,8 @@ keys.forEach((key) => {
   key.addEventListener('transitionend', removeTransition);
 
   //слушатель клика по кнопкам
-  key.addEventListener('click', (event) => {
+  key.addEventListener('click', () => {
     playSound(key.dataset.key);
-
-    //нота при клике
-    createFloatingNote(event);
   });
 });
 
@@ -93,14 +91,16 @@ themeButtons.forEach((button) => {
 });
 
 
-//символ ноты при клике
-const createFloatingNote = (event) => {
+//символ ноты при клике, клавиатуре и воспроизведении записи
+const createFloatingNote = (key) => {
   const note = document.createElement('span');
   note.classList.add('floating-note');
   note.textContent = '♪';
 
-  note.style.left = `${event.clientX}px`;
-  note.style.top = `${event.clientY}px`;
+  const keyRect = key.getBoundingClientRect();
+
+  note.style.left = `${keyRect.left + keyRect.width / 2}px`;
+  note.style.top = `${keyRect.top}px`;
 
   document.body.append(note);
 
@@ -110,7 +110,6 @@ const createFloatingNote = (event) => {
 };
 
 //запись мелодии
-
 recordButton.addEventListener('click', () => {
   recordedMelody = [];
   recordStartTime = Date.now();
