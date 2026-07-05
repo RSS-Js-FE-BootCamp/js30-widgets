@@ -3,7 +3,6 @@ const minsHand = document.querySelector('.min-hand');
 const hourHand = document.querySelector('.hour-hand');
 const digitalDisplay = document.getElementById('digital'); 
 
-// --- Елементи для звуку (Stage 3) ---
 const soundToggle = document.getElementById('sound-toggle');
 let isSoundOn = false;
 
@@ -43,7 +42,6 @@ soundToggle.addEventListener('click', () => {
 
 const padZero = (num) => String(num).padStart(2, '0');
 
-// --- Основна логіка годинника ---
 function setDate() {
   const now = new Date();
 
@@ -53,7 +51,6 @@ function setDate() {
 
   digitalDisplay.textContent = `${padZero(hour)}:${padZero(mins)}:${padZero(seconds)}`;
 
-  // 1. Рух секундної стрілки з фіксом секундного глічу на 0
   const secondsDegrees = ((seconds / 60) * 360) + 90;
   if (seconds === 0) {
     secondHand.style.transition = 'none';
@@ -66,11 +63,9 @@ function setDate() {
     playTickSound();
   }
 
-  // 2. Рух хвилинної стрілки
   const minsDegrees = ((mins / 60) * 360) + ((seconds / 60) * 6) + 90;
   minsHand.style.transform = `rotate(${minsDegrees}deg)`;
 
-  // 3. Рух годинної стрілки
   const hourDegrees = ((hour / 12) * 360) + ((mins / 60) * 30) + 90;
   hourHand.style.transform = `rotate(${hourDegrees}deg)`;
 }
@@ -78,7 +73,6 @@ function setDate() {
 setInterval(setDate, 1000);
 setDate();
 
-// --- Логіка кастомізації кольорів ---
 const inputs = document.querySelectorAll('.controls input');
 
 function handleUpdate() {
@@ -88,7 +82,6 @@ function handleUpdate() {
 inputs.forEach(input => input.addEventListener('change', handleUpdate));
 inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
 
-// --- Перемикання заднього фону ---
 const backgrounds = [
   'url("https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?auto=format&fit=crop&w=1950&q=80")', 
   'url("https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?auto=format&fit=crop&w=1950&q=80")', 
@@ -105,7 +98,6 @@ bgToggleBtn.addEventListener('click', () => {
   document.documentElement.style.backgroundImage = backgrounds[currentBgIndex];
 });
 
-// --- Логіка перемикання цифр та інтерфейсу циферблата ---
 const clockFace = document.querySelector('.clock-face');
 const dialToggleBtn = document.getElementById('dial-toggle');
 const numbersColorGroup = document.getElementById('numbers-color-group');
@@ -113,7 +105,7 @@ const numbersColorGroup = document.getElementById('numbers-color-group');
 const arabicNumbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
 const romanNumbers = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
 
-let currentDialMode = 2; // 0 - арабські, 1 - римські, 2 - без цифр (цифрове табло увімкнене)
+let currentDialMode = 2; 
 
 function renderClockNumbers(mode) {
   const oldNumbers = document.querySelectorAll('.clock-number');
@@ -142,21 +134,20 @@ dialToggleBtn.addEventListener('click', () => {
   currentDialMode = (currentDialMode + 1) % 3;
   
   if (currentDialMode === 0) {
-    dialToggleBtn.textContent = '🔢 АРАБСЬКІ';
-    numbersColorGroup.style.display = 'flex'; // Показуємо вибір кольору цифр
-    digitalDisplay.style.display = 'none';    // Автоматично ховаємо цифрове табло
+    dialToggleBtn.textContent = '🔢 ARABIC';
+    numbersColorGroup.style.display = 'flex'; 
+    digitalDisplay.style.display = 'none';    
   } else if (currentDialMode === 1) {
-    dialToggleBtn.textContent = '🏛️ РИМСЬКІ';
-    numbersColorGroup.style.display = 'flex'; // Показуємо вибір кольору цифр
-    digitalDisplay.style.display = 'none';    // Автоматично ховаємо цифрове табло
+    dialToggleBtn.textContent = '🏛️ ROMAN';
+    numbersColorGroup.style.display = 'flex'; 
+    digitalDisplay.style.display = 'none';   
   } else {
-    dialToggleBtn.textContent = '⭕ БЕЗ ЦИФР';
-    numbersColorGroup.style.display = 'none'; // Ховаємо вибір кольору цифр
-    digitalDisplay.style.display = 'block';   // Повертаємо цифрове табло
+    dialToggleBtn.textContent = '⭕ NO NUMBERS';
+    numbersColorGroup.style.display = 'none'; 
+    digitalDisplay.style.display = 'block';   
   }
   
   renderClockNumbers(currentDialMode);
 });
 
-// Ініціалізація початкового стану
 renderClockNumbers(currentDialMode);

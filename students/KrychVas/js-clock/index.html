@@ -10,26 +10,25 @@
 
   <div class="controls">
     <div class="control-group">
-      <label for="base-color">Циферблат:</label>
+      <label for="base-color">Clock Face:</label>
       <input id="base-color" type="color" name="base" value="#ffffff">
     </div>
     
     <div class="control-group">
-      <label for="hand-color">Стрілки:</label>
+      <label for="hand-color">Hands:</label>
       <input id="hand-color" type="color" name="hand" value="#000000">
     </div>
 
-    <button id="dial-toggle" class="sound-btn" title="Змінити тип цифр">🔢 ЦИФРИ</button>
+    <button id="dial-toggle" class="sound-btn" title="Change dial type">🔢 NUMBERS</button>
 
-    <!-- Група керування кольором цифр (прихована за замовчуванням через display: none) -->
     <div class="control-group" id="numbers-color-group" style="display: none;">
-      <label for="numbers-color">Колір цифр:</label>
+      <label for="numbers-color">Number Color:</label>
       <input id="numbers-color" type="color" name="numbers-color" value="#000000">
     </div>
 
-    <button id="bg-toggle" class="sound-btn" title="Змінити фон">🖼️ ФОН</button>
+    <button id="bg-toggle" class="sound-btn" title="Change background">🖼️ BACKGROUND</button>
 
-    <button id="sound-toggle" class="sound-btn" title="Увімкнути/Вимкнути звук">🔇</button>
+    <button id="sound-toggle" class="sound-btn" title="Toggle sound">🔇</button>
   </div>
 
   <div class="clock">
@@ -38,7 +37,6 @@
       <div class="hand min-hand"></div>
       <div class="hand second-hand"></div>
       
-      <!-- Нове цифрове табло -->
       <div id="digital" class="digital-display">00:00:00</div>
     </div>
   </div>
