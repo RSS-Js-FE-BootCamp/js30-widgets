@@ -1,18 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drum Kit</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+    <canvas id="particleCanvas"></canvas>
+    <div class="controls-panel">
+        
+            <label for="speedSlider">Speed Rate: <span id="speedValue">1.0</span></label>
+            <input type="range" id="speedSlider" min="0.5" max="2.0" step="0.1" value="1.0">
+        
+        <button id="demoBtn" class="demo-btn">AutoJam</button>
+    </div>
+    <div class="combo-panel">
+        Combo: <span id="comboCounter">0</span>
+    </div>
     <div class="keys">
         <div data-key="KeyA" class="key">
             <kbd>A</kbd>
-            <span class="sound">clap</span>
+            <span class="sound">Clap</span>
+            <audio data-key="KeyA" src="./assets/sounds/clap.wav"></audio>
+        </div>
+        <div data-key="KeyS" class="key">
+            <kbd>S</kbd>
+            <span class="sound">Hihat</span>
+            <audio data-key="KeyS" src="./assets/sounds/hihat.wav"></audio>
+        </div>
+        <div data-key="KeyD" class="key">
+            <kbd>D</kbd>
+            <span class="sound">Kick</span>
+            <audio data-key="KeyD" src="./assets/sounds/kick.wav"></audio>
+        </div>
+        <div data-key="KeyF" class="key">
+            <kbd>F</kbd>
+            <span class="sound">OpenHat</span>
+            <audio data-key="KeyF" src="./assets/sounds/openhat.wav"></audio>
+        </div>
+        <div data-key="KeyG" class="key">
+            <kbd>G</kbd>
+            <span class="sound">Boom</span>
+            <audio data-key="KeyG" src="./assets/sounds/boom.wav"></audio>
+        </div>
+        <div data-key="KeyH" class="key">
+            <kbd>H</kbd>
+            <span class="sound">Ride</span>
+            <audio data-key="KeyH" src="./assets/sounds/ride.wav"></audio>
+        </div>
+        <div data-key="KeyJ" class="key">
+            <kbd>J</kbd>
+            <span class="sound">Snare</span>
+            <audio data-key="KeyJ" src="./assets/sounds/snare.wav"></audio>
+        </div>
+        <div data-key="KeyK" class="key">
+            <kbd>K</kbd>
+            <span class="sound">Tom</span>
+            <audio data-key="KeyK" src="./assets/sounds/tom.wav"></audio>
+        </div>
+        <div data-key="KeyL" class="key">
+            <kbd>L</kbd>
+            <span class="sound">Tink</span>
+            <audio data-key="KeyL" src="./assets/sounds/tink.wav"></audio>
         </div>
     </div>
     <script type="module" src="script.js"></script>
 </body>
+
 </html>
