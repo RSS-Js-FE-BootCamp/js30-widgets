@@ -3,8 +3,8 @@
 
 | Widget | Screenshot |
 |---|---|
-| JS Clock |  |
-| Custom Video Player |  |
+| JS Clock | <img width="1763" height="1784" alt="image" src="https://github.com/user-attachments/assets/c0cd2d80-6a8b-4775-bf68-63c2bfa83746" /> |
+| Custom Video Player | <img width="1763" height="1128" alt="image" src="https://github.com/user-attachments/assets/aef67858-8478-4ef9-8d4d-2a081d07f1ed" />  |
 
 3. Deploy:
     - [Studens cards](https://js-30-widget-gallery.netlify.app/)
