@@ -1,0 +1,485 @@
+class SearchHelper {
+  static api_key = "56567110-9e9784ee47552cf188976d5d2";
+
+  static getSearchUrl(search) {
+    const URI = `https://pixabay.com/api/videos/?key=${this.api_key}&q=${encodeURIComponent(search)}`;
+    return URI;
+  }
+
+  static async fetchSearch(search) {
+    const URI = this.getSearchUrl(search);
+    const RESPONSE = await fetch(URI);
+
+    const HTTP_STATUS = RESPONSE.status;
+    if (HTTP_STATUS !== 200) {
+      const TEXT = await RESPONSE.text();
+      throw new Error(`HTTP ${HTTP_STATUS}\n${TEXT}`);
+    }
+
+    const DATA = await RESPONSE.json();
+    return DATA;
+  }
+
+  static getSearch() {
+    const INPUT = document.getElementById("search");
+
+    if (!INPUT) {
+      throw new Error(`Узел не найден: #search`);
+    }
+
+    return INPUT.value;
+  }
+
+  static getImageSrcByRaw(element) {
+    if (!element.videos) {
+      return "";
+    }
+
+    if (element.videos.large) {
+      return element.videos.large.url;
+    }
+
+    if (element.videos.medium) {
+      return element.videos.medium.url;
+    }
+
+    if (element.videos.small) {
+      return element.videos.small.url;
+    }
+
+    if (element.videos.tiny) {
+      return element.videos.tiny.url;
+    }
+
+    return "";
+  }
+
+  static async renderEmpty() {
+    const DIV = document.getElementById("search_result");
+    if (!DIV) {
+      throw new Error(`Узел не найден: #search_result`);
+    }
+
+    DIV.innerHTML = "";
+  }
+
+  static async render() {
+    const DIV = document.getElementById("search_result");
+    if (!DIV) {
+      throw new Error(`Узел не найден: #search_result`);
+    }
+
+    const SEARCH = this.getSearch();
+    const DATA = await this.fetchSearch(SEARCH);
+    console.log(DATA);
+
+    const THIS = this;
+    DIV.innerHTML = `
+      <div class="search_result__content">
+        <div>Найдено: ${DATA.hits.length} шт.</div>
+        <ul>
+          ${DATA.hits
+            .map((e) => {
+              const IMAGE_SRC = THIS.getImageSrcByRaw(e);
+              return `
+              <li>
+                <button data-video-src="${IMAGE_SRC}" onclick="GalleryHelper.setVideo(this.getAttribute('data-video-src'))">
+                  <img src="${e.userImageURL}">
+                  ${e.name}
+                </button>
+              </li>
+            `;
+            })
+            .join("")}
+        </ul>
+      </div>
+    `;
+  }
+}
+
+class GalleryHelper {
+  static setVideo(videoSrc) {
+    const VIDEO = CustomVideoPlayer.getVideoTag();
+    VIDEO.src = videoSrc;
+
+    SearchHelper.renderEmpty();
+  }
+
+  static getIndex() {
+    const DIV = document.getElementById("galery");
+    if (!DIV) {
+      throw new Error(`Узел не найден: #galery`);
+    }
+
+    const INDEX = Number(DIV.getAttribute("data-index"));
+    return INDEX;
+  }
+
+  static setIndex(index) {
+    const DIV = document.getElementById("galery");
+    if (!DIV) {
+      throw new Error(`Узел не найден: #galery`);
+    }
+
+    DIV.setAttribute("data-index", index);
+  }
+
+  static getLength() {
+    const DIV = document.getElementById("galery");
+    if (!DIV) {
+      throw new Error(`Узел не найден: #galery`);
+    }
+
+    const ARRAY = DIV.querySelectorAll("li");
+    return ARRAY.length;
+  }
+
+  static updateHide() {
+    const DIV = document.getElementById("galery");
+    if (!DIV) {
+      throw new Error(`Узел не найден: #galery`);
+    }
+
+    const CURRENT_INDEX = this.getIndex();
+
+    const ARRAY = DIV.querySelectorAll("li");
+    for (let i = 0; i < ARRAY.length; i++) {
+      ARRAY[i].style.display = "none";
+
+      if (i == CURRENT_INDEX) {
+        ARRAY[i].style.display = "";
+      }
+    }
+  }
+
+  static prev() {
+    const CURRENT_INDEX = this.getIndex();
+
+    if (CURRENT_INDEX > 0) {
+      this.setIndex(CURRENT_INDEX - 1);
+      this.updateHide();
+    }
+  }
+
+  static next() {
+    const LENGTH = this.getLength();
+    const CURRENT_INDEX = this.getIndex();
+
+    if (CURRENT_INDEX < LENGTH - 1) {
+      this.setIndex(CURRENT_INDEX + 1);
+      this.updateHide();
+    }
+  }
+}
+
+GalleryHelper.updateHide();
+
+class CustomVideoPlayer {
+  static getVideoTag() {
+    const VIDEO = document.getElementById("video");
+
+    if (!VIDEO) {
+      throw new Error(`Не найден узел: #video`);
+    }
+
+    return VIDEO;
+  }
+
+  static togglePlay() {
+    const VIDEO = this.getVideoTag();
+
+    const BUTTON = document.getElementById("video__play_stop_button");
+
+    if (!BUTTON) {
+      throw new Error(`Узел не найден: #video__play_stop_button`);
+    }
+
+    if (VIDEO.paused) {
+      VIDEO.play();
+      BUTTON.innerHTML = "⏸";
+    } else {
+      VIDEO.pause();
+      BUTTON.innerHTML = "▶";
+    }
+  }
+
+  static plus10() {
+    const VIDEO = this.getVideoTag();
+
+    VIDEO.currentTime = Math.min(
+      VIDEO.currentTime + 10,
+      VIDEO.duration || Infinity,
+    );
+  }
+
+  static minus5() {
+    const VIDEO = this.getVideoTag();
+
+    VIDEO.currentTime = Math.max(VIDEO.currentTime - 5, 0);
+  }
+
+  static getVideoDuration(videoElement) {
+    const VIDEO = this.getVideoTag();
+
+    if (!VIDEO) {
+      return 0;
+    }
+
+    return VIDEO.duration;
+  }
+
+  static getCurrentTime(videoElement) {
+    const VIDEO = this.getVideoTag();
+
+    if (!VIDEO) {
+      return 0;
+    }
+
+    return VIDEO.currentTime;
+  }
+
+  static formatTime(seconds) {
+    if (isNaN(seconds) || seconds < 0) {
+      return "00:00";
+    }
+
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const secs = Math.floor(seconds % 60);
+
+    if (hours > 0) {
+      return `${hours}:${String(minutes).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+    }
+
+    return `${String(minutes).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+  }
+
+  static getVideoInfo(videoElement) {
+    const VIDEO = this.getVideoTag();
+
+    if (!VIDEO) {
+      return null;
+    }
+
+    return {
+      duration: VIDEO.duration,
+      currentTime: VIDEO.currentTime,
+      durationFormatted: this.formatTime(VIDEO.duration),
+      currentTimeFormatted: this.formatTime(VIDEO.currentTime),
+      progress: (VIDEO.currentTime / VIDEO.duration) * 100 || 0,
+    };
+  }
+
+  static setVideoToPercent(percent) {
+    const VIDEO = this.getVideoTag();
+
+    const duration = VIDEO.duration;
+    if (!duration || isNaN(duration)) {
+      return;
+    }
+
+    VIDEO.currentTime = duration * percent;
+  }
+
+  static setVideoRange() {
+    const VIDEO_RANGE = document.getElementById("video__range");
+
+    if (!VIDEO_RANGE) {
+      throw new Error(`Не найден узел: #video__range`);
+    }
+
+    this.setVideoToPercent(VIDEO_RANGE.value / 100);
+  }
+
+  static mute() {
+    const VIDEO = this.getVideoTag();
+
+    const MUTE_BUTTON = document.getElementById("video__mute_button");
+
+    if (!MUTE_BUTTON) {
+      throw new Error(`Не найден узел: #video__mute_button`);
+    }
+
+    const MUTE_VOLUME_RANGE = document.getElementById(
+      "video__mute_volume_range",
+    );
+
+    if (!MUTE_VOLUME_RANGE) {
+      throw new Error(`Не найден узел: #video__mute_volume_range`);
+    }
+
+    if (!VIDEO) {
+      return null;
+    }
+
+    VIDEO.muted = !VIDEO.muted;
+    MUTE_BUTTON.innerHTML = VIDEO.muted ? "🔇" : "🔊";
+
+    if (!VIDEO.muted) {
+      this.setVideoVolume(MUTE_VOLUME_RANGE.getAttribute("data-prev-value"));
+    } else {
+      this.setVideoVolume(0);
+    }
+  }
+
+  static setVideoVolume(volume) {
+    const VIDEO = this.getVideoTag();
+
+    const MUTE_BUTTON = document.getElementById("video__mute_button");
+
+    if (!MUTE_BUTTON) {
+      throw new Error(`Не найден узел: #video__mute_button`);
+    }
+
+    const MUTE_VOLUME_RANGE = document.getElementById(
+      "video__mute_volume_range",
+    );
+
+    if (!MUTE_VOLUME_RANGE) {
+      throw new Error(`Не найден узел: #video__mute_volume_range`);
+    }
+
+    const NORMALIZED_VOLUME = Math.max(0, Math.min(1, volume));
+
+    VIDEO.muted = NORMALIZED_VOLUME == 0;
+    MUTE_BUTTON.innerHTML = VIDEO.muted ? "🔇" : "🔊";
+
+    VIDEO.volume = NORMALIZED_VOLUME;
+
+    MUTE_VOLUME_RANGE.value = NORMALIZED_VOLUME;
+  }
+
+  static savePrevValue(element) {
+    if (element.value == 0) {
+      return;
+    }
+
+    element.setAttribute("data-prev-value", element.value);
+  }
+
+  static toggleVideoFullscreen() {
+    const VIDEO = this.getVideoTag();
+
+    if (document.fullscreenElement === VIDEO) {
+      document.exitFullscreen();
+      return false;
+    }
+
+    VIDEO.requestFullscreen();
+    return true;
+  }
+
+  static speedUpdate(speed) {
+    if (speed < 0 || speed > 3) {
+      return;
+    }
+
+    video.playbackRate = speed;
+
+    const SPEED_RANGE = document.getElementById("video__speed_range");
+    if (!SPEED_RANGE) {
+      throw new Error(`Узел не найден: #video__speed_range`);
+    }
+
+    SPEED_RANGE.value = speed;
+
+    const SPEED_VALUE = document.getElementById("video__speed_value");
+    if (!SPEED_VALUE) {
+      throw new Error(`Узел не найден: #video__speed_value`);
+    }
+
+    SPEED_VALUE.innerHTML = Number(speed).toFixed(2);
+  }
+}
+
+document.addEventListener("keydown", function (event) {
+  switch (event.code) {
+    case "Space":
+    case "KeyK":
+      CustomVideoPlayer.togglePlay();
+      return;
+
+    case "KeyF":
+      CustomVideoPlayer.toggleVideoFullscreen();
+      return;
+
+    case "KeyJ":
+      CustomVideoPlayer.minus5();
+      return;
+
+    case "KeyL":
+      CustomVideoPlayer.plus10();
+      return;
+
+    case "KeyM":
+      CustomVideoPlayer.mute();
+      return;
+
+    case "Digit0":
+      CustomVideoPlayer.setVideoToPercent(0);
+      return;
+
+    case "Digit1":
+      CustomVideoPlayer.setVideoToPercent(0.1);
+      return;
+
+    case "Digit2":
+      CustomVideoPlayer.setVideoToPercent(0.2);
+      return;
+
+    case "Digit3":
+      CustomVideoPlayer.setVideoToPercent(0.3);
+      return;
+
+    case "Digit4":
+      CustomVideoPlayer.setVideoToPercent(0.4);
+      return;
+
+    case "Digit5":
+      CustomVideoPlayer.setVideoToPercent(0.5);
+      return;
+
+    case "Digit6":
+      CustomVideoPlayer.setVideoToPercent(0.6);
+      return;
+
+    case "Digit7":
+      CustomVideoPlayer.setVideoToPercent(0.7);
+      return;
+
+    case "Digit8":
+      CustomVideoPlayer.setVideoToPercent(0.8);
+      return;
+
+    case "Digit9":
+      CustomVideoPlayer.setVideoToPercent(0.9);
+      return;
+
+    default:
+      return;
+  }
+});
+
+(function () {
+  const VIDEO = CustomVideoPlayer.getVideoTag();
+
+  VIDEO.addEventListener("timeupdate", () => {
+    const INFO = CustomVideoPlayer.getVideoInfo();
+
+    const VIDEO_TIME = document.getElementById("video__time");
+
+    if (!VIDEO_TIME) {
+      throw new Error(`Не найден узел: #video__time`);
+    }
+
+    const VIDEO_RANGE = document.getElementById("video__range");
+
+    if (!VIDEO_RANGE) {
+      throw new Error(`Не найден узел: #video__range`);
+    }
+
+    VIDEO_RANGE.value = (INFO.currentTime / INFO.duration) * 100;
+
+    VIDEO_TIME.innerHTML = `${INFO.currentTimeFormatted} / ${INFO.durationFormatted}`;
+  });
+})();
