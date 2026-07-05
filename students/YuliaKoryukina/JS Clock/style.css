@@ -1,0 +1,131 @@
+html {
+    background-image: url(https://fastly.picsum.photos/id/881/1500/1000.jpg?blur=5&hmac=wSpZ-UlEtKsvnxXigvyNIbudlXANuQMJpe19ZvEjebw);
+    background-size: cover;
+    font-size: 10px;
+  }
+  body {
+    margin: 0;
+    font-size: 2rem;
+    display: flex;
+    flex: 1;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+  }
+  .clock {
+    width: 30rem;
+    height: 30rem;
+    border: 20px solid white;
+    border-radius: 50%;
+    position: relative;
+    padding: 2rem;
+    box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1), inset 0 0 0 3px #efefef,
+      inset 0 0 10px black, 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  .clock_container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform: translateY(-3px);
+  }
+  .arrow {
+    width: 50%;
+    height: 6px;
+    background: black;
+    position: absolute;
+    top: 50%;
+    transform-origin: 100%;
+    transform: rotate(90deg);
+    transition: all 0.05s;
+    transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+  }
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    padding: 2rem;
+    width: 100%;
+  }
+  .digital-clock {
+    background: rgba(41, 40, 40, 100);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0);
+    backdrop-filter: blur(5px);
+    text-align: center;
+    font-family: "Courier New", Courier, monospace;
+    width: 40rem;
+    height: 30rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+    position: relative; 
+  }
+  .digital-time {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #ffef62;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+  }
+  .digital-date {
+    font-size: 2.8rem;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+  }
+  .digital-day {
+    font-size: 4rem;
+    color: #ffef62;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+  }
+  .theme-click {
+    position: absolute;
+    top: 15px;     
+    right: 15px;   
+    width: 3.5rem;  
+    height: 3.5rem;
+    font-size: 1.8rem;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    border-radius: 50%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+  }
+  .theme-click:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #ffef62;
+    color: #ffef62;
+  }
+  .digital-clock.light-theme .theme-click {
+    border-color: rgba(0, 0, 0, 0.2);
+    color: #292828;
+  }
+  .digital-clock.light-theme .theme-click:hover {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: #292828;
+  }
+  .digital-clock.light-theme {
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  .digital-clock.light-theme .digital-time { color: #000000; }
+  .digital-clock.light-theme .digital-date { color: #555555; }
+  .digital-clock.light-theme .digital-day { color: #000000; }
+  .welcome-text {
+    font-size: 2.8rem;         
+    color: #ffffff;       
+    margin-top: 1.5rem;        
+    font-style: italic;      
+  }
+  .digital-clock.light-theme .welcome-text {
+    color: #555555;            
+  }

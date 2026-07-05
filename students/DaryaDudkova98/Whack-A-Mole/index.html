@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="icon" href="img/icon-whack-a-mole.png" sizes="16x16" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Wack A Mole!</title>
+  </head>
+  <body>
+    <h1>
+      Wack-A-Mole!
+      <span class="score" id="score">0</span>
+    </h1>
+    <button id="startGame">Start!</button>
+    <div class="game">
+      <div class="hole hole1"><div class="mole"></div></div>
+      <div class="hole hole2"><div class="mole"></div></div>
+      <div class="hole hole3"><div class="mole"></div></div>
+      <div class="hole hole4"><div class="mole"></div></div>
+      <div class="hole hole5"><div class="mole"></div></div>
+      <div class="hole hole6"><div class="mole"></div></div>
+    </div>
+    <div class="game-stats">
+      <span>Игр: <span id="gameCount">0</span></span>
+      <span>Рекорд: <span id="bestScore">0</span></span>
+      <button id="resetStatsBtn">Сбросить</button>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

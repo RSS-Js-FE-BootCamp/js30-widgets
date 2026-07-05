@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JS Clock</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="page">
+    <h1>JS Clock</h1>
+
+    <div class="clock-wrapper">
+      <div class="clock">
+        <div class="number number-12">12</div>
+        <div class="number number-3">3</div>
+        <div class="number number-6">6</div>
+        <div class="number number-9">9</div>
+
+        <div class="hand hour-hand"></div>
+        <div class="hand minute-hand"></div>
+        <div class="hand second-hand"></div>
+        <div class="center"></div>
+      </div>
+
+      <div class="digital-clock">
+        <div class="digital-time">00:00:00</div>
+        <div class="digital-weekday">Monday</div>
+        <div class="digital-date">January 1</div>
+        <div class="digital-year">2026</div>
+      </div>
+    </div>
+
+    <section class="cities">
+      <h2>World time</h2>
+
+      <div class="city-list">
+        <div class="city" data-timezone="Europe/London">
+          <span>London</span>
+          <b>00:00:00</b>
+        </div>
+
+        <div class="city" data-timezone="Europe/Kyiv">
+          <span>Kyiv</span>
+          <b>00:00:00</b>
+        </div>
+
+        <div class="city" data-timezone="America/New_York">
+          <span>New York</span>
+          <b>00:00:00</b>
+        </div>
+
+        <div class="city" data-timezone="Asia/Tokyo">
+          <span>Tokyo</span>
+          <b>00:00:00</b>
+        </div>
+      </div>
+    </section>
+
+    <button class="theme-button" type="button">
+      Change theme
+    </button>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

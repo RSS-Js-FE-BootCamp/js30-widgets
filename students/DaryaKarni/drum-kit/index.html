@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drum Kit</title>
+  <link rel="stylesheet" href="./drum.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <script>
+    if(localStorage.getItem === 'light'){
+      document.documentElement.classList.add('light');
+    }
+  </script>
+</head>
+<body>
+  <button id="toggle" class="theme key">
+    <svg class="sun hidden" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-brightness-high" viewBox="0 0 16 16">
+      <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"/>
+    </svg>
+    <svg class="moon "xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-moon" viewBox="0 0 16 16">
+      <path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286"/>
+    </svg>
+  </button>
+  <div class="keys">
+    <div data-key="65" class="key">
+      <kbd>A</kbd>
+      <span>clap</span>
+    </div>
+    <div data-key="83" class="key">
+      <kbd>S</kbd>
+      <span>hihat</span>
+    </div>
+    <div data-key="68" class="key">
+      <kbd>D</kbd>
+      <span>kick</span>
+    </div>
+    <div data-key="70" class="key">
+      <kbd>F</kbd>
+      <span>openhat</span>
+    </div>
+    <div data-key="71" class="key">
+      <kbd>G</kbd>
+      <span>boom</span>
+    </div>
+    <div data-key="72" class="key">
+      <kbd>H</kbd>
+      <span>ride</span>
+    </div>
+    <div data-key="74" class="key">
+      <kbd>J</kbd>
+      <span>snare</span>
+    </div>
+    <div data-key="75" class="key">
+      <kbd>K</kbd>
+      <span>tom</span>
+    </div>
+    <div data-key="76" class="key">
+      <kbd>L</kbd>
+      <span>tink</span>
+    </div>
+  </div>
+  <audio data-key="65" src="./assets/clap.wav"></audio>
+  <audio data-key="83" src="./assets/hihat.wav"></audio>
+  <audio data-key="68" src="./assets/kick.wav"></audio>
+  <audio data-key="70" src="./assets/openhat.wav"></audio>
+  <audio data-key="71" src="./assets/boom.wav"></audio>
+  <audio data-key="72" src="./assets/ride.wav"></audio>
+  <audio data-key="74" src="./assets/snare.wav"></audio>
+  <audio data-key="75" src="./assets/tom.wav"></audio>
+  <audio data-key="76" src="./assets/tink.wav"></audio>
+
+  <script>
+    function playSound(keyCode){
+      const audio = document.querySelector(`audio[data-key="${keyCode}"]`);
+      const key = document.querySelector(`.key[data-key="${keyCode}"]`);
+      if(!audio) return;
+      key.classList.remove('playing');
+      void key.offsetWidth;
+      key.classList.add('playing');
+      audio.currentTime = 0;
+      audio.play();
+      const rect = key.getBoundingClientRect();
+      const keyLeft = rect.left + rect.width/2 + window.scrollX;
+      const keyTop = rect.top + rect.height /2 + window.scrollY;
+      showNote(keyLeft, keyTop);
+      spawnRipples(keyLeft, keyTop);
+    }
+    const keys = document.querySelector(".keys");
+    function removeTransition(e){
+      if(e.propertyName !== "transform"){
+        return;
+      }
+      e.target.classList.remove('playing');
+    }
+    keys.addEventListener('transitionend', removeTransition)
+    keys.addEventListener('mousedown', function(e){
+      const key = e.target.closest(".key");
+      if (!key) return;
+      playSound(key.dataset.key);
+    });
+    window.addEventListener('keydown', (e) => playSound(e.keyCode));
+    window.addEventListener('keyup', function(e){
+      document.querySelector(`.key[data-key="${e.keyCode}"]`)?.classList.remove('playing');
+    });
+    window.addEventListener('mouseup', () => {
+      document.querySelectorAll('.key.playing').forEach(key => key.classList.remove('playing'));
+    })
+
+    /*theme changing*/
+    const html = document.querySelector('html');
+    const sun = document.querySelector(".sun");
+    const moon = document.querySelector(".moon");
+    function saveTheme(theme){
+      localStorage.setItem('theme', theme);
+      changeTheme(theme);
+    }
+    function loadTheme(){
+      const theme = localStorage.getItem('theme');
+      changeTheme(theme);
+    }
+    function changeTheme(theme){
+      if(theme === 'light'){
+        html.classList.add('light');
+        sun.classList.remove('hidden');
+        moon.classList.add('hidden');
+      } else {
+        html.classList.remove('light');
+        sun.classList.add('hidden');
+        moon.classList.remove('hidden');
+      }
+    }
+    loadTheme();
+    const themeButton = document.getElementById('toggle');
+    themeButton.addEventListener('click', function(e){
+      const current = localStorage.getItem('theme') || '';
+      if(current === 'light'){
+        saveTheme('');
+      } else{
+        saveTheme('light');
+      }
+    })
+
+    /*notes animation*/
+    const notes = ['♩','♪','♫','♬'];
+    function showNote(x,y){
+      const note = document.createElement('span');
+      note.classList.add('note');
+      const randomNote = notes[Math.floor(Math.random() * notes.length)];
+      note.innerText = randomNote;
+      note.style.left = `${x}px`;
+      note.style.top = `${y}px`;
+      const randomX = Math.floor(Math.random() * 60) - 30;
+      const randomY = Math.floor(Math.random() * 80) - 180;
+      note.style.setProperty('--offsetX', `${randomX}px`);
+      note.style.setProperty('--offsetY', `${randomY}px`);
+      document.body.appendChild(note);
+      setTimeout(() => {
+        note.remove();
+      }, 1000);
+    }
+    
+    /*ripples animation*/
+    function spawnRipples(x,y){
+      const ripple = document.createElement('span');
+      ripple.classList.add('ripple');
+      ripple.style.left = `${x}px`;
+      ripple.style.top = `${y}px`;
+      document.body.appendChild(ripple);
+      setTimeout(() => {
+        ripple.remove();
+      }, 1000);
+    }
+
+    console.log('%c=== Self-evaluation: Drum Kit ===', 'font-weight:bold;font-size:14px');
+    console.table([
+      { stage: 1, item: 'Visual match with original',        claimed: 10 },
+      { stage: 1, item: 'Core behaviour (keys play sounds)', claimed: 10 },
+      { stage: 2, item: 'Mandatory feature: play sounds on mouse',     claimed: 15 },
+      { stage: 3, item: 'Floating notes that spawn on click',     claimed: 10 },
+      { stage: 3, item: 'Material-style ripple',           claimed: 10 },
+      { stage: 3, item: 'Dark / light theme toggle that persists across reloads',     claimed: 10 },
+    ]);
+    console.log('Claimed total: 65/65');
+  </script>       
+</body>
+</html>
