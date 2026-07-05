@@ -7,32 +7,30 @@
 
 body {
     height: 100%;
-   background: url(./img/tower_back.jpg);
- background-size: cover;
+    background: url(./img/tower_back.jpg);
+    background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
 
-.dark-theme{
-  height: 100%;
-   background: url(./img/tower_back_2.jpg);
- background-size: cover;
+.dark-theme {
+    height: 100%;
+    background: url(./img/tower_back_2.jpg);
+    background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    background-attachment: fixed; 
-}   
-
-
+    background-attachment: fixed;
+}
 
 .container_clock {
     display: flex;
     justify-content: center;
-height: 100vh;
-   overflow: hidden;
+    height: 100vh;
+    overflow: hidden;
 }
 
-.tower {  
+.tower {
     position: relative;
     background: url(./img/tower.png);
     width: 325px;
@@ -41,13 +39,13 @@ height: 100vh;
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    transform-origin: 70% 70%; 
+    transform-origin: 70% 70%;
     transform: scale(1);
 }
 
 .clock {
     position: relative;
- left: -5px; 
+    left: -5px;
     top: calc(0.98 * 39vh);
     transform: scale(0.4);
     display: flex;
@@ -98,12 +96,10 @@ height: 100vh;
     background: url(./img/hour.png);
 }
 
-
 .digital_clock {
-    position: relative;    
+    position: relative;
     display: flex;
     width: 400px;
-    /* height: 800px; */
     justify-content: center;
     z-index: 122;
 }
@@ -116,6 +112,7 @@ height: 100vh;
     position: absolute;
     display: flex;
     justify-content: center;
+    overflow: hidden;
 }
 
 .first_dig {

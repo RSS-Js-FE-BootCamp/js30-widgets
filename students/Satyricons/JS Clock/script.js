@@ -13,6 +13,7 @@ function updateClock() {
     // Вычисляем углы поворота
     const seconds = now.getSeconds();
     const minutes = now.getMinutes();
+    const hour = now.getHours() //24-часовой формат
     const hours = now.getHours() % 12; // Приводим к 12-часовому формату
     const date = now.getDate();
     const month = now.toLocaleString('ru-RU', { month: 'long' })
@@ -25,7 +26,7 @@ function updateClock() {
     // Часовая стрелка: 30 градусов в час + плавный ход от минут
     const hourDeg = hours * 30 + minutes * 0.5;
 
-    document.querySelector('.sec').style.transform = `rotate(${secondDeg}deg)`;
+    document.querySelector('.sec').style.transform = `rotate(${180 + secondDeg}deg)`;
     document.querySelector('.min').style.transform = `rotate(${180 + minuteDeg}deg)`;
     document.querySelector('.hour').style.transform = `rotate(${180 + hourDeg}deg)`;
 
@@ -33,6 +34,10 @@ function updateClock() {
     document.querySelector('.dig_date').textContent = date < 10 ? '0' + date : String(date);
     document.querySelector('.dig_month').textContent =  month;
     document.querySelector('.dig_day').textContent =  day;
+
+    document.querySelector('.dig_hour').textContent =  hour;
+    document.querySelector('.dig_min').textContent =  minutes< 10 ? '0' + minutes : String(minutes);
+    document.querySelector('.dig_sec').textContent =  seconds< 10 ? '0' + seconds : String(seconds);
 }
 
 // Обновляем положение стрелок сразу при загрузке страницы
