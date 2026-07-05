@@ -6,6 +6,10 @@ const backward = document.querySelector('.backward');
 const forward = document.querySelector('.forward');
 const timelineLine = document.querySelector('.timeline_control_line');
 const timelineWrapper = document.querySelector('.timeline_control_wrapper');
+const video0 = document.querySelector('.video_0');
+const video1 = document.querySelector('.video_1');
+const video2 = document.querySelector('.video_2');
+const video3 = document.querySelector('.video_3');
 
 playerControl.addEventListener("click", (event) => {
     toggleVideo();
@@ -27,6 +31,18 @@ function toggleVideo() {
     }
 }
 
+function stopVideo() {
+    const status = playerControl.classList.contains('play');
+    console.log('status', status)
+    if (!status) {
+        playerControl.classList.add('play')
+    }
+    playerControl.innerText = '►'
+    video.pause();
+    video.currentTime = 0;
+    timelineLine.style.width = 0;
+}
+
 backward.addEventListener("click", (event) => {
     video.currentTime -= 10;
 })
@@ -40,6 +56,8 @@ video.addEventListener("timeupdate", (event) => {
     const videoWatched = currentTime / (duration / 100);
     timelineLine.style.width = `${videoWatched}%`
 });
+
+
 
 timelineWrapper.addEventListener('click', (element) => {
     let percent;
@@ -325,3 +343,25 @@ function changeFrame(type) {
     }
 
 }
+
+
+video0.addEventListener('click', (e) => {
+    video.src = './video/652333414.mp4'
+    stopVideo();
+})
+
+video1.addEventListener('click', (e) => {
+    video.src = './video/armada2.mp4'
+    stopVideo();
+})
+
+video2.addEventListener('click', (e) => {
+    video.src = './video/genshin.mp4';
+    stopVideo();
+
+})
+
+video3.addEventListener('click', (e) => {
+    video.src = './video/no_citizen.mp4'
+    stopVideo();
+})

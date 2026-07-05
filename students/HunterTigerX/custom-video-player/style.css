@@ -1,3 +1,9 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
 .body_wrapper {
     width: 100vw;
     height: 100vh;
@@ -5,6 +11,7 @@
     align-items: center;
     justify-content: center;
     background-color: purple;
+    flex-direction: column;
 }
 
 .player_wrapper {
@@ -67,6 +74,12 @@
     width: 50px;
     height: 80%;
     text-align: center;
+}
+
+.backward,
+.forward,
+.player_control {
+    border: none;
 }
 
 .range {
@@ -137,5 +150,35 @@ button:hover {
 
 .video_list {
     display: flex;
-    flex-direction: row
+    flex-direction: row;
+    height: 10vh;
+    width: 80%;
+    justify-content: space-evenly;
+}
+
+.video_preview {
+    width: 200px;
+    height: 200px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.video_preview:hover {
+    cursor: pointer;
+}
+
+.video_0 {
+    background-image: url(./preview/Preview_0.jpg);
+}
+
+.video_1 {
+    background-image: url(./preview/Preview_1.jpg);
+}
+
+.video_2 {
+    background-image: url(./preview/Preview_2.jpg);
+}
+
+.video_3 {
+    background-image: url(./preview/Preview_3.jpg);
 }
