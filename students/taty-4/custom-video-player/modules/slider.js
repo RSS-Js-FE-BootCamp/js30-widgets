@@ -1,4 +1,5 @@
 import { switchVideo } from "./handles.js";
+import { tooglePlay } from "./handles.js";
 
 const btnPrev = document.querySelector(".slider-prev");
 const btnNext = document.querySelector(".slider-next");
@@ -119,6 +120,7 @@ export function initSlider() {
 
   sliderVisible.addEventListener("click", (event) => {
     switchVideo(event);
+    tooglePlay();
   });
 }
 
