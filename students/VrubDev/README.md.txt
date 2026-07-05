@@ -1,6 +1,8 @@
 # JS30 Widgets — Photo Filter
 
-## Pull Request:
+https://deploy-preview-109--js-30-widget-gallery.netlify.app/students/vrubdev/photofilter/
+
+## Pull Request: https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/109
 
 ## 🛠️ Implemented Features
 
