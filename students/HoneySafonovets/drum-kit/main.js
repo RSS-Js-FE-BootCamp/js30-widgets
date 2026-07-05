@@ -34,7 +34,7 @@ function boom(item) {
     const ripple = document.createElement('div');
     ripple.classList.add('ripple');
     item.appendChild(ripple);
-    ripple.innerHTML = 'DING';
+    ripple.innerHTML = '*DING*';
 
     ripple.classList.add('ripple-moving');
 
@@ -44,7 +44,7 @@ function boom(item) {
     const ripple = document.createElement('div');
     ripple.classList.add('ripple');
     item.appendChild(ripple);
-    ripple.innerHTML = 'BOOM';
+    ripple.innerHTML = '*BOOM*';
 
     ripple.classList.add('ripple-moving');
 
