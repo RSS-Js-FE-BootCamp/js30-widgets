@@ -16,7 +16,6 @@ body {
   position: relative;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
 }
 
 /* ─── Column clip windows ─── */
@@ -51,7 +50,6 @@ body {
 }
 
 .left-slide > div {
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -89,6 +87,94 @@ body {
   height: 100vh;
   background-size: cover;
   background-position: center;
+}
+
+/* ─── Orientation toggle button ─── */
+.orient-button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 200;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.orient-button:hover  { background: rgba(255, 255, 255, 0.28); }
+.orient-button:active { transform: scale(0.93); }
+.orient-button:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+/* ─── Horizontal mode — text strip on top (35%), image strip below (65%) ─── */
+.slider-container.horizontal .left-col {
+  width: 100%;
+  height: 35%;
+  top: 0;
+  left: 0;
+}
+
+.slider-container.horizontal .right-col {
+  width: 100%;
+  height: 65%;
+  top: 35%;
+  left: 0;
+}
+
+/* Strips become horizontal rows of 4 panels using flexbox */
+.slider-container.horizontal .left-slide {
+  display: flex;
+  flex-direction: row;
+  width: 400vw;
+  height: 100%;
+}
+
+.slider-container.horizontal .right-slide {
+  display: flex;
+  flex-direction: row;
+  width: 400vw;
+  height: 100%;
+}
+
+.slider-container.horizontal .left-slide > div {
+  flex: 0 0 100vw;
+  width: 100vw;
+  height: 100%;
+}
+
+.slider-container.horizontal .right-slide > div {
+  flex: 0 0 100vw;
+  width: 100vw;
+  height: 100%;
+}
+
+/* Nav buttons sit on the horizontal split line */
+.slider-container.horizontal .action-buttons {
+  left: 50%;
+  top: 35%;
+  transform: translate(-50%, -50%);
+  flex-direction: row;
+}
+
+/* Progress bar spans full width at bottom of image strip */
+.slider-container.horizontal .progress-bar {
+  left: 0;
+  width: 100%;
+}
+
+/* Dots go horizontal */
+.slider-container.horizontal .dots-nav {
+  flex-direction: row;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 /* ─── Navigation buttons — centred on the 35% split line ─── */
