@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="./clock.css">
 </head>
 <body>
+  <div class="date-text"></div>
   <div class="clock">
     <div class="hand hours"></div>
     <div class="hand mins"></div>
@@ -16,6 +17,7 @@
     const secondHand = document.querySelector(".secs");
     const minuteHand = document.querySelector(".mins");
     const hourHand = document.querySelector(".hours");
+    const textDate = document.querySelector('.date-text');
     function setDate(){
       const now = new Date();
       const secs = now.getSeconds();
@@ -27,9 +29,19 @@
       secondHand.style.transform = `rotate(${secsDegrees}deg)`;
       minuteHand.style.transform = `rotate(${minsDegrees}deg)`;
       hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
-      console.log(hours);
-    }
+
+      const weekDay = now.toLocaleDateString('en-US', { weekday: 'long' });
+      const monthDayNum = now.getDate();
+      const monthDay = now.toLocaleString('en-US', { month: 'long' });
+      const year = now.getFullYear();
+      console.log(weekDay);
+      textDate.innerText = `${hours}:${mins}:${secs} ${weekDay}, ${monthDayNum} ${monthDay} ${year}`;
+    } 
     setInterval(setDate, 1000);
+
+    /*mandatory*/
+    
+    
   </script>
 </body>
 </html>

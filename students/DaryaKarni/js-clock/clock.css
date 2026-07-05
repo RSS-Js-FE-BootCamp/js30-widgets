@@ -36,4 +36,10 @@ body {
   transform: rotate(90deg);
   transition: all 0.05s;
   transition-timing-function: cubic-bezier(0.1, 2, 0.5, 1);
+}
+
+.date-text {
+  position: absolute;
+  top: 10rem;
+  font-size: 3rem;
 }/*# sourceMappingURL=clock.css.map */
