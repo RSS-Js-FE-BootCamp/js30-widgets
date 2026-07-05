@@ -170,6 +170,17 @@
         ripple.remove();
       }, 1000);
     }
-  </script>
+
+    console.log('%c=== Self-evaluation: Drum Kit ===', 'font-weight:bold;font-size:14px');
+    console.table([
+      { stage: 1, item: 'Visual match with original',        claimed: 10 },
+      { stage: 1, item: 'Core behaviour (keys play sounds)', claimed: 10 },
+      { stage: 2, item: 'Mandatory feature: play sounds on mouse',     claimed: 15 },
+      { stage: 3, item: 'Floating notes that spawn on click',     claimed: 10 },
+      { stage: 3, item: 'Material-style ripple',           claimed: 10 },
+      { stage: 3, item: 'Dark / light theme toggle that persists across reloads',     claimed: 10 },
+    ]);
+    console.log('Claimed total: 65/65');
+  </script>       
 </body>
 </html>
