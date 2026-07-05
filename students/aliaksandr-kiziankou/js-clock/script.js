@@ -1,6 +1,7 @@
 const SECOND_HAND = document.querySelector('.sec-hand');
 const MIN_HAND = document.querySelector('.min-hand');
 const HOUR_HAND = document.querySelector('.hour-hand');
+const REV_SECOND_HAND = document.querySelector('.rev-sec-hand');
 
 function setDate() {
     const now = new Date();
@@ -16,6 +17,7 @@ function setDate() {
 
     if (seconds === 0) {
         SECOND_HAND.style.transition = 'none';
+        REV_SECOND_HAND.style.transition = 'none';
     }
 
     if (mins === 0 && seconds === 0) {
@@ -29,11 +31,13 @@ function setDate() {
     SECOND_HAND.style.transform = `rotate(${secondsToDegrees}deg)`;
     MIN_HAND.style.transform = `rotate(${minsToDegrees}deg)`;
     HOUR_HAND.style.transform = `rotate(${hoursToDegrees}deg)`;
+    REV_SECOND_HAND.style.transform = `rotate(${secondsToDegrees}deg)`;
 
     if (seconds === 0) {
         requestAnimationFrame(() => {
             requestAnimationFrame(() => {
                 SECOND_HAND.style.transition = '';
+                REV_SECOND_HAND.style.transition = '';
                 MIN_HAND.style.transition = '';
                 if (hours % 12 === 0 && mins === 0) {
                     HOUR_HAND.style.transition = '';

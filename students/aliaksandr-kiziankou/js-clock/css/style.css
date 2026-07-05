@@ -80,14 +80,15 @@ body {
 }
 
 .hand {
-    width: 50%;
+    width: 45%;
     height: 4px;
     background: var(--clock-hand-color);
     position: absolute;
     border-radius: 50%;
     top: 50%;
+    right: 50%;
     transition: all 0.07s;
-    transform-origin: 100%;
+    transform-origin: 100% 50%;
     transform: rotate(90deg);
     transition-timing-function: cubic-bezier(0.08, 1.87, 0.64, 0.97);
 }
@@ -106,10 +107,21 @@ body {
 .sec-hand {
     background: var(--second-hand-color);
     height: 2px;
+    width: 48%;
+}
+
+.rev-sec-hand {
+    background: var(--second-hand-color);
+    height: 1px;
+    width: 5%;
+    transform-origin: 0% 50%;
+    right: auto;
+    left: 50%;
 }
 
 .hour-hand {
     height: 6px;
+    width: 35%;
 }
 
 .twelve {
