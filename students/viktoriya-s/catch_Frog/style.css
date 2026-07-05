@@ -2,6 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
+    background-color: #016d13;
 }
 
 h1 {
@@ -11,20 +12,19 @@ h1 {
     font-size: 60px;
     font-weight: 800;
     color: #e6c807;
-    margin-top: 20px;
+    margin: 0;
 }
 
 #game-container {
     background-image: url('image/1 (1).jpg');
     background-size :cover;
     background-repeat: no-repeat;
-    max-width: 1200px;
+    /* max-width: 1200px; */
     width: 100%;
     height: 100vh;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
     position: relative;
     overflow-y: hidden;
@@ -35,8 +35,7 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     row-gap: 60px;
-    margin-bottom: 40px;
-
+    position: relative;
 }
 
 .leaf {
@@ -47,13 +46,8 @@ h1 {
 .frog {
     width: 120px;
     height: 170px;
-}
-
-.game-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+    position: absolute;
+    cursor: pointer;
 }
 
 .title-container {
@@ -64,19 +58,74 @@ h1 {
 
 #title {
     display: inline-block;
-        align-items: center;
-        /* выравнивание по вертикали */
-        gap: 10px;
+    flex-wrap: wrap;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 160px;
 }
 
 .score {
     font-size: 38px;
     font-weight: 700;
-    color: #e53935;
+    color: #e337d2;
     text-shadow: 2px 2px 4px rgb(0 0 0 / 50%);
     z-index: 1;
     display: inline-block;
     border-radius: 10px;
     background-color: #ffc107;
     padding: 5px 20px;
+}
+
+button {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    background-color: #e337d2;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    outline: none;
+}
+
+
+@media screen and (max-width: 578px) {
+    #leafs {
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 570px) {
+    h1 {
+        font-size: 40px;
+        margin-bottom: 0;
+    }
+
+    #leafs {
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0;
+        row-gap: 30px;
+    }
+}
+
+@media screen and (max-width: 390px) {
+    h1 {
+        font-size: 30px;
+    }
+
+    #leafs {
+        row-gap: 30px;
+    }
+
+    .leaf {
+        width: 150px;
+        height: 80px;
+    }
 }
