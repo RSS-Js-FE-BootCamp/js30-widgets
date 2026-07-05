@@ -33,7 +33,6 @@ function toggleVideo() {
 
 function stopVideo() {
     const status = playerControl.classList.contains('play');
-    console.log('status', status)
     if (!status) {
         playerControl.classList.add('play')
     }
@@ -155,6 +154,9 @@ function handleSpeedChange(speedChange) {
 let lastVolume = video.volume;
 
 document.addEventListener('keydown', function (e) {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable) {
+        return;
+    }
 
     if (e.key == " " ||
         e.code == "Space" ||
@@ -238,20 +240,41 @@ document.addEventListener('keydown', function (e) {
 
 
 
+    if (e.key === "ArrowLeft" || e.keyCode == 37) {
+        e.preventDefault();
+        video.currentTime = Math.max(0, video.currentTime - 5);
+    }
 
 
+    if (e.key === "ArrowRight" || e.keyCode == 39) {
+        e.preventDefault();
+        video.currentTime = Math.min(video.duration, video.currentTime + 5);
+    }
 
 
+    if (e.key === "ArrowUp" || e.keyCode == 38) {
+        e.preventDefault();
+        let newVolume = Math.min(1, video.volume + 0.1);
+        video.volume = newVolume;
+        volumeRange.value = newVolume;
+        if (video.classList.contains('mute')) {
+            video.classList.remove('mute');
+        }
+    }
 
 
-
-
-
-
-
-
-
-
+    if (e.key === "ArrowDown" || e.keyCode == 40) {
+        e.preventDefault();
+        let newVolume = Math.max(0, video.volume - 0.1);
+        video.volume = newVolume;
+        volumeRange.value = newVolume;
+        if (newVolume === 0) {
+            video.classList.add('mute');
+            lastVolume = 0;
+        } else if (video.classList.contains('mute')) {
+            video.classList.remove('mute');
+        }
+    }
 
 
 
@@ -344,24 +367,43 @@ function changeFrame(type) {
 
 }
 
+const videos = [
+    { src: './video/652333414.mp4', preview: './preview/Preview_0.jpg' },
+    { src: './video/armada2.mp4', preview: './preview/Preview_1.jpg' },
+    { src: './video/genshin.mp4', preview: './preview/Preview_2.jpg' },
+    { src: './video/no_citizen.mp4', preview: './preview/Preview_3.jpg' }
+];
 
-video0.addEventListener('click', (e) => {
-    video.src = './video/652333414.mp4'
+let currentVideoIndex = 0;
+
+document.querySelectorAll('.video_preview').forEach((preview, index) => {
+    preview.addEventListener('click', () => {
+        loadVideo(index);
+    });
+});
+
+function loadVideo(videoIndex) {
+    if (videoIndex < 0 || videoIndex >= videos.length) {
+        return
+    };
+    currentVideoIndex = videoIndex;
+    video.src = videos[videoIndex].src;
     stopVideo();
-})
+    document.querySelectorAll('.video_preview').forEach((e, i) => {
+        e.classList.toggle('active', i === videoIndex);
+    });
+}
 
-video1.addEventListener('click', (e) => {
-    video.src = './video/armada2.mp4'
-    stopVideo();
-})
+const prevVideo = document.querySelector('.carousel_prev');
+const nextVideo = document.querySelector('.carousel_next');
 
-video2.addEventListener('click', (e) => {
-    video.src = './video/genshin.mp4';
-    stopVideo();
+prevVideo.addEventListener('click', () => {
+    const newIndex = (currentVideoIndex - 1 + videos.length) % videos.length;
+    loadVideo(newIndex);
+});
 
-})
+nextVideo.addEventListener('click', () => {
+    const newIndex = (currentVideoIndex + 1) % videos.length;
+    loadVideo(newIndex);
+});
 
-video3.addEventListener('click', (e) => {
-    video.src = './video/no_citizen.mp4'
-    stopVideo();
-})
