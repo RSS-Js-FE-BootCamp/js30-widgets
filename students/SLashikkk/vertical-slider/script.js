@@ -93,6 +93,5 @@ const btnDirection = document.querySelector(".slider__button__direction");
 btnDirection.addEventListener("click", () => {
   arrowLeft.classList.toggle("horizontal");
   arrowRight.classList.toggle("horizontal");
-  sliderContainer.classList.toggle("horizontal");
-  btnDirection.classList.toggle("on")
-})
+  btnDirection.classList.toggle("on");
+});
