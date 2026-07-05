@@ -172,8 +172,8 @@ body.dark {
   backdrop-filter: blur(1px);
   border-left: 2px solid var(--color-border);
   z-index: 10;
-  /* transform: translateX(100%);
-  transition: transform 0.3s ease-in-out; */
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
 }
 
 .sidebar--open {
@@ -186,8 +186,8 @@ body.dark {
 
 .sidebar__btn--close {
   position: absolute;
-  top: -17rem;
-  right: -2rem;
+  top: -50px;
+  right: -30px;
   width: 50px;
   height: 50px;
   font-size: 2.5rem;
@@ -222,10 +222,25 @@ body.dark {
   row-gap: 4rem;
 }
 
+.sidebar__item {
+  padding: 1.5rem;
+  border: 3px solid var(--color-border);
+  border-radius: 1rem;
+}
+
 .sidebar__item-title,
 .sidebar__item-clock {
+  margin: 0;
   font-family: monospace;
   font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--color-text);
+}
+
+.sidebar__item-title {
+  margin: 0;
+  margin-bottom: 1rem;
+    font-size: 1.8rem;
   font-weight: 400;
   color: var(--color-text);
 }

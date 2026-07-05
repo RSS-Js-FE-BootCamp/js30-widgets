@@ -4,6 +4,22 @@ const secondHand = document.querySelector(".clock__hand--second");
 
 const digitalTime = document.querySelector(".clock__digital-wrapper");
 
+const sidebar = document.querySelector(".sidebar");
+const sidebarBtnOpen = document.querySelector(".controls__btn--sidebar");
+const sidebarBtnClose = document.querySelector(".sidebar__btn--close");
+const sidebarItems = document.querySelectorAll(".sidebar__item");
+
+const formatter = new Intl.DateTimeFormat("ru", {
+  weekday: "long",
+  year: "numeric",
+  month: "numeric",
+  day: "numeric",
+  hour: "numeric",
+  minute: "numeric",
+  second: "numeric",
+  hour12: false,
+});
+
 function setDate() {
   const now = new Date();
 
@@ -26,19 +42,32 @@ function setDate() {
   const hoursDegrees = (hours / 12) * 360 + 90;
   hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
 
-  const formatter = new Intl.DateTimeFormat("ru", {
-    weekday: "long",
-    year: "numeric",
-    month: "numeric",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-    second: "numeric",
-    hour12: false,
-  });
+  const digitalDateTime =
+    formatter.format(now).charAt(0).toUpperCase() +
+    formatter.format(now).slice(1);
 
-  const digitalDateTime = formatter.format(now).charAt(0).toUpperCase() + formatter.format(now).slice(1);
   digitalTime.textContent = digitalDateTime;
+
+  sidebarItems.forEach((item) => {
+    const timezone = item.getAttribute("data-timezone");
+
+    const cityFormatter = new Intl.DateTimeFormat("ru", {
+      weekday: "short",
+      month: "numeric",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      second: "numeric",
+      hour12: false,
+      timeZone: timezone,
+    });
+
+    const clockCity = item.querySelector(".sidebar__item-clock");
+
+    if (clockCity) {
+      clockCity.textContent = cityFormatter.format(now);
+    }
+  });
 }
 
 setInterval(setDate, 1000);
@@ -61,3 +90,10 @@ themeBtn.addEventListener("click", () => {
     localStorage.setItem("theme", "light");
   }
 });
+
+sidebarBtnOpen.addEventListener("click", () =>
+  sidebar.classList.add("sidebar--open"),
+);
+sidebarBtnClose.addEventListener("click", () =>
+  sidebar.classList.remove("sidebar--open"),
+);
