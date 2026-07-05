@@ -1,6 +1,7 @@
 const hourHand = document.querySelector('.hour-hand');
 const minuteHand = document.querySelector('.minute-hand');
 const secondHand = document.querySelector('.second-hand');
+const themeToggle = document.querySelector('.theme-toggle');
 const digitalTime = document.querySelector('.digital-time');
 const weekday = document.querySelector('.weekday');
 const date = document.querySelector('.date');
@@ -11,6 +12,7 @@ const hoursProgress = document.querySelector('.hours-progress');
 const timezoneCards = document.querySelectorAll('.timezone-card');
 
 const locale = 'en-US';
+const themeStorageKey = 'a-heras-js-clock-theme';
 const timeFormatter = new Intl.DateTimeFormat(locale, {
   hour: '2-digit',
   minute: '2-digit',
@@ -36,6 +38,15 @@ const timezoneFormatters = Array.from(timezoneCards).map((card) => ({
     timeZone: card.dataset.timezone,
   }),
 }));
+
+function setTheme(theme) {
+  const isLight = theme === 'light';
+
+  document.body.classList.toggle('light-theme', isLight);
+  themeToggle.textContent = isLight ? 'Dark mode' : 'Light mode';
+  themeToggle.setAttribute('aria-pressed', String(isLight));
+  localStorage.setItem(themeStorageKey, theme);
+}
 
 function setClock() {
   const now = new Date();
@@ -67,5 +78,12 @@ function setClock() {
   });
 }
 
+themeToggle.addEventListener('click', () => {
+  const nextTheme = document.body.classList.contains('light-theme') ? 'dark' : 'light';
+
+  setTheme(nextTheme);
+});
+
+setTheme(localStorage.getItem(themeStorageKey) || 'dark');
 setClock();
 setInterval(setClock, 1000);
