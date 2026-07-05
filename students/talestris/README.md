@@ -1,4 +1,4 @@
-# [My Pull-Request](https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/108)
+## [My Pull-Request](https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/108)
 
 In the 'Js Clock' widget I implemented:
 - a mandatory feature (digital clock that shows exact time (hours, minutes, seconds), full weekday name, date (day number + month name), year);
@@ -8,9 +8,11 @@ In the 'Js Clock' widget I implemented:
 
   In the 'Whack a mole' game I implemented:
   - a mandatory feature (the progressively harder levels, persist the current level and best score in localStorage, and display the saved values on the game screen after a page reload);
-  - sound effects (hit, miss, level-up, game-over) with a mute toggle;
+  - sound effects (hit, miss, level-up, game-start, game-over) with a mute toggle;
   - polished mole animations: spawn / hide easing, hit reaction;
   - custom cursor as a hammer;
+  - countdown timer;
+  - capping the number of clicks per round so the player has to think before whacking
  
 ### 🟢 Widget 1: JS Clock
 **Score: 65 / 65**
@@ -26,10 +28,7 @@ In the 'Js Clock' widget I implemented:
 **Stage 3 - Optional improvements (30/30)**
 - [x] A multi-timezone view showing time at several cities of the world simultaneously (+10)
 - [x] Dark / light theme toggle that persists across reloads (+10)
-- [x] An online alarm clock with sound and dismiss/snooze controls (+10)
-- [x] A cuckoo clock - at the top of each hour the bird pops out and chimes (+10)
-- [x] A "do nothing for 2 minutes" / "Quiet Place" relaxation mode with a timer that resets on user input (+10)
-- [x] Circular progress diagrams for seconds / minutes / hours rendered next to the face (+10)
+- [x] A smooth / ticking mode toggle for hands (+10)
 
 ---
 
@@ -45,11 +44,10 @@ In the 'Js Clock' widget I implemented:
 - [x] The feature is integrated with the rest of the UI (does not break Stage 1 functionality, handles edge cases reasonably) (+5)
 
 **Stage 3 - Optional improvements (30/30)**
-- [x] Add sound effects (hit, miss, level-up, game-over) with a mute toggle (+10)
-- [x] Polished mole animations: spawn / hide easing, hit reaction, particle burst (+10)
-- [x] A high-scores table stored in localStorage with player names (+10)
+- [x] Add sound effects (hit, miss, level-up, game-start, game-over) with a mute toggle (+10)
+- [x] Polished mole animations: spawn / hide easing, hit reaction (+10)
+- [x] A high-scores table stored in localStorage (+10)
 - [x] Cap the number of clicks per round so the player has to think before whacking (+10)
-- [x] Randomise the moles' on-screen position rather than fixing them to a static grid (+10)
-- [x] Replace mouse-click with keyboard mode - each hole is mapped to a key (+10)
+- [x] Countdown timer for clicks
 
 ---
