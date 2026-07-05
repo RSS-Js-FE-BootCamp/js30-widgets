@@ -104,7 +104,75 @@ class GalleryHelper {
 
     SearchHelper.renderEmpty();
   }
+
+  static getIndex() {
+    const DIV = document.getElementById("galery");
+    if (!DIV) {
+      throw new Error(`Узел не найден: #galery`);
+    }
+
+    const INDEX = Number(DIV.getAttribute("data-index"));
+    return INDEX;
+  }
+
+  static setIndex(index) {
+    const DIV = document.getElementById("galery");
+    if (!DIV) {
+      throw new Error(`Узел не найден: #galery`);
+    }
+
+    DIV.setAttribute("data-index", index);
+  }
+
+  static getLength() {
+    const DIV = document.getElementById("galery");
+    if (!DIV) {
+      throw new Error(`Узел не найден: #galery`);
+    }
+
+    const ARRAY = DIV.querySelectorAll("li");
+    return ARRAY.length;
+  }
+
+  static updateHide() {
+    const DIV = document.getElementById("galery");
+    if (!DIV) {
+      throw new Error(`Узел не найден: #galery`);
+    }
+
+    const CURRENT_INDEX = this.getIndex();
+
+    const ARRAY = DIV.querySelectorAll("li");
+    for (let i = 0; i < ARRAY.length; i++) {
+      ARRAY[i].style.display = "none";
+
+      if (i == CURRENT_INDEX) {
+        ARRAY[i].style.display = "";
+      }
+    }
+  }
+
+  static prev() {
+    const CURRENT_INDEX = this.getIndex();
+
+    if (CURRENT_INDEX > 0) {
+      this.setIndex(CURRENT_INDEX - 1);
+      this.updateHide();
+    }
+  }
+
+  static next() {
+    const LENGTH = this.getLength();
+    const CURRENT_INDEX = this.getIndex();
+
+    if (CURRENT_INDEX < LENGTH - 1) {
+      this.setIndex(CURRENT_INDEX + 1);
+      this.updateHide();
+    }
+  }
 }
+
+GalleryHelper.updateHide();
 
 class CustomVideoPlayer {
   static getVideoTag() {

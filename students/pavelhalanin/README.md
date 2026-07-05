@@ -71,7 +71,7 @@
 
 ### 🟢 Widget 4: Custom Video Player
 
-**Score: 57 / 65**
+**Score: 65 / 65**
 
 **Stage 1 - Reproduction (20/20)**
 - [x] The widget visually matches the original demo (layout, key colors, key interactions) (+10)
@@ -81,15 +81,14 @@
 - [x] The mandatory additional feature described in the widget's task file is implemented and works correctly (+10)
 - [x] The feature is integrated with the rest of the UI (does not break Stage 1 functionality, handles edge cases reasonably) (+5)
 
-**Stage 3 - Optional improvements (22/30)**
+**Stage 3 - Optional improvements (30/30)**
 - [x] Support additional YouTube-style hotkeys: Arrow keys for seek/volume, J/K/L, 0-9 for percent-jump, C for captions (+2 each, up to +20 total)
     > - [x] +2 - Key 0, Key 1, Key 2, Key 3, Key 4, Key 5, Key 6, Key 7, Key 8, Key 9
     > - [x] +2 - Key F (full screen)
-    > - [x] +2 - Key J (minus 5 seconds)
+    > - [x] +2 - Key J (minus 5 seconds), Key L (plus 10 seconds)
     > - [x] +2 - Key K или ПРОБЕЛ (play and pause)
-    > - [x] +2 - Key L (plus 10 seconds)
     > - [x] +2 - Key M (mute, unmute)
-- [ ] A video carousel / slider - switch between several video sources with prev / next controls and a thumbnail strip (+10)
+- [x] A video carousel / slider - switch between several video sources with prev / next controls and a thumbnail strip (+10)
 - [x] A mini movie catalog - a "kinopoisk" of your own where each tile opens a video in the player (+10)
 </details>
 
@@ -98,7 +97,7 @@
 
 ### 🟢 Виджет 4: Custom Video Player
 
-**Оценка: 57 / 65**
+**Оценка: 65 / 65**
 
 **Этап 1 - Воспроизведение (20/20)**
 - [x] Виджет визуально соответствует оригинальному демо (макет, основные цвета, ключевые взаимодействия) (+10)
@@ -108,15 +107,14 @@
 - [x] Обязательная дополнительная функция, описанная в файле задачи виджета, реализована и работает корректно (+10)
 - [x] Функция интегрирована с остальным интерфейсом (не нарушает функциональность Этапа 1, корректно обрабатывает пограничные случаи) (+5)
 
-**Этап 3 - Дополнительные улучшения (22/30)**
+**Этап 3 - Дополнительные улучшения (30/30)**
 - [x] Поддержка дополнительных хоткеев в стиле YouTube: клавиши со стрелками для перемотки/громкости, J/K/L, 0-9 для перехода по процентам, C для субтитров (+2 за каждое, до +20 всего)
     > - [x] +2 - Кнопка 0, Кнопка 1, Кнопка 2, Кнопка 3, Кнопка 4, Кнопка 5, Кнопка 6, Кнопка 7, Кнопка 8, Кнопка 9
     > - [x] +2 - Кнопка F (полный экран)
-    > - [x] +2 - Кнопка J (минус 5 секунд)
+    > - [x] +2 - Кнопка J (минус 5 секунд), Кнопка L (плюс 10 секунд)
     > - [x] +2 - Кнопка K или ПРОБЕЛ (запуск и пауза)
-    > - [x] +2 - Кнопка L (плюс 10 секунд)
     > - [x] +2 - Кнопка M (отключение включение музыки)
-- [ ] Карусель/слайдер видео — переключение между несколькими источниками видео с кнопками вперед/назад и полосой миниатюр (+10)
+- [x] Карусель/слайдер видео — переключение между несколькими источниками видео с кнопками вперед/назад и полосой миниатюр (+10)
 - [x] Мини-каталог фильмов — свой "кинопоиск", где каждый блок открывает видео в плеере (+10)
 </details>
 
@@ -152,5 +150,5 @@
 | Widget | Score |
 |---|---|
 | JS Clock | 65 / 65 |
-| Custom Video Player | 57 / 65 |
-| **Max Score** | 122 / **130** |
+| Custom Video Player | 65 / 65 |
+| **Max Score** | 130 / **130** |

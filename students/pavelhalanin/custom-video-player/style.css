@@ -222,7 +222,30 @@
 /* galery */
 
 .galery {
-  padding: 16px 0;
+  position: relative;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.galery__buttons {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  max-width: 300px;
+  margin: 0 auto;
+
+  z-index: 9;
+}
+
+.galery__buttons button {
+  border: 1px solid #06c;
+  background-color: #06c;
+  color: white;
 }
 
 .galery > ul {
@@ -236,6 +259,7 @@
 
 .galery > ul > li {
   list-style-type: none;
+  z-index: 10;
 }
 
 .galery > ul > li > button {
