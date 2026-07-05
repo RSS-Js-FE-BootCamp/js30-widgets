@@ -7,7 +7,8 @@
 # JS30 Widgets - @Faratora
 
 Pull Request:   (https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/62) \
-Pull Request:   (https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/72)
+Pull Request:   (https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/72) \
+Pull Request:   (https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/93)
 
 ## What was implemented
 
@@ -59,7 +60,7 @@ Pull Request:   (https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/72)
 | Виджет | Stage 1 | Stage 2 | Stage 3 | Всего | Максимум |
 |--------|---------|---------|---------|-------|----------|
 | 🥁 Drum Kit | 20/20 ✅ | 15/15 ✅ | 60/30 ✅ | **65/65** | 65 |
-| 🕐 JS Clock | 20/20 ✅ | 15/15 ❌ | 50/30 ❌ | **65/65** | 65 |
+| 🕐 JS Clock | 20/20 ✅ | 15/15 ✅ | 50/30 ✅ | **65/65** | 65 |
 
 ---
 

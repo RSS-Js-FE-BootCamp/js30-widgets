@@ -8,7 +8,7 @@
     <link rel="icon" href="./favicon.ico?v=3" type="favicon" />
   </head>
   <body>
-    <h1 class="title">Sprite Fright</h1>
+    <h1 class="title">Custom Video Player</h1>
     <div class="player" tabindex="0">
       <video class="player__video"></video>
       <div class="player-controls">
@@ -57,28 +57,61 @@
       <p class="title-video">Sprite Fright (part 1)</p>
     </div>
 
+    <div class="slider">
+      <button class="slider-prev btn-slider">&lsaquo;</button>
+      <div class="slider-visible">
+        <div class="slider-track">
+          <div data-part="1" class="slider-item active">
+            <img src="./assets/posters/poster1.webp" alt="" />
+            <p class="title-slider-item">Sprite Fight (part 1)</p>
+          </div>
+          <div data-part="2" class="slider-item">
+            <img src="./assets/posters/poster2.webp" alt="" />
+            <p class="title-slider-item">Sprite Fight (part 2)</p>
+          </div>
+          <div data-part="3" class="slider-item">
+            <img src="./assets/posters/poster3.webp" alt="" />
+            <p class="title-slider-item">Sprite Fight (part 3)</p>
+          </div>
+          <div data-part="4" class="slider-item">
+            <img src="./assets/posters/poster4.webp" alt="" />
+            <p class="title-slider-item">Sprite Fight (part 4)</p>
+          </div>
+          <div data-part="5" class="slider-item">
+            <img src="./assets/posters/poster5.webp" alt="" />
+            <p class="title-slider-item">Sprite Fight (part 5)</p>
+          </div>
+          <div data-part="6" class="slider-item">
+            <img src="./assets/posters/poster6.webp" alt="" />
+            <p class="title-slider-item">Sprite Fight (part 6)</p>
+          </div>
+        </div>
+      </div>
+      <button class="slider-next btn-slider">&rsaquo;</button>
+    </div>
+
     <ul class="biblioteka-list">
-      <li data-part="1" class="biblioteka__item active">
+      <li data-part="1" data-index="1" class="biblioteka__item active">
         <img src="./assets/posters/poster1.webp" alt="" />
         <p class="item-subtitle">Sprite Fright (part 1)</p>
       </li>
-      <li data-part="2" class="biblioteka__item">
+      <li data-part="2" data-index="2" class="biblioteka__item">
         <img src="./assets/posters/poster2.webp" alt="" />
         <p class="item-subtitle">Sprite Fright (part 2)</p>
       </li>
-      <li data-part="3" class="biblioteka__item">
+      <li data-part="3" data-index="3" class="biblioteka__item">
         <img src="./assets/posters/poster3.webp" alt="" />
         <p class="item-subtitle">Sprite Fright (part 3)</p>
       </li>
-      <li data-part="4" class="biblioteka__item">
+      <li data-part="4" data-index="4" class="biblioteka__item">
         <img src="./assets/posters/poster4.webp" alt="" />
         <p class="item-subtitle">Sprite Fright (part 4)</p>
       </li>
-      <li data-part="5" class="biblioteka__item">
+      <li data-part="5" data-index="5" class="biblioteka__item">
         <img src="./assets/posters/poster5.webp" alt="" />
         <p class="item-subtitle">Sprite Fright (part 5)</p>
       </li>
-      <li data-part="6" class="biblioteka__item">
+      <li data-part="6" data-index="6" class="biblioteka__item">
         <img src="./assets/posters/poster6.webp" alt="" />
         <p class="item-subtitle">Sprite Fright (part 6)</p>
       </li>
