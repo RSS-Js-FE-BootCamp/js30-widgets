@@ -1,0 +1,130 @@
+html, body{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 100vh;
+  font-family:'Courier New', Courier, monospace;
+  font-size: 10px;
+}
+html{
+   background: url("./assets/background.svg");
+   background-size: cover;
+  transition: filter 0.3s, background-color 0.3s;
+  &.night{
+    body{
+      background-color: rgba(2, 1, 43, 0.8);
+    }
+    .clock{
+      border: 2rem solid rgba(252, 218, 184);
+      background-color: rgba(252, 218, 184, 0.1);
+    }
+    .hand{
+      background: #fcdab8;
+    }
+    .date-text{
+      color: #fcdab8;
+    }
+    .theme-button{
+      border: 0.4rem solid rgba(252, 218, 184);
+      background-color: rgba(252, 218, 184, 0.1);
+      box-shadow: 0 0 10rem rgb(252, 218, 184, 0.7);
+      padding: 2rem;
+      color: #fcdab8;
+    }
+    .do-nothing{
+      box-shadow: 0 0 10rem rgb(252, 218, 184, 0.4);
+    }
+  }
+}
+body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clock{
+  width: 40rem;
+  height: 40rem;
+  border-radius: 50%;
+  border: 2rem solid rgb(58, 20, 58);
+  background-color: rgba(252, 218, 184, 0.4);
+  position: relative;
+}
+.hand{
+  width:45%;
+  height: 0.6rem;
+  background: rgb(58, 20, 58);  
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translateY(-50%);
+  transform-origin: 100%;
+  transform: rotate(90deg);
+  transition: all 0.05s;
+  transition-timing-function: cubic-bezier(0.1, 2, 0.5, 1);
+}
+.date-text{
+  position: absolute;
+  top:10rem;
+  font-size: 3rem;
+}
+.theme-button{
+  position: absolute;
+  top: 4rem;
+  left: 4rem;
+  padding: 1rem;
+  width: 10rem;
+  height: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.4rem solid rgb(58, 20, 58);
+  background-color: rgba(255, 119, 0, 0.5);
+  border-radius: 50%;
+  box-shadow: 0 0 10rem rgb(255, 123, 0);
+  color: rgb(58, 20, 58);
+  cursor: pointer;
+}
+.hidden{
+  display: none;
+}
+.do-nothing{
+  position: absolute;
+  bottom: 10rem;
+  font-size: 2rem;
+  padding: 1.5rem 2rem;
+  border-radius: 5rem;
+  text-align: center;
+  color: rgb(252, 218, 184);
+  background-color: rgba(58, 20, 58);
+  font-family:'Courier New', Courier, monospace;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 10rem rgb(255, 123, 0, 0.4);
+}
+.cuckoo{
+  width: 25rem;
+  position: absolute;
+  top: -30rem;
+  right: 20rem;
+  transition: all 1s ease;
+  &.seen{
+    animation: spawnCuckoo 1.6s ease backwards;
+    animation-iteration-count: var(--times);
+  }
+}
+@keyframes spawnCuckoo{
+  0%{
+    opacity: 0;
+    transform: translateY(0) rotate(-50deg);
+  }
+  50%{
+    transform: translateY(300px) rotate(50deg);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0) rotate(-50deg);
+  }
+}
+
