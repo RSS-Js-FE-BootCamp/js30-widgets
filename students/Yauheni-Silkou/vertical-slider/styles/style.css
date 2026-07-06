@@ -200,4 +200,19 @@ body {
   left: 50%;
   top: 30%;
   flex-direction: row;
+  gap: 10px;
+}
+
+.slider-container.horizontal .nav-button {
+  transform: none;
+}
+
+.slider-container.horizontal #down-button {
+  transform: rotate(90deg);
+  border-radius: 4px 4px 0 0;
+}
+
+.slider-container.horizontal #up-button {
+  transform: rotate(90deg);
+  border-radius: 0 0 4px 4px;
 }
