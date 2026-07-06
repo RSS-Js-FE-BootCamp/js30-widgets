@@ -1,0 +1,14 @@
+:root {
+  --bg-primary: white;
+  --bg-dark: #0f172a;
+  --text-dark: #0f172a;
+  --text-light: white;
+
+  --button-nav-bg: #1e293b;
+  --button-nav-hover: #0f172a;
+  --button-nav-text: white;
+
+  --sidebar-width: 35%;
+  --image-track-width: 65%;
+  --transition-speed: 0.5s;
+}

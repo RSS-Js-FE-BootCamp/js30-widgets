@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vertical Slider | by @Yauheni-Silkou</title>
+    <link rel="stylesheet" href="styles/reset.css" />
+    <link rel="stylesheet" href="styles/variables.css" />
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+  <body>
+    <main class="slider-container" id="main-slider">
+      <div class="sidebar-track" id="left-track">
+        <div
+          class="slide-item text-content"
+          style="background-color: #333333"
+          data-contrast="light"
+        >
+          <h2>Git</h2>
+          <p>
+            The ultimate digital time machine and panic-button. It allows
+            developers to break things with absolute confidence, knowing a
+            simple git checkout can instantly erase their questionable life
+            choices.
+          </p>
+        </div>
+        <div
+          class="slide-item text-content"
+          style="background-color: #f16529"
+          data-contrast="light"
+        >
+          <h2>HTML5</h2>
+          <p>
+            The pure, unglamorous skeleton of the internet. It doesn't care
+            about flashy graphics or hype; it just shows up every day to make
+            sure the text actually lands where it is supposed to.
+          </p>
+        </div>
+        <div
+          class="slide-item text-content"
+          style="background-color: #29a8e0"
+          data-contrast="dark"
+        >
+          <h2>CSS3</h2>
+          <p>
+            A beautiful, chaotic art form. It is the only place in physics where
+            centering a single box can feel like a profound, soul-crushing
+            mathematical mystery—yet looks magnificent when it finally works.
+          </p>
+        </div>
+        <div
+          class="slide-item text-content"
+          style="background-color: #8acf17"
+          data-contrast="dark"
+        >
+          <h2>JavaScript</h2>
+          <p>
+            A brilliant, unpredictable force of nature. It single-handedly runs
+            the modern world despite having quirks that make absolute sense to
+            nobody—yet everyone falls in love with its raw power.
+          </p>
+        </div>
+        <div
+          class="slide-item text-content"
+          style="background-color: #cd6799"
+          data-contrast="light"
+        >
+          <h2>Sass</h2>
+          <p>
+            CSS with a much-needed college degree. It brings variables and logic
+            to styling, saving developers from the endless copy-pasting that
+            leads straight to existential dread.
+          </p>
+        </div>
+        <div
+          class="slide-item text-content"
+          style="background-color: #563d7c"
+          data-contrast="light"
+        >
+          <h2>Bootstrap</h2>
+          <p>
+            The ultimate shortcut to looking professional by lunch. It instantly
+            saves developers from the agony of custom responsive grids, ensuring
+            things look great on mobile before anyone panics.
+          </p>
+        </div>
+        <div
+          class="slide-item text-content"
+          style="background-color: #67daf9"
+          data-contrast="dark"
+        >
+          <h2>React</h2>
+          <p>
+            The undisputed king of the component obsession. It convinced the
+            entire tech industry that the secret to happiness is breaking a
+            website down into a million tiny, reusable puzzle pieces.
+          </p>
+        </div>
+        <div
+          class="slide-item text-content"
+          style="background-color: #41b883"
+          data-contrast="dark"
+        >
+          <h2>Vue.js</h2>
+          <p>
+            The friendly neighborhood framework. It refuses to participate in
+            the toxic drama of the framework wars, offering a peaceful, elegant
+            middle ground that just wants to help people build cool things.
+          </p>
+        </div>
+        <div
+          class="slide-item text-content"
+          style="background-color: #dd0031"
+          data-contrast="light"
+        >
+          <h2>Angular</h2>
+          <p>
+            The military general of web development. It forces strict
+            discipline, absolute order, and massive folder structures upon
+            projects, ensuring that chaos is utterly crushed at the door.
+          </p>
+        </div>
+        <div
+          class="slide-item text-content"
+          style="background-color: #80bd01"
+          data-contrast="dark"
+        >
+          <h2>Node.js</h2>
+          <p>
+            The boundary-smashing rebel. It escaped the confines of the browser
+            prison, invaded the server world, and proved once and for all that
+            JavaScript can rule the entire stack.
+          </p>
+        </div>
+      </div>
+
+      <div class="image-track" id="right-track">
+        <div class="slide-item visual-content">
+          <img src="assets/logo-node-js.png" alt="Node.js Logo Frame" />
+        </div>
+        <div class="slide-item visual-content">
+          <img src="assets/logo-angular.png" alt="Angular Logo Frame" />
+        </div>
+        <div class="slide-item visual-content">
+          <img src="assets/logo-vue-js.png" alt="Vue.js Logo Frame" />
+        </div>
+        <div class="slide-item visual-content">
+          <img src="assets/logo-react.png" alt="React Logo Frame" />
+        </div>
+        <div class="slide-item visual-content">
+          <img src="assets/logo-bootstrap.png" alt="Bootstrap Logo Frame" />
+        </div>
+        <div class="slide-item visual-content">
+          <img src="assets/logo-sass.png" alt="Sass Logo Frame" />
+        </div>
+        <div class="slide-item visual-content">
+          <img src="assets/logo-javascript.png" alt="JavaScript Logo Frame" />
+        </div>
+        <div class="slide-item visual-content">
+          <img src="assets/logo-css3.png" alt="CSS3 Logo Frame" />
+        </div>
+        <div class="slide-item visual-content">
+          <img src="assets/logo-html5.png" alt="HTML5 Logo Frame" />
+        </div>
+        <div class="slide-item visual-content">
+          <img src="assets/logo-git.png" alt="Git Logo Frame" />
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <button
+          id="down-button"
+          class="nav-button"
+          type="button"
+          aria-label="Previous Slide"
+        >
+          ↓
+        </button>
+        <button
+          id="up-button"
+          class="nav-button"
+          type="button"
+          aria-label="Next Slide"
+        >
+          ↑
+        </button>
+      </div>
+    </main>
+
+    <script type="module" src="scripts/script.js"></script>
+  </body>
+</html>

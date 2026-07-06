@@ -14,7 +14,7 @@
 
 - [ ] blank
 
-### Widget B
+### Vertical Slider
 
 - **Total Points:** 0 / 65
 
