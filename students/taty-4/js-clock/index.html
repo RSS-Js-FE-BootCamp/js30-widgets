@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Clock</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="wrapper-clock">
+      <div class="clock">
+        <div class="clock-face">
+          <div class="marks-container"></div>
+          <div class="hand hour-hand"></div>
+          <div class="hand min-hand"></div>
+          <div class="hand sec-hand"></div>
+        </div>
+      </div>
+      <div class="wrapper-date">
+        <div class="digital-clock">00:00:00</div>
+        <div class="date-container"></div>
+        <p class="theme-txt">Выберите тему:</p>
+        <div class="themes-container">
+          <button class="btn-theme forest" data-theme="forest"></button>
+          <button class="btn-theme matcha" data-theme="matcha"></button>
+          <button class="btn-theme rose" data-theme="rose"></button>
+          <button class="btn-theme night" data-theme="night"></button>
+          <button class="btn-theme orange" data-theme="orange"></button>
+        </div>
+      </div>
+    </div>
+    <div class="relax-time-block">
+      <p class="relax-time-tx">Время для релакса</p>
+      <div class="relax-time-btn-container">
+        <div class="relax-time-btn">
+          <button class="time-btn" data-time="1">1 мин</button>
+          <button class="time-btn" data-time="2">2 мин</button>
+          <button class="time-btn" data-time="5">5 мин</button>
+        </div>
+        <p class="timer-txt"></p>
+        <button class="play">&#9654; Старт</button>
+      </div>
+    </div>
+    <div class="alarm-block">
+      <p class="alarm-txt">Будильник</p>
+      <div class="alarm-container">
+        <input class="input-time" type="time" />
+        <p class="before-alarm">Будильник не заведен</p>
+        <div class="wrapper-btn-alarm">
+          <button class="btn-snooze-alarm" disabled>Отложить</button>
+          <button class="btn-start-alarm" disabled>Старт</button>
+        </div>
+      </div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>

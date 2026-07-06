@@ -1,0 +1,109 @@
+body,html {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  width: 100vw;
+}
+html{
+  font-size: 10px;
+  transition: filter 0.3s, background-color 0.3s;
+  background: url("./assets/background.jpg") bottom center;
+  background-size: cover;
+
+  &.light{
+    filter: invert(100%); 
+  }
+}
+
+.keys{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  }
+
+.key{
+    text-align: center;
+    width: 10rem;
+    margin: 10px;
+    color: white;
+    background: rgba(0,0,0,0.4);
+    border: 0.4rem solid black;
+    border-radius: 0.5rem;
+    padding: 1rem 0.5rem;
+    text-shadow: 0 0 0.5rem black;
+    transition: all 0.07s ease;
+    box-shadow: 1rem 1rem 10rem 0rem black;
+    overflow: hidden;
+    kbd{
+      font-size: 4rem;
+      display: block;
+    }
+    span{
+      font-size: 1.2rem;
+      color: #ffc600;
+      text-transform: uppercase;
+      letter-spacing: 0.1rem;
+    }
+    &.light{
+    background: rgba(255,255,255,0.4);
+    border: 0.4rem solid white;
+    }
+    .hidden{
+      display: none;
+    }
+    &.playing{
+    border-color: #ffc600;
+    box-shadow: 0 0 1rem #ffc600;
+    transform: scale(1.1);
+  }
+  }
+.theme{
+  position: absolute;
+  width: 10rem;
+  left: 5rem;
+  top: 5rem;
+  svg{
+    width: 5rem;
+  }
+}
+.note{
+  position: absolute;
+  pointer-events: none;
+  font-size: 5rem;
+  z-index: 1;
+  animation: spawnNotes 1s ease forwards;
+  color: #ffc600;
+}
+
+@keyframes spawnNotes {
+  from{
+    opacity: 0;
+    transform: translate(-50%,-50%) translate(0, 0) scale(0.5);
+  }
+  to{
+    opacity: 1;
+    transform: translate(-50%,-50%) translate(var(--offsetX), var(--offsetY)) scale(1.2);
+  }
+}
+
+.ripple{
+  position: absolute;
+  background:rgb(255, 198, 0, 0.5);
+  border-radius: 50%;
+  animation: spawnRipples 1s ease forwards;
+  z-index: 999;
+  width: 10rem;
+  height: 10rem;
+  pointer-events: none;
+}
+@keyframes spawnRipples{
+  from{
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0);
+  }
+  to{
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2.2);
+  }
+}

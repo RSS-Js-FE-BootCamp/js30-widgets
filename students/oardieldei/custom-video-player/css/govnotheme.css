@@ -1,0 +1,79 @@
+.govnotheme {
+	background: linear-gradient(135deg, #7c1599 0%, #921099 48%, #7e4ae8 100%);
+	background-size: cover;
+	min-height: 100vh;
+}
+
+.govnotheme .progress {
+	height: 15px;
+	background-color: rgba(0, 0, 0, 0.5);
+	cursor: ew-resize;
+}
+
+.govnotheme .progress:hover {
+	height: 15px;
+}
+
+.govnotheme .progress__filled {
+	background-color: #ffc600;
+}
+
+.govnotheme .controls__input {
+  height: 10px;
+  border-radius: 2px;
+	background: linear-gradient(
+      to right,
+      #70d456 0%,
+      #70d456 var(--progress),
+      #979797 var(--progress),
+      #979797 100%
+  );
+}
+
+.govnotheme .controls__input::-webkit-slider-runnable-track {
+  height: 5px;
+  border-radius: 999px;
+}
+
+.govnotheme .controls__input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ffc600;
+  margin-top: -5px;
+  transition: .2s;
+}
+
+.govnotheme .controls__input::-webkit-slider-thumb:hover {
+	background: #ffc600;
+}
+
+.govnotheme .playlist__item:hover {
+  border-color: #70d456;
+}
+
+.govnotheme .playlist__item_active,
+.govnotheme .playlist__item_active:hover {
+	border-color: #ffc600;
+}
+
+.govnotheme .new-card:hover .new-card__title {
+  color: #ffc600;
+}
+
+.theme {
+	position: absolute;
+	top: 20px;
+	right: 30px;
+	padding: 20px;
+	font-size: 22px;
+	color: #ffffffa1;
+	text-decoration: underline;
+	transition: .2s;
+}
+
+.theme:hover {
+	cursor: pointer;
+	transform: scale(1.1);
+}

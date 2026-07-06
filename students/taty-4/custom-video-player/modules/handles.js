@@ -24,7 +24,7 @@ const COLOR_BG = "#E0E0E0";
 
 export function initPlayer() {
   video.volume = inputVolume.value;
-  const part = JSON.parse(localStorage.getItem("part")) || 1;
+  const part = 1;
   video.src = `./assets/videos/part${part}.mp4`;
   video.poster = `./assets/posters/poster${part}.webp`;
   titleVideo.textContent = `Sprite Fright (part ${part})`;
@@ -35,8 +35,6 @@ export function initPlayer() {
       poster.classList.remove("active");
     }
   });
-  const lastCurrentTime = JSON.parse(localStorage.getItem("lastPosition")) || 0;
-  video.currentTime = +lastCurrentTime;
   updateTrack();
   printRange(inputVolume);
   printRange(inputSpeed);
@@ -214,7 +212,9 @@ export function resetTimer() {
 
 //   Переключение видео
 export function switchVideo(event) {
-  const item = event.target.closest(".biblioteka__item");
+  const item =
+    event.target.closest(".biblioteka__item") ||
+    event.target.closest(".slider-item");
   if (item) {
     const part = item.dataset.part;
     video.src = `./assets/videos/part${part}.mp4`;
@@ -223,14 +223,20 @@ export function switchVideo(event) {
     track.value = 0;
     video.poster = `./assets/posters/poster${part}.webp`;
     btnPlay.classList.remove("is-pause");
-    posters.forEach((poster) => {
-      console.log("sum");
-      poster.classList.remove("active");
+    const allParts = document.querySelectorAll(`[data-part]`);
+
+    allParts.forEach((part) => {
+      part.classList.remove("active");
     });
-    item.classList.add("active");
+
+    const activeParts = document.querySelectorAll(`[data-part='${part}']`);
+
+    activeParts.forEach((activePart) => {
+      activePart.classList.add("active");
+    });
+
     updateTitleVideo(`Sprite Fright (part ${part})`);
     resetTimer();
-    localStorage.setItem("part", JSON.stringify(part));
     updateTime();
   }
 }

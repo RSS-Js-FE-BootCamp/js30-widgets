@@ -1,0 +1,327 @@
+/* procent_circle */
+
+.procent_circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.procent_circle__circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: conic-gradient(#4caf50 0% 99%, #e0e0e0 99% 100%);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  text-shadow: 2px 2px 3px black;
+}
+
+/* theme */
+
+body[data-theme="dark"] {
+  background-color: #212529;
+  color: #dee2e6;
+}
+
+.theme_button {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 64px;
+  height: 64px;
+
+  border-radius: 16px;
+  border: 1px solid #06c;
+  background-color: #06c;
+  color: white;
+}
+
+.theme_button::after {
+  content: "Dark";
+}
+
+body[data-theme="dark"] .theme_button::after {
+  content: "Light";
+}
+
+.clock__container {
+  padding: 16px 0;
+}
+
+.clock__circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 8px solid #06c;
+  margin: 0 auto;
+
+  position: relative;
+}
+
+.clock__center {
+  --width: 12px;
+
+  position: absolute;
+  top: calc(50% - var(--width) / 2);
+  left: calc(50% - var(--width) / 2);
+
+  width: var(--width);
+  height: var(--width);
+  background-color: #06c;
+  border-radius: 50%;
+}
+
+.clock__seconds_line {
+  --height: 2px;
+
+  position: absolute;
+  top: calc(50% - var(--height) / 2);
+  right: 50%;
+
+  width: 50%;
+  height: var(--height);
+  background-color: red;
+  border-radius: var(--height);
+
+  transform-origin: 100%;
+}
+
+.clock__minutes_line {
+  --height: 6px;
+
+  position: absolute;
+  top: calc(50% - var(--height) / 2);
+  right: 50%;
+
+  width: 40%;
+  height: var(--height);
+  background-color: green;
+  border-radius: var(--height);
+
+  transform-origin: 100%;
+}
+
+.clock__hours_line {
+  --height: 8px;
+
+  position: absolute;
+  top: calc(50% - var(--height) / 2);
+  right: 50%;
+
+  width: 25%;
+  height: var(--height);
+  background-color: orange;
+  border-radius: var(--height);
+
+  transform-origin: 100%;
+}
+
+.datetime_table table {
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+.datetime_table table tr td {
+  border: 1px solid black;
+  text-align: center;
+  padding: 8px;
+}
+
+/* digital_segment_time */
+
+.digital_segment_time {
+  display: flex;
+  justify-content: center;
+  padding: 32px 0;
+  overflow-x: auto;
+}
+
+@media screen and (max-width: 450px) {
+  .digital_segment_time {
+    display: none;
+  }
+}
+
+.digital_segment_time__wrapper {
+  min-width: 430px;
+}
+
+/* seven segment */
+
+.seven_segment__container {
+  position: relative;
+  width: 60px;
+  height: 100px;
+  display: inline-block;
+}
+
+.seven_segment__container [data-segment] {
+  position: absolute;
+  background: var(--segment-off);
+  transition: all 0.3s ease;
+}
+
+.seven_segment__container [data-segment="a"],
+.seven_segment__container [data-segment="d"],
+.seven_segment__container [data-segment="g"] {
+  width: 40px;
+  height: 8px;
+  left: 10px;
+  clip-path: polygon(10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
+}
+
+.seven_segment__container [data-segment="a"] {
+  top: 0;
+}
+.seven_segment__container [data-segment="g"] {
+  top: 46px;
+}
+.seven_segment__container [data-segment="d"] {
+  top: 92px;
+}
+
+.seven_segment__container [data-segment="b"],
+.seven_segment__container [data-segment="c"],
+.seven_segment__container [data-segment="e"],
+.seven_segment__container [data-segment="f"] {
+  width: 8px;
+  height: 40px;
+  clip-path: polygon(0% 10%, 50% 0%, 100% 10%, 100% 90%, 50% 100%, 0% 90%);
+}
+
+.seven_segment__container [data-segment="b"] {
+  top: 5px;
+  right: 2px;
+}
+.seven_segment__container [data-segment="c"] {
+  top: 51px;
+  right: 2px;
+}
+.seven_segment__container [data-segment="e"] {
+  top: 51px;
+  left: 2px;
+}
+.seven_segment__container [data-segment="f"] {
+  top: 5px;
+  left: 2px;
+}
+
+.seven_segment__container [data-segment] {
+  background-color: #eeeeee;
+  transition: all 0.5s ease-in-out;
+}
+
+body[data-theme="dark"] .seven_segment__container [data-segment] {
+  background-color: #1b1f22;
+  transition: all 0.5s ease-in-out;
+}
+
+/* 0 */
+.seven_segment__container[data-symbol='0'] [data-segment='a'],
+.seven_segment__container[data-symbol='0'] [data-segment='b'],
+.seven_segment__container[data-symbol='0'] [data-segment='c'],
+.seven_segment__container[data-symbol='0'] [data-segment='d'],
+.seven_segment__container[data-symbol='0'] [data-segment='e'],
+.seven_segment__container[data-symbol='0'] [data-segment='f'],
+/* 1 */
+.seven_segment__container[data-symbol='1'] [data-segment='b'],
+.seven_segment__container[data-symbol='1'] [data-segment='c'],
+/* 2 */
+.seven_segment__container[data-symbol='2'] [data-segment='a'],
+.seven_segment__container[data-symbol='2'] [data-segment='b'],
+.seven_segment__container[data-symbol='2'] [data-segment='d'],
+.seven_segment__container[data-symbol='2'] [data-segment='e'],
+.seven_segment__container[data-symbol='2'] [data-segment='g'],
+/* 3 */
+.seven_segment__container[data-symbol='3'] [data-segment='a'],
+.seven_segment__container[data-symbol='3'] [data-segment='b'],
+.seven_segment__container[data-symbol='3'] [data-segment='c'],
+.seven_segment__container[data-symbol='3'] [data-segment='d'],
+.seven_segment__container[data-symbol='3'] [data-segment='g'],
+/* 4 */
+.seven_segment__container[data-symbol='4'] [data-segment='b'],
+.seven_segment__container[data-symbol='4'] [data-segment='c'],
+.seven_segment__container[data-symbol='4'] [data-segment='f'],
+.seven_segment__container[data-symbol='4'] [data-segment='g'],
+/* 5 */
+.seven_segment__container[data-symbol='5'] [data-segment='a'],
+.seven_segment__container[data-symbol='5'] [data-segment='c'],
+.seven_segment__container[data-symbol='5'] [data-segment='d'],
+.seven_segment__container[data-symbol='5'] [data-segment='f'],
+.seven_segment__container[data-symbol='5'] [data-segment='g'],
+/* 6 */
+.seven_segment__container[data-symbol='6'] [data-segment='a'],
+.seven_segment__container[data-symbol='6'] [data-segment='c'],
+.seven_segment__container[data-symbol='6'] [data-segment='d'],
+.seven_segment__container[data-symbol='6'] [data-segment='e'],
+.seven_segment__container[data-symbol='6'] [data-segment='f'],
+.seven_segment__container[data-symbol='6'] [data-segment='g'],
+/* 7 */
+.seven_segment__container[data-symbol='7'] [data-segment='a'],
+.seven_segment__container[data-symbol='7'] [data-segment='b'],
+.seven_segment__container[data-symbol='7'] [data-segment='c'],
+/* 8 */
+.seven_segment__container[data-symbol='8'] [data-segment='a'],
+.seven_segment__container[data-symbol='8'] [data-segment='b'],
+.seven_segment__container[data-symbol='8'] [data-segment='c'],
+.seven_segment__container[data-symbol='8'] [data-segment='d'],
+.seven_segment__container[data-symbol='8'] [data-segment='e'],
+.seven_segment__container[data-symbol='8'] [data-segment='f'],
+.seven_segment__container[data-symbol='8'] [data-segment='g'],
+/* 9 */
+.seven_segment__container[data-symbol='9'] [data-segment='a'],
+.seven_segment__container[data-symbol='9'] [data-segment='b'],
+.seven_segment__container[data-symbol='9'] [data-segment='c'],
+.seven_segment__container[data-symbol='9'] [data-segment='d'],
+.seven_segment__container[data-symbol='9'] [data-segment='f'],
+.seven_segment__container[data-symbol='9'] [data-segment='g'] {
+  background-color: red !important;
+}
+
+/* dots */
+
+.segment_dots__container {
+  display: inline-block;
+  position: relative;
+  width: 20px;
+  height: 100px;
+  vertical-align: top;
+}
+
+.segment_dots__container [data-segment] {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: var(--segment-on);
+  border-radius: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow:
+    0 0 10px var(--glow),
+    0 0 20px var(--glow);
+}
+
+.segment_dots__container [data-segment="top"] {
+  top: 30px;
+}
+
+.segment_dots__container [data-segment="bottom"] {
+  top: 60px;
+}
+
+.segment_dots__container [data-segment] {
+  background-color: #1b1f22;
+}
+
+.segment_dots__container[data-is-on="true"] [data-segment] {
+  background-color: red;
+}

@@ -1,0 +1,184 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  user-select: none;
+}
+
+html {
+  font-size: 0.625rem;
+}
+
+body {
+  padding: 0;
+  margin: 0 auto;
+  font-family:
+    "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  background-color: bisque;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5rem;
+  padding: 2rem 0;
+}
+
+h1 {
+  font-size: 8rem;
+  text-align: center;
+  line-height: 1;
+  margin-bottom: 0;
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+}
+
+.score {
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 1rem;
+  line-height: 1;
+  padding: 0 3rem;
+}
+
+.info-txt {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.btn {
+  display: inline-flex;
+  padding: 1rem 3rem;
+  font-family: inherit;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: #156c8f;
+  color: white;
+  border: none;
+  border-radius: 0.8rem;
+  box-shadow: 0 0.4rem #052736;
+  cursor: pointer;
+  transition: all 0.1s;
+  justify-self: center;
+  margin: 0 auto;
+}
+
+.time_left {
+  background-color: rgba(255, 255, 255, 0.4);
+  border: none;
+  border-radius: 1rem;
+  padding: 0 3rem;
+}
+
+.time-left.hurry {
+  color: rgb(226, 15, 15);
+  font-weight: bold;
+  transition: color 0.2s ease;
+}
+
+p {
+  font-size: 2rem;
+  padding: 2rem 0;
+}
+
+.game {
+  display: flex;
+  flex-wrap: wrap;
+  width: 60rem;
+  height: 40rem;
+  margin: 0 auto 0.5rem;
+  cursor:
+    url(./hammer.png) 16 16,
+    auto;
+  border: 0.2rem dashed;
+  align-content: space-around;
+  padding-bottom: 1rem;
+}
+
+.game:active {
+  cursor:
+    url(./hammer.png) 16 16,
+    auto;
+}
+
+.hole {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 1 0 33.33%;
+  position: relative;
+  overflow: hidden;
+}
+
+.dirt {
+  width: 100%;
+  height: 14rem;
+  object-fit: stretch;
+  pointer-events: none;
+  position: relative;
+  z-index: 2;
+  margin-bottom: -1rem;
+}
+
+.mole {
+  background: url(./mole.svg) bottom center no-repeat;
+  background-size: contain;
+  position: absolute;
+  bottom: -20rem;
+  width: 75%;
+  height: 75%;
+  left: 12.5%;
+  transition: all 0.4s;
+  z-index: 1;
+}
+
+.mole.hit {
+  filter: hue-rotate(90deg) invert(1);
+  transform: scale(0.7) rotate(30deg);
+  transition: none;
+  pointer-events: none;
+}
+
+.hole.up .mole {
+  bottom: 2rem;
+}
+
+dialog {
+  font-family: inherit;
+  border: none;
+  padding: 3rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.3);
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+}
+
+.modal-txt {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.modal-btn {
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding: 0.5rem 2rem;
+}
