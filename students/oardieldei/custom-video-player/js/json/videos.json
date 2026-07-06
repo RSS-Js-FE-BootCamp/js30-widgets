@@ -1,0 +1,22 @@
+[
+	{
+		"videoUrl": "./media/videos/The Kiffness x Chai Kichi - Ha Hee (Singing Cat Song).mp4",
+		"previewUrl": "./media/previews/The Kiffness x Chai Kichi - Ha Hee (Singing Cat Song).jpg",
+		"title": "The Kiffness x Chai Kichi - Ha Hee (Singing Cat Song)"
+	},
+	{
+		"videoUrl": "./media/videos/RASPUTIN - Arcane.mp4",
+		"previewUrl": "./media/previews/RASPUTIN - Arcane.jpg",
+		"title": "RASPUTIN - Arcane"
+	},
+	{
+		"videoUrl": "./media/videos/Шаман Кинг - Русская заставка.mp4",
+		"previewUrl": "./media/previews/Шаман Кинг - Русская заставка.jpg",
+		"title": "Шаман Кинг - Русская заставка"
+	},
+	{
+		"videoUrl": "./media/videos/Весь молодежный сленг за 3 минуты.mp4",
+		"previewUrl": "./media/previews/Весь молодежный сленг за 3 минуты.jpg",
+		"title": "Весь молодежный сленг за 3 минуты"
+	}
+]
