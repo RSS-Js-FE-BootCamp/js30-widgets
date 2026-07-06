@@ -60,4 +60,18 @@ leftTrack.addEventListener("transitionend", handleTransitionEnd);
 upButton.addEventListener("click", () => changeSlide("next"));
 downButton.addEventListener("click", () => changeSlide("prev"));
 
+sliderContainer.addEventListener(
+  "wheel",
+  (event) => {
+    event.preventDefault();
+
+    if (event.deltaY > 0) {
+      changeSlide("next");
+    } else {
+      changeSlide("prev");
+    }
+  },
+  { passive: false },
+);
+
 updateSliderPosition(false);
