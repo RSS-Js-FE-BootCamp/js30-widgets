@@ -85,6 +85,8 @@ document.getElementById("save-button").addEventListener("click", () => {
     saturateVal,
     hueVal,
     opacityVal,
+    baseColor,
+    spacingVal,
   } = getCurrentFilterValues();
 
   context.fillStyle = baseColor;
