@@ -1,0 +1,152 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.main {
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.additional_functionality {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.recorded_music_wrapper {
+    display: flex;
+    gap: 10px;
+}
+
+
+.button_funct {
+    font-size: 1rem;
+}
+
+.button_funct:hover {
+    cursor: pointer;
+}
+
+.button_dark {
+    color: white;
+    border: .4rem solid black;
+    background: rgba(0, 0, 0, 0.4);
+    text-shadow: 0 0 0.5rem black;
+}
+
+.button_light {
+    color: black;
+    border: .4rem solid wheat;
+    background: rgba(255, 255, 255, 0.4);
+    text-shadow: 0 0 0.5rem white;
+}
+
+.main_dark {
+    background-image: url(./images/background.jpg);
+}
+
+.main_light {
+    background-image: url(./images/background_light.jpg);
+}
+
+.keys_wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 90vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.drum_key_wrapper {
+    min-width: 120px;
+    height: 100px;
+    border-radius: .5rem;
+    margin: 1rem;
+    font-size: 1.5rem;
+    padding: 1rem .5rem;
+    transition: all .07s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.drum_key_wrapper_light {
+    border: .4rem solid white;
+    background: rgba(255, 255, 255, 0.4);
+    text-shadow: 0 0 0.5rem white;
+}
+
+.drum_key_wrapper_dark {
+    border: .4rem solid black;
+    background: rgba(0, 0, 0, 0.4);
+    text-shadow: 0 0 0.5rem black;
+}
+
+.buttom_dark {
+    border: .4rem solid black;
+    background: rgba(0, 0, 0, 0.4);
+    text-shadow: 0 0 0.5rem black;
+}
+
+.drum_key_wrapper:hover {
+    cursor: pointer;
+}
+
+.drum_key_letter {
+    font-size: 4rem;
+}
+
+.drum_key_letter_dark {
+    color: white;
+}
+
+.drum_key_letter_light {
+    color: black;
+}
+
+.drum_key_text {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+}
+
+.drum_key_text_dark {
+    color: #ffc600;
+}
+
+.drum_key_text_light {
+    color: #0039ff;
+}
+
+
+.playing_dark {
+    transform: scale(1.1);
+    border-color: #ffc600;
+    box-shadow: 0 0 1rem #ffc600;
+}
+
+.playing_light {
+    transform: scale(1.1);
+    border-color: #0037ffde;
+    box-shadow: 0 0 1rem #0037ffde;
+}
+
+@media (max-width: 1800px) {
+    .keys {
+        transform: scale(calc(100vw / 1280));
+        transform-origin: center;
+    }
+
+    .keys_wrapper {
+        flex-wrap: wrap;
+    }
+}

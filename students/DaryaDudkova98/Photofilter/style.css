@@ -12,31 +12,10 @@
   --sepia: 0%;
 }
 
-.wrapper {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-img {
-  padding: var(--spacing);
-  background: var(--base);
-  filter: 
-    blur(var(--blur)) 
-    saturate(var(--saturate))
-    brightness(var(--brightness))
-    contrast(var(--contrast))
-    hue-rotate(var(--hue-rotate))
-    grayscale(var(--grayscale))
-    sepia(var(--sepia));
-  transform: scale(var(--scale)) rotate(var(--rotate));
-  max-width: 800px;
-  max-height: 500px;
-  transition: all 0.1s ease;
-}
-
-.hl {
-  color: var(--base);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -46,17 +25,58 @@ body {
   font-family: 'helvetica neue', sans-serif;
   font-weight: 100;
   font-size: 50px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  overflow-x: hidden;
 }
 
-.controls {
+.app-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 40px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px 0 80px 0;
+  position: relative;
+}
+
+.hl {
+  color: var(--base);
+}
+
+h2 {
+  font-size: 40px;
+  font-weight: 100;
+  margin: 0 0 10px 0;
+  flex-shrink: 0;
+  z-index: 3;
+  position: relative;
+}
+
+/* ===== CONTROLS ===== */
+.controls {
+  width: 100%;
   max-width: 900px;
-  margin: 0 auto 40px;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.05);
+  flex-shrink: 0;
+  padding: 25px;
+  background: rgba(25, 53, 73, 0.95);
   border-radius: 10px;
+  position: relative;
+  z-index: 10;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.controls h3 {
+  font-size: 28px;
+  font-weight: 300;
+  margin: 0 0 10px 0;
+  color: var(--base);
 }
 
 .filter-grid {
@@ -67,6 +87,7 @@ body {
   justify-content: center;
   width: 100%;
   max-width: 700px;
+  margin: 0 auto;
 }
 
 .filter-grid label {
@@ -74,7 +95,7 @@ body {
   font-weight: 300;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.8);
   text-align: right;
   min-width: 80px;
 }
@@ -171,6 +192,61 @@ body {
   transform: scale(0.95);
 }
 
+/* ===== IMAGE WRAPPER ===== */
+.image-wrapper {
+  width: 100%;
+  max-width: 800px;
+  min-height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 10px;
+  padding: 40px;
+  position: relative;
+  z-index: 1;
+  transition: min-height 0.4s ease, padding 0.4s ease, min-width 0.4s ease, margin-top 0.4s ease;
+  overflow: visible;
+  width: auto;
+  min-width: 200px;
+  max-height: none;
+}
+
+.image-wrapper img {
+  width: auto;
+  height: auto;
+  object-fit: none;
+  transform-origin: center center;
+  padding: var(--spacing);
+  background: var(--base);
+  filter: 
+    blur(var(--blur)) 
+    saturate(var(--saturate))
+    brightness(var(--brightness))
+    contrast(var(--contrast))
+    hue-rotate(var(--hue-rotate))
+    grayscale(var(--grayscale))
+    sepia(var(--sepia));
+  transform: scale(var(--scale)) rotate(var(--rotate));
+  transition: all 0.15s ease;
+  display: block;
+  max-width: 100%;
+  max-height: none;
+}
+
+/* ===== ACTION BUTTONS ===== */
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  z-index: 2;
+  position: relative;
+  transition: transform 0.4s ease, margin 0.4s ease;
+  margin-top: 10px;
+  padding-bottom: 20px;
+}
+
 .upload-btn {
   display: inline-block;
   padding: 10px 25px;
@@ -184,7 +260,6 @@ body {
   font-family: 'helvetica neue', sans-serif;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin: 10px 5px;
 }
 
 .upload-btn:hover {
@@ -193,9 +268,8 @@ body {
 }
 
 #download {
-  margin-top: 20px;
-  padding: 15px 40px;
-  font-size: 20px;
+  padding: 10px 25px;
+  font-size: 16px;
   font-family: 'helvetica neue', sans-serif;
   font-weight: 600;
   color: #193549;
@@ -215,4 +289,30 @@ body {
 
 #download:active {
   transform: scale(0.95);
+}
+
+@media (max-width: 768px) {
+  .filter-grid {
+    grid-template-columns: auto 80px 40px;
+    gap: 8px 10px;
+  }
+  
+  .filter-grid label {
+    font-size: 12px;
+    min-width: 60px;
+  }
+  
+  .controls {
+    padding: 15px;
+  }
+  
+  .image-wrapper {
+    padding: 25px;
+    min-height: 200px;
+  }
+  
+  .app-container {
+    gap: 25px;
+    padding: 10px 0 40px 0;
+  }
 }

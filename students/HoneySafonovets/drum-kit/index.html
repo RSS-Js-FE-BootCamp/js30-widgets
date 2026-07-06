@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="icon" type="image/png" sizes="16x16" href="../shared/favicon.ico">
+  <title>Drum Kit</title>
+</head>
+<body class="body">
+  <div class="choose-tools">
+    <div class="choose-tools-item drums choose-tools-item-active" id="drums">DRUMS</div>
+    <div class="choose-tools-item piano" id="piano">PIANO</div>
+  </div>
+  <div class="theme-widget">
+    <img src="../shared/sun.png" alt="Sun" class="theme-widget__item">
+  </div>
+  <main class="drum">
+    <div data-key="65" class="drum__box-item">
+      <kbd>A</kbd>
+      <span data-name="clap">clap</span>
+    </div>
+    <div data-key="83" class="drum__box-item">
+      <kbd>S</kbd>
+      <span data-name="hihat">hihat</span>
+    </div>
+    <div data-key="68" class="drum__box-item">
+      <kbd>D</kbd>
+      <span data-name="kick">kick</span>
+    </div>
+    <div data-key="70" class="drum__box-item">
+      <kbd>F</kbd>
+      <span data-name="openhat">openhat</span>
+    </div>
+    <div data-key="71" class="drum__box-item">
+      <kbd>G</kbd>
+      <span data-name="boom">boom</span>
+    </div>
+    <div data-key="72" class="drum__box-item">
+      <kbd>H</kbd>
+      <span data-name="ride">ride</span>
+    </div>
+    <div data-key="74" class="drum__box-item">
+      <kbd>J</kbd>
+      <span data-name="snare">snare</span>
+    </div>
+    <div data-key="75" class="drum__box-item">
+      <kbd>K</kbd>
+      <span data-name="tom">tom</span>
+    </div>
+    <div data-key="76" class="drum__box-item">
+      <kbd>L</kbd>
+      <span data-name="tink">tink</span>
+    </div>
+  </main>
+  <script src="./main.js"></script>
+</body>
+</html>

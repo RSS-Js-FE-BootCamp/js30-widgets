@@ -1,0 +1,196 @@
+:root {
+	--basic-font: 'Amatic SC', cursive;
+}
+
+.body {
+	background-color: #eed88f;
+	position: relative;
+	overflow: hidden;
+}
+
+.main {
+	margin-top: 30px;
+}
+
+.main__title {
+	font-family: var(--basic-font);
+	font-size: 100px;
+	text-align: center;
+	line-height: 1;
+	margin-bottom: 30px;
+}
+
+.game__button_start {
+	font-family: var(--basic-font);
+	background-color: #fdfdfd;
+	width: fit-content;
+	margin: 0 auto;
+	font-size: 50px;
+	padding: 10px 30px;
+	border-radius: 12px;
+	transition: transform .2s ease, box-shadow .2s ease;
+	box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+	user-select: none;
+	margin-bottom: 40px;
+}
+
+.game__button_start:hover {
+	cursor: pointer;
+	transform: scale(1.1, 1.1);
+	box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+}
+
+.game__button_start:active {
+	transform: scale(.9, .9);
+	box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.main__game {
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.game__holes {
+	width: 100%;
+	height: 400px;
+	display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto 40px;
+	position: relative;
+}
+
+.hole {
+  flex: 1 0 33.33%;
+  overflow: hidden;
+  position: relative;
+}
+
+.hole:after {
+  display: block;
+  background: url('../img/dirt.svg') bottom center no-repeat;
+  background-size: contain;
+  content: '';
+  width: 100%;
+  height:70px;
+  position: absolute;
+  z-index: 2;
+  bottom: -30px;
+}
+
+.mole {
+  background: url('../img/mole.svg') bottom center no-repeat;
+  background-size: 60%;
+  position: absolute;
+  top: 100%;
+  width: 80%;
+	left: 50%;
+	transform: translateX(-50%);
+  height: 80%;
+  transition: top 0.3s ease;
+}
+
+.hole.show-mole .mole {
+  top: 30%;
+}
+
+.hole.killed .mole {
+  background: url('../img/kill.png') center center no-repeat;
+	background-size: contain;
+}
+
+.game__level_up {
+	position: absolute;
+	top: 100px;
+	right: 0;
+	transform: translateX(100%);
+	font-family: var(--basic-font);
+	font-size: 60px;
+}
+
+.game__level_up.hidden_elem {
+	display: none;
+}
+
+.game__score_wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	font-family: var(--basic-font);
+	font-size: 80px;
+}
+
+.score__counter {
+  background: #ffffff46;
+  padding: 16px 24px;
+  line-height: 1;
+  border-radius: 12px;
+}
+
+.particle {
+  position: absolute;
+  width: 10px;
+ 	height: 10px;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: pop 0.6s ease-out forwards;
+}
+
+@keyframes pop {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+	}
+	100% {
+    transform: translate(var(--x), var(--y)) scale(0);
+    opacity: 0;
+  }
+}
+
+.mute__icon {
+	position: absolute;
+	right: 30px;
+	top: 0;
+	max-width: 50px;
+	max-height: 50px;
+}
+
+.mute__icon img {
+	width: 100%;
+}
+
+.mute__icon:hover {
+	cursor: pointer;
+}
+
+.mute__icon.muted::before {
+	content: '';
+	position: absolute;
+	display: block;
+	width: 100%;
+	top: 50%;
+	transform: translateX(-50%);
+	height: 5px;
+	border-radius: 2px;
+	background-color: black;
+	transform: rotate(45deg);
+}
+
+.leaderboard {
+	position: absolute;
+	left: 0;
+	top: 40px;
+	padding: 20px;
+	font-family: var(--basic-font);
+	font-size: 40px;
+}
+
+.lb__title {
+	margin-bottom: 10px;
+}
+
+.lb__list {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
