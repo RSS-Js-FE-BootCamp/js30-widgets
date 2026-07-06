@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Photo Filter</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body>
+    <main class="main">
+      <!-- Filters -->
+      <aside class="filters">
+        <h2 class="filters-title title">Filters</h2>
+        <div class="filters-container">
+          <div class="filter">
+            <label for="grayscale">Grayscale</label>
+            <input
+              id="grayscale"
+              class="filter-input"
+              type="range"
+              name="grayscale"
+              min="0"
+              max="100"
+              value="0"
+              spep="1"
+              data-sizing="%" />
+          </div>
+          <div class="filter">
+            <label for="sepia">Sepia</label>
+            <input
+              id="sepia"
+              class="filter-input"
+              type="range"
+              name="sepia"
+              min="0"
+              max="100"
+              value="0"
+              data-sizing="%" />
+          </div>
+          <div class="filter">
+            <label for="saturate">Saturate</label>
+            <input
+              id="saturate"
+              class="filter-input"
+              type="range"
+              name="saturate"
+              min="0"
+              max="5"
+              value="1"
+              step="1" />
+          </div>
+          <div class="filter">
+            <label for="hue-rotate">Hue Rotate</label>
+            <input
+              id="hue-rotate"
+              class="filter-input"
+              type="range"
+              name="hue-rotate"
+              min="0"
+              max="360"
+              value="0"
+              step="1"
+              data-sizing="deg" />
+          </div>
+          <div class="filter">
+            <label for="invert">Invert</label>
+            <input
+              id="invert"
+              class="filter-input"
+              type="range"
+              name="invert"
+              min="0"
+              max="100"
+              value="0"
+              step="1"
+              data-sizing="%" />
+          </div>
+          <div class="filter">
+            <label for="opacity">Opacity</label>
+            <input
+              id="opacity"
+              class="filter-input"
+              type="range"
+              name="opacity"
+              min="0"
+              max="100"
+              value="100"
+              data-sizing="%" />
+          </div>
+          <div class="filter">
+            <label for="brightness">Brightness</label>
+            <input
+              id="brightness"
+              class="filter-input"
+              type="range"
+              name="brightness"
+              min="0"
+              max="5"
+              value="1"
+              step="1" />
+          </div>
+          <div class="filter">
+            <label for="contrast">Contrast</label>
+            <input
+              id="contrast"
+              class="filter-input"
+              type="range"
+              name="contrast"
+              min="0"
+              max="5"
+              value="1"
+              step="1" />
+          </div>
+          <div class="filter">
+            <label for="blur">Blur</label>
+            <input
+              id="blur"
+              class="filter-input"
+              type="range"
+              name="blur"
+              min="0"
+              max="100"
+              value="0"
+              step="1"
+              data-sizing="px" />
+          </div>
+          <div class="filter">
+            <label for="color">Border color</label>
+            <input
+              id="color"
+              class="filter-input"
+              type="color"
+              name="color"
+              value="#ffffff" />
+          </div>
+          <div class="filter">
+            <label for="spacing">Spacing</label>
+            <input
+              id="spacing"
+              class="filter-input"
+              type="range"
+              name="spacing"
+              min="0"
+              max="100"
+              value="10"
+              data-sizing="px" />
+          </div>
+        </div>
+
+        <button class="button button-reset">Reset</button>
+      </aside>
+
+      <!-- Preview -->
+      <section class="preview">
+        <h2 class="preview-title title">Preview</h2>
+        <img class="preview-image" src="./base-img.webp" alt="Preview image" />
+        <div class="load-block">
+          <label class="button button-upload" for="image-upload">
+            Upload image
+          </label>
+          <input
+            id="image-upload"
+            class="file-input"
+            type="file"
+            accept="image/*" />
+
+          <button class="button button-download" type="button">Download</button>
+        </div>
+      </section>
+
+      <!-- Gallery -->
+      <aside class="gallery">
+        <h2 class="gallery-title title">Gallery</h2>
+        <div class="gallery-container">
+          <div class="gallery-item">
+            <img src="./base-img.webp" alt="" class="gallery-item-img" />
+            <span class="gallery-item-name"></span>
+          </div>
+          <div class="gallery-item">
+            <img src="./base-img.webp" alt="" class="gallery-item-img" />
+            <span class="gallery-item-name"></span>
+          </div>
+          <div class="gallery-item">
+            <img src="./base-img.webp" alt="" class="gallery-item-img" />
+            <span class="gallery-item-name"></span>
+          </div>
+          <div class="gallery-item">
+            <img src="./base-img.webp" alt="" class="gallery-item-img" />
+            <span class="gallery-item-name"></span>
+          </div>
+          <div class="gallery-item">
+            <img src="./base-img.webp" alt="" class="gallery-item-img" />
+            <span class="gallery-item-name"></span>
+          </div>
+          <div class="gallery-item">
+            <img src="./base-img.webp" alt="" class="gallery-item-img" />
+            <span class="gallery-item-name"></span>
+          </div>
+          <div class="gallery-item">
+            <img src="./base-img.webp" alt="" class="gallery-item-img" />
+            <span class="gallery-item-name"></span>
+          </div>
+          <div class="gallery-item">
+            <img src="./base-img.webp" alt="" class="gallery-item-img" />
+            <span class="gallery-item-name"></span>
+          </div>
+          <div class="gallery-item">
+            <img src="./base-img.webp" alt="" class="gallery-item-img" />
+            <span class="gallery-item-name"></span>
+          </div>
+          <div class="gallery-item">
+            <img src="./base-img.webp" alt="" class="gallery-item-img" />
+            <span class="gallery-item-name"></span>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
