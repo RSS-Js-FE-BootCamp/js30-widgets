@@ -75,7 +75,7 @@ btnThemeContainer.addEventListener("click", (event) => {
   const button = event.target.closest(".btn-theme");
   if (!button) return;
 
-  localStorage.setItem("theme", button.dataset.theme);
+  localStorage.setItem("theme-clock-by-taty4", button.dataset.theme);
   document.body.className = button.dataset.theme;
 });
 
@@ -219,7 +219,7 @@ btnSnoozeAlarm.addEventListener("click", () => {
 });
 
 function initClock() {
-  const theme = localStorage.getItem("theme") || "forest";
+  const theme = localStorage.getItem("theme-clock-by-taty4") || "forest";
   document.body.className = theme;
   setDate();
   setTime();

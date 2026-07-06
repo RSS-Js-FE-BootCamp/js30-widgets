@@ -1,0 +1,275 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #0f172a;
+  --text: #f8fafc;
+  --accent: #3b82f6;
+  --track: #64748b;
+
+  --radius: 0.6rem;
+
+  --grayscale: 0;
+  --sepia: 0;
+  --saturate: 1;
+  --hue-rotate: 0;
+  --invert: 0;
+  --opacity: 100;
+  --brightness: 1;
+  --contrast: 1;
+  --blur: 0;
+  --color: #ffffff;
+  --spacing: 0.6rem;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+/* ================= Layout ================= */
+
+.main {
+  max-width: 125rem;
+  margin: 0 auto;
+  padding: 2.2rem;
+  display: grid;
+  grid-template-columns: minmax(10rem, 20rem) minmax(48rem, 58rem) 24rem;
+  justify-content: center;
+  align-items: start;
+  gap: 2.8rem;
+}
+
+/* ================= Titles ================= */
+
+.title {
+  margin-bottom: 2.2rem;
+  font-size: 2.6rem;
+  font-weight: 700;
+}
+
+/* ================= Filters ================= */
+
+.filters {
+  display: flex;
+  flex-direction: column;
+}
+
+.filters-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.filter label {
+  font-size: 1.2rem;
+}
+
+.filter:has(input[type='color']) {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter-input[type='range'] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 0.32rem;
+  background: var(--track);
+  border: none;
+  outline: none;
+}
+
+.filter-input[type='range']::-moz-range-thumb,
+.filter-input[type='range']::-webkit-slider-thumb {
+  width: 1.25rem;
+  height: 1.25rem;
+  border: none;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+}
+
+.filter-input[type='range']::-webkit-slider-thumb {
+  appearance: none;
+}
+
+.filter-input[type='color'] {
+  width: 3.4rem;
+  height: 2.3rem;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+/* ================= Buttons ================= */
+
+.button {
+  padding: 0.9rem 1.7rem;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  transition: 0.2s;
+  text-align: center;
+}
+
+.button:hover {
+  opacity: 0.9;
+}
+
+.button:active {
+  transform: scale(0.98);
+}
+
+.button-reset {
+  margin-top: 2rem;
+  width: 100%;
+}
+
+/* ================= Preview ================= */
+
+.preview {
+  display: flex;
+  flex-direction: column;
+}
+
+.preview-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  filter:
+    grayscale(var(--grayscale))
+    sepia(var(--sepia))
+    saturate(var(--saturate))
+    hue-rotate(var(--hue-rotate))
+    invert(var(--invert))
+    opacity(var(--opacity))
+    brightness(var(--brightness))
+    contrast(var(--contrast))
+    blur(var(--blur));
+  background: var(--color);
+  padding: var(--spacing);
+}
+
+/* ================= Upload Block ================= */
+
+.load-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.6rem;
+}
+
+.file-input {
+  display: none;
+}
+
+/* ================= Gallery ================= */
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.gallery-item {
+  cursor: pointer;
+}
+
+.gallery-item-img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform 0.2s;
+}
+
+.gallery-item:hover .gallery-item-img {
+  transform: scale(1.04);
+}
+
+.gallery-item-name {
+  margin-top: 0.45rem;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+/* ================= Responsive ================= */
+
+@media (max-width: 95rem) {
+  .main {
+    grid-template-columns: minmax(10rem, 18rem) minmax(40rem, 55rem);
+  }
+
+  .gallery {
+    grid-column: 1 / -1;
+  }
+
+  .gallery-container {
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  }
+}
+
+@media (max-width: 57rem) {
+  .main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .filters {
+    width: 100%;
+  }
+
+  .filters-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    gap: 1rem 2.5rem;
+    width: 100%;
+  }
+
+  .button-reset {
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+
+  .load-block {
+    flex-direction: column;
+  }
+
+  .button {
+    width: 100%;
+  }
+}
