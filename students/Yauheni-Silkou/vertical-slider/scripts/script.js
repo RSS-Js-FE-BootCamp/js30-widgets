@@ -5,8 +5,10 @@ const upButton = document.getElementById("up-button");
 const downButton = document.getElementById("down-button");
 
 const realSlidesCount = leftTrack.children.length;
+const orientationButton = document.getElementById("orientation-toggle");
 let currentIndex = 1;
 let isTransitioning = false;
+let isHorizontal = false;
 
 function setupInfiniteTracks() {
   const firstLeftClone = leftTrack.firstElementChild.cloneNode(true);
@@ -27,8 +29,13 @@ function updateSliderPosition(animate = true) {
   leftTrack.style.transition = transitionStyle;
   rightTrack.style.transition = transitionStyle;
 
-  leftTrack.style.transform = `translateY(-${currentIndex * 100}vh)`;
-  rightTrack.style.transform = `translateY(-${(realSlidesCount - currentIndex + 1) * 100}vh)`;
+  if (!isHorizontal) {
+    leftTrack.style.transform = `translateY(-${currentIndex * 100}vh)`;
+    rightTrack.style.transform = `translateY(-${(realSlidesCount - currentIndex + 1) * 100}vh)`;
+  } else {
+    leftTrack.style.transform = `translateX(-${currentIndex * 100}vw)`;
+    rightTrack.style.transform = `translateX(-${(realSlidesCount - currentIndex + 1) * 100}vw)`;
+  }
 }
 
 function changeSlide(direction) {
@@ -60,6 +67,8 @@ leftTrack.addEventListener("transitionend", handleTransitionEnd);
 upButton.addEventListener("click", () => changeSlide("next"));
 downButton.addEventListener("click", () => changeSlide("prev"));
 
+// Optional improvements
+
 sliderContainer.addEventListener(
   "wheel",
   (event) => {
@@ -73,5 +82,13 @@ sliderContainer.addEventListener(
   },
   { passive: false },
 );
+
+orientationButton.addEventListener("click", () => {
+  isHorizontal = !isHorizontal;
+  sliderContainer.classList.toggle("horizontal", isHorizontal);
+  updateSliderPosition(false);
+});
+
+// Initialization Checks
 
 updateSliderPosition(false);
