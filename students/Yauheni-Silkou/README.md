@@ -8,7 +8,7 @@
 
 ## Complete Checklist
 
-### Widget A
+### Photofilter
 
 - **Total Points:** 0 / 65
 
