@@ -1,0 +1,287 @@
+/*=========================reset===========================*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #1e1e1e;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.3s, color 0.3s;
+}
+
+.container {
+    text-align: center;
+    max-width: 900px;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 2px;
+}
+
+p {
+    font-size: 1.2rem;
+    color: #aaa;
+    margin-bottom: 2rem;
+}
+
+/*=================================KEYS========================================================*/
+.keys {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.keys-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.key {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    background: #2a2a2a;
+    border: 3px solid #555;
+    border-radius: 10px;
+    font-size: 1.8rem;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    user-select: none;
+}
+
+.key kbd {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #f1c40f;
+}
+
+.key .sound {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: #888;
+    letter-spacing: 1px;
+    margin-top: 4px;
+}
+
+.key.playing {
+    transform: scale(1.2);
+    border-color: #f1c40f;
+    box-shadow: 0 0 30px rgba(241, 196, 15, 0.6);
+    background: #3a3a3a;
+}
+
+.current-note {
+    margin-top: 2.5rem;
+    font-size: 1.8rem;
+    color: #f1c40f;
+    background: #2a2a2a;
+    padding: 15px 30px;
+    border-radius: 40px;
+    display: inline-block;
+    border: 2px solid #555;
+    min-width: 200px;
+    transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+
+/*=========================DARK/LIGHT_BUTTON===========================*/
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 30px;
+    background: #444;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+    z-index: 10;
+}
+
+.theme-toggle:hover {
+    background: #666;
+}
+
+/*=================================MELODY_BUTTON===================================*/
+.play-melody {
+    margin-top: 20px;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 40px;
+    background: #f1c40f;
+    color: #1e1e1e;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    font-weight: bold;
+}
+
+.play-melody:hover {
+    background: #f39c12;
+    transform: scale(1.05);
+}
+
+.play-melody:active {
+    transform: scale(0.95);
+}
+
+.play-melody:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.floating-note {
+    position: fixed;
+    font-size: 2.5rem;
+    pointer-events: none;
+    z-index: 999;
+    animation: floatUp 1.2s ease-out forwards;
+    opacity: 1;
+}
+
+@keyframes floatUp {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(0.5) rotate(0deg);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-250px) scale(1.2) rotate(30deg);
+    }
+}
+
+body.light-theme {
+    background: #f5f5f5;
+    color: #222;
+}
+
+body.light-theme .key {
+    background: #ddd;
+    border-color: #aaa;
+}
+
+body.light-theme .key kbd {
+    color: #c0392b;
+}
+
+body.light-theme .key .sound {
+    color: #555;
+}
+
+body.light-theme .key.playing {
+    background: #f1c40f;
+    border-color: #f39c12;
+}
+
+body.light-theme .current-note {
+    background: #eee;
+    color: #c0392b;
+    border-color: #aaa;
+}
+
+body.light-theme .theme-toggle {
+    background: #ccc;
+    color: #222;
+}
+
+body.light-theme .theme-toggle:hover {
+    background: #bbb;
+}
+
+body.light-theme .play-melody {
+    background: #e67e22;
+    color: #fff;
+}
+
+body.light-theme .play-melody:hover {
+    background: #d35400;
+}
+
+.instrument-panel {
+    margin: 20px 0 30px;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.instrument-btn {
+    padding: 10px 24px;
+    border: 2px solid #555;
+    border-radius: 40px;
+    background: transparent;
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+
+.instrument-btn:hover {
+    background: #3a3a3a;
+    border-color: #f1c40f;
+}
+
+.instrument-btn.active {
+    background: #f1c40f;
+    color: #1e1e1e;
+    border-color: #f1c40f;
+    font-weight: bold;
+}
+
+body.light-theme .instrument-btn {
+    color: #222;
+    border-color: #aaa;
+}
+
+body.light-theme .instrument-btn:hover {
+    background: #ddd;
+}
+
+body.light-theme .instrument-btn.active {
+    background: #e67e22;
+    border-color: #e67e22;
+    color: #fff;
+}
+
+/*================================ADAPTIVE===============================*/
+@media (max-width: 600px) {
+    .key {
+        width: 60px;
+        height: 60px;
+        font-size: 1.2rem;
+    }
+
+    .key kbd {
+        font-size: 1.5rem;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    .theme-toggle {
+        top: 10px;
+        right: 10px;
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+}

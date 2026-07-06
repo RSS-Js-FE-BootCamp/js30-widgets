@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drum Kit</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="icon" type="image/png" href="./image/drum-icon.png">
+</head>
+
+<body>
+  <main class="main">
+    <section class="hero">
+      <header class="header">
+        <button class="header__btn header__btn--theme">
+          <img src="./image/theme-icon.png" alt="Смена темы" class="header__btn-icon">
+        </button>
+        <button class="header__btn header__btn--instruments">
+          <img src="./image/piano.png" alt="Смена инструментов" class="header__btn-icon">
+        </button>
+      </header>
+      <ul class="keys__list list-reset">
+        <li data-key="65" class="keys__item">
+          <kbd class="keys__kbd">A</kbd>
+          <span class="keys__subtitle">
+            clap
+          </span>
+        </li>
+        <li data-key="83" class="keys__item">
+          <kbd class="keys__kbd">S</kbd>
+          <span class="keys__subtitle">
+            hihat
+          </span>
+        </li>
+        <li data-key="68" class="keys__item">
+          <kbd class="keys__kbd">D</kbd>
+          <span class="keys__subtitle">
+            kick
+          </span>
+        </li>
+        <li data-key="70" class="keys__item">
+          <kbd class="keys__kbd">F</kbd>
+          <span class="keys__subtitle">
+            openhat
+          </span>
+        </li>
+        <li data-key="71" class="keys__item">
+          <kbd class="keys__kbd">G</kbd>
+          <span class="keys__subtitle">
+            boom
+          </span>
+        </li>
+        <li data-key="72" class="keys__item">
+          <kbd class="keys__kbd">H</kbd>
+          <span class="keys__subtitle">
+            ride
+          </span>
+        </li>
+        <li data-key="74" class="keys__item">
+          <kbd class="keys__kbd">J</kbd>
+          <span class="keys__subtitle">
+            snare
+          </span>
+        </li>
+        <li data-key="75" class="keys__item">
+          <kbd class="keys__kbd">K</kbd>
+          <span class="keys__subtitle">
+            tom
+          </span>
+        </li>
+        <li data-key="76" class="keys__item">
+          <kbd class="keys__kbd">L</kbd>
+          <span class="keys__subtitle">
+            tink
+          </span>
+        </li>
+      </ul>
+      <audio data-key="65" src="./audio/clap.wav"></audio>
+      <audio data-key="83" src="./audio/hihat.wav"></audio>
+      <audio data-key="68" src="./audio/kick.wav"></audio>
+      <audio data-key="70" src="./audio/openhat.wav"></audio>
+      <audio data-key="71" src="./audio/boom.wav"></audio>
+      <audio data-key="72" src="./audio/ride.wav"></audio>
+      <audio data-key="74" src="./audio/snare.wav"></audio>
+      <audio data-key="75" src="./audio/tom.wav"></audio>
+      <audio data-key="76" src="./audio/tink.wav"></audio>
+    </section>
+  </main>
+  <script src="./script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clock</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <section class="clock">
+    <div class="clock__wrapper">
+      <div class="clock__face">
+        <div class="clock__hand clock__hand--hour"></div>
+        <div class="clock__hand clock__hand--minute"></div>
+        <div class="clock__hand clock__hand--second"></div>
+        <div class="clock__pin"></div>
+      </div>
+    </div>
+    <div class="clock__digital-wrapper"></div>
+    <div class="clock__controls">
+      <button class="controls__btn controls__btn--theme">
+        <img src="./image/theme-icon.png" alt="Смена темы" class="controls__btn-icon">
+      </button>
+      <button class="controls__btn controls__btn--sidebar">
+        <img src="./image/clocks.png" alt="Мировые часы" class="controls__btn-icon">
+      </button>
+    </div>
+    <div class="clock__sidebar sidebar">
+      <div class="sidebar__wrapper">
+        <header class="sidebar__header">
+          <h2 class="sidebar__title">
+            Мировые часы
+          </h2>
+        </header>
+        <ul class="sidebar__list list-reset">
+          <li class="sidebar__item" data-timezone="Europe/London">
+            <h3 class="sidebar__item-title">Лондон</h3>
+            <div class="sidebar__item-clock">Понедельник, 06.07.2026</div>
+          </li>
+          <li class="sidebar__item" data-timezone="America/New_York">
+            <h3 class="sidebar__item-title">Нью-Йорк</h3>
+            <div class="sidebar__item-clock">Понедельник, 06.07.2026</div>
+          </li>
+          <li class="sidebar__item" data-timezone="Asia/Tokyo">
+            <h3 class="sidebar__item-title">Токио</h3>
+            <div class="sidebar__item-clock">Понедельник, 06.07.2026</div>
+          </li>
+        </ul>
+        <button class="sidebar__btn--close">&times;</button>
+      </div>
+    </div>
+  </section>
+  <script src="./script.js"></script>
+</body>
+
+</html>
