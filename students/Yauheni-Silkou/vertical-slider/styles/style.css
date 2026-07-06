@@ -53,10 +53,12 @@ body {
 .sidebar-track {
   width: var(--sidebar-width);
   z-index: 10;
+  transform: translateY(-100vh);
 }
 
 .image-track {
   width: var(--image-track-width);
+  transform: translateY(-1000vh);
 }
 
 .slide-item {
