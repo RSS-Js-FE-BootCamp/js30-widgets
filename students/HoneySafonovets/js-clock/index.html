@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="icon" type="image/png" sizes="16x16" href="../shared/favicon.ico">
+  <title>JS-clock</title>
+</head>
+<body class="body">
+  <main class="js-clock">
+    <h1 class="title">JS clock</h1>
+    <div class="clock-wrapper">
+      <div class="world-time">
+        <div class="London-wrapper">London: <span class="London"></span></div>
+        <div class="New-York-wrapper">New-York: <span class="New-York"></span></div>
+      </div>
+      <div class="clock">
+        <div class="arrow hour-arrow"></div>
+        <div class="arrow min-arrow"></div>
+        <div class="arrow second-arrow"></div>
+        <div class="dot"></div>
+        <div class="num number-12">12</div>
+        <div class="num number-3">3</div>
+        <div class="num number-6">6</div>
+        <div class="num number-9">9</div>
+      </div>
+    </div>
+    <div class="digital-time"></div>
+    <div class="controls">
+      <div class="btn" id="btn-mute">Unmute</div>
+      <div class="theme" id="theme">Change theme</div>
+    </div>
+  </main>
+  <script src="./main.js"></script>
+</body>
+</html>

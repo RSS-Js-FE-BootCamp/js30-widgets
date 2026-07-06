@@ -1,0 +1,11 @@
+.body {
+	font-family: "Segoe UI", Arial, sans-serif;
+	background: #111827;
+}
+
+.full_wrapper {
+	max-width: 1280px;
+	margin: 0 auto;
+	padding: 40px 20px;
+	position: relative;
+}
