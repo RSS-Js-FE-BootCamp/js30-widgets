@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update Css Variables with JS</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <h1>Update Css Variables with <span class="text-highlight">Js</span></h1>
+    <div class="controls">
+      <label for="spacing">Spacing:</label>
+      <input
+        type="range"
+        name="spacing"
+        id="spacing"
+        min="0"
+        max="100"
+        value="10"
+        data-sizing="px"
+      />
+      <label for="blur">Blur:</label>
+      <input
+        type="range"
+        name="blur"
+        id="blur"
+        min="0"
+        max="10"
+        value="0"
+        data-sizing="px"
+      />
+      <label for="brightness">Brightness:</label>
+      <input
+        type="range"
+        name="brightness"
+        id="brightness"
+        min="0"
+        max="200"
+        value="100"
+        data-sizing="%"
+      />
+      <label for="saturate">Saturate:</label>
+      <input
+        type="range"
+        name="saturate"
+        id="saturate"
+        min="0"
+        max="200"
+        value="100"
+        data-sizing="%"
+      />
+      <label for="base">Base color:</label>
+      <input type="color" name="base" id="base" value="#9fcfb2" />
+    </div>
+    <img class="main-img" src="./cat.jpg" alt="Cat" />
+    <div class="presets-gallery">
+      <button
+        class="preset-item"
+        data-spacing="15"
+        data-blur="0"
+        data-brightness="130"
+        data-saturate="150"
+        data-base="#ffe59e"
+      >
+        <img src="./cat.jpg" alt="Sunny preset" />
+        <span>Sunny</span>
+      </button>
+
+      <button
+        class="preset-item"
+        data-spacing="10"
+        data-blur="3"
+        data-brightness="90"
+        data-saturate="60"
+        data-base="#707c8a"
+      >
+        <img src="./cat.jpg" alt="Foggy preset" />
+        <span>Foggy</span>
+      </button>
+
+      <button
+        class="preset-item"
+        data-spacing="25"
+        data-blur="0"
+        data-brightness="110"
+        data-saturate="20"
+        data-base="#b0b7bd"
+      >
+        <img src="./cat.jpg" alt="Noir preset" />
+        <span>Noir</span>
+      </button>
+
+      <button
+        class="preset-item"
+        data-spacing="12"
+        data-blur="0"
+        data-brightness="105"
+        data-saturate="110"
+        data-base="#c7cd83"
+      >
+        <img src="./cat.jpg" alt="Mint preset" />
+        <span>Mint</span>
+      </button>
+    </div>
+    <div class="btn-container">
+      <button class="btn btn-reset">Reset All</button>
+      <label for="btn-upload" class="btn btn-upload-label">Upload Photo</label>
+      <input
+        type="file"
+        name="btn-upload"
+        id="btn-upload"
+        class="btn-upload"
+        accept="image/*"
+        style="display: none"
+      />
+      <button class="btn btn-save">Save Image</button>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
