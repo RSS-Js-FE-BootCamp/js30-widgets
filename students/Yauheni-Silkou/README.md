@@ -11,7 +11,7 @@
 
 - **Pull Request Link:** [https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/126]
 
-- **Student cards:** [Netlify Main Gallery](https://netlify.app)
+- **Student cards:** [Netlify Main Gallery](https://deploy-preview-126--js-30-widget-gallery.netlify.app/)
 - **Photofilter:** [Live Photofilter](https://deploy-preview-126--js-30-widget-gallery.netlify.app/students/yauheni-silkou/photofilter/)
 - **Vertical Slider:** [Live Vertical Slider](https://deploy-preview-126--js-30-widget-gallery.netlify.app/students/yauheni-silkou/vertical-slider/)
 
