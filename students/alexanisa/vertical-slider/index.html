@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="shortcut icon" href="./img/icon.png" type="image/x-icon">
+    <title>Vertical Slider</title>
+</head>
+<body>
+    <div class="slider">
+        <h1 class="vertical-slider"></h1>
+        <div class="hint">
+            <span>&#8661;</span>
+            <p>Swipe or scroll</p>
+        </div>
+        <div class="slider__left">
+            <div class="slide-text active" data-bg="#2F435A" data-title-color="#E6C27A" data-text-color="#E9B1A3">
+                <h2>Road to Adventure</h2>
+                <p>A path stretching beyond the horizon, full of discoveries</p>
+            </div>
+
+            <div class="slide-text" data-bg="#2E4A35" data-title-color="#A8D5BA" data-text-color="#D4E9D6">
+                <h2>Mystic Forest</h2>
+                <p>Tall trees wrapped in morning mist</p>
+            </div>
+
+            <div class="slide-text" data-bg="#4A3A5A" data-title-color="#F4A261" data-text-color="#E9C9B0">
+                <h2>Ocean Sunset</h2>
+                <p>Golden waves meeting the evening sky</p>
+            </div>
+
+            <div class="slide-text" data-bg="#1E3A5F" data-title-color="#7EC8E3" data-text-color="#B5D8EB">
+                <h2>Endless Horizon</h2>
+                <p>Where the ocean meets the sky</p>
+            </div>
+
+            <div class="slide-text" data-bg="#1A1A2E" data-title-color="#F9D77E" data-text-color="#D4C5A9">
+                <h2>Starry Night</h2>
+                <p>A tent under the vast starry sky</p>
+            </div>
+        </div>
+        <div class="slider__right">
+            <div class="slide-image active">
+                <img src="./img/doroga_asfalt_razmetka_130996_1280x800.jpg" alt="Road with markings stretching into the distance">
+            </div>
+            <div class="slide-image">
+                <img src="./img/les_tuman_derevia_140541_1280x800.jpg" alt="Misty forest with tall trees">
+            </div>
+            <div class="slide-image">
+                <img src="./img/more_okean_zakat_1343063_1280x800.jpg" alt="Sunset over the ocean with waves">
+            </div>
+            <div class="slide-image">
+                <img src="./img/okean_gorizont_zakat_135214_1280x800.jpg" alt="Ocean horizon at sunset">
+            </div>
+            <div class="slide-image">
+                <img src="./img/palatka_zvezdnoe_nebo_noch_119523_1280x800.jpg" alt="Tent under a starry night sky">
+            </div>
+        </div>
+    </div>
+    <div class="controls">
+        <button class="btn-up">
+            <span class="icon-up">&#8593;</span>
+            <span class="icon-left">&#8592;</span>
+        </button>
+        <button class="btn-down">
+            <span class="icon-down">&#8595;</span>
+            <span class="icon-right">&#8594;</span>
+        </button>
+        <button class="btn-play">&#9654;</button>
+        <button class="btn-orient">
+            <span class="icon-vert">&#8661;</span>
+            <span class="icon-horiz">&#8660;</span>
+        </button>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>

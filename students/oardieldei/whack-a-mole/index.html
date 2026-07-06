@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+	<title>Whack-a-mole!</title>
+	<link rel="stylesheet" href="./css/clean.css">
+	<link rel="stylesheet" href="./css/full.css">
+</head>
+
+<body class="body">
+	<div class="leaderboard">
+		<p class="lb__title">Leaderboard:</p>
+		<ul class="lb__list">
+			<li class="lb__item"></li>
+			<li class="lb__item"></li>
+			<li class="lb__item"></li>
+			<li class="lb__item"></li>
+			<li class="lb__item"></li>
+		</ul>
+	</div>
+	<main class="main">
+		<h1 class="main__title">Whack-a-mole!</h1>
+		<section class="main__game">
+			<div class="game__button_start">Start</div>
+			<div class="game__holes">
+				<div class="hole hole1">
+					<div class="mole"></div>
+				</div>
+				<div class="hole hole2">
+					<div class="mole"></div>
+				</div>
+				<div class="hole hole3">
+					<div class="mole"></div>
+				</div>
+				<div class="hole hole4">
+					<div class="mole"></div>
+				</div>
+				<div class="hole hole5">
+					<div class="mole"></div>
+				</div>
+				<div class="hole hole6">
+					<div class="mole"></div>
+				</div>
+				<div class="game__level_up hidden_elem">Level Up!</div>
+			</div>
+			<div class="game__score_wrapper">
+				<span class="score__text">Score: </span><span class="score__counter">0</span>
+			</div>
+		</section>
+	</main>
+	<div class="mute__icon"><img src="./img/volume.png" alt=""></div>
+	<script type="module" src="./js/main.js"></script>
+</body>
+
+</html>
