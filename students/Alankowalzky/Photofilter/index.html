@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Photofilter – Update CSS Variables with JS</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h2>Photo<span class="hl">filter</span></h2>
+    <p class="subtitle">Update CSS Variables with JS</p>
+  </header>
+
+  <main class="workspace">
+    <section class="image-panel" id="drop-zone">
+      <div class="drop-overlay">
+        <span class="drop-icon">⬇</span>
+        <p>Drop an image here to replace the photo</p>
+      </div>
+      <img
+        id="main-image"
+        src="https://picsum.photos/seed/photofilter-a/900/600"
+        crossorigin="anonymous"
+        alt="Photo to filter"
+      />
+    </section>
+
+    <aside class="controls-panel">
+
+      <section class="upload-section">
+        <label class="upload-btn" for="file-input">Upload image
+          <input id="file-input" type="file" accept="image/*" />
+        </label>
+        <p class="upload-hint">Drag and drop an image onto the photo.</p>
+      </section>
+
+      <section class="sliders-section">
+        <h3 class="section-title">CSS Filters</h3>
+        <div class="controls" id="sliders-container"></div>
+      </section>
+
+      <section class="presets-section">
+        <h3 class="section-title">Presets</h3>
+        <div class="presets-row" id="presets-container"></div>
+      </section>
+
+    </aside>
+  </main>
+
+  <footer class="action-bar">
+    <div class="action-bar-left">
+      <button class="action-btn btn-reset" id="btn-reset">↺ Reset</button>
+      <button class="action-btn btn-save" id="btn-save">⬇ Save PNG</button>
+    </div>
+    <div class="action-bar-right">
+      <code class="css-output" id="css-output"></code>
+      <button class="action-btn btn-copy" id="btn-copy">Copy CSS</button>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
