@@ -1,8 +1,9 @@
 JS30 Widgets | MaxPalianski
 
 ### 🔗 Links
-* **Pull Request:**[https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/33](https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/33)
-* **Deploy Preview:**[https://deploy-preview-33--js-30-widget-gallery.netlify.app/students/maxpalianski/js-clock/]
+* **Pull Request:**[https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/118](https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/118)
+* **Deploy Preview JS Clock:**[https://deploy-preview-33--js-30-widget-gallery.netlify.app/students/maxpalianski/js-clock/]
+* **Deploy Preview Drum-Kit:**[https://js-30-widget-gallery.netlify.app/students/maxpalianski/drum-kit/]
 
 ## 🕑 Widget 1: JS Clock
 ### 📝 Описание
