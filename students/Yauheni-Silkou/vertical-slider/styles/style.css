@@ -41,6 +41,10 @@ body {
   width: 100vw;
   height: 100vh;
   display: flex;
+
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .sidebar-track,
@@ -115,6 +119,8 @@ body {
   width: 80%;
   height: auto;
   object-fit: contain;
+  pointer-events: none;
+  -webkit-user-drag: none;
 }
 
 .action-buttons {

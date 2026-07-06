@@ -89,6 +89,50 @@ orientationButton.addEventListener("click", () => {
   updateSliderPosition(false);
 });
 
-// Initialization Checks
-
 updateSliderPosition(false);
+
+let startX = 0;
+let startY = 0;
+let isDragging = false;
+
+sliderContainer.addEventListener("pointerdown", (event) => {
+  if (event.target.closest(".nav-button") || event.target.closest(".button"))
+    return;
+
+  isDragging = true;
+  startX = event.clientX;
+  startY = event.clientY;
+
+  sliderContainer.setPointerCapture(event.pointerId);
+});
+
+sliderContainer.addEventListener("pointermove", (event) => {
+  if (!isDragging) return;
+});
+
+sliderContainer.addEventListener("pointerup", (event) => {
+  if (!isDragging) return;
+  isDragging = false;
+  sliderContainer.releasePointerCapture(event.pointerId);
+
+  const deltaX = event.clientX - startX;
+  const deltaY = event.clientY - startY;
+  const swipeThreshold = 50;
+  if (!isHorizontal) {
+    if (Math.abs(deltaY) > swipeThreshold) {
+      if (deltaY > 0) {
+        changeSlide("prev");
+      } else {
+        changeSlide("next");
+      }
+    }
+  } else {
+    if (Math.abs(deltaX) > swipeThreshold) {
+      if (deltaX > 0) {
+        changeSlide("prev");
+      } else {
+        changeSlide("next");
+      }
+    }
+  }
+});
