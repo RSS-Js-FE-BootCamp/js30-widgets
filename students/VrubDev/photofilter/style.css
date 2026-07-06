@@ -1,0 +1,122 @@
+:root {
+  --base: #9fcfb2;
+  --spacing: 10px;
+  --blur: 0px;
+  --brightness: 100%;
+  --saturate: 100%;
+}
+
+body {
+  text-align: center;
+  background-color: #2e303d;
+  color: #f2e9dc;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+h1 {
+  font-size: 48px;
+}
+
+.text-highlight {
+  color: var(--base);
+}
+
+input[type="range"] {
+  accent-color: var(--base);
+}
+
+.main-img {
+  width: 600px;
+  height: 400px;
+  margin-top: 30px;
+  padding: var(--spacing);
+  background: var(--base);
+  filter: blur(var(--blur)) brightness(var(--brightness))
+    saturate(var(--saturate));
+}
+
+.presets-gallery {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.preset-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.preset-item span {
+  font-size: 13px;
+  font-weight: 600;
+  color: #f2e9dc;
+  margin-top: 8px;
+  letter-spacing: 0.5px;
+}
+
+.preset-item img {
+  width: 100px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.preset-item[data-blur="3"] img {
+  filter: blur(3px) brightness(90%) saturate(60%);
+}
+.preset-item[data-brightness="130"] img {
+  filter: brightness(130%) saturate(150%);
+}
+.preset-item[data-saturate="20"] img {
+  filter: brightness(110%) saturate(20%);
+}
+.preset-item[data-base="#9fcfb2"] img {
+  filter: brightness(105%) saturate(110%);
+}
+
+.preset-item:hover {
+  border-color: #9fcfb2;
+  transform: translateY(-3px);
+}
+
+.btn-container {
+  margin-top: 40px;
+  margin-bottom: 30px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.btn,
+.btn-upload-label {
+  background-color: #f2e9dc;
+  color: #2e303d;
+  border: 1px solid #e2e4e9;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.btn:hover,
+.btn-upload-label:hover {
+  background-color: var(--base);
+  color: #ffffff;
+  border-color: var(--base);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(159, 207, 178, 0.3);
+}

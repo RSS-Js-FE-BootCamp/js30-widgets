@@ -1,0 +1,107 @@
+html {
+    --bg-color: #222;
+    --text-color: #fff;
+    --border-color: #000;
+    --accent-color: #ffc600;
+    background-color: var(--bg-color);
+    font-size: 10px;
+    text-align: center;
+}
+
+html[data-theme="light"] {
+    --bg-color: #eee;
+    --text-color: #222;
+    --border-color: #fff;
+    --accent-color: #a67c00;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.keys {
+    display: flex;
+    flex: 1 1 0%;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.key {
+    width: 10rem;
+    padding: 1rem .5rem;
+    background: color-mix(in srgb, var(--border-color) 40%, transparent);
+    margin: 1rem;
+    border: .4rem solid var(--border-color);
+    border-radius: .5rem;
+    color: var(--text-color);
+    transition: all .07s ease;
+    position: relative;
+}
+
+kbd {
+    display: block;
+    font-size: 4rem;
+}
+
+.sound {
+    font-size: 1.2rem;
+    letter-spacing: .1rem;
+    text-transform: uppercase;
+    color: var(--accent-color);
+}
+
+.playing {
+    transform: scale(1.1);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 1rem var(--accent-color);
+}
+
+.note {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--accent-color);
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    pointer-events: none;
+    animation: floatUp 0.8s ease-out forwards;
+}
+
+@keyframes floatUp {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -60px);
+    }
+}
+
+.lightShow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    font-size: 2.4rem;
+    background: color-mix(in srgb, var(--border-color) 40%, transparent);
+    border: none;
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
+    cursor: pointer;
+    z-index: 10; 
+}
