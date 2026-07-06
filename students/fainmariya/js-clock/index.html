@@ -1,49 +1,39 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Clock</title>
-    <link rel="icon" type="image/png" href="./assets/icon/favicon.png">
-    <link rel="stylesheet" href="./style.css">
-</head>
-<body>
-    
+    <link rel="icon" type="image/png" href="./assets/icon/favicon.png" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
     <div class="clock__app">
-        <section class="analog__clock">
-            <div class="clock-face">
-                <div class="second__trail"></div>
-                <div class="number number--12">XII</div>
-                <div class="number number--3">III</div>
-                <div class="number number--6">VI</div>
-                <div class="number number--9">IX</div>
-                <div class="hour__hand">
+      <section class="analog__clock">
+        <div class="clock-face">
+          <div class="second__trail"></div>
+          <div class="number number--12">XII</div>
+          <div class="number number--3">III</div>
+          <div class="number number--6">VI</div>
+          <div class="number number--9">IX</div>
+          <div class="hour__hand"></div>
+          <div class="minute__hand"></div>
+          <div class="second__hand"></div>
+          <div class="center__dot"></div>
+        </div>
+      </section>
+      <section class="digital__clock">
+        <div class="digital__box digital__time-box">
+          <span class="time"></span>
+        </div>
 
-                </div>
-                <div class="minute__hand">
-
-                </div>
-                <div class="second__hand">
-
-                </div>
-                <div class="center__dot">
-
-                </div>
-            </div>
-    
-        </section>
-        <section class="digital__clock">
-            <div class="digital__box digital__time-box">
-              <span class="time"></span>
-            </div>
-          
-            <div class="digital__box digital__info-box">
-              <span class="date"></span>
-              <span class="weekday"></span>
-              <span class="year"></span>
-            </div>
-          </section>
+        <div class="digital__box digital__info-box">
+          <span class="date"></span>
+          <span class="weekday"></span>
+          <span class="year"></span>
+        </div>
+      </section>
     </div>
     <script src="./index.js"></script>
-</body>
+  </body>
 </html>
