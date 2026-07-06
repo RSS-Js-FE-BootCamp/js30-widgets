@@ -21,6 +21,32 @@ h1 {
   color: var(--base);
 }
 
+.utility-bar {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.button {
+  background: transparent;
+  border: 2px solid var(--base);
+  color: white;
+  padding: 8px 16px;
+  font-size: 0.4em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  border-radius: 4px;
+  display: inline-block;
+  font-family: inherit;
+}
+
+.button:hover {
+  background: var(--base);
+  color: #193549;
+}
+
 .controls-grid {
   display: flex;
   flex-direction: column;
