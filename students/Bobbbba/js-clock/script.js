@@ -48,7 +48,28 @@ setInterval(updateTime, 1000)
 function updateDateInfo() {
     const options = { weekday: 'long', month: 'long', day: 'numeric' };
     const nowDate = new Date();
-    const dateInfi = new Intl.DateTimeFormat('ru-RU', options).format(nowDate)
+    const dateInfi = new Intl.DateTimeFormat('en-EN', options).format(nowDate)
     document.querySelector('.digital-date').innerText = dateInfi
 }
 setInterval(updateDateInfo, 1000)
+
+const themeButton = document.querySelector('.black-theme');
+
+function changeTheme() {
+    if (document.body.classList.contains('dark')) {
+        themeButton.textContent = 'Light theme';
+    } else {
+        themeButton.textContent = 'Black theme'
+    }
+}
+changeTheme();
+
+themeButton.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+
+    localStorage.setItem(
+        'theme',
+        document.body.classList.contains('dark') ? 'dark':'light'
+    )
+    changeTheme();
+})
