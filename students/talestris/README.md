@@ -1,4 +1,4 @@
-## [My Pull-Request](https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/108)
+## [My Pull-Request](https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/121)
 
 In the 'Js Clock' widget I implemented:
 - a mandatory feature (digital clock that shows exact time (hours, minutes, seconds), full weekday name, date (day number + month name), year);
