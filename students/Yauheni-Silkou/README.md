@@ -12,8 +12,12 @@
 - **Pull Request Link:** [https://github.com/RSS-Js-FE-BootCamp/js30-widgets/pull/126]
 
 - **Student cards:** [Netlify Main Gallery](https://deploy-preview-126--js-30-widget-gallery.netlify.app/)
-- **Photofilter:** [Live Photofilter](https://deploy-preview-126--js-30-widget-gallery.netlify.app/students/yauheni-silkou/photofilter/)
-- **Vertical Slider:** [Live Vertical Slider](https://deploy-preview-126--js-30-widget-gallery.netlify.app/students/yauheni-silkou/vertical-slider/)
+- **Photofilter:**
+  - [Live Photofilter](https://deploy-preview-126--js-30-widget-gallery.netlify.app/students/yauheni-silkou/photofilter/)
+  - [gh-pages Photofilter](https://yauheni-silkou.github.io/JS30-Widgets-personal/students/Yauheni-Silkou/photofilter/)
+- **Vertical Slider:**
+  - [Live Vertical Slider](https://deploy-preview-126--js-30-widget-gallery.netlify.app/students/yauheni-silkou/vertical-slider/)
+  - [gh-pages Vertical Slider](https://yauheni-silkou.github.io/JS30-Widgets-personal/students/Yauheni-Silkou/vertical-slider/)
 
 ---
 
@@ -61,6 +65,8 @@
 - [ ] Next / previous buttons to flip through a built-in gallery of source images (+10)
 - [x] Load an image from the user's computer via `<input type="file">` (and/or drag-and-drop) (+10)
 - [x] Save the edited image back to disk with all filters baked in (render to a `<canvas>`, export with `canvas.toBlob`) (+10)
+  - ❗❗❗ **IMPORTANT.** There was a bug that prevents to save an image. It was fixed, but the result of it is not deployed on Netlify. Instead as a prove the copy of a project is deployed on my personal Github repository. Follow to 👉 [gh-pages](https://yauheni-silkou.github.io/JS30-Widgets-personal/students/Yauheni-Silkou/photofilter/).
+
 - [x] Reset-all button that returns every slider to its default value (+10)
 - [x] Live display of the generated CSS filter string with a "copy to clipboard" button (+10)
 
