@@ -2,7 +2,7 @@
 
 ## Deploy Preview
 - [Drum Kit] https://deploy-preview-94--elegant-quokka-1ce2cd.netlify.app/students/bobbbba/drum-kit/
-- [JS Clock] https://deploy-preview-125--js-30-widget-gallery.netlify.app/students/bobbbba/js-clock/
+- [JS Clock] https://deploy-preview-127--js-30-widget-gallery.netlify.app/students/bobbbba/js-clock/
 
 ### 🟢 Widget 1: JS Clock
 **Score: 65 / 65**

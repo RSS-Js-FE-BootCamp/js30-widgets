@@ -6,29 +6,28 @@
 }
 html {
   scroll-behavior: smooth;
-  background: #018Ded url(./image/bg-pic.webp);
+   background: #018Ded url(./image/bg-pic.webp); 
   background-size: cover;
-  font-family: 'helvetica neue';
+   height: 100%; 
 }
 .body {
     font-size: 2rem;
     display: flex;
     flex: 1;
-    min-height:  100vh;
-    align-items: center;
-
+    min-height:  100vh;   
 }
 .clock {
     width: 30rem;
     height: 30rem;
     border-radius: 50%;
-    margin: 50px auto;
     position:relative;
-    padding: 2rem;
+    margin: 150px auto;
     box-shadow: 0 0 0 4px rgba(0,0,0, 0.1),
     inset 0 0 0 20px #efefef,
     inset 0 0 10px black,
     0 0 10px rgba(0, 0 ,0, 0.2);
+    
+   
 
 }
 .clock-face {
@@ -48,3 +47,26 @@ html {
     transition: all 0.05s;
     transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
 }
+.digital-clock {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    color: #000000;
+    font-size: 3rem;
+    padding-bottom: 220px;
+}
+
+.black-theme {
+    position: absolute;
+    top: 150px;
+    left: 150px;
+    padding: 10px 15px;
+    background: #000000;
+    color: #efefef;
+}
+
+body.dark {
+  background: #1b1b1b;
+ }
+  
