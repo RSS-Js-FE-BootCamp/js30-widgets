@@ -23,6 +23,7 @@ https://deploy-preview-100--js-30-widget-gallery.netlify.app/students/aliaksandr
 - [x] **Playback beats & melodies block.** Here you can select one of 3 drum tracks to play along with a melody on the sampler (like in '90s hip-hop), or you can select a melody (also 3 to choose from) to play the drums along with). (+10)
 - [x] **Cut Switch.** Based on its value, it mimics the dark/light theme toggle in the task settings. It persists across reloads. However, its purpose is to cut off the current sound when a new one is played, so that the samples don't overlap (it's indispensable when playing on a sampler). It also operates independently; its effect does not extend to the Playback beats & melodies block. (+10)
 - [x] **Legend switch.** It shows/hides useful tooltips for the site's tools and features. (+10)
+- [x] **Antispam.** Try to mess around and you'll get an alert. (+1)
 
 ### JS Clock
 
