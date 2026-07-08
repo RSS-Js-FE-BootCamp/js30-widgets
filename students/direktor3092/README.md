@@ -15,9 +15,9 @@
 - [x] The feature is integrated with the rest of the UI +5
 
 #### Stage 3 - Optional improvements (up to 30 points)
-- [x] Added melody recording and playback +10
+- [x] Multiple instruments - switching the instrument swaps the set of sounds played by the same pads +10
 - [x] Added floating musical notes animation +10
-- [x] Demo / custom theme toggle that persists across reloads. +10
+- [x] Dark / light theme toggle that persists across reloads +10
 
 Deploy: https://deploy-preview-117--elegant-quokka-1ce2cd.netlify.app/students/direktor3092/drum-kit/
 
